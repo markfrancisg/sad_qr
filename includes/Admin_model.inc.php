@@ -215,3 +215,58 @@ function get_details_qr_payor(object $pdo, int $qr_id)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result; // Returning single result
 }
+
+//for admin dashboard
+function get_account_list(object $pdo)
+{
+    $query = "SELECT account.account_email, user_info.account_name
+            FROM account
+            JOIN user_info ON account.account_id = user_info.account_id
+            ORDER BY account.account_id DESC
+            LIMIT 5";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
+
+function get_five_paid_qr(object $pdo)
+{
+    $query = "SELECT homeowners.name, homeowners.address
+              FROM qr_info
+              INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+              WHERE qr_info.registered = 1
+              ORDER BY homeowners.ho_id DESC
+              LIMIT 5";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
+
+function get_five_unpaid_qr(object $pdo)
+{
+    $query = "SELECT homeowners.name, homeowners.address
+              FROM qr_info
+              INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+              WHERE qr_info.registered = 0
+              ORDER BY homeowners.ho_id DESC";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
+
+function get_admin_name(object $pdo, string $account_email)
+{
+    $query = "SELECT user_info.account_name FROM account 
+            JOIN user_info ON account.account_id = user_info.account_id
+            WHERE account_email = :account_email";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute([':account_email' => $account_email]);
+
+    // Directly return the account name using fetchColumn
+    return $stmt->fetchColumn(0);
+}

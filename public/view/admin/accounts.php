@@ -1,8 +1,8 @@
 <?php
 include_once 'header.php';
 include_once '../../../includes/admin/create_account_view.inc.php';
-require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
+require_once '../../../includes/Admin_model.inc.php';
 
 $results = get_user_list($pdo);
 ?>

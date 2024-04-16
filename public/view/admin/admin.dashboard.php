@@ -1,5 +1,14 @@
 <?php
 include_once 'header.php';
+require_once '../../../includes/dbh.inc.php';
+require_once '../../../includes/Admin_model.inc.php';
+
+$results1 = get_account_list($pdo);
+$results2 = get_five_paid_qr($pdo);
+$results3 = get_five_unpaid_qr($pdo);
+$admin_email = $_SESSION['account_email'];
+$admin_name = get_admin_name($pdo, $admin_email);
+
 ?>
 
 
@@ -8,58 +17,38 @@ include_once 'header.php';
 
 
     <!-- Content Row -->
-    <div class="row mb-4">
-        <!-- Area Chart -->
+    <div class="row mb-5">
         <div class="col-xl-8 col-lg-7">
             <div class="card shadow mb-4 mt-2 h-100">
-                <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold">
                         <span class="text-white title-custom-color px-3 py-1 rounded">Accounts</span>
                     </h6>
                 </div>
 
-                <!-- Card Body -->
                 <div class="card-body h-100 mb-2">
                     <div class="table-responsive mx-auto d-block">
                         <table class="table" id="dataTable" width="100%" cellspacing="0">
 
                             <tbody>
-                                <tr>
-                                    <td>
-                                        O
-                                    </td>
-                                    <td>a@gmail.com</td>
-                                    <td>MJ</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        O
-                                    </td>
-                                    <td>b@gmail.com</td>
-                                    <td>Kia</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        O
-                                    </td>
-                                    <td>c@gmail.com</td>
-                                    <td>Tere</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        O
-                                    </td>
-                                    <td>d@gmail.com</td>
-                                    <td>Angelika</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        O
-                                    </td>
-                                    <td>e@gmail.com</td>
-                                    <td>Gorry</td>
-                                </tr>
+                                <?php
+                                foreach ($results1 as $row1) {
+                                    if ($_SESSION["account_email"] === $row1['account_email']) {
+                                        continue;
+                                    }
+                                    $name1 = $row1['account_name'];
+                                    $email1 = $row1['account_email'];
+                                ?>
+                                    <tr>
+                                        <td>O</td>
+                                        <td><?php echo $name1; ?></td>
+                                        <td><?php echo $email1; ?></td>
+
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+
                             </tbody>
 
                         </table>
@@ -68,15 +57,11 @@ include_once 'header.php';
             </div>
         </div>
 
-        <!-- Pie Chart -->
-        <div class="col-xl-4 col-lg-5" style="height: 320px;">
-            <div class="d-flex justify-content-center mt-2">
-                <h1>Hello, Juan</h1>
+        <div class="col-xl-4 col-lg-5 order-sm-0">
+            <div class="d-flex justify-content-center mt-1">
+                <h1 class="text-center">Hello, <?php echo $admin_name; ?>!</h1>
             </div>
-            <div class="card shadow mb-4 mt-2 mb-2 h-100  ">
-                <!-- Card Header - Dropdown -->
-
-                <!-- Card Body -->
+            <div class="card shadow m-2 h-95">
                 <div class="card-body h-100 m-2">
                     <?php
                     date_default_timezone_set('Asia/Manila'); // Set to Philippines Standard Time (PST)
@@ -101,10 +86,9 @@ include_once 'header.php';
     </div>
 
 
-
-    <div class="row mb-4 ">
+    <div class="row mt-5 ">
         <!-- Area Chart -->
-        <div class="col-xl-6 col-lg-7">
+        <div class="col-xl-6 col-lg-7 mt-3">
             <div class="card shadow mb-4 h-100">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -119,20 +103,25 @@ include_once 'header.php';
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Amount</th>
+                                    <th>Address</th>
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>MJ Limosinero</td>
-                                    <td>200.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Ckeziah Madrid</td>
-                                    <td>200.00</td>
-                                </tr>
-                            </tbody>
+                            <?php
+                            foreach ($results2 as $row2) {
+                                $name2 = $row2['name'];
+                                $address2 = $row2['address'];
+
+                            ?>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $name2; ?></td>
+                                        <td><?php echo $address2; ?></td>
+                                    </tr>
+                                <?php
+                            }
+                                ?>
+                                </tbody>
 
                         </table>
                     </div>
@@ -142,7 +131,7 @@ include_once 'header.php';
         </div>
 
         <!-- Pie Chart -->
-        <div class="col-xl-6 col-lg-5">
+        <div class="col-xl-6 col-lg-5 mt-3">
             <div class="card shadow mb-4 h-100">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
@@ -157,24 +146,27 @@ include_once 'header.php';
                             <thead>
                                 <tr>
                                     <th>Name</th>
-                                    <th>Amount</th>
+                                    <th>Address</th>
                                 </tr>
                             </thead>
 
-                            <tbody>
-                                <tr>
-                                    <td>Mark Gorreon</td>
-                                    <td>200.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Maria Theresa Bisnar</td>
-                                    <td>200.00</td>
-                                </tr>
-                                <tr>
-                                    <td>Angelika Bariring</td>
-                                    <td>200.00</td>
-                                </tr>
-                            </tbody>
+                            <?php
+                            foreach ($results3 as $row3) {
+
+                                $name3 = $row3['name'];
+                                $address3 = $row3['address'];
+
+                            ?>
+                                <tbody>
+                                    <tr>
+                                        <td><?php echo $name3; ?></td>
+                                        <td><?php echo $address3; ?></td>
+                                    </tr>
+                                <?php
+                            }
+                                ?>
+
+                                </tbody>
 
                         </table>
                     </div>
@@ -188,7 +180,6 @@ include_once 'header.php';
 <!-- /.container-fluid -->
 
 <!-- End of Main Content -->
-
 <?php
-include_once 'footer.php'
+include_once 'footer.php';
 ?>

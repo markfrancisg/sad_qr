@@ -64,7 +64,8 @@ function get_qr_list(object $pdo)
     $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id
           FROM qr_info
           INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
-          ORDER BY homeowners.name DESC";
+          ORDER BY qr_info.qr_id DESC";
+    //newest to oldest
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();

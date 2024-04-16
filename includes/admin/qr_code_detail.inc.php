@@ -13,9 +13,9 @@ use Endroid\QrCode\ErrorCorrectionLevel\ErrorCorrectionLevelHigh;
 function view_qr(string $text)
 {   //if homeowner is added but vehicle is not yet registered, value is 0
     $qr_code = QrCode::create($text)
-        ->setSize(200)
+        ->setSize(250)
         ->setMargin(40)
-        // ->setForegroundColor(new Color(255, 128, 0))
+        ->setForegroundColor(new Color(56, 86, 65))
         // ->setBackgroundColor(new Color(153, 204, 255))
         ->setErrorCorrectionLevel(new ErrorCorrectionLevelHigh);
 
@@ -32,7 +32,7 @@ function save_qr_code(string $qr)
     $qr_code = QrCode::create($qr)
         ->setSize(200)
         ->setMargin(40)
-        // ->setForegroundColor(new Color(255, 128, 0))
+        ->setForegroundColor(new Color(56, 86, 65))
         // ->setBackgroundColor(new Color(153, 204, 255))
         ->setErrorCorrectionLevel(new ErrorCorrectionLevelHigh);
 

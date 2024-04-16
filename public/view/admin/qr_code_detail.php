@@ -14,52 +14,77 @@ $result = get_qr_detail($pdo, $qr_id);
 
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">QR Details</h1>
-    </div>
+    <div class="card shadow mb-4 h-100 sm-6">
 
-    <!-- Content Row -->
-    <!-- ../../includes/admin/create_qr.inc.php -->
-    <div class="row col-12">
-        <!-- Area Chart -->
-        <div class="col-12">
-            <div class="card mb-8">
-                <div class="card-body">
-                    <h6 class="m-0 font-weight-bold text-primary">
-                        Full Name <?php echo $result['name']; ?>
+        <div class="d-sm-flex align-items-center justify-content-between mb-4">
+            <h1 class="h3 m-3 text-gray-800">QR Details</h1>
+        </div>
+
+        <div class="row col-12">
+            <div class="col-sm-6">
+                <div>
+                    <h6 class="ml-5 mt-3 font-weight-bold">
+                        Full Name: <?php echo $result['name']; ?>
                     </h6>
-                    <h6 class="m-0 font-weight-bold text-primary">
-                        Address <?php echo $result['address']; ?>
+                </div>
+                <div>
+                    <h6 class="ml-5 mt-3 font-weight-bold">
+                        Address: <?php echo $result['address']; ?>
                     </h6>
-                    <h6 class="m-0 font-weight-bold text-primary">
-                        Plate Number <?php echo $result['plate_number']; ?>
+                </div>
+                <div>
+                    <h6 class="ml-5 mt-3 font-weight-bold">
+                        Plate Number: <?php echo $result['plate_number']; ?>
                     </h6>
-                    <h6 class="m-0 font-weight-bold text-primary">
-                        Vehicle Wheels <?php echo $result['wheel']; ?>
+                </div>
+                <div>
+                    <h6 class="ml-5 mt-3 font-weight-bold">
+                        Vehicle Wheels: <?php echo $result['wheel']; ?>
                     </h6>
-                    <h6 class="m-0 font-weight-bold text-primary">
-                        Vehicle Type <?php echo $result['vehicle_type']; ?>
+                </div>
+                <div>
+                    <h6 class="ml-5 mt-3 font-weight-bold">
+                        Vehicle Type: <?php echo $result['vehicle_type']; ?>
                     </h6>
-                    <p class="card-text">
-                        <?php
-                        if ($result['qr_code'] != '0') {
-                            // If QR code data is available, display the QR code image
-                            $qrImageData = view_qr($result['qr_code']); // Assuming this function properly returns QR code image data
-                            echo '<img src="data:image/png;base64,' . base64_encode($qrImageData) . '" >';
-                        } else {
-                            // If QR code data is not available, display a link
-                        ?>
-                            <a href="../../../includes/admin/balance_pay.inc.php?qr_id=<?php echo $qr_id; ?>">Pay</a>
-                        <?php
-                        }
-                        ?>
-                    </p>
-                    <a href="qr_code.php"><-Back </a>
                 </div>
             </div>
+
+
+            <div class="col-sm-6">
+                <p class="card-text">
+                    <?php
+                    if ($result['qr_code'] != 'Not Registered') {
+                        // If QR code data is available, display the QR code image
+                        $qrImageData = view_qr($result['qr_code']); // Assuming this function properly returns QR code image data
+                        echo '<img src="data:image/png;base64,' . base64_encode($qrImageData) . '" >';
+                    } else {
+                        // If QR code data is not available, display a link
+                    ?>
+                <div class="receipt">
+                    <div class="receipt-header">
+                        <h2>Generate QR Code</h2>
+                    </div>
+                    <div class="receipt-body">
+                        <p><b>Date:</b> <?php echo date('F j, Y'); ?></p>
+                        <p><b>Description:</b> Payment</p>
+                        <p><b>Amount:</b> ₱200.00</p>
+                        <a href="../../../includes/admin/balance_pay.inc.php?qr_id=<?php echo $qr_id; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">Pay</button></a>
+                    </div>
+                </div>
+            <?php
+                    }
+            ?>
+            </p>
+            </div>
+
         </div>
+
     </div>
 
-    <?php
-    include_once 'footer.php';
-    ?>
+    <div class="back-button"><a href="qr_code.php" class="back-button-qr">Back </a></div>
+
+</div>
+
+<?php
+include_once 'footer.php';
+?>

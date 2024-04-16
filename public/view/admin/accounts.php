@@ -14,6 +14,7 @@ $results = get_user_list($pdo);
         <h1 class="h3 mb-0 text-gray-800">Create Account</h1>
     </div>
 
+
     <!-- Content Row -->
 
     <div class="row col-12">
@@ -25,13 +26,13 @@ $results = get_user_list($pdo);
                     <form class="user" method="post" action="../../../includes/admin/create_account.inc.php">
                         <div class="form-group row">
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="first_name" name="first_name" placeholder="First Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="last_name" name="last_name" placeholder="Last Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
                             </div>
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <select class="form-control form-control-drop-down " id="dropdownMenu" name="role_description">
+                                <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="role_description">
                                     <option value="">Select a role</option>
                                     <option value="admin">Admin</option>
                                     <option value="guard">Guard</option>
@@ -41,17 +42,17 @@ $results = get_user_list($pdo);
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="email" class="form-control form-control-user" id="email" name="account_email" placeholder="Email Address">
+                                <input type="email" class="form-control form-control-user form-control-color" id="email" name="account_email" placeholder="Email Address">
                             </div>
 
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="number" name="account_number" placeholder="Phone Number">
+                                <input type="text" class="form-control form-control-user form-control-color" id="number" name="account_number" placeholder="Phone Number">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-12 mb-6 mb-sm-0">
-                                <input type="password" class="form-control form-control-user" id="password" name="password" placeholder="Password" value="1234567890" readonly>
+                                <input type="password" class="form-control form-control-user form-control-color" id="password" name="password" placeholder="Password" value="1234567890" readonly>
                             </div>
                         </div>
                         <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->
@@ -88,15 +89,6 @@ $results = get_user_list($pdo);
                                     <th>Delete</th>
                                 </tr>
                             </thead>
-                            <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Role</th>
-                                    <th>Email Address</th>
-                                    <th>Phone Number</th>
-                                    <th>Delete</th>
-                                </tr>
-                            </tfoot>
                             <tbody>
                                 <?php
                                 foreach ($results as $row) {

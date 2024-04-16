@@ -4,7 +4,10 @@ include_once '../../../includes/admin/create_qr_view.inc.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
 
+//for the table
 $results = get_qr_list($pdo);
+
+//for the dropdown
 $homeowner_email = get_homeowner_email($pdo);
 
 ?>
@@ -26,7 +29,7 @@ $homeowner_email = get_homeowner_email($pdo);
                     <form class="user" method="post" action="../../../includes/admin/create_qr.inc.php">
                         <div class="form-group row d-flex justify-content-between">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <select class="form-control form-control-drop-down" id="dropdownMenu" name="email">
+                                <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="email">
                                     <option value="">Email Address</option>
                                     <?php foreach ($homeowner_email as $email) : ?>
                                         <option value="<?= $email['email'] ?>"><?= $email['email'] ?></option>
@@ -34,22 +37,22 @@ $homeowner_email = get_homeowner_email($pdo);
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="address" name="address" placeholder="Address" value="Default Address" readonly>
+                                <input type="text" class="form-control form-control-user form-control-color readonly-color" id="address" name="address" placeholder="Address" value="Default Address" readonly>
                             </div>
                         </div>
                         <div class="form-group row d-flex justify-content-between">
 
 
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="vehicle_type" name="vehicle_type" placeholder="Vehicle Type">
+                                <input type="text" class="form-control form-control-user form-control-color" id="vehicle_type" name="vehicle_type" placeholder="Vehicle Type">
                             </div>
 
                             <div class="col-sm-3 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="wheel" name="wheel" placeholder="Vehicle Wheels">
+                                <input type="text" class="form-control form-control-user form-control-color" id="wheel" name="wheel" placeholder="Vehicle Wheels">
                             </div>
 
                             <div class="col-sm-4 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="plate_number" name="plate_number" placeholder="Plate No.">
+                                <input type="text" class="form-control form-control-user form-control-color" id="plate_number" name="plate_number" placeholder="Plate No.">
                             </div>
                         </div>
                         <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->
@@ -113,7 +116,7 @@ $homeowner_email = get_homeowner_email($pdo);
                                         <td><?php echo $plate_number; ?></td>
                                         <td><?php echo $vehicle_type; ?></td>
                                         <td>
-                                            <a href="qr_code_detail.php?qr_id=<?php echo $qr_id; ?>">View</a>
+                                            <a href="qr_code_detail.php?qr_id=<?php echo $qr_id; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">View</button></a>
                                         </td>
                                     </tr>
                                 <?php

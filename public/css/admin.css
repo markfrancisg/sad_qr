@@ -32,3 +32,63 @@
     border-radius: 5px; /* Optionally add border-radius for rounded corners */
 }
 
+.date-time-color{
+    background:lightgray;
+    border-radius: 30px !important;
+}
+
+.btn-view-pay{
+    background:#6D987B;
+    border-radius: 30px !important;
+    width: 100px; /* Adjust width as needed */
+    padding: 0%;
+    transition: background-color 0.2s ease;
+    color: white;
+}
+
+.btn-view-pay:hover {
+    background-color: #2f4a39; /* Background color on hover */
+  }
+
+  .table th {
+    text-align: center;/* make table heads centered */
+    border: none;
+  }
+
+  .table tr {
+    text-align: center;/* make table heads centered */
+  }
+
+  .card-text img {
+    max-width: 100%; /* Adjust as needed */
+  }
+  
+  .back-button{
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Optional for vertical centering */
+  }
+
+  .back-button-qr{
+    color:gray;
+  }
+
+  .back-button-qr:hover{
+    color: #2f4a39;
+  }
+
+  .receipt {
+    border: 1px solid #ddd;
+    padding: 20px;
+    text-align: center;
+  }
+  
+  .receipt-header {
+    margin-bottom: 15px;
+  }
+
+  .form-control-color{
+    background-color: #E4E1E1 !important;
+  }
+
+  

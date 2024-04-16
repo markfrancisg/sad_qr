@@ -21,20 +21,20 @@ include_once 'header.php';
                         </div>
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="first_name" name="first_name" placeholder="First Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="last_name" name="last_name" placeholder="Last Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
                             </div>
                         </div>
 
                         <div class="form-group row">
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="email" class="form-control form-control-user" id="email" name="email" placeholder="Email Address">
+                                <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
                             </div>
 
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="number" name="number" placeholder="Phone Number">
+                                <input type="text" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number">
                             </div>
                         </div>
                         <hr>
@@ -44,13 +44,13 @@ include_once 'header.php';
                         <div class="form-group row">
 
                             <div class="col-sm-3 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="block" name="block" placeholder="Block">
+                                <input type="text" class="form-control form-control-user form-control-color" id="block" name="block" placeholder="Block">
                             </div>
                             <div class="col-sm-3 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="lot" name="lot" placeholder="Lot">
+                                <input type="text" class="form-control form-control-user form-control-color" id="lot" name="lot" placeholder="Lot">
                             </div>
                             <div class="col-sm-6 mb-3 mb-sm-0">
-                                <input type="text" class="form-control form-control-user" id="street" name="street" placeholder="Street">
+                                <input type="text" class="form-control form-control-user form-control-color" id="street" name="street" placeholder="Street">
                             </div>
                         </div>
                         <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->

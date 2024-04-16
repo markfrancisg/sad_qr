@@ -16,6 +16,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             $errors["empty_input"] = "Fill in all fields!";
         }
 
+
+        //start database query
         $result = get_user($pdo, $email);
 
         if (is_email_wrong($result)) {

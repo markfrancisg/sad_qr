@@ -27,7 +27,7 @@ function redirectUser()
 function grantPermission(string $role)
 {
     if (!isset($_SESSION["role_description"]) || $_SESSION["role_description"] !== $role || !isset($_SESSION['account_id']) || !isset($_SESSION['account_email'])) {
-        header("Location:../../../index.php");
+        header("Location:../index.php");
         exit();
     }
 }

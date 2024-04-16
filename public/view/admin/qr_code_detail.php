@@ -13,6 +13,12 @@ $result = get_qr_detail($pdo, $qr_id);
 ?>
 
 <div class="container-fluid">
+    <!-- <div class="spinner-wrapper">
+        <div class="spinner-border text-success" role="status">
+        </div>
+    </div> -->
+
+
     <!-- Page Heading -->
     <div class="card shadow mb-4 h-100 sm-6">
 
@@ -68,7 +74,11 @@ $result = get_qr_detail($pdo, $qr_id);
                         <p><b>Date:</b> <?php echo date('F j, Y'); ?></p>
                         <p><b>Description:</b> Payment</p>
                         <p><b>Amount:</b> ₱200.00</p>
-                        <a href="../../../includes/admin/balance_pay.inc.php?qr_id=<?php echo $qr_id; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">Pay</button></a>
+                        <a href="" class="view-qr-detail pay-option" data-toggle="modal" data-target="#payModal" data-qr="<?php echo $qr_id; ?>">
+                            <button class="btn btn-view-pay">Pay</button></a>
+                        <!-- ../../../includes/admin/balance_pay.inc.php?qr_id=
+                                                                                // echo $qr_id; 
+                                                                                -->
                     </div>
                 </div>
             <?php
@@ -85,6 +95,27 @@ $result = get_qr_detail($pdo, $qr_id);
 
 </div>
 
+<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Payment?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Select "Pay" below if you are sure.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn modal-pay-color" id="pay-link" href="#">Pay</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <?php
+include_once 'admin_js.php';
 include_once 'footer.php';
 ?>

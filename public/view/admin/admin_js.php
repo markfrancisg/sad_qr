@@ -6,6 +6,12 @@
         });
     });
 
+    $(document).ready(function() {
+        $('.pay-option').click(function() {
+            var qr_id = $(this).data('qr'); // Assuming the data attribute is 'data-qr'
+            $('#pay-link').attr('href', '../../../includes/admin/balance_pay.inc.php?qr_id=' + qr_id);
+        });
+    });
 
 
     document.getElementById('dropdownMenu').addEventListener('change', function() {
@@ -43,4 +49,16 @@
     //         });
     //     });
     // });
+
+    // const spinnerWrapperEl = document.querySelector('.spinner-wrapper');
+    // if (spinnerWrapperEl) {
+    //     window.addEventListener('load', () => {
+    //         spinnerWrapperEl.style.opacity = '0';
+    //         setTimeout(() => {
+    //             spinnerWrapperEl.style.display = 'none';
+    //         }, 200);
+    //     });
+    // } else {
+    //     console.warn("Element with class 'spinner-wrapper' not found.");
+    // }
 </script>

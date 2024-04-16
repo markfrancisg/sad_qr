@@ -105,7 +105,7 @@ $results2 = get_unpaid_qr($pdo);
                                     <td><?php echo $vehicle_type2; ?></td>
                                     <td><?php echo $plate_number2; ?></td>
                                     <td>
-                                        <a href="../../../includes/admin/balance_pay.inc.php?qr_id=<?php echo $qr_id2; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">Pay</button></a>
+                                        <a href="qr_code_detail.php?qr_id=<?php echo $qr_id2; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">Pay</button></a>
                                     </td>
                                 </tr>
                             <?php

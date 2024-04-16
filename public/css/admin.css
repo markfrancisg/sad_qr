@@ -56,6 +56,10 @@
     color: #ffffff; /* Set the text color to white */
 
 }
+.modal-logout-color{
+  background: #385641;
+    color: #ffffff;
+}
 
 /* FORMS*/
 .form-control-color{

@@ -37,7 +37,7 @@
                 <button class="btn btn-secondary" type="button" data-dismiss="modal">
                     Cancel
                 </button>
-                <a class="btn btn-primary" href="../../../includes/logout.inc.php">Logout</a>
+                <a class="btn modal-logout-color" href="../../../includes/logout.inc.php">Logout</a>
             </div>
         </div>
     </div>

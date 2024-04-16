@@ -95,7 +95,7 @@ grantPermission('admin');
             <hr class="sidebar-divider" />
 
             <li class="nav-item active">
-                <a class="nav-link" href="">
+                <a class="nav-link" href="logs.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Records Logs</span></a>
             </li>

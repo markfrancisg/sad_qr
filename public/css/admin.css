@@ -1,15 +1,51 @@
-/* changes the color of sidebar*/
+/* SIDEBARD AND NAVBAR */
 .custom-gradient {
     background: linear-gradient(to right, #385641, #385641);
 } 
 
 
+
+
+
+
+
+/* BUTTONS*/
 /* changes the color of buttons*/
 .custom-btn{
     background: #A3A3A3;
     color: black; /* Set the text color to black */
 }
 
+.btn-view-pay{
+  background:#6D987B;
+  border-radius: 30px !important;
+  width: 100px; /* Adjust width as needed */
+  padding: 0%;
+  transition: background-color 0.2s ease;
+  color: white;
+}
+
+.btn-view-pay:hover {
+  background-color: #2f4a39; /* Background color on hover */
+}
+
+.back-button{
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Optional for vertical centering */
+}
+
+.back-button-qr{
+  color:gray;
+}
+
+.back-button-qr:hover{
+  color: #2f4a39;
+}
+
+
+
+/* MODALS*/
 .modal-delete-color{
     background: #cc3300;
     color: #ffffff; /* Set the text color to white */
@@ -20,6 +56,12 @@
     color: #ffffff; /* Set the text color to white */
 
 }
+
+/* FORMS*/
+.form-control-color{
+  background-color: #E4E1E1 !important;
+}
+
 
 .form-control-drop-down{
     width: 100%;
@@ -43,18 +85,11 @@
     border-radius: 30px !important;
 }
 
-.btn-view-pay{
-    background:#6D987B;
-    border-radius: 30px !important;
-    width: 100px; /* Adjust width as needed */
-    padding: 0%;
-    transition: background-color 0.2s ease;
-    color: white;
-}
 
-.btn-view-pay:hover {
-    background-color: #2f4a39; /* Background color on hover */
-  }
+
+
+
+/* TABLES*/
 
   .table th {
     text-align: center;/* make table heads centered */
@@ -65,24 +100,14 @@
     text-align: center;/* make table heads centered */
   }
 
+
+/* CARDS */
   .card-text img {
     max-width: 100%; /* Adjust as needed */
   }
   
-  .back-button{
-    display: flex;
-    justify-content: center;
-    align-items: center; /* Optional for vertical centering */
-  }
 
-  .back-button-qr{
-    color:gray;
-  }
-
-  .back-button-qr:hover{
-    color: #2f4a39;
-  }
-
+/* CUSTOM */
   .receipt {
     border: 1px solid #ddd;
     padding: 20px;
@@ -93,9 +118,7 @@
     margin-bottom: 15px;
   }
 
-  .form-control-color{
-    background-color: #E4E1E1 !important;
-  }
+  
 
   /* .spinner-wrapper{
     background-color: black;

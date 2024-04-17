@@ -4,16 +4,11 @@
 }
 
 
-.nav-item.active .nav-link, .nav-link.active {
+.nav-item.sidebar-nav.active .nav-link {
+  /* Active styles */
   color: #fff;
   background-color: #6D987B;
 }
-
-.nav-item:hover .nav-link {
-  color: #fff;
-  background-color: #6D987B;
-}
-
 
 
 

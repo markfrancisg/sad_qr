@@ -10,6 +10,14 @@
   background-color: #6D987B;
 }
 
+/* DROPDOWNS*/
+.dropdown-menu.user-profile-option {
+  background-color: #96B499; /* Powder blue */
+}
+
+.dropdown-menu.user-profile-option .dropdown-item:hover {
+  background-color: #6D9D7D;
+}
 
 
 /* BUTTONS*/

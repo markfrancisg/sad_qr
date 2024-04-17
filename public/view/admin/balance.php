@@ -5,7 +5,7 @@ require_once '../../../includes/Admin_contr.inc.php';
 require_once '../../../includes/dbh.inc.php';
 
 
-check_registration_status($pdo);
+
 $results = get_paid_qr($pdo);
 $results2 = get_unpaid_qr($pdo);
 
@@ -25,39 +25,33 @@ $results2 = get_unpaid_qr($pdo);
         <div class="card mb-8">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Vehicle Type</th>
-                                <th>Plate No</th>
-                            </tr>
-                        </thead>
-
-                        <?php
-                        foreach ($results as $row) {
-                            $name = $row['name'];
-                            $address = $row['address'];
-                            $vehicle_type = $row['vehicle_type'];
-                            $plate_number = $row['plate_number'];
-                        ?>
-
-                            <tbody>
-
+                    <?php if (empty($results)) : ?>
+                        <p class="text-center">No paid accounts available.</p>
+                    <?php else : ?>
+                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                                 <tr>
-                                    <td><?php echo $name; ?></td>
-                                    <td><?php echo $address; ?></td>
-                                    <td><?php echo $vehicle_type; ?></td>
-                                    <td><?php echo $plate_number; ?></td>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Plate No</th>
                                 </tr>
-                            <?php
-                        }
-                            ?>
-
-
-
+                            </thead>
+                            <tbody>
+                                <?php foreach ($results as $row) : ?>
+                                    <tr>
+                                        <td><?php echo $row['name']; ?></td>
+                                        <td><?php echo $row['address']; ?></td>
+                                        <td><?php echo $row['vehicle_type']; ?></td>
+                                        <td><?php echo $row['plate_number']; ?></td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
+                        </table>
+                    <?php endif; ?>
+
+
+                    </tbody>
 
                     </table>
                 </div>
@@ -77,46 +71,36 @@ $results2 = get_unpaid_qr($pdo);
         <div class="card mb-8">
             <div class="card-body">
                 <div class="table-responsive">
-                    <table class="table" id="dataTable" width="100%" cellspacing="0">
-                        <thead>
-                            <tr>
-                                <th>Name</th>
-                                <th>Address</th>
-                                <th>Vehicle Type</th>
-                                <th>Plate No</th>
-                                <th>PHP200</th>
-                            </tr>
-                        </thead>
-
-                        <?php
-                        foreach ($results2 as $row2) {
-                            $qr_id2 = $row2['qr_id'];
-                            $name2 = $row2['name'];
-                            $address2 = $row2['address'];
-                            $vehicle_type2 = $row2['vehicle_type'];
-                            $plate_number2 = $row2['plate_number'];
-                        ?>
-
-                            <tbody>
-
+                    <?php if (empty($results2)) : ?>
+                        <p class="text-center">No unpaid accounts available.</p>
+                    <?php else : ?>
+                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
                                 <tr>
-                                    <td><?php echo $name2; ?></td>
-                                    <td><?php echo $address2; ?></td>
-                                    <td><?php echo $vehicle_type2; ?></td>
-                                    <td><?php echo $plate_number2; ?></td>
-                                    <td>
-                                        <a href="qr_code_detail.php?qr_id=<?php echo $qr_id2; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">Pay</button></a>
-                                    </td>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Vehicle Type</th>
+                                    <th>Plate No</th>
+                                    <th>PHP200</th>
                                 </tr>
-                            <?php
-                        }
-                            ?>
-
-
-
+                            </thead>
+                            <tbody>
+                                <?php foreach ($results2 as $row2) : ?>
+                                    <tr>
+                                        <td><?php echo $row2['name']; ?></td>
+                                        <td><?php echo $row2['address']; ?></td>
+                                        <td><?php echo $row2['vehicle_type']; ?></td>
+                                        <td><?php echo $row2['plate_number']; ?></td>
+                                        <td>
+                                            <a href="qr_code_detail.php?qr_id=<?php echo $row2['qr_id']; ?>" class="view-qr-detail">
+                                                <button class="btn btn-view-pay">Pay</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php endforeach; ?>
                             </tbody>
-
-                    </table>
+                        </table>
+                    <?php endif; ?>
                 </div>
             </div>
 

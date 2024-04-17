@@ -88,11 +88,14 @@
     color: #6e707e;
 }
 
-.title-custom-color{
-    background: #77BA8E;
-    padding: 10px !important; /* Adjust padding as needed */
-    margin: 8px;
-    border-radius: 5px; /* Optionally add border-radius for rounded corners */
+.title-custom-color {
+  background: #77BA8E; /* Set the background color */
+  margin: 5px; /* Add margin as needed */
+  border-radius: 5px; /* Apply border radius for rounded corners */
+  padding: 10px; /* Add padding for spacing */
+  width: 100px; /* Set the width of the background */
+  display: inline-block; 
+  text-align: center;
 }
 
 .date-time-color{

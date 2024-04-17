@@ -251,7 +251,8 @@ function get_five_unpaid_qr(object $pdo)
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 0
-              ORDER BY homeowners.ho_id DESC";
+              ORDER BY homeowners.ho_id DESC
+              LIMIT 5";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();

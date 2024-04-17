@@ -2,7 +2,9 @@
 include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/Admin_model.inc.php';
+require_once '../../../includes/Admin_contr.inc.php';
 
+check_registration_status($pdo); //update all the payment records
 $results1 = get_account_list($pdo);
 $results2 = get_five_paid_qr($pdo);
 $results3 = get_five_unpaid_qr($pdo);
@@ -15,14 +17,19 @@ $admin_name = get_admin_name($pdo, $admin_email);
 <!-- Begin Page Content -->
 <div class="container-fluid">
 
+    <!-- This will be hidden in large and medium screens -->
+    <div class="row">
+        <div class="col-lg-12 d-block d-md-none">
+            <h3 class="h3 fw-b">Dashboard</h3>
+        </div>
+    </div>
 
-    <!-- Content Row -->
-    <div class="row mb-5">
+    <div class="row">
         <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4 mt-2 h-100">
+            <div class="card shadow mb-4 h-100">
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold">
-                        <span class="text-white title-custom-color px-3 py-1 rounded">Accounts</span>
+                        <span class="text-white title-custom-color rounded">Accounts</span>
                     </h6>
                 </div>
 
@@ -40,7 +47,7 @@ $admin_name = get_admin_name($pdo, $admin_email);
                                     $email1 = $row1['account_email'];
                                 ?>
                                     <tr>
-                                        <td>O</td>
+                                        <td><i class="fas fa-circle"></i></td>
                                         <td><?php echo $name1; ?></td>
                                         <td><?php echo $email1; ?></td>
 
@@ -57,8 +64,9 @@ $admin_name = get_admin_name($pdo, $admin_email);
             </div>
         </div>
 
-        <div class="col-xl-4 col-lg-5 order-sm-0 order-1">
-            <div class="d-flex justify-content-center mt-1">
+        <!-- This will be hidden in large and medium screens -->
+        <div class="col-xl-4 col-lg-5 order-sm-0 order-1 d-none d-lg-block">
+            <div class="d-flex justify-content-center ">
                 <h1 class="text-center">Hello, <?php echo $admin_name; ?>!</h1>
             </div>
             <div class="card shadow m-2">
@@ -87,14 +95,14 @@ $admin_name = get_admin_name($pdo, $admin_email);
     </div>
 
 
-    <div class="row mt-5 ">
+    <div class="row mt-3">
         <!-- Area Chart -->
-        <div class="col-xl-6 col-lg-7 mt-3">
+        <div class="col-xl-6 col-lg-7">
             <div class="card shadow mb-4 h-100">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold">
-                        <span class="text-white title-custom-color px-3 py-1 rounded">Paid</span>
+                        <span class="text-white title-custom-color rounded">Paid</span>
                     </h6>
                 </div>
                 <!-- Card Body -->
@@ -131,13 +139,12 @@ $admin_name = get_admin_name($pdo, $admin_email);
             </div>
         </div>
 
-        <!-- Pie Chart -->
-        <div class="col-xl-6 col-lg-5 mt-3">
+        <div class="col-xl-6 col-lg-5 mt-3 mt-lg-0">
             <div class="card shadow mb-4 h-100">
                 <!-- Card Header - Dropdown -->
                 <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
                     <h6 class="m-0 font-weight-bold">
-                        <span class="text-white title-custom-color px-3 py-1 rounded">Unpaid</span>
+                        <span class="text-white title-custom-color rounded">Unpaid</span>
                     </h6>
                 </div>
                 <!-- Card Body -->
@@ -177,6 +184,7 @@ $admin_name = get_admin_name($pdo, $admin_email);
             </div>
         </div>
     </div>
+
 </div>
 <!-- /.container-fluid -->
 

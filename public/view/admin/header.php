@@ -40,7 +40,7 @@ function isActive($page)
         <!-- Sidebar -->
         <ul class="navbar-nav custom-gradient sidebar sidebar-dark accordion" id="accordionSidebar">
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.html">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="admin.dashboard.php">
                 <!-- <div class="sidebar-brand-icon rotate-n-15">
                     <i class="fas fa-laugh-wink"></i>
                 </div> -->
@@ -131,7 +131,7 @@ function isActive($page)
                         <div class="input-group">
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                             <div class="input-group-append">
-                                <button class="btn btn-secondary" type="button">
+                                <button class="btn btn-light" type="button">
                                     <i class="fas fa-search fa-sm"></i>
                                 </button>
                             </div>
@@ -151,7 +151,7 @@ function isActive($page)
                                     <div class="input-group">
                                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary" type="button">
+                                            <button class="btn btn-light" type="button">
                                                 <i class="fas fa-search fa-sm"></i>
                                             </button>
                                         </div>
@@ -182,4 +182,6 @@ function isActive($page)
                         </li>
                     </ul>
                 </nav>
+
+
                 <!-- End of Topbar -->

@@ -56,7 +56,7 @@ $result = get_qr_detail($pdo, $qr_id);
             </div>
 
 
-            <div class="col-sm-6">
+            <div class="col-sm-6 d-flex justify-content-center align-items-center">
                 <p class="card-text">
                     <?php
                     if ($result['qr_code'] != 'Not Registered') {

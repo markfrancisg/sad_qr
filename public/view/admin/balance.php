@@ -51,19 +51,18 @@ $results2 = get_unpaid_qr($pdo);
                     <?php endif; ?>
 
 
-                    </tbody>
 
-                    </table>
                 </div>
             </div>
 
         </div>
     </div>
-
-    <div class="d-sm-flex align-items-center justify-content-between m-4">
-        <h1 class="h3 mb-0 text-gray-800">Unpaid Accounts</h1>
-    </div>
 </div>
+
+<div class="d-sm-flex align-items-center justify-content-between m-4">
+    <h1 class="h3 mb-0 text-gray-800">Unpaid Accounts</h1>
+</div>
+
 
 <div class="row col-12">
     <!-- Area Chart -->

@@ -70,7 +70,7 @@ $homeowner_email = get_homeowner_email($pdo);
 
 
 
-    <div class="d-sm-flex align-items-center justify-content-between mt-4">
+    <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
         <h1 class="h3 mb-0 text-gray-800">QR List</h1>
     </div>
     <div class="row col-12">

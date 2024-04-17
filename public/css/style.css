@@ -60,7 +60,7 @@ button {
 }
 
 button:hover {
-    background-color: #f2fa87;
+    background-color: #6D987B;
 }
 
 a {
@@ -102,7 +102,7 @@ a {
   }
 
   .forgot-password-link:hover {
-    color: #f2fa87; /* Change the color code to your desired hover color */
+    color: #6D987B; /* Change the color code to your desired hover color */
   }
 
   .forgot-password-link{
@@ -124,29 +124,8 @@ a {
     position: relative;
 }
 
-.pass-icon {
-    position: absolute;
-    top: 50%;
-    right: 60px; /* Adjust the position as needed */
-    transform: translateY(-50%);
-    cursor: pointer;
-    width: 10%; /* Adjust the width as a percentage */
-    max-width: 30px; /* Maximum width for the icon */
-    height: auto; /* Maintain aspect ratio */
-}
 
-/* Media queries for responsiveness */
-@media (max-width: 768px) {
-    .pass-icon {
-        width: 6%; /* Adjust the width for medium screens */
-    }
-  
-    @media (max-width: 576px) {
-        .pass-icon {
-            width: 8%; /* Adjust the width for smaller screens */
-        }
-    }
-}
+
 
 /* .spinner-wrapper{
   background-color: black;

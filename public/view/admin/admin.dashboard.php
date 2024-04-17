@@ -57,12 +57,12 @@ $admin_name = get_admin_name($pdo, $admin_email);
             </div>
         </div>
 
-        <div class="col-xl-4 col-lg-5 order-sm-0">
+        <div class="col-xl-4 col-lg-5 order-sm-0 order-1">
             <div class="d-flex justify-content-center mt-1">
                 <h1 class="text-center">Hello, <?php echo $admin_name; ?>!</h1>
             </div>
-            <div class="card shadow m-2 h-95">
-                <div class="card-body h-100 m-2">
+            <div class="card shadow m-2">
+                <div class="card-body">
                     <?php
                     date_default_timezone_set('Asia/Manila'); // Set to Philippines Standard Time (PST)
                     $currentDay = date('l');
@@ -71,18 +71,19 @@ $admin_name = get_admin_name($pdo, $admin_email);
                     ?>
                     <div class="container date-time-color">
                         <div>
-                            <h3 class="d-flex justify-content-center mt-5"><?php echo "$currentDay"; ?></h3>
+                            <h3 class="text-center mt-5"><?php echo "$currentDay"; ?></h3>
                         </div>
                         <div>
-                            <h1 class="d-flex justify-content-center"><?php echo "$currentTime"; ?></h1>
+                            <h1 class="text-center"><?php echo "$currentTime"; ?></h1>
                         </div>
                         <div>
-                            <h3 class="d-flex justify-content-center"><?php echo "$currentDate"; ?></h3>
+                            <h3 class="text-center"><?php echo "$currentDate"; ?></h3>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
+
     </div>
 
 

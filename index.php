@@ -46,7 +46,6 @@ redirectUser();
                     <div class="form-group input-field pt-1 m-2">
                         <label for="password" class="form-label"></label>
                         <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" />
-                        <img src="eye.png" alt="" class="pass-icon" />
                     </div>
                     <div class="d-flex justify-content-end pt-1 m-2">
                         <a href="public/view/reset_password.php" class="forgot-password-link">Forgot your password?</a>

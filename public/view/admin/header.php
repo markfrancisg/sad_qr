@@ -4,6 +4,12 @@ require_once '../../../includes/config.session.inc.php';
 require_once '../../../includes/authenticate.inc.php';
 grantPermission('admin');
 
+function isActive($page)
+{
+    return basename($_SERVER['PHP_SELF']) == $page ? 'active' : '';
+}
+
+
 ?>
 
 <!DOCTYPE html>
@@ -46,7 +52,7 @@ grantPermission('admin');
             <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
+            <li class="nav-item <?php echo isActive('admin.dashboard.php'); ?>">
                 <a class="nav-link" href="admin.dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Dashboard</span></a>
@@ -55,47 +61,47 @@ grantPermission('admin');
             <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item active">
-                <a class="nav-link" href="homeowners.php">
+            <li class="nav-item <?php echo isActive('homeowners.php'); ?>">
+                <a class="nav-link " href="homeowners.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Homeowners</span></a>
             </li>
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider" />
+            <hr class="sidebar-divider my-0" />
 
-            <li class="nav-item active">
-                <a class="nav-link" href="balance.php">
+            <li class="nav-item <?php echo isActive('balance.php'); ?>">
+                <a class="nav-link " href="balance.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Balance</span></a>
             </li>
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider" />
+            <hr class="sidebar-divider my-0" />
 
-            <li class="nav-item active">
-                <a class="nav-link" href="qr_code.php">
+            <li class="nav-item <?php echo isActive('qr_code.php') || isActive('qr_code_detail.php') ? 'active' : ''; ?>">
+                <a class="nav-link " href="qr_code.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>QR Code</span></a>
             </li>
 
             <!-- Divider -->
-            <hr class="sidebar-divider" />
+            <hr class="sidebar-divider my-0" />
 
-            <li class="nav-item active">
-                <a class="nav-link" href="accounts.php">
+            <li class="nav-item <?php echo isActive('accounts.php'); ?>">
+                <a class="nav-link " href="accounts.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Accounts</span></a>
             </li>
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider" />
+            <hr class="sidebar-divider my-0" />
 
-            <li class="nav-item active">
-                <a class="nav-link" href="logs.php">
+            <li class="nav-item <?php echo isActive('logs.php'); ?>">
+                <a class="nav-link " href="logs.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Records Logs</span></a>
             </li>

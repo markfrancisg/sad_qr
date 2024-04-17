@@ -1,10 +1,18 @@
 /* SIDEBARD AND NAVBAR */
 .custom-gradient {
     background: linear-gradient(to right, #385641, #385641);
-} 
+}
 
 
+.nav-item.active .nav-link, .nav-link.active {
+  color: #fff;
+  background-color: #6D987B;
+}
 
+.nav-item:hover .nav-link {
+  color: #fff;
+  background-color: #6D987B;
+}
 
 
 

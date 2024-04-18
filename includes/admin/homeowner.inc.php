@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
-        if (input_has_letter($block) || input_has_letter($lot) || input_has_letter($street)) {
+        if (input_has_letter($block) || input_has_letter($lot) || input_has_number($street)) {
             $_SESSION["invalid_address"] = "Invalid address format!";
             header("Location: ../../public/view/admin/homeowners.php");
             die();
@@ -56,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $complete_name =   complete_name($first_name, $last_name);
 
         insert_homeowner($pdo, $complete_name, $email, $number, $complete_address);
-        header("Location: ../../public/view/admin/homeowners.php");
+        header("Location: ../../public/view/admin/homeowners.php?homeowner_creation=success");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());
     }

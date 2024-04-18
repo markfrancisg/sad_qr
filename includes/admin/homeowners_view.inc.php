@@ -4,7 +4,6 @@ declare(strict_types=1);
 
 function check_add_homeowner_errors()
 {
-
     // if ($_SESSION["empty_input"] || $_SESSION["email_invalid"] || $_SESSION["login_incorrect"]) {
     if (isset($_SESSION["empty_input"])) {
         echo '<div class="alert alert-danger" role="alert">';
@@ -46,5 +45,17 @@ function check_add_homeowner_errors()
         echo $_SESSION["invalid_address"];
         echo '</div>';
         unset($_SESSION["invalid_address"]);
+    }
+}
+
+function creation_success()
+{
+    if (isset($_GET['homeowner_creation']) && $_GET['homeowner_creation'] === 'success') {
+        echo '<script>';
+        echo 'Swal.fire({
+            title: "Homeowner Added!",
+            icon: "success",
+        });';
+        echo '</script>';
     }
 }

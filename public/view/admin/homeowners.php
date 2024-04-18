@@ -75,8 +75,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
 
 
 <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
-
 <?php
+creation_success();
 include_once 'footer.php';
 ?>

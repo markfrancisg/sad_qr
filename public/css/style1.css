@@ -159,6 +159,11 @@
         font-style: italic; /* Make it italic */
     }
 
+    .swal2-confirm {
+      background-color: #32543B !important; /* Red */
+      color: white;
+    }
+
 
 /* FOOTER */
 html, body {

@@ -2,17 +2,20 @@
 include_once 'header.php';
 ?>
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Add Homeowner</h1>
+
+    <div class="row">
+        <div class="d-block d-sm-none">
+            <h3 class="h3 fw-b smallscreen-h3">Add Homeowner</h3>
+        </div>
     </div>
 
-    <!-- Content Row -->
-
-    <div class="row col-12">
+    <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card mb-8">
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-none d-sm-flex align-items-center justify-content-between ml-4 mt-4 mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Add Homeowner</h1>
+                </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <form class="user" method="post" action="../../../includes/admin/homeowner.inc.php">

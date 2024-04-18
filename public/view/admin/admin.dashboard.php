@@ -19,7 +19,7 @@ $admin_name = get_admin_name($pdo, $admin_email);
 
     <!-- This will be hidden in large and medium screens -->
     <div class="row">
-        <div class="col-lg-12 d-block d-md-none">
+        <div class="d-block d-sm-none">
             <h3 class="h3 fw-b smallscreen-h3">Dashboard</h3>
         </div>
     </div>
@@ -69,8 +69,8 @@ $admin_name = get_admin_name($pdo, $admin_email);
 
         <!-- This will be hidden in large and medium screens -->
         <div class="col-xl-4 col-lg-5 order-sm-0 order-1 d-none d-lg-block">
-            <div class="d-flex justify-content-center ">
-                <h1 class="text-center">Hello, <?php echo $admin_name; ?>!</h1>
+            <div class="d-flex justify-content-center">
+                <h3 class="text-center">Hello, <?php echo $admin_name; ?>!</h3>
             </div>
             <div class="card shadow m-2">
                 <div class="card-body">
@@ -82,13 +82,13 @@ $admin_name = get_admin_name($pdo, $admin_email);
                     ?>
                     <div class="container date-time-color">
                         <div>
-                            <h3 class="text-center mt-5"><?php echo "$currentDay"; ?></h3>
+                            <h3 class="text-center mt-5 day"><?php echo "$currentDay"; ?></h3>
                         </div>
                         <div>
-                            <h1 class="text-center"><?php echo "$currentTime"; ?></h1>
+                            <h1 class="text-center time"><?php echo "$currentTime"; ?></h1>
                         </div>
                         <div>
-                            <h3 class="text-center"><?php echo "$currentDate"; ?></h3>
+                            <h3 class="text-center date"><?php echo "$currentDate"; ?></h3>
                         </div>
                     </div>
                 </div>

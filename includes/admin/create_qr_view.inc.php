@@ -1,19 +1,36 @@
-
 <?php
 
-function check_create_qr_errors()
+declare(strict_types=1);
+function check_create_vehicle_errors()
 {
-    if (isset($_SESSION["errors_create_qr"])) {
-        $errors = $_SESSION["errors_create_qr"];
+    if (isset($_SESSION["empty_input"])) {
+        echo '<div class="alert alert-danger" role="alert">';
+        echo $_SESSION["empty_input"];
+        echo '</div>';
+        unset($_SESSION["empty_input"]);
+    }
 
-        echo "<br>";
+    if (isset($_SESSION["not_registered"])) {
+        echo '<div class="alert alert-danger" role="alert">';
+        echo $_SESSION["not_registered"];
+        echo '</div>';
+        unset($_SESSION["not_registered"]);
+    }
 
-        foreach ($errors as $error) {
-            echo '<p>' . $error . '</p>';
-        }
-        unset($_SESSION["errors_create_qr"]);
-    } else if (isset($_GET['qr_creation']) && $_GET['qr_creation'] === "success") {
-        echo '<br>';
-        echo '<p> QR Generation Success! </p>';
+    if (isset($_SESSION["invalid_format"])) {
+        echo '<div class="alert alert-danger" role="alert">';
+        echo $_SESSION["invalid_format"];
+        echo '</div>';
+        unset($_SESSION["invalid_format"]);
+    }
+}
+
+function creation_success()
+{
+    if (isset($_GET['vehicle_creation']) && $_GET['vehicle_creation'] === 'success' && isset($_GET['email'])) {
+        $email = $_GET['email'];
+        echo '<div class="alert alert-success" role="alert">';
+        echo "Vehicle added for $email!";
+        echo '</div>';
     }
 }

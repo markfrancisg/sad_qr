@@ -26,7 +26,7 @@ function delete_account(object $pdo, string $email)
 }
 
 // $pdo, $email, $address, $wheel, $vehicle_type, , string $generated_qr
-function insert_qr(object $pdo, int $wheel, string $vehicle_type, string $plate_number, int $ho_id)
+function insert_qr(object $pdo, string $wheel, string $vehicle_type, string $plate_number, int $ho_id)
 {
     $query = "INSERT INTO qr_info ( wheel, vehicle_type, plate_number, ho_id) VALUES ( :wheel, :vehicle_type, :plate_number, :ho_id)";
     $stmt2 = $pdo->prepare($query);

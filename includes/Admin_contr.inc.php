@@ -20,6 +20,14 @@ function four_input_empty(string $first, string $second, string $third, string $
     return false;
 }
 
+function five_input_empty(string $first, string $second, string $third, string $fourth, string $fifth)
+{
+    if (empty($first) || empty($second) || empty($third) || empty($fourth) || empty($fifth)) {
+        return true;
+    }
+    return false;
+}
+
 function seven_input_empty(string $first, string $second, string $third, string $fourth, string $fifth, string $sixth, string $seventh)
 {
     if (empty($first) || empty($second) || empty($third) || empty($fourth)  || empty($fifth) || empty($sixth) || empty($seventh)) {
@@ -58,6 +66,7 @@ function is_email_registered(object $pdo, string $email)
 
 function input_has_letter($input)
 {
+    //if it matches, then return true
     if (preg_match('/[a-zA-Z]/', $input)) {
         return true;
     }

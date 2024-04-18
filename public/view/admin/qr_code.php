@@ -30,6 +30,9 @@ $homeowner_email = get_homeowner_email($pdo);
                 <!-- Card Body -->
                 <div class="card-body">
                     <form class="user" method="post" action="../../../includes/admin/create_qr.inc.php">
+                        <?php
+                        check_create_vehicle_errors();
+                        creation_success(); ?>
                         <div class="row ">
                             <div class="col-sm-6 mb-3">
                                 <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="email">
@@ -51,7 +54,7 @@ $homeowner_email = get_homeowner_email($pdo);
                                 <input type="text" class="form-control form-control-user form-control-color" id="wheel" name="wheel" placeholder="Vehicle Wheels">
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input type="text" class="form-control form-control-user form-control-color" id="plate_number" name="plate_number" placeholder="Plate No.">
+                                <input type="text" class="form-control form-control-user form-control-color" id="plate_number" name="plate_number" placeholder="Plate No">
                             </div>
                         </div>
                         <div class="col-sm-12 text-center">
@@ -62,7 +65,7 @@ $homeowner_email = get_homeowner_email($pdo);
                     </form>
                 </div>
 
-                <?php check_create_qr_errors() ?>
+
             </div>
         </div>
     </div>

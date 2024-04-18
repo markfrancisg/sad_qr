@@ -1,10 +1,19 @@
 <?php
+
+//Wrong file_name (this is about inserting a new vehicle of a homeowner)
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = htmlspecialchars($_POST["email"]);
     $address = htmlspecialchars($_POST["address"]);
-    $wheel = htmlspecialchars(intval($_POST["wheel"]));
-    $plate_number = htmlspecialchars($_POST["plate_number"]);
     $vehicle_type = htmlspecialchars($_POST["vehicle_type"]);
+    $wheel = htmlspecialchars($_POST["wheel"]);
+    $plate_number = htmlspecialchars($_POST["plate_number"]);
+
+
+    echo $email;
+    echo $address;
+    echo $vehicle_type;
+    echo $wheel;
+    echo $plate_number;
 
     try {
         require_once '../dbh.inc.php';
@@ -12,42 +21,35 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once '../Admin_contr.inc.php';
         require_once '../config.session.inc.php';
 
-        $errors = [];
-        // if (four_input_empty($email, $address, $wheel, $vehicle_type)) {
-        //     $errors["empty_input"] = "Fill in all fields!";
-        // }
-
-        if ($errors) {
-            $_SESSION["errors_create_qr"] = $errors;
-
-            //lagay na lang pag finishing na change also the variables
-            // $signupData = [
-            //     "first_name" => $first_name,
-            //     "last_name" => $last_name,
-            //     "role_description" => $role_description,
-            //     "email" => $email,
-            //     "number" => $number,
-            // ];
-
-            // $_SESSION["create_account_data"] = $signupData;
-
+        if (five_input_empty($email, $address, $wheel, $plate_number, $vehicle_type)) {
+            $_SESSION["empty_input"] = "Fill in all fields!";
             header("Location: ../../public/view/admin/qr_code.php");
             die();
         }
 
-        // //add other validations
-        // $generated_qr = generate_qr();
+        if (input_has_number($vehicle_type) || input_has_letter($wheel)) {
+            $_SESSION["invalid_format"] = "Invalid vehicle information format!";
+            header("Location: ../../public/view/admin/qr_code.php");
+            die();
+        }
 
+        //the sequence should be followed, otherwise it would fail
         $result = get_homeowner($pdo, $email);
+
+        if (!$result) {
+            $_SESSION["not_registered"] = "Email not registered!";
+            header("Location: ../../public/view/admin/qr_code.php");
+            die();
+        }
+
 
 
         $ho_id = $result["ho_id"];
 
         // var_dump($generated_qr);
 
-
         insert_qr($pdo, $wheel, $vehicle_type, $plate_number, $ho_id);
-        header("Location: ../../public/view/admin/qr_code.php?qr_creation=success");
+        header("Location: ../../public/view/admin/qr_code.php?vehicle_creation=success&email=$email");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());
     }

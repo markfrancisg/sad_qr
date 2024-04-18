@@ -7,7 +7,7 @@ require_once '../../../includes/admin/balance_pay_view.inc.php';
 
 
 
-payment_success();
+// payment_success();
 $results = get_paid_qr($pdo);
 $results2 = get_unpaid_qr($pdo);
 
@@ -30,6 +30,7 @@ $results2 = get_unpaid_qr($pdo);
                     <h6 class="h3 text-gray-800 smallscreen-h6-text">Paid Accounts</h6>
                 </div>
                 <div class="card-body mt-0">
+                    <?php payment_success(); ?>
                     <div class="table-responsive">
                         <?php if (empty($results)) : ?>
                             <p class="text-center">No paid accounts available.</p>

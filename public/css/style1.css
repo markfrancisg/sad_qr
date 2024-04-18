@@ -98,13 +98,6 @@
   text-align: center;
 }
 
-.date-time-color{
-    background:lightgray;
-    border-radius: 30px !important;
-}
-
-
-
 
 
 /* TABLES*/
@@ -136,6 +129,39 @@
     margin-bottom: 15px;
   }
 
+  .bar-icon{
+    color:#fff;
+  }
+
+  .profile-icon{
+    color:#385641 !important;
+  }
+
+  .date-time-color{
+    background:lightgray;
+    border-radius: 30px !important;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Use viewport height to make sure the body is at least the height of the viewport */
+}
+
+.content {
+  flex: 1; /* This ensures that the content section takes up the available space pushing the footer down */
+}
+
+.sticky-footer {
+  width: 100%;
+  background-color: white; /* Match the class in your HTML */
+}
+
   
 
   /* .spinner-wrapper{
@@ -155,3 +181,34 @@
     height: 70px;
     width: 70px;
   } */
+
+  /* for small screens */
+  @media screen and (max-width: 576px) {
+    .smallscreen-bg{
+      background-color: #A1BAA2  !important;
+    }
+
+    .smallscreen-h3{
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      font-weight: bold;
+      color: black;
+    }
+
+    .smallscreen-card{
+      border-radius: 30px;
+      height: 500px;
+    }
+
+    .smallscreen-h6-title{
+      margin: 10px !important;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    }
+
+    .title-custom-color {
+      background: #FCFBFB !important;
+      font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+      color: black !important;
+      flex: left;
+  }
+    
+}

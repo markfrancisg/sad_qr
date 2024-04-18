@@ -30,7 +30,7 @@ function isActive($page)
 
     <!-- Custom styles for this template-->
     <link href="../../css/sb-admin-2.min.css" rel="stylesheet" />
-    <link href="../../css/admin.css" rel="stylesheet" />
+    <link href="../../css/style1.css" rel="stylesheet" />
     <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 </head>
 
@@ -118,12 +118,12 @@ function isActive($page)
         <!-- Content Wrapper -->
         <div id="content-wrapper" class="d-flex flex-column">
             <!-- Main Content -->
-            <div id="content">
+            <div id="content" class="smallscreen-bg">
                 <!-- Topbar -->
-                <nav class="navbar navbar-expand navbar-light bg-light topbar mb-4 static-top shadow">
+                <nav class="navbar navbar-expand navbar-light smallscreen-bg bg-light topbar mb-4 static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
-                        <i class="fa fa-bars"></i>
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none mr-3 ">
+                        <i class="fa fa-bars bar-icon"></i>
                     </button>
 
                     <!-- Topbar Search -->
@@ -167,7 +167,7 @@ function isActive($page)
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['account_email']; ?> </span>
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 profile-icon"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu user-profile-option dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

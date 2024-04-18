@@ -123,6 +123,7 @@
     border: 1px solid #ddd;
     padding: 20px;
     text-align: center;
+    margin-left: 25px;
   }
   
   .receipt-header {
@@ -281,9 +282,11 @@ body {
       color:green !important;
     }
 
-    .form-control-color{
-      color: black !important;
+    .font-weight-bold{
+      color:black;
     }
+
+
 
     
 

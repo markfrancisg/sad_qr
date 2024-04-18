@@ -3,15 +3,20 @@ include_once 'header.php';
 ?>
 <div class="container-fluid">
     <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Records Logs</h1>
+    <div class="row">
+        <div class="d-block d-sm-none">
+            <h3 class="h3 fw-b smallscreen-h3">Vehicles</h3>
+        </div>
     </div>
 
     <!-- Content Row -->
     <div class="row col-12">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card mb-8">
+            <div class="card shadow smallscreen-card">
+                <div class="d-none d-sm-flex align-items-center justify-content-between ml-4 mt-4 mb-4">
+                    <h1 class="h3 mb-0 text-gray-800">Vehicles</h1>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="dataTable" width="100%" cellspacing="0">

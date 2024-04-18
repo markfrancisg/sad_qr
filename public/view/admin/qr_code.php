@@ -13,22 +13,25 @@ $homeowner_email = get_homeowner_email($pdo);
 ?>
 
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">QR Code Register</h1>
+
+    <div class="row">
+        <div class="d-block d-sm-none">
+            <h3 class="h3 fw-b smallscreen-h3">QR Code</h3>
+        </div>
     </div>
 
-    <!-- Content Row -->
-    <!-- ../../includes/admin/create_qr.inc.php -->
-    <div class="row col-12">
+    <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card mb-8">
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">QR Code Register</h6>
+                </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <form class="user" method="post" action="../../../includes/admin/create_qr.inc.php">
-                        <div class="form-group row d-flex justify-content-between">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="row ">
+                            <div class="col-sm-6 mb-3">
                                 <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="email">
                                     <option value="">Email Address</option>
                                     <?php foreach ($homeowner_email as $email) : ?>
@@ -36,47 +39,41 @@ $homeowner_email = get_homeowner_email($pdo);
                                     <?php endforeach; ?>
                                 </select>
                             </div>
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color readonly-color" id="address" name="address" placeholder="Address" value="Default Address" readonly>
                             </div>
                         </div>
-                        <div class="form-group row d-flex justify-content-between">
-
-
-                            <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="row">
+                            <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="vehicle_type" name="vehicle_type" placeholder="Vehicle Type">
                             </div>
-
-                            <div class="col-sm-3 mb-3 mb-sm-0">
+                            <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="wheel" name="wheel" placeholder="Vehicle Wheels">
                             </div>
-
-                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="plate_number" name="plate_number" placeholder="Plate No.">
                             </div>
                         </div>
-                        <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->
+                        <div class="col-sm-12 text-center">
                             <button class="btn custom-btn btn-user col-sm-3 mb-2 mb-sm-0">
                                 Create
                             </button>
                         </div>
                     </form>
                 </div>
+
                 <?php check_create_qr_errors() ?>
             </div>
         </div>
     </div>
 
-
-
-
-    <div class="d-sm-flex align-items-center justify-content-between mb-4 mt-4">
-        <h1 class="h3 mb-0 text-gray-800">QR List</h1>
-    </div>
-    <div class="row col-12">
+    <div class="row mt-4">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card mb-8">
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">QR Code List</h6>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive">
                         <table class="table" id="dataTable" width="100%" cellspacing="0">
@@ -152,10 +149,10 @@ $homeowner_email = get_homeowner_email($pdo);
             </div>
         </div>
     </div> -->
+</div>
 
-
-    <?php
-    // include_once 'admin_js.php';
-    include_once 'admin_js.php';
-    include_once 'footer.php';
-    ?>
+<?php
+// include_once 'admin_js.php';
+include_once 'admin_js.php';
+include_once 'footer.php';
+?>

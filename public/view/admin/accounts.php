@@ -9,29 +9,31 @@ $results = get_user_list($pdo);
 
 <!-- Begin Page Content -->
 <div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="d-sm-flex align-items-center justify-content-between mb-4">
-        <h1 class="h3 mb-0 text-gray-800">Create Account</h1>
+
+    <div class="row">
+        <div class="d-block d-sm-none">
+            <h3 class="h3 fw-b smallscreen-h3">Accounts</h3>
+        </div>
     </div>
 
-
-    <!-- Content Row -->
-
-    <div class="row col-12">
+    <div class="row">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card mb-8">
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Create Account</h6>
+                </div>
                 <!-- Card Body -->
                 <div class="card-body">
                     <form class="user" method="post" action="../../../includes/admin/create_account.inc.php">
-                        <div class="form-group row">
-                            <div class="col-sm-4 mb-3 mb-sm-0">
+                        <div class="row">
+                            <div class="col-sm-4 mb-2">
                                 <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <div class="col-sm-4 mb-2">
                                 <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
                             </div>
-                            <div class="col-sm-4 mb-3 mb-sm-0">
+                            <div class="col-sm-4 mb-2">
                                 <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="role_description">
                                     <option value="">Select a role</option>
                                     <option value="admin">Admin</option>
@@ -39,44 +41,42 @@ $results = get_user_list($pdo);
                                 </select>
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                        <div class="row">
+                            <div class="col-sm-6 mb-2">
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="account_email" placeholder="Email Address">
                             </div>
-
-                            <div class="col-sm-6 mb-3 mb-sm-0">
+                            <div class="col-sm-6 mb-2">
                                 <input type="text" class="form-control form-control-user form-control-color" id="number" name="account_number" placeholder="Phone Number">
                             </div>
                         </div>
-
-                        <div class="form-group row">
-                            <div class="col-sm-12 mb-6 mb-sm-0">
+                        <div class="row">
+                            <div class="col-sm-12 mb-2">
                                 <input type="password" class="form-control form-control-user form-control-color" id="password" name="password" placeholder="Password" value="1234567890" readonly>
                             </div>
                         </div>
-                        <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->
-                            <button class="btn custom-btn btn-user col-sm-3 mb-2 mb-sm-0">
-                                Create
-                            </button>
+                        <div class="row">
+                            <div class="col-sm-12 text-center">
+                                <button class="btn custom-btn btn-user col-sm-3">
+                                    Create
+                                </button>
+                            </div>
                         </div>
                     </form>
                     <?php check_create_account_errors() ?>
                 </div>
+
             </div>
         </div>
     </div>
 
 
-    <div class="d-sm-flex align-items-center justify-content-between mt-4">
-        <h1 class="h3 mb-0 text-gray-800">Account List</h1>
-    </div>
-
-
-    <div class="row col-12">
+    <div class="row mt-4">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card mb-8">
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Account List</h6>
+                </div>
                 <div class="card-body">
                     <div class="table-responsive mx-auto d-block">
                         <table class="table" id="dataTable" width="100%" cellspacing="0">
@@ -147,8 +147,6 @@ $results = get_user_list($pdo);
         </div>
     </div>
 </div>
-
-
 
 
 

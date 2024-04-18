@@ -3,9 +3,11 @@ include_once 'header.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/Admin_contr.inc.php';
 require_once '../../../includes/dbh.inc.php';
+require_once '../../../includes/admin/balance_pay_view.inc.php';
 
 
 
+payment_success();
 $results = get_paid_qr($pdo);
 $results2 = get_unpaid_qr($pdo);
 

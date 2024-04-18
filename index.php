@@ -20,6 +20,7 @@ redirectUser();
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <!-- Custom styles for this template-->
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="public/css/style.css" rel="stylesheet" />
 
 </head>
@@ -56,7 +57,10 @@ redirectUser();
                             Log in
                         </button>
                     </div>
-
+                    <!-- The library should be loaded first before using Sweetalert -->
+                    <?php
+                    check_login_errors();
+                    ?>
                 </form>
 
             </div>
@@ -64,15 +68,10 @@ redirectUser();
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
-
     <script src="public/js/script.js"></script>
 
 
-    <!-- The library should be loaded first before using Sweetalert -->
-    <?php
-    check_login_errors();
-    ?>
+
 
 </body>
 

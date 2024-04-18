@@ -9,12 +9,16 @@ if (isset($_GET["qr_id"])) {
 
         $qr_id = htmlspecialchars($_GET["qr_id"]);
 
+        //create new expiration date
         $expiration_date = date('Y-m-d', strtotime('+1 day')); //change to 1 year if final
+
+        //generate unique QR Code
         $generated_qr = generate_qr($pdo);
+
+        //change the registered status
         pay_qr($pdo, $generated_qr, $expiration_date, $qr_id);
 
         //after paying, generate qr image and email it together with other details
-
         $result = get_details_qr_payor($pdo, $qr_id);
 
         $name = $result['name'];
@@ -33,8 +37,7 @@ if (isset($_GET["qr_id"])) {
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());
     }
-
-    header("Location: ../../public/view/admin/balance.php");
+    header("Location: ../../public/view/admin/balance.php?payment=success&name=$name");
     exit(); // Add exit to stop script execution
 } else {
     header("Location: ../../public/view/admin/accounts.php");

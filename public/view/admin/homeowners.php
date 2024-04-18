@@ -25,7 +25,10 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                             <h5>Personal Details</h5>
                         </div>
                         <div>
-                            <?php check_add_homeowner_errors(); ?>
+                            <?php
+                            check_add_homeowner_errors();
+                            creation_success();
+                            ?>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 mb-2">
@@ -74,8 +77,6 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
 </div>
 
 
-<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <?php
-creation_success();
 include_once 'footer.php';
 ?>

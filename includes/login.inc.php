@@ -8,37 +8,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once 'dbh.inc.php';
         require_once 'User_model.inc.php';
         require_once 'User_contr.inc.php';
-
+        require_once 'config.session.inc.php';
 
         //Error handlers
-        $errors = [];
         if (two_input_empty($email, $password)) {
-            $errors["empty_input"] = "Fill in all fields!";
+            $_SESSION["empty_input"] = "Fill in all fields!";
+            header("Location: ../index.php");
+            die();
+            
         }
 
+        if (is_email_invalid($email)) {
+            $_SESSION["email_invalid"] = "Invalid email!";
+            header("Location: ../index.php");
+            die();
+        }
 
         //start database query
         $result = get_user($pdo, $email);
 
+
+        //if assoc is fetch, proceed, if not make error array
         if (is_email_wrong($result)) {
-            $errors["login_incorrect"] = "Incorrect login credentials!";
+            $_SESSION["login_incorrect"] = "Incorrect login credentials!";
+            header("Location: ../index.php");
+            die();
         }
 
+        //if assoc is fetch but wrong password
         if (!is_email_wrong($result) && is_password_wrong($password, $result["password"])) {
-            $errors["login_incorrect"] = "Incorrect login credentials!";
-        }
-
-
-        // if (!is_email_wrong($result) && is_password_wrong($result["password"])) {
-        //     $errors["login_incorrect"] = "Incorrect login credentials!";
-        //     // 
-        // }
-
-        require_once 'config.session.inc.php';
-
-        if ($errors) {
-            $_SESSION["errors_login"] = $errors;
-
+            $_SESSION["login_incorrect"] = "Incorrect login credentials!";
             header("Location: ../index.php");
             die();
         }
@@ -48,7 +47,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         session_id($sessionId);
 
         //$result[depends sa name ng column]
-        $_SESSION["account_id"] =  $result["account_id"];
+        $_SESSION["account_id"] =  htmlspecialchars($result["account_id"]);
         $_SESSION["account_email"] = htmlspecialchars($result["account_email"]);
         $roleInfo = getRole($pdo, $result["account_id"]);
 

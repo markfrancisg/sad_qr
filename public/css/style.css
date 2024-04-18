@@ -124,8 +124,22 @@ a {
     position: relative;
 }
 
+.error-title {
+  color: #f27474; /* Dark red */
+  font-size: 24px;
+}
 
+/* Error content style */
+.error-content {
+  color: #f27474; /* Dark red */
+  font-size: 16px;
+}
 
+/* Error confirm button style */
+.swal2-confirm {
+  background-color: #32543B !important; /* Red */
+  color: white;
+}
 
 /* .spinner-wrapper{
   background-color: black;

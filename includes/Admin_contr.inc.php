@@ -16,19 +16,79 @@ function four_input_empty(string $first, string $second, string $third, string $
 {
     if (empty($first) || empty($second) || empty($third) || empty($fourth)) {
         return true;
-    } else {
-        return false;
     }
+    return false;
 }
 
 function seven_input_empty(string $first, string $second, string $third, string $fourth, string $fifth, string $sixth, string $seventh)
 {
     if (empty($first) || empty($second) || empty($third) || empty($fourth)  || empty($fifth) || empty($sixth) || empty($seventh)) {
         return true;
+    }
+    return false;
+}
+
+function input_has_number($input)
+{
+    $pattern = '/^[a-zA-Z ]+$/';
+
+    // Check if the name matches the pattern
+    if (!preg_match($pattern, $input)) {
+        return true;
+    }
+    return false; //if valid
+
+}
+
+function is_email_invalid(string $email)
+{
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true;
+    }
+    return false;
+}
+
+function is_email_registered(object $pdo, string $email)
+{
+    if (get_homeowner($pdo, $email)) {
+        return true;
+    }
+    return false;
+}
+
+function input_has_letter($input)
+{
+    if (preg_match('/[a-zA-Z]/', $input)) {
+        return true;
+    }
+    return false;
+}
+
+function is_phone_invalid($number)
+{
+    $pattern = '/^(09|\+639)\d{9}$/';
+
+    // Check if the phone number matches the pattern
+    if (!preg_match($pattern, $number)) {
+        return true; // Phone number is invalid
     } else {
-        return false;
+        return false; // Phone number is valid
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 function generate_qr(object $pdo)
@@ -52,10 +112,10 @@ function check_qr_id()
 {
     if (isset($_GET['qr_id'])) {
         $qr_id = $_GET['qr_id'];
+        return $qr_id;
     } else {
         header("Location: ../public/view/admin/qr_code.php");
     }
-    return $qr_id;
 }
 
 function complete_address(string $block, string $lot, string $street)

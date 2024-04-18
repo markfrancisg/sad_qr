@@ -64,11 +64,19 @@ function is_email_wrong(bool|array $result)
     }
 }
 
+
+
+//checks if email format is invalid
 function is_email_invalid(string $email)
 {
-    $pattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/';
-    if (!preg_match($pattern, $email)) {
-        return true; // Email doesn't match the pattern
+    // $pattern = '/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,})+$/';
+    // if (!preg_match($pattern, $email)) {
+    //     return true; 
+    // }
+    // return false;
+
+    if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+        return true;
     }
     return false;
 }
@@ -113,9 +121,9 @@ function is_number_valid(string $number)
 
     // Check if the phone number matches the pattern
     if (!preg_match($pattern, $number)) {
-        return true; // Phone number is valid
+        return true; // Phone number is invalid
     } else {
-        return false; // Phone number is invalid
+        return false; // Phone number is valid
     }
 }
 

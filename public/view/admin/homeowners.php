@@ -1,6 +1,8 @@
 <?php
 include_once 'header.php';
+include_once '../../../includes/admin/homeowners_view.inc.php';
 ?>
+
 <div class="container-fluid">
 
     <div class="row">
@@ -21,6 +23,9 @@ include_once 'header.php';
                     <form class="user" method="post" action="../../../includes/admin/homeowner.inc.php">
                         <div class="d-flex justify-content-start ">
                             <h5>Personal Details</h5>
+                        </div>
+                        <div>
+                            <?php check_add_homeowner_errors(); ?>
                         </div>
                         <div class="row">
                             <div class="col-sm-6 mb-2">
@@ -67,6 +72,10 @@ include_once 'header.php';
         </div>
     </div>
 </div>
+
+
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
 
 <?php
 include_once 'footer.php';

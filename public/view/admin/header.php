@@ -122,7 +122,7 @@ function isActive($page)
                 <!-- Topbar -->
                 <nav class="navbar navbar-expand navbar-light smallscreen-bg bg-light topbar mb-4 static-top shadow">
                     <!-- Sidebar Toggle (Topbar) -->
-                    <button id="sidebarToggleTop" class="btn btn-link d-md-none mr-3 ">
+                    <button id="sidebarToggleTop" class="btn btn-link d-md-none mr-2 button-bar-icon">
                         <i class="fa fa-bars bar-icon"></i>
                     </button>
 
@@ -132,7 +132,7 @@ function isActive($page)
                             <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                             <div class="input-group-append">
                                 <button class="btn btn-light" type="button">
-                                    <i class="fas fa-search fa-sm"></i>
+                                    <i class="fas fa-search search-icon fa-sm"></i>
                                 </button>
                             </div>
                         </div>
@@ -143,7 +143,7 @@ function isActive($page)
                         <!-- Nav Item - Search Dropdown (Visible Only XS) -->
                         <li class="nav-item dropdown no-arrow d-sm-none">
                             <a class="nav-link dropdown-toggle" href="#" id="searchDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                <i class="fas fa-search fa-fw"></i>
+                                <i class="fas fa-search search-icon fa-fw"></i>
                             </a>
                             <!-- Dropdown - Messages -->
                             <div class="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in" aria-labelledby="searchDropdown">
@@ -152,7 +152,7 @@ function isActive($page)
                                         <input type="text" class="form-control bg-light border-0 small" placeholder="Search for..." aria-label="Search" aria-describedby="basic-addon2" />
                                         <div class="input-group-append">
                                             <button class="btn btn-light" type="button">
-                                                <i class="fas fa-search fa-sm"></i>
+                                                <i class="fas fa-search search-icon fa-sm"></i>
                                             </button>
                                         </div>
                                     </div>

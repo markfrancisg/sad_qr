@@ -16,36 +16,54 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
 
         //Error handlers
-        $errors = [];
+
         if (is_input_empty($password) || is_input_empty($confirm_password)) {
-            $errors["empty_input"] = "Fill in all fields!";
-        }
-
-        if (is_match($password, $confirm_password)) {
-            $errors["password_not_match"] = "Passwords do not match!";
-        }
-
-        if ($errors) {
-            $_SESSION["errors_password_reset"] = $errors;
-            header("Location: ../public/view/reset_password_confirm.php?token=$token$email=$email");
+            $_SESSION["empty_input"] = "Fill in all fields!";
+            header("Location: ../public/view/reset_password_confirm.php?token=$token&email=$email");
             die();
         }
 
-        // if (two_input_empty($email, $token)) {
-        //     header("Location: ../reset_password.php");
-        //     die();
-        // }
+        //SEQUENCE SHOULD BE FOLLOWED
 
-        $result = get_user($pdo, $email);
-        $token_checker = $result["token"];
-
-        if (verify_token($token, $token_checker)) {
+        if (is_input_empty($email) || is_input_empty($token)) {
+            $_SESSION["token_not_found"] = "Token not found!";
             header("Location: ../public/view/reset_password.php");
             die();
         }
 
+        $result = get_user($pdo, $email);
+
+        //token not found if null or empty
+        if ($result['token'] === NULL) {
+            $_SESSION["token_not_found"] = "Token not found!";
+            header("Location: ../public/view/reset_password.php");
+            die();
+        }
+
+        $token_checker = $result["token"];
+
+        //Invalid if input token is not a match to token in the database
+        if (verify_token($token, $token_checker)) {
+            $_SESSION["invalid_token"] = "Token invalid!";
+            header("Location: ../public/view/reset_password.php");
+            die();
+        }
+
+        if (is_password_format_incorrect($password)) {
+            $_SESSION["incorrect_password_format"] = "Incorrect password format!";
+            header("Location: ../public/view/reset_password_confirm.php?token=$token&email=$email");
+            die();
+        }
+
+        //if wrong passwords, return also the token and email for reference
+        if (is_match($password, $confirm_password)) {
+            $_SESSION["password_not_match"] = "Passwords do not match!";
+            header("Location: ../public/view/reset_password_confirm.php?token=$token&email=$email");
+            die();
+        }
+
         update_password($pdo, $email, $password);
-        header("Location: ../index.php");
+        header("Location: ../index.php?reset_password=success");
 
         die();
     } catch (PDOException $e) {

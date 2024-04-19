@@ -35,8 +35,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $email = $result["account_email"];
 
         generate_token($pdo, $email);
-        
-        $_SESSION["password_reset_email"] = "Email Sent";
+
+        $_SESSION["password_reset_email"] = $email;
         header("Location: ../public/view/reset_password.php");
         die();
     } catch (PDOException $e) {

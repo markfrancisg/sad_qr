@@ -49,7 +49,9 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // var_dump($generated_qr);
 
         insert_qr($pdo, $wheel, $vehicle_type, $plate_number, $ho_id);
-        header("Location: ../../public/view/admin/qr_code.php?vehicle_creation=success&email=$email");
+
+        $_SESSION["qr_email"] = $email;
+        header("Location: ../../public/view/admin/qr_code.php?vehicle_creation=success");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());
     }

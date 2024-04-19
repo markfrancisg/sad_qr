@@ -91,6 +91,14 @@ function is_password_wrong($password, $hashedPwd)
     }
 }
 
+function is_password_format_incorrect(string $password)
+{
+    if (!preg_match("/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).{8,}$/", $password)) {
+        return true; //if password does not meet 8 characters up, 1 upper, 1 lower, 1 number
+    }
+    return false;
+}
+
 
 
 function is_name_wrong($name)
@@ -232,7 +240,7 @@ function generate_token(object $pdo, string $email)
 }
 
 
-function verify_token(string $token, bool | string $token_checker)
+function verify_token(string $token, string $token_checker)
 {
     if ($token !== $token_checker) {
         return true;

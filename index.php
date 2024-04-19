@@ -60,6 +60,7 @@ redirectUser();
                     <!-- The library should be loaded first before using Sweetalert -->
                     <?php
                     check_login_errors();
+                    check_reset_password();
                     ?>
                 </form>
 

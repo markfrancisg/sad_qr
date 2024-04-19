@@ -59,3 +59,15 @@ function check_login_errors()
         unset($_SESSION["login_incorrect"]);
     }
 }
+
+function check_reset_password()
+{
+    if (isset($_GET['reset_password']) && !empty($_GET['reset_password']) && $_GET['reset_password'] === 'success') {
+        echo '<script>';
+        echo 'Swal.fire({
+            title: "Password Reset Successful!",
+            icon: "success",
+        });';
+        echo '</script>';
+    }
+}

@@ -27,10 +27,11 @@ function check_create_vehicle_errors()
 
 function creation_success()
 {
-    if (isset($_GET['vehicle_creation']) && $_GET['vehicle_creation'] === 'success' && isset($_GET['email'])) {
-        $email = $_GET['email'];
+    if (isset($_GET['vehicle_creation']) && $_GET['vehicle_creation'] === 'success' && isset($_SESSION['qr_email']) && !empty($_SESSION['qr_email'])) {
+        $email = htmlspecialchars($_SESSION['qr_email']);
         echo '<div class="alert alert-success" role="alert">';
         echo "Vehicle added for $email!";
         echo '</div>';
+        unset($_SESSION["qr_email"]);
     }
 }

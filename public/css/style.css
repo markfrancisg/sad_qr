@@ -143,6 +143,15 @@ a {
   color: white;
 }
 
+.form-control:focus {
+  box-shadow: none;
+}
+
+.error-validation-js{
+  color:#f27474;
+  font-size: small;
+}
+
 /* .spinner-wrapper{
   background-color: black;
   position:fixed;

@@ -54,7 +54,7 @@
 
 <!-- Custom scripts for all pages-->
 <script src="../../js/sb-admin-2.min.js"></script>
-<script src="../../js/script.js"></script> 
+<script src="../../js/admin.js"></script>
 <!-- try lang -->
 
 

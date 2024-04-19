@@ -38,22 +38,23 @@ redirectUser();
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-8 col-lg-6">
 
-                <form class="card p-4" action="includes/login.inc.php" method="post">
+                <form class="card p-4" action="includes/login.inc.php" id="loginForm" method="post">
                     <h3 class="card-title text-center mb-3">LOG IN</h3>
                     <div class="form-group input-field pt-1 m-2">
                         <label for="email" class="form-label"></label>
-                        <input type="text" class="form-control gray-background" id="email" name="email" placeholder="Enter Email" />
+                        <input type="text" class="form-control gray-background" id="email" name="email" placeholder="Enter Email" required />
+                        <span id="emailErrorMessage" class="error-validation-js"></span>
                     </div>
                     <div class="form-group input-field pt-1 m-2">
                         <label for="password" class="form-label"></label>
-                        <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" />
+                        <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" required />
                     </div>
                     <div class="d-flex justify-content-end pt-1 m-2">
                         <a href="public/view/reset_password.php" class="forgot-password-link">Forgot your password?</a>
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn mt-3 custom-button">
+                        <button id="loginButton" type="submit" class="btn mt-3 custom-button" disabled>
                             Log in
                         </button>
                     </div>
@@ -69,10 +70,7 @@ redirectUser();
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="public/js/script.js"></script>
-
-
-
+    <script src="public/js/login.js"></script>
 
 </body>
 

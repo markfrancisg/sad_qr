@@ -32,6 +32,36 @@
         xhr.send();
     });
 
+    //enables button if user inputs data
+
+    
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     // document.addEventListener('DOMContentLoaded', function() {
     //     var viewLinks = document.querySelectorAll('[data-toggle="modal"]');

@@ -122,6 +122,6 @@ $result = get_qr_detail($pdo, $qr_id);
 </div>
 
 <?php
-include_once 'admin_js.php';
+// include_once 'admin_js.php';
 include_once 'footer.php';
 ?>

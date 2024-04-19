@@ -12,47 +12,36 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once '../dbh.inc.php';
         require_once '../User_model.inc.php';
         require_once '../User_contr.inc.php';
+        require_once '../config.session.inc.php';
 
-        $errors = [];
+
         if (five_input_empty($first_name, $last_name, $role_description, $email, $number)) {
-            $errors["empty_input"] = "Fill in all fields!";
+            $_SESSION["empty_input"] = "Fill in all fields!";
+            header("Location: ../../public/view/admin/accounts.php");
+            die();
         }
-        
 
         if (is_name_wrong($first_name) || is_name_wrong($last_name)) {
-            $errors["incorrect_name"] = "Invalid name format!";
+            $_SESSION["name_wrong"] = "Name should only contain letters!";
+            header("Location: ../../public/view/admin/accounts.php");
+            die();
         }
 
         //checks if the email format is valid
         if (is_email_invalid($email)) {
-            $errors["invalid_email"] = "Invalid email used!";
+            $_SESSION["invalid_email"] = "Invalid email!";
+            header("Location: ../../public/view/admin/accounts.php");
+            die();
         }
 
         if (is_email_registered($pdo, $email)) {
-            $errors["email_used"] = "Email already registered!";
+            $_SESSION["email_registered"] = "Email taken!";
+            header("Location: ../../public/view/admin/accounts.php");
+            die();
         }
 
         if (is_number_valid($number)) {
-            $errors["invalid_number"] = "Invalid phone number!";
-        }
-
-
-        require_once '../config.session.inc.php';
-
-        if ($errors) {
-            $_SESSION["errors_create_account"] = $errors;
-
-            $signupData = [
-                "first_name" => $first_name,
-                "last_name" => $last_name,
-                "role_description" => $role_description,
-                "account_email" => $email,
-                "account_number" => $number,
-            ];
-
-            $_SESSION["create_account_data"] = $signupData;
-
-
+            $_SESSION["invalid_number"] = "Invalid phone number!";
             header("Location: ../../public/view/admin/accounts.php");
             die();
         }

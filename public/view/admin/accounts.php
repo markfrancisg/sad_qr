@@ -25,6 +25,10 @@ $results = get_user_list($pdo);
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
+                    <?php
+                    check_create_account_errors();
+                    account_creation_success();
+                    ?>
                     <form class="user" method="post" action="../../../includes/admin/create_account.inc.php">
                         <div class="row">
                             <div class="col-sm-4 mb-2">
@@ -62,7 +66,7 @@ $results = get_user_list($pdo);
                             </div>
                         </div>
                     </form>
-                    <?php check_create_account_errors() ?>
+
                 </div>
 
             </div>

@@ -47,24 +47,22 @@ redirectUser();
                                                                     echo $_GET['token'];
                                                                 } ?>">
 
-                    <div class="form-group input-field pt-1 m-2">
-                        <label for="password" class="form-label"></label>
+                    <div class="form-group input-field pt-1 my-3">
+                        <label for="password" class="form-label form-label-custom">Enter New Password</label>
                         <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter New Password" />
-                        <img src="" alt="" class="pass-icon" />
-                    </div>
-                    <div class="form-group input-field pt-1 m-2">
-                        <label for="confirm_password" class="form-label"></label>
+
+                        <label for="confirm_password" class="form-label form-label-custom">Confirm Password</label>
                         <input type="password" class="form-control gray-background" id="password" name="confirm_password" placeholder="Confirm New Password" />
-                        <img src="" alt="" class="pass-icon" />
-                    </div>
-                    <div class="d-flex justify-content-end pt-1 m-2">
-                        <a href="reset_password.php" class="forgot-password-link">Cancel</a>
                     </div>
 
                     <div class="d-flex justify-content-center">
                         <button type="submit" class="btn mt-3 custom-button" name="password_reset">
                             Change Password
                         </button>
+                    </div>
+
+                    <div class="d-flex justify-content-center pt-1 m-2">
+                        <a href="reset_password.php" class="forgot-password-link">Cancel</a>
                     </div>
 
                     <?php

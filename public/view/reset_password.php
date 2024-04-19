@@ -37,20 +37,26 @@ redirectUser();
             <div class="col-md-8 col-lg-6">
 
                 <form class="card p-4" action="../../includes/reset_password.inc.php" method="post">
-                    <h3 class="card-title text-center mb-3">Reset Password</h3>
-                    <div class="form-group input-field pt-1 m-2">
+
+                    <div class="justify-content-center mb-5">
+                        <h3 class="card-title text-center">Reset Password</h3>
+                    </div>
+
+                    <div class="form-group input-field pt-1 mb-3 mt-2 ml-2 mr-2">
                         <label for="email" class="form-label"></label>
                         <input type="text" class="form-control gray-background" id="email" name="account_email" placeholder="Enter Email" />
                     </div>
 
-                    <div class="d-flex justify-content-end pt-1 m-2">
-                        <a href="../../index.php" class="forgot-password-link">Back</a>
-                    </div>
 
-                    <div class="d-flex justify-content-center">
+
+                    <div class="d-flex justify-content-center mt-5">
                         <button type="submit" class="btn mt-3 custom-button">
                             Send Email Verification
                         </button>
+                    </div>
+
+                    <div class="d-flex justify-content-center pt-1 m-2">
+                        <a href="../../index.php" class="forgot-password-link">Back</a>
                     </div>
                     <?php
                     check_reset_password_errors();

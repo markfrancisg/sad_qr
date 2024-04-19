@@ -34,7 +34,7 @@ input[type="password"] {
     width: 100%;
     padding: 10px;
     border: 1px solid #ccc;
-    margin-bottom: 15px;
+    margin-bottom: 20px;
     color:#FFFFFF;
     background-color: #8A9D90;
 }
@@ -78,7 +78,8 @@ a {
     border-color: #FFFFFF;
     max-width: 500px; /* Adjust this value as per your requirement */
     width: 100%;
-    height: 520px; /* Set height to auto to adjust based on content */
+    height: 5200px;
+    max-height: 520px;/* Set height to auto to adjust based on content */
     margin: auto;
     
   }
@@ -107,6 +108,7 @@ a {
 
   .forgot-password-link{
     color: #FFFFFF;
+    font-size: small;
   }
 
   #email::placeholder,
@@ -159,3 +161,9 @@ a {
   height:60px;
   width:60px;
 } */
+
+.form-label-custom{
+  color: #FFFFFF;
+  font-size:x-small;
+  margin-bottom: 0px;
+}

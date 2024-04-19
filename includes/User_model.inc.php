@@ -85,12 +85,13 @@ function searchRoleId(object $pdo, string $role_description)
 }
 
 
-function insert_token(object $pdo, string $email, string $token)
+function insert_token(object $pdo, string $email, string $token, string $token_expiration)
 {
-    $query = "UPDATE account SET token = :token WHERE account_email = :account_email";
+    $query = "UPDATE account SET token = :token, token_expiration = :token_expiration WHERE account_email = :account_email";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(":token", $token);
-    $stmt->bindParam(":account_email", $email);
+    $stmt->bindValue(":token", $token);
+    $stmt->bindValue(":token_expiration", $token_expiration);
+    $stmt->bindValue(":account_email", $email);
     $stmt->execute();
 }
 

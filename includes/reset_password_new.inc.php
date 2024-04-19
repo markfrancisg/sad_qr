@@ -40,6 +40,12 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
+        if (is_token_expired($result['token_expiration'])) {
+            $_SESSION["token_expired"] = "Token expired!";
+            header("Location: ../public/view/reset_password.php");
+            die();
+        }
+
         $token_checker = $result["token"];
 
         //Invalid if input token is not a match to token in the database

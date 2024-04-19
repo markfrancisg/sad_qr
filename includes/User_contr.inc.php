@@ -209,7 +209,10 @@ function generate_token(object $pdo, string $email)
     }
     $token = md5($randomString1);
 
-    insert_token($pdo, $email, $token);
+    //set expiration
+    $token_expiration = date('Y-m-d H:i:s', strtotime('+1 minute'));
+
+    insert_token($pdo, $email, $token, $token_expiration);
 
     $mail = new PHPMailer(true);
 
@@ -246,4 +249,13 @@ function verify_token(string $token, string $token_checker)
         return true;
     }
     return false;
+}
+
+function is_token_expired(string $token_expiration): bool
+{
+    $current_time = date('Y-m-d H:i:s');
+    if (strtotime($token_expiration) < strtotime($current_time)) {
+        return true; // Token has expired
+    }
+    return false; // Token is still valid
 }

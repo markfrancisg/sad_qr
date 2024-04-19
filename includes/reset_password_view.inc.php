@@ -94,6 +94,24 @@ function check_reset_password_errors()
         // Unset the session variable to avoid showing the alert again on subsequent requests
         unset($_SESSION["invalid_token"]);
     }
+
+    if (isset($_SESSION["token_expired"])) {
+        // Output JavaScript code to show SweetAlert if the session variable is set
+        echo '<script>';
+        echo 'Swal.fire({
+            title: "' . $_SESSION["token_expired"] . '",
+            icon: "error",
+            customClass: {
+                title: "error-title",
+                content: "error-content",
+                confirmButton: "error-confirm"
+            }
+        });';
+        echo '</script>';
+
+        // Unset the session variable to avoid showing the alert again on subsequent requests
+        unset($_SESSION["token_expired"]);
+    }
 }
 
 function check_sent_email()

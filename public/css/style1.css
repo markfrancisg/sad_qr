@@ -207,6 +207,22 @@ body {
     width: 70px;
   } */
 
+  
+
+/* hide the content of other parts of the page */
+@media print{
+  body * {
+    visibility: hidden;
+  }
+  .hide-printer-icon *{
+    visibility: hidden !important;
+  }
+  .print-body, .print-body *{
+    visibility: visible;
+  }
+}
+
+
   /* for small screens */
   @media screen and (max-width: 576px) {
     .smallscreen-bg{

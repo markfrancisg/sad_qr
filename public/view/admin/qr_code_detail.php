@@ -25,7 +25,7 @@ $result = get_qr_detail($pdo, $qr_id);
     </div>
 
     <!-- Page Heading -->
-    <div class="card shadow mb-4 h-100 sm-6 smallscreen-card">
+    <div class="card shadow mb-4 h-100 sm-6 smallscreen-card print-body">
 
         <div class="d-none d-sm-flex align-items-center justify-content-between ml-4 mt-4 mb-4">
             <h1 class="h3 mb-0 text-gray-800">QR Details</h1>
@@ -68,6 +68,7 @@ $result = get_qr_detail($pdo, $qr_id);
                         // If QR code data is available, display the QR code image
                         $qrImageData = view_qr($result['qr_code']); // Assuming this function properly returns QR code image data
                         echo '<img src="data:image/png;base64,' . base64_encode($qrImageData) . '" >';
+                        echo '<div class="mt-0 hide-printer-icon"><button onclick="window.print()"><i class="fas fa-print"></i> Print</button></div>';
                     } else {
                         // If QR code data is not available, display a link
                     ?>

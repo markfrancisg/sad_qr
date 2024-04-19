@@ -31,20 +31,20 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                             ?>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 mb-2">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
                             </div>
-                            <div class="col-sm-6 mb-2">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6 mb-2">
+                            <div class="col-sm-6 mb-3">
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
                             </div>
 
-                            <div class="col-sm-6 mb-2 ">
+                            <div class="col-sm-6 mb-3 ">
                                 <input type="text" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number">
                             </div>
                         </div>
@@ -54,13 +54,13 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                         </div>
                         <div class="row">
 
-                            <div class="col-sm-3 mb-2">
+                            <div class="col-sm-3 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="block" name="block" placeholder="Block">
                             </div>
-                            <div class="col-sm-3 mb-2">
+                            <div class="col-sm-3 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="lot" name="lot" placeholder="Lot">
                             </div>
-                            <div class="col-sm-6 mb-2">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="street" name="street" placeholder="Street">
                             </div>
                         </div>

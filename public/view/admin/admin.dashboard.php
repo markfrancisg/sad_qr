@@ -26,45 +26,47 @@ $admin_name = get_admin_name($pdo, $admin_email);
 
     <div class="row">
         <div class="col-xl-8 col-lg-7">
-            <div class="card shadow mb-4 h-100 smallscreen-card">
-                <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
-                    <span class="text-white title-custom-color rounded">Accounts</span>
-                </h6>
-                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between smallscreen-card">
+            <a href="accounts.php">
+                <div class="card card-hover shadow mb-4 h-100 smallscreen-card">
+                    <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
+                        <span class="text-white title-custom-color rounded">Accounts</span>
+                    </h6>
+                    <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between smallscreen-card">
 
                 </div> -->
 
-                <div class="card-body h-100 mb-2 mt-0">
-                    <div class="table-responsive mx-auto d-block">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                    <div class="card-body h-100 mb-2 mt-0">
+                        <div class="table-responsive mx-auto d-block">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
 
-                            <tbody>
-                                <?php
-                                $counter = 1;
-                                foreach ($results1 as $row1) {
-                                    if ($_SESSION["account_email"] === $row1['account_email']) {
-                                        continue;
+                                <tbody>
+                                    <?php
+                                    $counter = 1;
+                                    foreach ($results1 as $row1) {
+                                        if ($_SESSION["account_email"] === $row1['account_email']) {
+                                            continue;
+                                        }
+                                        $name1 = $row1['account_name'];
+                                        $email1 = $row1['account_email'];
+                                    ?>
+                                        <tr>
+                                            <td><?php echo $counter; ?></td>
+                                            <td><?php echo $name1; ?></td>
+                                            <td><?php echo $email1; ?></td>
+
+                                        </tr>
+                                    <?php
+                                        $counter++;
                                     }
-                                    $name1 = $row1['account_name'];
-                                    $email1 = $row1['account_email'];
-                                ?>
-                                    <tr>
-                                        <td><?php echo $counter; ?></td>
-                                        <td><?php echo $name1; ?></td>
-                                        <td><?php echo $email1; ?></td>
+                                    ?>
 
-                                    </tr>
-                                <?php
-                                    $counter++;
-                                }
-                                ?>
+                                </tbody>
 
-                            </tbody>
-
-                        </table>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
+            </a>
         </div>
 
         <!-- This will be hidden in large and medium screens -->
@@ -101,92 +103,96 @@ $admin_name = get_admin_name($pdo, $admin_email);
     <div class="row mt-3">
         <!-- Area Chart -->
         <div class="col-xl-6 col-lg-7">
-            <div class="card shadow mb-4 h-100 smallscreen-card">
-                <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
-                    <span class="text-white title-custom-color rounded">Paid</span>
-                </h6>
-                <!-- Card Header - Dropdown -->
-                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <a href="balance.php">
+                <div class="card card-hover shadow mb-4 h-100 smallscreen-card">
+                    <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
+                        <span class="text-white title-custom-color rounded">Paid</span>
+                    </h6>
+                    <!-- Card Header - Dropdown -->
+                    <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 
                 </div> -->
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="table-responsive mx-auto d-block">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-
-                            <?php
-                            foreach ($results2 as $row2) {
-                                $name2 = $row2['name'];
-                                $address2 = $row2['address'];
-
-                            ?>
-                                <tbody>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="table-responsive mx-auto d-block">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                     <tr>
-                                        <td><?php echo $name2; ?></td>
-                                        <td><?php echo $address2; ?></td>
+                                        <th>Name</th>
+                                        <th>Address</th>
                                     </tr>
+                                </thead>
+
                                 <?php
-                            }
+                                foreach ($results2 as $row2) {
+                                    $name2 = $row2['name'];
+                                    $address2 = $row2['address'];
+
                                 ?>
-                                </tbody>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $name2; ?></td>
+                                            <td><?php echo $address2; ?></td>
+                                        </tr>
+                                    <?php
+                                }
+                                    ?>
+                                    </tbody>
 
-                        </table>
+                            </table>
+                        </div>
+
                     </div>
-
                 </div>
-            </div>
+            </a>
         </div>
 
         <div class="col-xl-6 col-lg-5 mt-3 mt-lg-0">
-            <div class="card shadow mb-4 h-100 smallscreen-card">
-                <!-- Card Header - Dropdown -->
-                <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
+            <a href="balance.php">
+                <div class="card card-hover shadow mb-4 h-100 smallscreen-card">
+                    <!-- Card Header - Dropdown -->
+                    <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">
 
                 </div> -->
-                <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
-                    <span class="text-white title-custom-color rounded">Unpaid</span>
-                </h6>
-                <!-- Card Body -->
-                <div class="card-body">
-                    <div class="table-responsive mx-auto d-block">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Address</th>
-                                </tr>
-                            </thead>
-
-                            <?php
-                            foreach ($results3 as $row3) {
-
-                                $name3 = $row3['name'];
-                                $address3 = $row3['address'];
-
-                            ?>
-                                <tbody>
+                    <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
+                        <span class="text-white title-custom-color rounded">Unpaid</span>
+                    </h6>
+                    <!-- Card Body -->
+                    <div class="card-body">
+                        <div class="table-responsive mx-auto d-block">
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
                                     <tr>
-                                        <td><?php echo $name3; ?></td>
-                                        <td><?php echo $address3; ?></td>
+                                        <th>Name</th>
+                                        <th>Address</th>
                                     </tr>
+                                </thead>
+
                                 <?php
-                            }
+                                foreach ($results3 as $row3) {
+
+                                    $name3 = $row3['name'];
+                                    $address3 = $row3['address'];
+
                                 ?>
+                                    <tbody>
+                                        <tr>
+                                            <td><?php echo $name3; ?></td>
+                                            <td><?php echo $address3; ?></td>
+                                        </tr>
+                                    <?php
+                                }
+                                    ?>
 
-                                </tbody>
+                                    </tbody>
 
-                        </table>
+                            </table>
+                        </div>
+
+
                     </div>
-
-
                 </div>
-            </div>
+            </a>
         </div>
     </div>
 

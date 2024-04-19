@@ -29,15 +29,17 @@ $results = get_user_list($pdo);
                     check_create_account_errors();
                     account_creation_success();
                     ?>
+
                     <form class="user" method="post" action="../../../includes/admin/create_account.inc.php">
                         <div class="row">
-                            <div class="col-sm-4 mb-2">
+                            <!-- just change the mb to change the gap between fields vertically -->
+                            <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
                             </div>
-                            <div class="col-sm-4 mb-2">
+                            <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
                             </div>
-                            <div class="col-sm-4 mb-2">
+                            <div class="col-sm-4 mb-3">
                                 <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="role_description">
                                     <option value="">Select a role</option>
                                     <option value="admin">Admin</option>
@@ -46,15 +48,15 @@ $results = get_user_list($pdo);
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 mb-2">
+                            <div class="col-sm-6 mb-3">
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="account_email" placeholder="Email Address">
                             </div>
-                            <div class="col-sm-6 mb-2">
+                            <div class="col-sm-6 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="number" name="account_number" placeholder="Phone Number">
                             </div>
                         </div>
                         <div class="row">
-                            <div class="col-sm-12 mb-2">
+                            <div class="col-sm-12 mb-3">
                                 <input type="password" class="form-control form-control-user form-control-color" id="password" name="password" placeholder="Password" value="1234567890" readonly>
                             </div>
                         </div>

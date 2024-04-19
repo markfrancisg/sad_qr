@@ -116,6 +116,17 @@
   .card-text img {
     max-width: 100%; /* Adjust as needed */
   }
+
+  .card-hover{
+    transition: all 0.3s;
+  }
+  .card-hover:hover{
+    transform:scale(1.05);
+  }
+
+  a:hover {
+    text-decoration: none !important; /* Remove underline on hover */
+}
   
 
 /* CUSTOM */
@@ -207,7 +218,7 @@ body {
     width: 70px;
   } */
 
-  
+
 
 /* hide the content of other parts of the page */
 @media print{

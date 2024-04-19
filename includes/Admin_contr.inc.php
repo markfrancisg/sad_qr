@@ -6,11 +6,7 @@ use PHPMailer\PHPMailer\PHPMailer;
 use PHPMailer\PHPMailer\SMTP;
 use PHPMailer\PHPMailer\Exception;
 
-require 'phpmailer/src/Exception.php';
-require 'phpmailer/src/PHPMailer.php';
-require 'phpmailer/src/SMTP.php';
-
-
+require __DIR__ . '/../vendor/autoload.php';
 
 function four_input_empty(string $first, string $second, string $third, string $fourth)
 {

@@ -40,11 +40,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
-        if (is_token_expired($result['token_expiration'])) {
-            $_SESSION["token_expired"] = "Token expired!";
-            header("Location: ../public/view/reset_password.php");
-            die();
-        }
 
         $token_checker = $result["token"];
 
@@ -65,6 +60,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         if (is_match($password, $confirm_password)) {
             $_SESSION["password_not_match"] = "Passwords do not match!";
             header("Location: ../public/view/reset_password_confirm.php?token=$token&email=$email");
+            die();
+        }
+
+
+        if (is_token_expired($result['token_expiration'])) {
+            $_SESSION["token_expired"] = "Token expired!";
+            header("Location: ../public/view/reset_password.php");
             die();
         }
 

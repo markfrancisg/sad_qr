@@ -2,14 +2,16 @@
 
 declare(strict_types=1);
 
-function checkLog()
-{
-    if (!isset($_SESSION["role_description"]) || !isset($_SESSION['account_id']) || !isset($_SESSION['username'])) {
-        header("Location:logout.inc.php");
-        exit();
-    }
-}
+// function checkLog()
+// {
+//     if (!isset($_SESSION["role_description"]) || !isset($_SESSION['account_id']) || !isset($_SESSION['username'])) {
+//         header("Location:logout.inc.php");
+//         exit();
+//     }
+// }
 
+
+//if user logs in and goes back to login page, 
 function redirectUser()
 {
     if (isset($_SESSION["role_description"]) && isset($_SESSION['account_id']) && isset($_SESSION['account_email'])) {
@@ -24,6 +26,8 @@ function redirectUser()
 }
 
 
+
+//if user tries to access page directly without loggin in
 function grantPermission(string $role)
 {
     if (!isset($_SESSION["role_description"]) || $_SESSION["role_description"] !== $role || !isset($_SESSION['account_id']) || !isset($_SESSION['account_email'])) {

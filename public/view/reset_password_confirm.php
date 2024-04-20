@@ -1,9 +1,9 @@
 <?php
 require_once '../../includes/config.session.inc.php';
-require_once '../../includes/authenticate.inc.php';
+// require_once '../../includes/authenticate.inc.php';
 require_once '../../includes/reset_password_new_view.inc.php';
 
-redirectUser();
+// redirectUser();
 
 ?>
 <!DOCTYPE html>
@@ -49,16 +49,18 @@ redirectUser();
                                                                     echo $_GET['token'];
                                                                 } ?>">
 
-                    <div class="form-group input-field pt-1 my-3">
+                    <div class="form-group input-field pt-1 mt-1">
                         <label for="password" class="form-label form-label-custom">Enter New Password</label>
                         <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter New Password" />
-
+                    </div>
+                    <div class="form-group input-field pt-1 mt-2 mb-5 input-login-form-group-height">
                         <label for="confirm_password" class="form-label form-label-custom">Confirm Password</label>
-                        <input type="password" class="form-control gray-background" id="password" name="confirm_password" placeholder="Confirm New Password" />
+                        <input type="password" class="form-control gray-background" id="confirm_password" name="confirm_password" placeholder="Confirm New Password" disabled />
+                        <span id="passwordError" class="error-validation-js"></span>
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button type="submit" class="btn mt-3 custom-button" name="password_reset">
+                        <button type="submit" class="btn mt-3 custom-button" name="password_reset" id="changePasswordButton" disabled>
                             Change Password
                         </button>
                     </div>
@@ -78,7 +80,8 @@ redirectUser();
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/check_two_password.js"></script>
+
 </body>
 
 </html>

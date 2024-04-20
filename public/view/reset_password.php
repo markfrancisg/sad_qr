@@ -45,15 +45,14 @@ redirectUser();
                         <h3 class="card-title text-center">Reset Password</h3>
                     </div>
 
-                    <div class="form-group input-field pt-1 mb-3 mt-2 ml-2 mr-2">
+                    <div class="form-group input-field pt-1 mb-3 mt-2 ml-2 mr-2 input-login-form-group-height">
                         <label for="email" class="form-label"></label>
                         <input type="text" class="form-control gray-background" id="email" name="account_email" placeholder="Enter Email" />
+                        <span id="emailErrorMessage" class="error-validation-js"></span>
                     </div>
 
-
-
                     <div class="d-flex justify-content-center mt-5">
-                        <button type="submit" class="btn mt-3 custom-button">
+                        <button type="submit" class="btn mt-3 custom-button" id="sendEmailButton" disabled>
                             Send Email Verification
                         </button>
                     </div>
@@ -73,7 +72,7 @@ redirectUser();
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="../js/script.js"></script>
+    <script src="../js/check_email.js"></script>
 </body>
 
 </html>

@@ -176,6 +176,18 @@
     }
 
 
+  /* for the AJAX Request homeowner email check */
+.error {
+  color: #f27474 !important; /* Dark red */
+  font-size: 16px !important;
+  margin-top: 5px !important;
+}
+
+
+
+
+
+
 /* FOOTER */
 html, body {
   height: 100%;
@@ -321,6 +333,8 @@ body {
     .font-weight-bold{
       color:black;
     }
+
+    
 
 
 

@@ -42,11 +42,12 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                         <div class="row">
                             <div class="col-sm-6 mb-3">
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
-                                <span id="emailError"></span>
+                                <div class="mt-1 ml-2"><span id="emailValidationResult"></span></div>
                             </div>
 
-                            <div class="col-sm-6 mb-3 ">
-                                <input type="text" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number">
+                            <div class="col-sm-6 mb-3 homeowner-field">
+                                <input type="tel" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number" minlength="11">
+                                <div class="mt-1 ml-2"><span id="numberError" class="error"></span></div>
                             </div>
                         </div>
                         <hr>
@@ -66,7 +67,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                             </div>
                         </div>
                         <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->
-                            <button class="btn custom-btn btn-user col-sm-3 mb-2 mb-sm-0">
+                            <button type="submit" class="btn custom-btn btn-user col-sm-3 mb-2 mb-sm-0" id="submitButton">
                                 Create
                             </button>
                         </div>

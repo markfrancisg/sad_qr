@@ -39,7 +39,7 @@ require_once '../../includes/reset_password_new_view.inc.php';
             <div class="col-md-8 col-lg-6">
 
                 <form class="card p-4" action="../../includes/reset_password_new.inc.php" method="post">
-                    <h3 class="card-title text-center mb-3">CHANGE PASSWORD</h3>
+                    <h3 class="card-title text-center mb-3">Change Password</h3>
 
                     <input type="hidden" name="email" value="<?php if (isset($_GET['email'])) {
                                                                     echo $_GET['email'];
@@ -51,11 +51,11 @@ require_once '../../includes/reset_password_new_view.inc.php';
 
                     <div class="form-group input-field pt-1 mt-1">
                         <label for="password" class="form-label form-label-custom">Enter New Password</label>
-                        <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter New Password" />
+                        <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Password" />
                     </div>
                     <div class="form-group input-field pt-1 mt-2 mb-5 input-login-form-group-height">
                         <label for="confirm_password" class="form-label form-label-custom">Confirm Password</label>
-                        <input type="password" class="form-control gray-background" id="confirm_password" name="confirm_password" placeholder="Confirm New Password" disabled />
+                        <input type="password" class="form-control gray-background" id="confirm_password" name="confirm_password" placeholder="Re-enter Password" disabled />
                         <span id="passwordError" class="error-validation-js"></span>
                     </div>
 

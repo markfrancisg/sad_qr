@@ -1,3 +1,4 @@
+//client side validation, if email is invalid or fields are empty, disable the button
 document.addEventListener("DOMContentLoaded", function() {
     const emailInput = document.getElementById("email");
     const passwordInput = document.getElementById("password");
@@ -41,3 +42,19 @@ document.addEventListener("DOMContentLoaded", function() {
     emailInput.addEventListener("input", toggleSubmitButton);
     passwordInput.addEventListener("input", toggleSubmitButton);
 });
+
+
+//for Eye icon toggle
+document.addEventListener("DOMContentLoaded", function() {
+    const passwordInput = document.getElementById("password");
+    const togglePasswordButton = document.querySelector(".toggle-password");
+
+    togglePasswordButton.addEventListener("click", function() {
+        const type = passwordInput.getAttribute("type") === "password" ? "text" : "password";
+        passwordInput.setAttribute("type", type);
+        this.classList.toggle("fa-eye-slash");
+        this.classList.toggle("fa-eye");
+    });
+});
+
+//allows for smoother page redirection

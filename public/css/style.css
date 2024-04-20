@@ -165,6 +165,22 @@ a {
   height: 80px;
 }
 
+.password-wrapper {
+  position: relative;
+}
+
+.login-password-icon{
+    color:#32543B;
+    font-size: large;
+    position: absolute;
+    right: 30px;
+    top: 50%;
+    transform: translateY(-50%);
+    cursor: pointer;
+}
+
+
+
 /* input:invalid {
   border: 2px solid red;
 }

@@ -19,6 +19,7 @@ redirectUser();
     <title>User Login</title>
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
+    <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <!-- Custom styles for this template-->
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
     <link href="public/css/style.css" rel="stylesheet" />
@@ -47,9 +48,13 @@ redirectUser();
                     </div>
                     <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
                         <label for="password" class="form-label"></label>
-                        <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" required />
+                        <div class="password-wrapper">
+                            <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" required />
+                            <i class="toggle-password login-password-icon fas fa-eye-slash"></i>
+                        </div>
                     </div>
-                    <div class="d-flex justify-content-end pt-1 m-2">
+
+                    <div class="d-flex justify-content-end pt-1 m-2" id="forgotPasswordLink">
                         <a href="public/view/reset_password.php" class="forgot-password-link">Forgot your password?</a>
                     </div>
 

@@ -40,12 +40,12 @@ redirectUser();
 
                 <form class="card p-4" action="includes/login.inc.php" id="loginForm" method="post">
                     <h3 class="card-title text-center mb-3">LOG IN</h3>
-                    <div class="form-group input-field pt-1 m-2">
+                    <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
                         <label for="email" class="form-label"></label>
                         <input type="text" class="form-control gray-background" id="email" name="email" placeholder="Enter Email" required />
                         <span id="emailErrorMessage" class="error-validation-js"></span>
                     </div>
-                    <div class="form-group input-field pt-1 m-2">
+                    <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
                         <label for="password" class="form-label"></label>
                         <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" required />
                     </div>

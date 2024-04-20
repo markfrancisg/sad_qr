@@ -42,6 +42,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                         <div class="row">
                             <div class="col-sm-6 mb-3">
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
+                                <span id="emailError"></span>
                             </div>
 
                             <div class="col-sm-6 mb-3 ">
@@ -77,6 +78,11 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
 </div>
 
 
+
+
+
+<script src="../../js/add_homeowners.js"></script>
 <?php
+
 include_once 'footer.php';
 ?>

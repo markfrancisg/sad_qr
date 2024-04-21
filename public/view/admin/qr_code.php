@@ -201,6 +201,7 @@ $homeowner_email = get_homeowner_email($pdo);
     </div> -->
 </div>
 
+<script src="../../js/qr_code_register.js"></script>
 <?php
 // include_once 'admin_js.php';
 // include_once 'admin_js.php';

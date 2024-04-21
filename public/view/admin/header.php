@@ -65,8 +65,16 @@ function isActive($page)
             <!-- Nav Item - Dashboard -->
             <li class="nav-item sidebar-nav <?php echo isActive('homeowners.php'); ?>">
                 <a class="nav-link " href="homeowners.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-user"></i>
                     <span>Homeowners</span></a>
+            </li>
+
+            <hr class="sidebar-divider my-0" />
+
+            <li class="nav-item sidebar-nav <?php echo isActive('qr_code.php') || isActive('qr_code_detail.php') ? 'active' : ''; ?>">
+                <a class="nav-link " href="qr_code.php">
+                    <i class="fas fa-fw fa-qrcode"></i>
+                    <span>QR Code</span></a>
             </li>
 
 
@@ -75,26 +83,20 @@ function isActive($page)
 
             <li class="nav-item sidebar-nav <?php echo isActive('balance.php'); ?>">
                 <a class="nav-link " href="balance.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-money-check"></i>
                     <span>Balance</span></a>
             </li>
 
 
             <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
 
-            <li class="nav-item sidebar-nav <?php echo isActive('qr_code.php') || isActive('qr_code_detail.php') ? 'active' : ''; ?>">
-                <a class="nav-link " href="qr_code.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>QR Code</span></a>
-            </li>
 
             <!-- Divider -->
             <hr class="sidebar-divider my-0" />
 
             <li class="nav-item sidebar-nav <?php echo isActive('accounts.php'); ?>">
                 <a class="nav-link " href="accounts.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-list"></i>
                     <span>Accounts</span></a>
             </li>
 
@@ -104,7 +106,7 @@ function isActive($page)
 
             <li class="nav-item sidebar-nav <?php echo isActive('logs.php'); ?>">
                 <a class="nav-link " href="logs.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
+                    <i class="fas fa-fw fa-file-alt"></i>
                     <span>Records Logs</span></a>
             </li>
 
@@ -169,7 +171,7 @@ function isActive($page)
                         <li class="nav-item dropdown no-arrow">
                             <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                 <span class="mr-2 d-none d-lg-inline text-gray-600 small"><?php echo $_SESSION['account_email']; ?> </span>
-                                <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400 profile-icon"></i>
+                                <i class="fas fa-user-circle fa-fw mr-2 text-gray-400 profile-icon"></i>
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu user-profile-option dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">

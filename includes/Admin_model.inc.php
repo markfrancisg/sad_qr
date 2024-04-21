@@ -49,7 +49,7 @@ function get_user(object $pdo, string $email)
     return $result;
 }
 
-function get_qr_list(object $pdo)
+function get_qr_list(object $pdo, int $offset, int $total_records_per_page)
 {
     // $query = "SELECT user_info.name, qr_info.address, qr_info.vehicle_type, qr_info.account_id
     //       FROM qr_info
@@ -64,7 +64,7 @@ function get_qr_list(object $pdo)
     $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
           FROM qr_info
           INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
-          ORDER BY qr_info.qr_id DESC";
+          LIMIT $offset, $total_records_per_page";
     //newest to oldest
 
     $stmt = $pdo->prepare($query);
@@ -270,4 +270,20 @@ function get_admin_name(object $pdo, string $account_email)
 
     // Directly return the account name using fetchColumn
     return $stmt->fetchColumn(0);
+}
+
+function count_qr_list(object $pdo)
+{
+    // Prepare the SQL statement
+    $sql = "SELECT COUNT(*) as qr_count FROM qr_info";
+
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['qr_count'];
 }

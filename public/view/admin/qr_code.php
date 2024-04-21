@@ -3,9 +3,11 @@ include_once 'header.php';
 include_once '../../../includes/admin/create_qr_view.inc.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
+require_once '../../../includes/QrCodeListController.php'; // 
+
 
 //for the table
-$results = get_qr_list($pdo);
+
 
 //for the dropdown
 $homeowner_email = get_homeowner_email($pdo);
@@ -131,6 +133,45 @@ $homeowner_email = get_homeowner_email($pdo);
                             </tbody>
 
                         </table>
+
+                        <div class="d-flex justify-content-between">
+
+                            <div class="p-10">
+                                <strong>Page <?php echo $page_no; ?> of
+                                    <?php echo $total_no_of_pages ?></strong>
+                            </div>
+
+                            <nav aria-label="Page navigation example">
+                                <ul class="pagination">
+                                    <li class="page-item">
+                                        <a class="page-link <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '"' : ''; ?>>Previous</a>
+                                    </li>
+
+                                    <?php
+                                    // Calculate start and end page numbers to display
+                                    $start_page = max(1, $page_no - 1);
+                                    $end_page = min($total_no_of_pages, $page_no + 1);
+
+                                    for ($counter = $start_page; $counter <= $end_page; $counter++) {
+                                    ?>
+                                        <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
+                                            <a class="page-link" href="?page_no=<?php echo $counter; ?>"><?php echo $counter; ?></a>
+                                        </li>
+                                    <?php
+                                    }
+                                    ?>
+
+                                    <li class="page-item">
+                                        <a class="page-link <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '"' : ''; ?>>Next</a>
+                                    </li>
+                                </ul>
+                            </nav>
+
+
+
+                        </div>
+
+
                     </div>
                 </div>
 

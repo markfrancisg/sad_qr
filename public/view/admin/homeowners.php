@@ -44,11 +44,11 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
                                 <div class="mt-1 ml-2"><span id="emailValidationResult"></span></div>
                             </div>
-
                             <div class="col-sm-6 mb-3 homeowner-field">
-                                <input type="tel" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number" minlength="11">
+                                <input type="text" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number" minlength="11" required>
                                 <div class="mt-1 ml-2"><span id="numberError" class="error"></span></div>
                             </div>
+
                         </div>
                         <hr>
                         <div class="d-flex justify-content-start ">

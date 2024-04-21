@@ -86,7 +86,7 @@ $homeowner_email = get_homeowner_email($pdo);
                                     <th>Address</th>
                                     <th>Plate Number</th>
                                     <th>Vehicle Type</th>
-                                    <th>View</th>
+                                    <th>Status</th>
 
                                 </tr>
                             </thead>
@@ -106,8 +106,8 @@ $homeowner_email = get_homeowner_email($pdo);
                                     $name = $row['name'];
                                     $address = $row['address'];
                                     $plate_number = $row['plate_number'];
-
                                     $vehicle_type = $row['vehicle_type'];
+                                    $registered = $row['registered'];
 
                                 ?>
                                     <tr>
@@ -116,7 +116,12 @@ $homeowner_email = get_homeowner_email($pdo);
                                         <td><?php echo $plate_number; ?></td>
                                         <td><?php echo $vehicle_type; ?></td>
                                         <td>
-                                            <a href="qr_code_detail.php?qr_id=<?php echo $qr_id; ?>" class="view-qr-detail"> <button class="btn btn-view-pay">View</button></a>
+                                            <!-- if registration status is paid, view button is shown. If not, pay button shows -->
+                                            <a href="qr_code_detail.php?qr_id=<?php echo $qr_id; ?>" class="view-qr-detail">
+                                                <button class="btn btn-view-pay">
+                                                    <?php echo ($registered == '1') ? 'View' : 'Pay'; ?>
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 <?php

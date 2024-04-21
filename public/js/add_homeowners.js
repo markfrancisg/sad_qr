@@ -56,23 +56,23 @@ streetInput.addEventListener('input', function(event) {
 
 
 
-document.addEventListener("DOMContentLoaded", function() {
-    var numberInput = document.getElementById("number");
-    var numberError = document.getElementById("numberError");
+// document.addEventListener("DOMContentLoaded", function() {
+//     var numberInput = document.getElementById("number");
+//     var numberError = document.getElementById("numberError");
 
-    numberInput.addEventListener("input", function() {
-        var number = numberInput.value.trim();
-        var numberPattern = /^(09|\+639)\d{9}$/; // Philippines phone number pattern
+//     numberInput.addEventListener("input", function() {
+//         var number = numberInput.value.trim();
+//         var numberPattern = /^(09|\+639)\d{9}$/; // Philippines phone number pattern
 
-        if (number === '') {
-            numberError.textContent = ''; // Clear error message if the field is empty
-        } else if (!numberPattern.test(number)) {
-            numberError.textContent = 'Invalid phone number format'; // Display error message
-        } else {
-            numberError.textContent = ''; // Clear error message if the number is valid
-        }
-    });
-});
+//         if (number === '') {
+//             numberError.textContent = ''; // Clear error message if the field is empty
+//         } else if (!numberPattern.test(number)) {
+//             numberError.textContent = 'Invalid phone number format'; // Display error message
+//         } else {
+//             numberError.textContent = ''; // Clear error message if the number is valid
+//         }
+//     });
+// });
 
 
 

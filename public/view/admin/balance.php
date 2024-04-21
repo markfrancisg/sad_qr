@@ -27,7 +27,7 @@ $results2 = get_unpaid_qr($pdo);
         <div class="col-12">
             <div class="card shadow mb-8 smallscreen-card">
                 <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
-                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Paid Accounts</h6>
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Paid</h6>
                 </div>
                 <div class="card-body mt-0">
                     <?php payment_success(); ?>
@@ -35,6 +35,11 @@ $results2 = get_unpaid_qr($pdo);
                         <?php if (empty($results)) : ?>
                             <p class="text-center">No paid accounts available.</p>
                         <?php else : ?>
+                            <div class="d-sm-flex justify-content-end mr-5 mb-3">
+                                <div class="filter-border">
+                                    <p>Filter <i class="fas fa-filter"></i></p>
+                                </div>
+                            </div>
                             <table class="table" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>
@@ -74,14 +79,21 @@ $results2 = get_unpaid_qr($pdo);
         <div class="col-12">
             <div class="card shadow mb-8 smallscreen-card">
                 <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
-                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Unpaid Accounts</h6>
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Unpaid</h6>
                 </div>
-                <div class="card-body">
 
+
+
+                <div class="card-body">
                     <div class="table-responsive">
                         <?php if (empty($results2)) : ?>
                             <p class="text-center">No unpaid accounts available.</p>
                         <?php else : ?>
+                            <div class="d-sm-flex justify-content-end mr-5 mb-3">
+                                <div class="filter-border">
+                                    <p>Filter <i class="fas fa-filter"></i></p>
+                                </div>
+                            </div>
                             <table class="table" id="dataTable" width="100%" cellspacing="0">
                                 <thead>
                                     <tr>

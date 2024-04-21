@@ -61,7 +61,7 @@ function get_qr_list(object $pdo)
     // $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // return $results;
 
-    $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id
+    $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
           FROM qr_info
           INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
           ORDER BY qr_info.qr_id DESC";

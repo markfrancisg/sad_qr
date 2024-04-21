@@ -48,7 +48,7 @@ function get_email(object $pdo, string $email)
 }
 
 
-function set_account(object $pdo, string $email, string $password, string $role_id, $name, $number)
+function set_account(object $pdo, string $email, string $password, string $role_id, string $first_name, string $last_name, string $number)
 {
     $sql1 = "INSERT INTO account (account_email, password, role_id) VALUES (:account_email, :password, :role_id)";
     $stmt1 = $pdo->prepare($sql1);
@@ -65,9 +65,10 @@ function set_account(object $pdo, string $email, string $password, string $role_
 
     $account_id = $pdo->lastInsertId();
 
-    $sql2 = "INSERT INTO user_info (account_name, account_number, account_id) VALUES (:account_name, :account_number, :account_id)";
+    $sql2 = "INSERT INTO user_info (account_first_name, account_last_name, account_number, account_id) VALUES (:account_first_name, :account_last_name, :account_number, :account_id)";
     $stmt2 = $pdo->prepare($sql2);
-    $stmt2->bindParam(":account_name", $name);
+    $stmt2->bindParam(":account_first_name", $first_name);
+    $stmt2->bindParam(":account_last_name", $last_name);
     $stmt2->bindParam(":account_number", $number);
     $stmt2->bindParam(":account_id", $account_id);
     $stmt2->execute();

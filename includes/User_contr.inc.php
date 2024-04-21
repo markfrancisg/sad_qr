@@ -148,7 +148,7 @@ function create_user(object $pdo, string $role_id, string $email, string $first_
 
     $password = $randomString1;
 
-    set_account($pdo, $email, $password, $role_id, $name, $number);
+    set_account($pdo, $email, $password, $role_id, $first_name, $last_name, $number);
 
     send_password_email($name, $email, $password);
 }

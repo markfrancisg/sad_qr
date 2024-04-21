@@ -46,12 +46,13 @@ $admin_name = get_admin_name($pdo, $admin_email);
                                         if ($_SESSION["account_email"] === $row1['account_email']) {
                                             continue;
                                         }
-                                        $name1 = $row1['account_name'];
+                                        $first_name1 = $row1['account_first_name'];
+                                        $last_name1 = $row1['account_last_name'];
                                         $email1 = $row1['account_email'];
                                     ?>
                                         <tr>
                                             <td><?php echo $counter; ?></td>
-                                            <td><?php echo $name1; ?></td>
+                                            <td><?php echo $first_name1 . " " . $last_name1; ?></td>
                                             <td><?php echo $email1; ?></td>
 
                                         </tr>

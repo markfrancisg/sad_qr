@@ -4,12 +4,12 @@ declare(strict_types=1);
 
 function get_user_list(object $pdo)
 {
-    $query = "SELECT account_email, role_description, account_name, account_number 
+    $query = "SELECT account_email, role_description, account_first_name,account_last_name, account_number 
           FROM account
           INNER JOIN role_info ON account.role_id = role_info.role_id
           INNER JOIN user_info ON account.account_id = user_info.account_id
           WHERE role_info.role_description IN ('guard', 'admin')
-          ORDER BY account_name DESC";
+          ORDER BY account.account_id DESC";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();
@@ -219,7 +219,7 @@ function get_details_qr_payor(object $pdo, int $qr_id)
 //for admin dashboard
 function get_account_list(object $pdo)
 {
-    $query = "SELECT account.account_email, user_info.account_name
+    $query = "SELECT account.account_email, user_info.account_first_name, user_info.account_last_name
             FROM account
             JOIN user_info ON account.account_id = user_info.account_id
             ORDER BY account.account_id DESC
@@ -262,7 +262,7 @@ function get_five_unpaid_qr(object $pdo)
 
 function get_admin_name(object $pdo, string $account_email)
 {
-    $query = "SELECT user_info.account_name FROM account 
+    $query = "SELECT user_info.account_first_name, user_info.account_last_name  FROM account 
             JOIN user_info ON account.account_id = user_info.account_id
             WHERE account_email = :account_email";
     $stmt = $pdo->prepare($query);

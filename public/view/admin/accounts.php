@@ -101,13 +101,14 @@ $results = get_user_list($pdo);
                                     if ($_SESSION["account_email"] === $row['account_email']) {
                                         continue;
                                     }
-                                    $name = $row['account_name'];
+                                    $first_name = $row['account_first_name'];
+                                    $last_name = $row['account_last_name'];
                                     $email = $row['role_description'];
                                     $role_description = $row['account_email'];
                                     $number = $row['account_number'];
                                 ?>
                                     <tr>
-                                        <td><?php echo $name; ?></td>
+                                        <td><?php echo $first_name . " " . $last_name; ?></td>
                                         <td><?php echo $email; ?></td>
                                         <td><?php echo $role_description; ?></td>
                                         <td><?php echo $number; ?></td>

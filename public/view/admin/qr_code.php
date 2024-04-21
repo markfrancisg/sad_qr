@@ -144,7 +144,7 @@ $homeowner_email = get_homeowner_email($pdo);
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '"' : ''; ?>>Previous</a>
+                                        <a class="page-link qr-code-pagination <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '"' : ''; ?>><i class="fas fa-chevron-left"></i></a>
                                     </li>
 
                                     <?php
@@ -155,17 +155,18 @@ $homeowner_email = get_homeowner_email($pdo);
                                     for ($counter = $start_page; $counter <= $end_page; $counter++) {
                                     ?>
                                         <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
-                                            <a class="page-link" href="?page_no=<?php echo $counter; ?>"><?php echo $counter; ?></a>
+                                            <a class="page-link qr-code-pagination <?php echo ($page_no == $counter) ? 'bg-secondary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>"><?php echo $counter; ?></a>
                                         </li>
                                     <?php
                                     }
                                     ?>
 
                                     <li class="page-item">
-                                        <a class="page-link <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '"' : ''; ?>>Next</a>
+                                        <a class="page-link qr-code-pagination <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '"' : ''; ?>><i class="fas fa-chevron-right"></i> </a>
                                     </li>
                                 </ul>
                             </nav>
+
 
 
 

@@ -198,6 +198,21 @@
   font-size: small;
 }
 
+.qr-code-pagination{
+  background-color: #A3A3A3 !important;
+  color:#ffffff !important;
+}
+
+.page-item.active .page-link,
+.page-link.active-page {
+    background-color: #6D987B !important; /* Change to your desired color */
+    border-color: #ffffff !important; /* Change to your desired color */
+    color: #fff !important; /* Change to your desired color */
+}
+
+.disabled.page-link {
+  opacity: 0.5 !important; /* Adjust the opacity value as needed */
+}
 
 
 

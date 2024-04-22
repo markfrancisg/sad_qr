@@ -61,7 +61,7 @@ function get_qr_list(object $pdo, int $offset, int $total_records_per_page)
     // $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     // return $results;
 
-    $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
           FROM qr_info
           INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
           LIMIT $offset, $total_records_per_page";
@@ -75,7 +75,7 @@ function get_qr_list(object $pdo, int $offset, int $total_records_per_page)
 
 function get_qr_detail(object $pdo, int $qr_id)
 {
-    $query = "SELECT homeowners.name, homeowners.address, qr_info.qr_code, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_type, qr_info.ho_id
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.qr_code, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_type, qr_info.ho_id
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.qr_id = :qr_id";
@@ -98,27 +98,28 @@ function get_homeowner_email(object $pdo)
     return $results;
 }
 
-function insert_homeowner(object $pdo, string $complete_name, string $email, string $number, string $complete_address)
+function insert_homeowner(object $pdo, string $first_name, string $last_name, string $email, string $number, string $block, string $lot, string $street)
 {
-    $query = "INSERT INTO homeowners (name, email, number, address) VALUES (:name, :email, :number, :address)";
+    $query = "INSERT INTO homeowners (first_name, last_name, email, number, block, lot, street) VALUES (:first_name, :last_name, :email, :number, :block, :lot, :street)";
     $stmt2 = $pdo->prepare($query);
-    $stmt2->bindParam(":name", $complete_name);
+    $stmt2->bindParam(":first_name", $first_name);
+    $stmt2->bindParam(":last_name", $last_name);
     $stmt2->bindParam(":email", $email);
     $stmt2->bindParam(":number", $number);
-    $stmt2->bindParam(":address", $complete_address);
+    $stmt2->bindParam(":block", $block);
+    $stmt2->bindParam(":lot", $lot);
+    $stmt2->bindParam(":street", $street);
     $stmt2->execute();
 }
 
 function get_homeowner_address(object $pdo, string $email)
 {
-    $query = "SELECT address FROM homeowners WHERE email = :email;";
+    $query = "SELECT block, lot, street FROM homeowners WHERE email = :email;";
     $stmt = $pdo->prepare($query);
     $stmt->execute(['email' => $email]);
 
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
-    $address = $result['address'];
-
-    return $address;
+    return $result;
 }
 
 
@@ -135,11 +136,11 @@ function get_homeowner(object $pdo, string $email)
 
 function get_unpaid_qr(object $pdo)
 {
-    $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id
+    $query = "SELECT  homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 0
-              ORDER BY homeowners.name DESC";
+              ORDER BY qr_info.qr_id DESC";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();
@@ -149,11 +150,11 @@ function get_unpaid_qr(object $pdo)
 
 function get_paid_qr(object $pdo)
 {
-    $query = "SELECT homeowners.name, homeowners.address, qr_info.vehicle_type, qr_info.plate_number
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 1
-              ORDER BY homeowners.name DESC";
+              ORDER BY qr_info.qr_id DESC";
 
     $stmt = $pdo->prepare($query);
     $stmt->execute();
@@ -204,7 +205,7 @@ function check_qr_existence(object $pdo, string $qr)
 
 function get_details_qr_payor(object $pdo, int $qr_id)
 {
-    $query = "SELECT homeowners.name, homeowners.email, homeowners.address, qr_info.qr_code, qr_info.plate_number, qr_info.vehicle_type
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.email, homeowners.block,homeowners.lot, homeowners.street, qr_info.qr_code, qr_info.plate_number, qr_info.vehicle_type
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.qr_id = :qr_id";
@@ -232,11 +233,11 @@ function get_account_list(object $pdo)
 
 function get_five_paid_qr(object $pdo)
 {
-    $query = "SELECT homeowners.name, homeowners.address
+    $query = "SELECT homeowners.first_name,homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 1
-              ORDER BY homeowners.ho_id DESC
+              ORDER BY qr_info.qr_id DESC
               LIMIT 5";
 
     $stmt = $pdo->prepare($query);
@@ -247,11 +248,11 @@ function get_five_paid_qr(object $pdo)
 
 function get_five_unpaid_qr(object $pdo)
 {
-    $query = "SELECT homeowners.name, homeowners.address
+    $query = "SELECT homeowners.first_name,homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 0
-              ORDER BY homeowners.ho_id DESC
+              ORDER BY qr_info.qr_id DESC
               LIMIT 5";
 
     $stmt = $pdo->prepare($query);

@@ -126,8 +126,8 @@ $admin_name = get_admin_name($pdo, $admin_email);
 
                                 <?php
                                 foreach ($results2 as $row2) {
-                                    $name2 = $row2['name'];
-                                    $address2 = $row2['address'];
+                                    $name2 = $row2['first_name'] . " " . $row2['last_name'];
+                                    $address2 = "Block " . $row2['block'] . ", Lot " . $row2['lot'] . ", " . $row2['street'] . " Street";
 
                                 ?>
                                     <tbody>
@@ -172,8 +172,8 @@ $admin_name = get_admin_name($pdo, $admin_email);
                                 <?php
                                 foreach ($results3 as $row3) {
 
-                                    $name3 = $row3['name'];
-                                    $address3 = $row3['address'];
+                                    $name3 = $row3['first_name'] . " " . $row3['last_name'];
+                                    $address3 = "Block " . $row3['block'] . ", Lot " . $row3['lot'] . ", " . $row3['street'] . " Street";
 
                                 ?>
                                     <tbody>

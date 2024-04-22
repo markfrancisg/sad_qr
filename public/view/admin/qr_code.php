@@ -105,16 +105,19 @@ $homeowner_email = get_homeowner_email($pdo);
                                 <?php
                                 foreach ($results as $row) {
                                     $qr_id = $row['qr_id'];
-                                    $name = $row['name'];
-                                    $address = $row['address'];
+                                    $first_name = $row['first_name'];
+                                    $last_name = $row['last_name'];
+                                    $block = $row['block'];
+                                    $lot = $row['lot'];
+                                    $street = $row['street'];
                                     $plate_number = $row['plate_number'];
                                     $vehicle_type = $row['vehicle_type'];
                                     $registered = $row['registered'];
 
                                 ?>
                                     <tr>
-                                        <td><?php echo $name; ?></td>
-                                        <td><?php echo $address; ?></td>
+                                        <td><?php echo $first_name . " " . $last_name; ?></td>
+                                        <td><?php echo "Block " . $block . ", Lot " . $lot . " , " . $street . " Street"; ?></td>
                                         <td><?php echo $plate_number; ?></td>
                                         <td><?php echo $vehicle_type; ?></td>
                                         <td>

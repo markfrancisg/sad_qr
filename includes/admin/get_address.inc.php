@@ -10,7 +10,7 @@ if (isset($_GET['email'])) {
         require_once '../Admin_model.inc.php';
         $address = get_homeowner_address($pdo, $email);
 
-        echo $address;
+        echo "Block " . $address['block'] . ", Lot " . $address['lot'] . ", " . $address['street'] . " Street";
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());
     }

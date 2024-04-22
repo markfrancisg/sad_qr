@@ -21,9 +21,9 @@ if (isset($_GET["qr_id"])) {
         //after paying, generate qr image and email it together with other details
         $result = get_details_qr_payor($pdo, $qr_id);
 
-        $name = $result['name'];
+        $name = $result['first_name'] . " " . $result['last_name'];
         $email = $result['email'];
-        $address = $result['address'];
+        $address = "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street";
         $qr_code = $result['qr_code'];
         $plate_number = $result['plate_number'];
         $vehicle_type = $result['vehicle_type'];

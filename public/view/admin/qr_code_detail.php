@@ -35,12 +35,12 @@ $result = get_qr_detail($pdo, $qr_id);
             <div class="col-sm-6 d-flex flex-column align-items-center">
                 <div>
                     <h6 class="mt-3 font-weight-bold"><b>
-                            Full Name: </b><?php echo $result['name']; ?>
+                            Full Name: </b><?php echo $result['first_name'] . " " . $result['last_name']; ?>
                     </h6>
                 </div>
                 <div>
                     <h6 class="mt-3 font-weight-bold"><b>
-                            Address: </b><?php echo $result['address']; ?>
+                            Address: </b><?php echo "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street"; ?>
                     </h6>
                 </div>
                 <div>

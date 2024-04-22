@@ -52,8 +52,8 @@ $results2 = get_unpaid_qr($pdo);
                                 <tbody>
                                     <?php foreach ($results as $row) : ?>
                                         <tr>
-                                            <td><?php echo $row['name']; ?></td>
-                                            <td><?php echo $row['address']; ?></td>
+                                            <td><?php echo $row['first_name'] . " " . $row['last_name']; ?></td>
+                                            <td><?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street"; ?></td>
                                             <td><?php echo $row['vehicle_type']; ?></td>
                                             <td><?php echo $row['plate_number']; ?></td>
                                         </tr>
@@ -107,8 +107,8 @@ $results2 = get_unpaid_qr($pdo);
                                 <tbody>
                                     <?php foreach ($results2 as $row2) : ?>
                                         <tr>
-                                            <td><?php echo $row2['name']; ?></td>
-                                            <td><?php echo $row2['address']; ?></td>
+                                            <td><?php echo $row2['first_name'] . " " . $row2['last_name']; ?></td>
+                                            <td><?php echo "Block " . $row2['block'] . ", Lot " . $row2['lot'] . ", " . $row2['street'] . " Street"; ?></td>
                                             <td><?php echo $row2['vehicle_type']; ?></td>
                                             <td><?php echo $row2['plate_number']; ?></td>
                                             <td>

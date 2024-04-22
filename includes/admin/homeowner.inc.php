@@ -52,10 +52,10 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         }
 
 
-        $complete_address = complete_address($block, $lot, $street);
-        $complete_name =   complete_name($first_name, $last_name);
+        // $complete_address = complete_address($block, $lot, $street);
+        // $complete_name =   complete_name($first_name, $last_name);
 
-        insert_homeowner($pdo, $complete_name, $email, $number, $complete_address);
+        insert_homeowner($pdo, $first_name, $last_name, $email, $number, $block, $lot, $street);
         header("Location: ../../public/view/admin/homeowners.php?homeowner_creation=success");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());

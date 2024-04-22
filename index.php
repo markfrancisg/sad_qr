@@ -44,15 +44,14 @@ redirectUser();
                 <form class="card p-4" action="includes/login.inc.php" id="loginForm" method="post">
                     <h3 class="card-title text-center mb-3">LOG IN</h3>
                     <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
-                        <label for="email" class="form-label"></label>
                         <input type="text" class="form-control gray-background" id="email" name="email" placeholder="Enter Email" required />
-                        <span id="emailErrorMessage" class="error-validation-js"></span>
+                        <span id="" class="error"></span>
                     </div>
                     <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
-                        <label for="password" class="form-label"></label>
                         <div class="password-wrapper">
                             <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" required />
                             <i class="toggle-password login-password-icon fas fa-eye-slash"></i>
+                            <span id="" class="error"></span>
                         </div>
                     </div>
 
@@ -61,7 +60,7 @@ redirectUser();
                     </div>
 
                     <div class="d-flex justify-content-center">
-                        <button id="loginButton" type="submit" class="btn mt-3 custom-button" disabled>
+                        <button id="loginButton" type="submit" class="btn mt-3 custom-button">
                             Log in
                         </button>
                     </div>

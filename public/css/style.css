@@ -155,6 +155,20 @@ a {
   box-shadow: none;
 }
 
+.form-group.success input{
+    border-color: #09c372 !important;
+}
+
+.form-group.error input{
+  border-color: #ff3860 !important;
+}
+
+.form-group .error {
+  color: #ff3860 !important;
+  font-size: small !important;
+  margin-top: 0px !important;
+}
+
 .error-validation-js{
   color:#f27474;
   font-size: small;
@@ -162,7 +176,11 @@ a {
 }
 
 .input-login-form-group-height{
-  height: 80px;
+  height: 80px !important;
+}
+
+.input-reset-password-confirm{
+  height: 120px !important;
 }
 
 .password-wrapper {

@@ -40,7 +40,7 @@ require_once '../../includes/reset_password_view.inc.php';
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-8 col-lg-6">
 
-                <form class="card p-4" action="../../includes/reset_password.inc.php" method="post">
+                <form class="card p-4" action="../../includes/reset_password.inc.php" method="post" id="resetForm">
 
                     <div class="justify-content-center mb-5">
                         <h3 class="card-title text-center">Reset Password</h3>
@@ -49,11 +49,11 @@ require_once '../../includes/reset_password_view.inc.php';
                     <div class="form-group input-field pt-1 mb-3 mt-2 ml-2 mr-2 input-login-form-group-height">
                         <label for="email" class="form-label"></label>
                         <input type="text" class="form-control gray-background" id="email" name="account_email" placeholder="Enter Email" />
-                        <span id="emailErrorMessage" class="error-validation-js"></span>
+                        <span id="" class="error"></span>
                     </div>
 
                     <div class="d-flex justify-content-center mt-5">
-                        <button type="submit" class="btn mt-3 custom-button" id="sendEmailButton" disabled>
+                        <button type="submit" class="btn mt-3 custom-button" id="sendEmailButton">
                             Send Email Verification
                         </button>
                     </div>

@@ -32,18 +32,18 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                         </div>
                         <div class="row">
                             <div class="col-md-6 col-sm-12 mb-3 homeowner-field">
-                                <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name" required>
                                 <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-md-6 col-sm-12 mb-3 homeowner-field">
-                                <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name" required>
                                 <div class="error-container"> <span class="error"></span></div>
                             </div>
                         </div>
 
                         <div class="row">
                             <div class="col-sm-6  mb-3 homeowner-field">
-                                <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
+                                <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address" required>
                                 <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-6 mb-3 homeowner-field">
@@ -57,15 +57,15 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                         </div>
                         <div class="row">
                             <div class="col-sm-3 mb-3 homeowner-field">
-                                <input type="text" class="form-control form-control-user form-control-color" id="block" name="block" placeholder="Block">
+                                <input type="text" class="form-control form-control-user form-control-color" id="block" name="block" placeholder="Block" required>
                                 <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-3 mb-3 homeowner-field">
-                                <input type="text" class="form-control form-control-user form-control-color" id="lot" name="lot" placeholder="Lot">
+                                <input type="text" class="form-control form-control-user form-control-color" id="lot" name="lot" placeholder="Lot" required>
                                 <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-6 mb-3 homeowner-field">
-                                <input type="text" class="form-control form-control-user form-control-color" id="street" name="street" placeholder="Street">
+                                <input type="text" class="form-control form-control-user form-control-color" id="street" name="street" placeholder="Street" required>
                                 <div class="error-container"> <span class="error"></span></div>
                             </div>
                         </div>

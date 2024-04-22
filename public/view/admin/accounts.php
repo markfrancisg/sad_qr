@@ -30,18 +30,20 @@ $results = get_user_list($pdo);
                     account_creation_success();
                     ?>
 
-                    <form class="user" method="post" action="../../../includes/admin/create_account.inc.php">
+                    <form class="user" method="post" action="../../../includes/admin/create_account.inc.php" id="createAccountForm">
                         <div class="row">
                             <!-- just change the mb to change the gap between fields vertically -->
                             <div class="col-sm-4 mb-3">
-                                <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name" required>
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
+                                <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name" required>
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-4 mb-3">
-                                <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="role_description">
-                                    <option value="">Select a role</option>
+                                <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="role_description" required>
+                                    <option value="" disabled selected>Select a role</option>
                                     <option value="admin">Admin</option>
                                     <option value="guard">Guard</option>
                                 </select>
@@ -49,10 +51,12 @@ $results = get_user_list($pdo);
                         </div>
                         <div class="row">
                             <div class="col-sm-6 mb-3">
-                                <input type="email" class="form-control form-control-user form-control-color" id="email" name="account_email" placeholder="Email Address">
+                                <input type="email" class="form-control form-control-user form-control-color" id="email" name="account_email" placeholder="Email Address" required>
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input type="text" class="form-control form-control-user form-control-color" id="number" name="account_number" placeholder="Phone Number">
+                                <input type="text" class="form-control form-control-user form-control-color" id="number" name="account_number" placeholder="Phone Number" required>
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                         </div>
                         <div class="row">
@@ -157,6 +161,7 @@ $results = get_user_list($pdo);
 
 
 
+<script src="../../js/create_account.js"></script>
 
 <?php
 // include_once 'admin_js.php';

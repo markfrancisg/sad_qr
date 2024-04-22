@@ -204,6 +204,8 @@
   color:#ffffff !important;
 }
 
+
+
 .page-item.active .page-link,
 .page-link.active-page {
     background-color: #6D987B !important; /* Change to your desired color */
@@ -376,6 +378,11 @@ body {
       width: 60px;
     }
     
+   .pagination-qr{
+    margin-top: 20px;
+    display: flex !important;
+    justify-content: center !important;
+   }
 
 
 

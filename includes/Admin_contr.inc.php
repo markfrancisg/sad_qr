@@ -154,7 +154,7 @@ function check_registration_status(object $pdo)
     }
 }
 
-function email_qr_code(string $name, string $email, string $address, string $plate_number, string $vehicle_type)
+function email_qr_code(string $qr_id, string $name, string $email, string $address, string $plate_number, string $vehicle_type)
 {
 
     //Create an instance; passing `true` enables exceptions
@@ -178,7 +178,7 @@ function email_qr_code(string $name, string $email, string $address, string $pla
     //Attachments
     // $mail->addAttachment('/var/tmp/file.tar.gz');         //Add attachments
     // $mail->addAttachment('/tmp/image.jpg', 'new.jpg');    //Optional name
-    $mail->addAttachment(__DIR__ . '/../public/img/qr-code.png'); // Path to the QR image and the desired filename
+    $mail->addAttachment(__DIR__ . '/../public/img/' . $qr_id . '.png'); // Path to the QR image and the desired filename
 
 
     //Content

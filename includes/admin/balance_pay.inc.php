@@ -30,7 +30,7 @@ if (isset($_GET["qr_id"])) {
 
         save_qr_code($qr_id, $qr_code);
 
-        email_qr_code($name, $email, $address, $plate_number, $vehicle_type);
+        email_qr_code($qr_id, $name, $email, $address, $plate_number, $vehicle_type);
 
         $pdo = null;
         $stmt = null;

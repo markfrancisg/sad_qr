@@ -136,46 +136,44 @@ $homeowner_email = get_homeowner_email($pdo);
                             </tbody>
 
                         </table>
+                    </div>
 
-                        <div class="d-flex justify-content-between">
-                            <div class="p-10">
-                                <strong>Page <?php echo $page_no; ?> of <?php echo $total_no_of_pages ?></strong>
-                            </div>
-
-                            <nav aria-label="Page navigation example">
-                                <ul class="pagination">
-                                    <li class="page-item">
-                                        <a class="page-link qr-code-pagination <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '#qr_pagination"' : ''; ?>>
-                                            <i class="fas fa-chevron-left"></i>
-                                        </a>
-                                    </li>
-
-                                    <?php
-                                    // Calculate start and end page numbers to display
-                                    $start_page = max(1, $page_no - 1);
-                                    $end_page = min($total_no_of_pages, $page_no + 1);
-
-                                    for ($counter = $start_page; $counter <= $end_page; $counter++) {
-                                    ?>
-                                        <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
-                                            <a class="page-link qr-code-pagination <?php echo ($page_no == $counter) ? 'bg-secondary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>#qr_pagination">
-                                                <?php echo $counter; ?>
-                                            </a>
-                                        </li>
-                                    <?php
-                                    }
-                                    ?>
-
-                                    <li class="page-item">
-                                        <a class="page-link qr-code-pagination <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '#qr_pagination"' : ''; ?>>
-                                            <i class="fas fa-chevron-right"></i>
-                                        </a>
-                                    </li>
-                                </ul>
-                            </nav>
+                    <div class="d-flex justify-content-between pagination-qr">
+                        <div class="p-10 d-none d-lg-block">
+                            <strong>Page <?php echo $page_no; ?> of <?php echo $total_no_of_pages ?></strong>
                         </div>
 
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link qr-code-pagination <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '#qr_pagination"' : ''; ?>>
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
 
+                                <?php
+                                // Calculate start and end page numbers to display
+                                $start_page = max(1, $page_no - 1);
+                                $end_page = min($total_no_of_pages, $page_no + 1);
+
+                                for ($counter = $start_page; $counter <= $end_page; $counter++) {
+                                ?>
+                                    <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
+                                        <a class="page-link qr-code-pagination <?php echo ($page_no == $counter) ? 'bg-secondary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>#qr_pagination">
+                                            <?php echo $counter; ?>
+                                        </a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+
+                                <li class="page-item">
+                                    <a class="page-link qr-code-pagination <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '#qr_pagination"' : ''; ?>>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
                     </div>
                 </div>
 

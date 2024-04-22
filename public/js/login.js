@@ -60,6 +60,7 @@ const form = document.getElementById('loginForm');
 const email = document.getElementById('email');
 const password = document.getElementById('password');
 
+
 form.addEventListener('submit', e => {
     e.preventDefault();
 
@@ -92,28 +93,42 @@ const isValidEmail = email => {
     return re.test(String(email).toLowerCase());
 };
 
+
+
 const validateInputs = () => {
-    const emailValue = email.value.trim();
-    const passwordValue = password.value.trim();
+  let isValid = true; // Flag to track overall validation status
+  const errors = {}; // Object to store error messages
 
-    if (emailValue === '') {
-        setError(email, 'Email is required');
-        return false;
-    } else if (!isValidEmail(emailValue)) {
-        setError(email, 'Invalid email!');
-        return false;
-    } else {
-        setSuccess(email);
-    }
+  const emailValue = email.value.trim();
+  const passwordValue = password.value.trim();
 
-    if (passwordValue === '') {
-        setError(password, 'Password is required');
-        return false;
-    } else {
-        setSuccess(password);
-    }
+  if (emailValue === '') {
+      errors.email = 'Email is required';
+      isValid = false;
+  } else if (!isValidEmail(emailValue)) {
+      errors.email = 'Invalid email!';
+      isValid = false;
+  }
 
-    return true; // Both inputs are valid
+  if (passwordValue === ''){
+      errors.number = 'Password is required';
+      isValid = false;
+  } 
+
+  // Set error messages for each input field
+  for (const field in errors) {
+      if (errors.hasOwnProperty(field)) {
+          setError(document.getElementById(field), errors[field]);
+      }
+  }
+
+  // Set success for fields without errors
+  const fieldsWithoutErrors = ['email', 'password'];
+  fieldsWithoutErrors.forEach(field => {
+      if (!errors[field]) {
+          setSuccess(document.getElementById(field));
+      }
+  });
+
+  return isValid; // Return overall validation status
 };
-
-

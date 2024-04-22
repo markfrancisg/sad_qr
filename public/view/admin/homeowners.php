@@ -20,7 +20,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form class="user" method="post" action="../../../includes/admin/homeowner.inc.php">
+                    <form class="user" method="post" action="../../../includes/admin/homeowner.inc.php" id="homeownerForm">
                         <div class="d-flex justify-content-start ">
                             <h5>Personal Details</h5>
                         </div>
@@ -31,39 +31,42 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                             ?>
                         </div>
                         <div class="row">
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-md-6 col-sm-12 mb-3 homeowner-field">
                                 <input type="text" class="form-control form-control-user form-control-color" id="first_name" name="first_name" placeholder="First Name">
+                                <div class="error-container"> <span id="first_name_error" class="error"></span></div>
                             </div>
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-md-6 col-sm-12 mb-3 homeowner-field">
                                 <input type="text" class="form-control form-control-user form-control-color" id="last_name" name="last_name" placeholder="Last Name">
+                                <div class="error-container"> <span id="last_name_error" class="error"></span></div>
                             </div>
                         </div>
 
                         <div class="row">
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-sm-6  mb-3 homeowner-field">
                                 <input type="email" class="form-control form-control-user form-control-color" id="email" name="email" placeholder="Email Address">
-                                <div class="mt-1 ml-2"><span id="emailValidationResult"></span></div>
+                                <div class="error-container"> <span id="first_name_error" class="error"></span></div>
                             </div>
                             <div class="col-sm-6 mb-3 homeowner-field">
                                 <input type="text" class="form-control form-control-user form-control-color" id="number" name="number" placeholder="Phone Number" minlength="11" required>
-                                <div class="mt-1 ml-2"><span id="numberError" class="error"></span></div>
+                                <div class="error-container"> <span id="first_name_error" class="error"></span></div>
                             </div>
-
                         </div>
                         <hr>
                         <div class="d-flex justify-content-start ">
                             <h5>Address</h5>
                         </div>
                         <div class="row">
-
-                            <div class="col-sm-3 mb-3">
+                            <div class="col-sm-3 mb-3 homeowner-field">
                                 <input type="text" class="form-control form-control-user form-control-color" id="block" name="block" placeholder="Block">
+                                <div class="error-container"> <span id="first_name_error" class="error"></span></div>
                             </div>
-                            <div class="col-sm-3 mb-3">
+                            <div class="col-sm-3 mb-3 homeowner-field">
                                 <input type="text" class="form-control form-control-user form-control-color" id="lot" name="lot" placeholder="Lot">
+                                <div class="error-container"> <span id="first_name_error" class="error"></span></div>
                             </div>
-                            <div class="col-sm-6 mb-3">
+                            <div class="col-sm-6 mb-3 homeowner-field">
                                 <input type="text" class="form-control form-control-user form-control-color" id="street" name="street" placeholder="Street">
+                                <div class="error-container"> <span id="first_name_error" class="error"></span></div>
                             </div>
                         </div>
                         <div class="col-sm-12 text-center"> <!-- Center the button horizontally within its parent container -->

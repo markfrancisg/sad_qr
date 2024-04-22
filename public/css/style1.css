@@ -88,6 +88,13 @@
     color: #6e707e;
 }
 
+.homeowner-field{
+  height: 60px;
+}
+
+
+
+
 .title-custom-color {
   background: #77BA8E; /* Set the background color */
   margin: 5px; /* Add margin as needed */
@@ -177,11 +184,16 @@
     }
 
 
-  /* for the AJAX Request homeowner email check */
+  .error-container {
+    position: relative;
+}
+
 .error {
-  color: #f27474 !important; /* Dark red */
-  font-size: 16px !important;
-  margin-top: 5px !important;
+    top: 100%;
+    left: 0;
+    width: 100%;
+    color: #ff3860;
+    font-size: 12px;
 }
 
 .filter-border{

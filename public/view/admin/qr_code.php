@@ -31,32 +31,35 @@ $homeowner_email = get_homeowner_email($pdo);
                 </div>
                 <!-- Card Body -->
                 <div class="card-body">
-                    <form class="user" method="post" action="../../../includes/admin/create_qr.inc.php">
+                    <form class="user" method="post" action="../../../includes/admin/create_qr.inc.php" id="qrCodeForm">
                         <?php
                         check_create_vehicle_errors();
                         creation_success(); ?>
                         <div class="row ">
                             <div class="col-sm-6 mb-3">
-                                <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="email">
-                                    <option value="" disabled>Email Address</option>
+                                <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="email" required>
+                                    <option value="" disabled selected>Email Address</option>
                                     <?php foreach ($homeowner_email as $email) : ?>
                                         <option value="<?= $email['email'] ?>"><?= $email['email'] ?></option>
                                     <?php endforeach; ?>
                                 </select>
                             </div>
                             <div class="col-sm-6 mb-3">
-                                <input type="text" class="form-control form-control-user form-control-color readonly-color" id="address" name="address" placeholder="Address" value="Default Address" readonly>
+                                <input type="text" class="form-control form-control-user form-control-color readonly-color" id="address" name="address" placeholder="Address" value="" readonly>
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="vehicle_type" name="vehicle_type" placeholder="Vehicle Type">
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="wheel" name="wheel" placeholder="Vehicle Wheels">
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                             <div class="col-sm-4 mb-3">
                                 <input type="text" class="form-control form-control-user form-control-color" id="plate_number" name="plate_number" placeholder="Plate No">
+                                <div class="error-container"> <span class="error"></span></div>
                             </div>
                         </div>
                         <div class="col-sm-12 text-center">

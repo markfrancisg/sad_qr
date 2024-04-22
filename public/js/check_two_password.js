@@ -82,9 +82,14 @@
 // });
 
 
+
+
+
+
 const form = document.getElementById('resetConfirmform');
 const password = document.getElementById('password');
-const password2 = document.getElementById('confirm_password');
+const confirm_password = document.getElementById('confirm_password');
+
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -101,8 +106,8 @@ const setError = (element, message) => {
 
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
-    inputControl.classList.remove('success')
-}
+    inputControl.classList.remove('success');
+};
 
 const setSuccess = element => {
     const inputControl = element.parentElement;
@@ -113,42 +118,46 @@ const setSuccess = element => {
     inputControl.classList.remove('error');
 };
 
-
 const validateInputs = () => {
-    const passwordValue = password.value.trim();
-    const password2Value = password2.value.trim();
+    let isValid = true; // Flag to track overall validation status
+    const errors = {}; // Object to store error messages
 
+    const passwordValue = password.value.trim();
+    const confirmPasswordValue = confirm_password.value.trim();
 
     if (passwordValue === '') {
-        setError(password, 'Password is required');
-        return false;
-    } else if (passwordValue.length < 8 ) {
-        setError(password, 'Password must be at least 8 characters.');
-        return false;
-    } else if (!/[A-Z]/.test(passwordValue)) {
-        setError(password, 'Password must contain at least one uppercase letter.');
-        return false;
-
-    } else if (!/[a-z]/.test(passwordValue)) {
-        setError(password, 'Password must contain at least one lowercase letter.');
-        return false;
-
-    } else if (!/\d/.test(passwordValue)) {
-        setError(password, 'Password must contain at least one number.');
-        return false;
-    } else {
-        setSuccess(password);
+        errors.password = 'Password is required';
+        isValid = false;
+    } else if (passwordValue.length < 8) {
+        errors.password = 'Password must be at least 8 characters.';
+        isValid = false;
+    } else if (!/[A-Z]/.test(passwordValue) || !/[a-z]/.test(passwordValue) || !/\d/.test(passwordValue)) {
+        errors.password = 'Password must contain at least one uppercase and lowercase letter and one number.';
+        isValid = false;
     }
 
-    if(password2Value === '') {
-        setError(password2, 'Please confirm your password');
-        return false;
-    } else if (password2Value !== passwordValue) {
-        setError(password2, "Passwords do not match");
-        return false;
-    } else {
-        setSuccess(password2);
+    if (confirmPasswordValue === '') {
+        errors.confirm_password = 'Confirm your password';
+        isValid = false;
+    } else if (confirmPasswordValue !== passwordValue) {
+        errors.confirm_password = 'Passwords do not match!';
+        isValid = false;
     }
-    return true;
 
+    // Set error messages for each input field
+    for (const field in errors) {
+        if (errors.hasOwnProperty(field)) {
+            setError(document.getElementById(field), errors[field]);
+        }
+    }
+
+    // Set success for fields without errors
+    const fieldsWithoutErrors = ['password', 'confirm_password'];
+    fieldsWithoutErrors.forEach(field => {
+        if (!errors[field]) {
+            setSuccess(document.getElementById(field));
+        }
+    });
+
+    return isValid; // Return overall validation status
 };

@@ -78,6 +78,7 @@
 }
 
 
+
 .form-control-drop-down{
     width: 100%;
     height: 50px;
@@ -196,6 +197,14 @@
     font-size: 12px;
 }
 
+.form-control.success input{
+  border-color: #09c372 !important;
+}
+
+.form-control.error input{
+border-color: #ff3860 !important;
+}
+
 .filter-border{
   border: 1px solid #ccc; /* Add border */
   padding: 5px; /* Add padding for spacing */
@@ -257,6 +266,13 @@ body {
 
 .form-control:focus {
   box-shadow: none;
+}
+
+
+.form-control .error {
+  color: #ff3860 !important;
+  font-size: small !important;
+  margin-top: 0px !important;
 }
 
 /* SPINNER */

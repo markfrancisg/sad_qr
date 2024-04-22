@@ -22,7 +22,7 @@ $results2 = get_unpaid_qr($pdo);
         </div>
     </div>
 
-    <div class="row">
+    <div class="row" id="paid_accounts">
         <!-- Area Chart -->
         <div class="col-12">
             <div class="card shadow mb-8 smallscreen-card">
@@ -74,7 +74,7 @@ $results2 = get_unpaid_qr($pdo);
 
 
 
-    <div class="row mt-4">
+    <div class="row mt-4" id="unpaid_accounts">
         <!-- Area Chart -->
         <div class="col-12">
             <div class="card shadow mb-8 smallscreen-card">

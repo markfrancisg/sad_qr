@@ -104,7 +104,7 @@ $admin_name = get_admin_name($pdo, $admin_email);
     <div class="row mt-3">
         <!-- Area Chart -->
         <div class="col-xl-6 col-lg-7">
-            <a href="balance.php">
+            <a href="balance.php#paid_accounts">
                 <div class="card card-hover shadow mb-4 h-100 smallscreen-card">
                     <h6 class="mt-4 ml-4 font-weight-bold smallscreen-h6-title">
                         <span class="text-white title-custom-color rounded">Paid</span>
@@ -149,7 +149,7 @@ $admin_name = get_admin_name($pdo, $admin_email);
         </div>
 
         <div class="col-xl-6 col-lg-5 mt-3 mt-lg-0">
-            <a href="balance.php">
+            <a href="balance.php#unpaid_accounts">
                 <div class="card card-hover shadow mb-4 h-100 smallscreen-card">
                     <!-- Card Header - Dropdown -->
                     <!-- <div class="card-header py-3 d-flex flex-row align-items-center justify-content-between">

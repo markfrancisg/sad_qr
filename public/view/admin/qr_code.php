@@ -72,7 +72,7 @@ $homeowner_email = get_homeowner_email($pdo);
         </div>
     </div>
 
-    <div class="row mt-4">
+    <div class="row mt-4" id="qr_pagination">
         <!-- Area Chart -->
         <div class="col-12">
             <div class="card shadow mb-8 smallscreen-card">
@@ -138,16 +138,16 @@ $homeowner_email = get_homeowner_email($pdo);
                         </table>
 
                         <div class="d-flex justify-content-between">
-
                             <div class="p-10">
-                                <strong>Page <?php echo $page_no; ?> of
-                                    <?php echo $total_no_of_pages ?></strong>
+                                <strong>Page <?php echo $page_no; ?> of <?php echo $total_no_of_pages ?></strong>
                             </div>
 
                             <nav aria-label="Page navigation example">
                                 <ul class="pagination">
                                     <li class="page-item">
-                                        <a class="page-link qr-code-pagination <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '"' : ''; ?>><i class="fas fa-chevron-left"></i></a>
+                                        <a class="page-link qr-code-pagination <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '#qr_pagination"' : ''; ?>>
+                                            <i class="fas fa-chevron-left"></i>
+                                        </a>
                                     </li>
 
                                     <?php
@@ -158,21 +158,21 @@ $homeowner_email = get_homeowner_email($pdo);
                                     for ($counter = $start_page; $counter <= $end_page; $counter++) {
                                     ?>
                                         <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
-                                            <a class="page-link qr-code-pagination <?php echo ($page_no == $counter) ? 'bg-secondary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>"><?php echo $counter; ?></a>
+                                            <a class="page-link qr-code-pagination <?php echo ($page_no == $counter) ? 'bg-secondary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>#qr_pagination">
+                                                <?php echo $counter; ?>
+                                            </a>
                                         </li>
                                     <?php
                                     }
                                     ?>
 
                                     <li class="page-item">
-                                        <a class="page-link qr-code-pagination <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '"' : ''; ?>><i class="fas fa-chevron-right"></i> </a>
+                                        <a class="page-link qr-code-pagination <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '#qr_pagination"' : ''; ?>>
+                                            <i class="fas fa-chevron-right"></i>
+                                        </a>
                                     </li>
                                 </ul>
                             </nav>
-
-
-
-
                         </div>
 
 

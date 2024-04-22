@@ -38,7 +38,7 @@ $homeowner_email = get_homeowner_email($pdo);
                         <div class="row ">
                             <div class="col-sm-6 mb-3">
                                 <select class="form-control form-control-drop-down form-control-color" id="dropdownMenu" name="email">
-                                    <option value="">Email Address</option>
+                                    <option value="" disabled>Email Address</option>
                                     <?php foreach ($homeowner_email as $email) : ?>
                                         <option value="<?= $email['email'] ?>"><?= $email['email'] ?></option>
                                     <?php endforeach; ?>

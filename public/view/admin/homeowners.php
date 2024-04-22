@@ -21,8 +21,8 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                 <!-- Card Body -->
                 <div class="card-body">
                     <form class="user" method="post" action="../../../includes/admin/homeowner.inc.php" id="homeownerForm">
-                        <div class="d-flex justify-content-start ">
-                            <h5>Personal Details</h5>
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <h6 class="h5 text-gray-800 smallscreen-h6-text">Personal Details</h6>
                         </div>
                         <div>
                             <?php
@@ -52,8 +52,8 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                             </div>
                         </div>
                         <hr>
-                        <div class="d-flex justify-content-start ">
-                            <h5>Address</h5>
+                        <div class="d-sm-flex align-items-center justify-content-between">
+                            <h6 class="h5 text-gray-800 smallscreen-h6-text">Address</h6>
                         </div>
                         <div class="row">
                             <div class="col-sm-3 mb-3 homeowner-field">

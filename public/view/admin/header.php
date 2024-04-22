@@ -37,6 +37,10 @@ function isActive($page)
 </head>
 
 <body id="page-top">
+    <div class="spinner-wrapper">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
     <!-- Page Wrapper -->
     <div id="wrapper">
         <!-- Sidebar -->

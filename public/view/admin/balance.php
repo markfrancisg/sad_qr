@@ -16,6 +16,7 @@ $results2 = get_unpaid_qr($pdo);
 
 <div class="container-fluid">
 
+
     <div class="row">
         <div class="d-block d-sm-none">
             <h3 class="h3 fw-b smallscreen-h3">Balance</h3>

@@ -245,10 +245,9 @@ body {
   box-shadow: none;
 }
 
-  
-
-  /* .spinner-wrapper{
-    background-color: black;
+/* SPINNER */
+  .spinner-wrapper{
+    background-color: #2f4a39;
     position:fixed;
     top: 0;
     left:0;
@@ -260,10 +259,12 @@ body {
     align-items: center;
     transition: all 0.2s;
   }
+
   .spinner-border{
-    height: 70px;
-    width: 70px;
-  } */
+    height: 80px;
+    width: 80px;
+    color:#6D987B;
+  }
 
 
 
@@ -365,6 +366,15 @@ body {
       color:black;
     }
 
+    .filter-border {
+      display: flex;
+      justify-content: flex-end; 
+      border: 1px solid #ccc; 
+      padding: 5px; 
+      background-color: #D9D9D9;
+      height: 30px;
+      width: 60px;
+    }
     
 
 

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Apr 20, 2024 at 08:41 AM
+-- Generation Time: Apr 22, 2024 at 07:28 AM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,9 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`) VALUES
 (35, 'gorreonfrancis@gmail.com', '$2y$12$DKUBvLnuDkE9UkkWMFxpVOEufC7pVkPZ9t/jrusFlDG766SaBYkLy', NULL, '2024-04-11 01:20:11', 7, '042d37dd0f3872be3a953a3c98df6756', '2024-04-20 05:40:17'),
-(49, 'carlrenanduran@gmail.com', '$2y$12$aE9yV0C6lAgPwPGi4kEd8.psfgxanXgZM2ooLhDf7qWiDFQJ8D0P.', NULL, '2024-04-14 19:20:32', 1, 'ad8f1c613c97d38fcfd2d3ae4c949bde', '2024-04-20 06:55:54');
+(53, 'lebleb@gmail.com', '$2y$12$a/x1weBtuSEMWLBbf8V0POGA5oiYaq/5rXN7p9lWyQT7lQ4xbWITW', NULL, '2024-04-22 03:02:01', 7, '', NULL),
+(54, 'jbatistat@gmail.com', '$2y$12$/8ofZTEpy3Jyi8iMW68M1u2PwBQ2BEmWaGpbfgjcsjI2d1YOh9PlW', NULL, '2024-04-22 03:07:29', 1, '', NULL),
+(55, 'blacqueswan@gmail.com', '$2y$12$wkkP9HDUSrbUOT8ZsHsDkOgPipG9UE001ap3aAJYfd6EX0nI8a0lO', NULL, '2024-04-22 03:08:00', 7, '', NULL);
 
 -- --------------------------------------------------------
 
@@ -55,8 +57,11 @@ INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, 
 CREATE TABLE `homeowners` (
   `ho_id` int(10) NOT NULL COMMENT 'This is the primary key for homeowners.',
   `email` varchar(255) NOT NULL COMMENT 'This stores the emails of the homeowners.',
-  `name` varchar(50) NOT NULL COMMENT 'This stores the names of the homeowners.',
-  `address` varchar(255) NOT NULL COMMENT 'This stores the addresses.',
+  `first_name` varchar(50) NOT NULL COMMENT 'This stores the names of the homeowners.',
+  `last_name` varchar(50) NOT NULL,
+  `block` varchar(10) NOT NULL COMMENT 'This stores the addresses.',
+  `lot` varchar(10) NOT NULL,
+  `street` varchar(50) NOT NULL,
   `number` varchar(50) NOT NULL COMMENT 'This stores the phone numbers.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
@@ -64,22 +69,24 @@ CREATE TABLE `homeowners` (
 -- Dumping data for table `homeowners`
 --
 
-INSERT INTO `homeowners` (`ho_id`, `email`, `name`, `address`, `number`) VALUES
-(1, 'jerome@gmail.com', 'Jerome Ponce', '18 26 Lexus', '09458022222'),
-(2, 'marina@gmail.com', 'Marina Summers', 'Block 17 ,Lot 17 Peony', '09888888888'),
-(3, 'nicole@gmail.com', 'Nicole Pardaux', 'Block 10 ,Lot 10 CasaNovaStreet', '09990000000'),
-(4, 'carl@gmail.com', 'Carl Duran', 'Block 9 ,Lot 9 Cornedbeef Street', '09766662222'),
-(5, 'mj@gmail.com', 'MJ Limo', 'Block 8 ,Lot 8 Star Street', '09567889232'),
-(6, 'renan@gmail.com', 'Carl Renan Duran', 'Block 4 ,Lot 4 Celina Street', '09121231231'),
-(7, 'blacqueswan@gmail.com', 'Black Swan', 'Block 18 ,Lot 26 Lexus Street', '09124544444'),
-(8, 'gorreonallan@gmail.com', 'Bernadette Gorreon', 'Block 18 ,Lot 26 Lexus Street', '09876542647'),
-(9, 'm@gmail.com', 'Mark gorreon', 'Block 12 ,Lot 12 Star Street', '09871222222'),
-(10, 'l@gmail.com', 'Mark Francis', 'Block 98 ,Lot 82 Mega Street', '09672332333'),
-(11, 't@gmail.com', 'T M', 'Block 12 ,Lot 12 Star Street', '09124441232'),
-(12, 'b@gmail.com', 'b l', 'Block 12 ,Lot 12 Star Street', '09123432222'),
-(13, 'barrientoshannah13@gmail.com', 'Hannah  Barrientos', 'Block 12 ,Lot 12 Agata Street', '09872323232'),
-(14, 'pig@gmail.com', 'Peppa pig', 'Block 18 ,Lot 19 Meow Street', '09123433333'),
-(15, 'carlrenanduran@gmail.com', 'Carl Renan Duran', 'Block 10 ,Lot 14 Jade Street', '09991738693');
+INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, `lot`, `street`, `number`) VALUES
+(1, 'jerome@gmail.com', 'Jerome Ponce', '', '18', '0', '', '09458022222'),
+(2, 'marina@gmail.com', 'Marina Summers', '', '0', '0', '', '09888888888'),
+(3, 'nicole@gmail.com', 'Nicole Pardaux', '', '0', '0', '', '09990000000'),
+(4, 'carl@gmail.com', 'Carl Duran', '', '0', '0', '', '09766662222'),
+(5, 'mj@gmail.com', 'MJ Limo', '', '0', '0', '', '09567889232'),
+(6, 'renan@gmail.com', 'Carl Renan Duran', '', '0', '0', '', '09121231231'),
+(7, 'blacqueswan@gmail.com', 'Black Swan', '', '0', '0', '', '09124544444'),
+(8, 'gorreonallan@gmail.com', 'Bernadette Gorreon', '', '0', '0', '', '09876542647'),
+(9, 'm@gmail.com', 'Mark gorreon', '', '0', '0', '', '09871222222'),
+(10, 'l@gmail.com', 'Mark Francis', '', '0', '0', '', '09672332333'),
+(11, 't@gmail.com', 'T M', '', '0', '0', '', '09124441232'),
+(12, 'b@gmail.com', 'b l', '', '0', '0', '', '09123432222'),
+(13, 'barrientoshannah13@gmail.com', 'Hannah  Barrientos', '', '0', '0', '', '09872323232'),
+(14, 'pig@gmail.com', 'Peppa pig', '', '0', '0', '', '09123433333'),
+(15, 'carlrenanduran@gmail.com', 'Carl Renan Duran', '', '0', '0', '', '09991738693'),
+(16, 'ssdfsdf@gmail.com', 'sfsdf sdfsdf', '', '0', '0', '', '09232222222'),
+(17, 'jacob@gmail.com', 'JacobJacob', 'Gorreon', '18', '26', 'Lexus', '09121111111');
 
 -- --------------------------------------------------------
 
@@ -116,26 +123,67 @@ CREATE TABLE `qr_info` (
 --
 
 INSERT INTO `qr_info` (`qr_id`, `qr_code`, `wheel`, `vehicle_type`, `plate_number`, `expiration_date`, `registered`, `ho_id`) VALUES
-(22, 'Not Registered', 4, 'Sedan', 'NED-5724', NULL, 0, 7),
-(23, 'Not Registered', 8, 'Truck', 'MMM-1234', NULL, 0, 7),
-(24, 'Not Registered', 4, 'Crossover', 'MNB-1230', NULL, 0, 7),
-(25, 'Not Registered', 4, 'Sportscar', 'VVV-0000', NULL, 0, 7),
-(26, 'Not Registered', 4, 'Sedan', 'MNB-1989', NULL, 0, 8),
-(27, 'Not Registered', 4, 'Civic', 'BBB-7865', NULL, 0, 3),
-(28, 'Not Registered', 4, 'Limo', 'FGHJ-1234', NULL, 0, 7),
-(29, 'Not Registered', 123, 'Sedan', 'asdfasdf', NULL, 0, 8),
-(30, 'Not Registered', 12, 'asdfasdf', 'asdfasdf', NULL, 0, 7),
-(31, 'Not Registered', 34567, 'dfghjk', 'dfghjk', NULL, 0, 7),
-(32, 'Not Registered', 0, 'asdf', 'asdf', NULL, 0, 3),
-(33, 'Not Registered', 0, 'asdf', 'sfsdf', NULL, 0, 9),
-(34, 'Not Registered', 4, 'Ferrari', 'UUU-0000', NULL, 0, 8),
-(35, 'Not Registered', 4, 'Bugatti', 'VBN-1230', NULL, 0, 5),
-(36, 'Not Registered', 4, 'Pickup', 'III-JJJJ', NULL, 0, 3),
-(37, 'Not Registered', 4, 'SUV', 'LKJ-8902', NULL, 0, 13),
-(38, 'Not Registered', 4, 'Sedan', 'nmb-1231', NULL, 0, 13),
-(39, 'Not Registered', 4, 'Sedan', 'MNH-1234', NULL, 0, 14),
-(40, 'TNiabZslXd', 6, 'Truck', 'MNV-1231', '2024-04-21', 1, 8),
-(41, 'wUxL5NQ9sw', 4, 'SEDAN', 'QWERTYU', '2024-04-21', 1, 15);
+(69, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
+(70, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
+(71, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
+(72, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
+(73, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
+(74, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
+(75, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
+(76, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
+(77, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
+(78, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
+(79, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
+(80, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
+(81, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
+(82, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
+(83, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
+(84, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
+(85, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
+(86, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
+(87, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
+(88, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
+(89, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
+(90, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(91, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
+(92, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
+(93, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
+(94, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(95, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(96, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(97, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(98, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(99, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(100, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(101, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(102, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(103, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
+(104, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(105, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(106, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(107, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(108, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(109, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(110, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(111, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(112, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(113, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(114, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(115, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(116, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(117, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(118, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
+(119, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(120, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(121, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(122, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(123, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(124, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(125, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(126, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(127, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(128, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
+(129, 'cDN8mGzEl8', 4, 'Honda Civic', 'QWER-0987', '2024-04-23', 1, 17);
 
 -- --------------------------------------------------------
 
@@ -176,7 +224,8 @@ CREATE TABLE `station_info` (
 
 CREATE TABLE `user_info` (
   `info_id` int(10) NOT NULL COMMENT 'This is the primary key.',
-  `account_name` varchar(50) NOT NULL COMMENT 'This stores the name of the accounts.',
+  `account_first_name` varchar(50) NOT NULL COMMENT 'This stores the name of the accounts.',
+  `account_last_name` varchar(50) NOT NULL,
   `account_number` varchar(30) NOT NULL COMMENT 'This stores the numbers of the accounts.',
   `account_id` int(10) NOT NULL COMMENT 'This is a foreign key to reference the account table.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
@@ -185,9 +234,11 @@ CREATE TABLE `user_info` (
 -- Dumping data for table `user_info`
 --
 
-INSERT INTO `user_info` (`info_id`, `account_name`, `account_number`, `account_id`) VALUES
-(26, 'Mark Gorreon', '09232222222', 35),
-(40, 'Carl Duran', '09787888888', 49);
+INSERT INTO `user_info` (`info_id`, `account_first_name`, `account_last_name`, `account_number`, `account_id`) VALUES
+(26, 'Mark Gorreon', '', '09232222222', 35),
+(44, 'Lebron', 'James', '09121111111', 53),
+(45, 'Jon', 'Batista', '09123433333', 54),
+(46, 'Blacque', 'Swan', '09121110000', 55);
 
 --
 -- Indexes for dumped tables
@@ -248,13 +299,13 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=53;
+  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=56;
 
 --
 -- AUTO_INCREMENT for table `homeowners`
 --
 ALTER TABLE `homeowners`
-  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=16;
+  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=18;
 
 --
 -- AUTO_INCREMENT for table `log`
@@ -266,7 +317,7 @@ ALTER TABLE `log`
 -- AUTO_INCREMENT for table `qr_info`
 --
 ALTER TABLE `qr_info`
-  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=42;
+  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `role_info`
@@ -284,7 +335,7 @@ ALTER TABLE `station_info`
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=44;
+  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=47;
 
 --
 -- Constraints for dumped tables

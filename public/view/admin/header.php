@@ -175,7 +175,7 @@ function isActive($page)
                             </a>
                             <!-- Dropdown - User Information -->
                             <div class="dropdown-menu user-profile-option dropdown-menu-right shadow animated--grow-in" aria-labelledby="userDropdown">
-                                <a class="dropdown-item text-center" href="#">
+                                <a class="dropdown-item text-center" href="profile.php">
                                     Profile
                                 </a>
                                 <div class="dropdown-divider"></div>

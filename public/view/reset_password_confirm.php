@@ -16,7 +16,9 @@ require_once '../../includes/reset_password_new_view.inc.php';
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>User Login</title>
+    <title>Reset Password</title>
+    <link rel="icon" type="image/png" href="../../entrance_pic.jpg">
+
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>

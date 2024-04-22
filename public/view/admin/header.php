@@ -9,7 +9,18 @@ function isActive($page)
     return basename($_SERVER['PHP_SELF']) == $page ? 'active' : '';
 }
 
+// Define page titles for each page
+$page_titles = array(
+    'admin.dashboard.php' => 'Dashboard',
+    'homeowners.php' => 'Homeowners',
+    'qr_code.php' => 'QR Code',
+    'balance.php' => 'Balance',
+    'accounts.php' => 'Accounts',
+    'logs.php' => 'Records Logs'
+);
 
+$current_page = basename($_SERVER['PHP_SELF']);
+$title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San Lorenzo South SeQRity';
 ?>
 
 <!DOCTYPE html>
@@ -22,7 +33,10 @@ function isActive($page)
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>SB Admin 2 - Dashboard</title>
+    <title><?php echo $title; ?></title>
+
+    <!-- LOGO FOUND IN THE BROWSER TAB -->
+    <link rel="icon" type="image/png" href="../../../entrance_pic.jpg">
 
     <!-- Custom fonts for this template-->
     <link href="../../../vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />

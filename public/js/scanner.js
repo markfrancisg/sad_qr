@@ -14,7 +14,7 @@ domReady(function () {
     // If QR code is found
     function onScanSuccess(decodeText, decodeResult) {
         // Redirect to a PHP script with the decoded QR code text as a query parameter
-        window.location.href = "../../../includes/QrCodeScannerController.php?qr_text=" + encodeURIComponent(decodeText);
+        window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(decodeText);
     }
 
     // Render the QR code scanner

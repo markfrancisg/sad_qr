@@ -1,7 +1,9 @@
 <?php
 
 require_once 'header.php';
+require_once '../../../includes/SetStation_contr.inc.php';
 
+set_station();
 ?>
 
 <!-- Begin Page Content -->

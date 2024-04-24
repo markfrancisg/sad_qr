@@ -1,7 +1,11 @@
 <?php
 
 require_once 'header.php';
+require_once '../../../includes/dbh.inc.php';
+require_once '../../../includes/CheckQrStatus_model.inc.php';
+require_once '../../../includes/CheckQrStatus_contr.inc.php';
 
+check_registration_status($pdo); //update all the payment records
 ?>
 
 <!-- Begin Page Content -->
@@ -42,12 +46,6 @@ require_once 'header.php';
                 </div>
             </a>
         </div>
-
-
-
-
-
-
 
     </div>
 

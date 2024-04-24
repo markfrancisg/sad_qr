@@ -25,6 +25,20 @@ function redirectUser()
     }
 }
 
+// for reset and resetconfirm pages
+function redirectUserReset()
+{
+    if (isset($_SESSION["role_description"]) && isset($_SESSION['account_id']) && isset($_SESSION['account_email'])) {
+        if ($_SESSION["role_description"] === 'admin') {
+            header("Location: admin/admin.dashboard.php");
+            exit();
+        } else if ($_SESSION["role_description"] === 'guard') {
+            header("Location: guard/guard.dashboard.php");
+            exit();
+        }
+    }
+}
+
 
 
 //if user tries to access page directly without loggin in

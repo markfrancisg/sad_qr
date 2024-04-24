@@ -1,10 +1,9 @@
 <?php
 require_once '../../includes/config.session.inc.php';
-// require_once '../../includes/authenticate.inc.php';
+require_once '../../includes/authenticate.inc.php';
 require_once '../../includes/reset_password_view.inc.php';
 
-// redirectUser();
-
+redirectUserReset();
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -21,11 +21,8 @@ if (isset($_GET['qr_text'])) {
         $results = scan_qr($pdo, $qr_text);
 
         if (!$results) {
-            echo "No QR Code Results Found!";
+            header("Location: ../public/view/guard/scan_results.php?entry=denied");
             exit();
-            // $_SESSION['no_result'] = "No QR Code Results Found!";
-            // exit();
-            // header("Location: ../public/view/guard/scan_results.php");
         }
 
         if ($results) {
@@ -41,16 +38,19 @@ if (isset($_GET['qr_text'])) {
 
             record_log($pdo, $qr_id, $station_id);
 
-            $_SESSION['name'] =  $name;
-            $_SESSION['address'] =  $address;
-            $_SESSION['qr_code'] =  $qr_code;
-            $_SESSION['wheel'] =   $wheel;
-            $_SESSION['vehicle_type'] = $vehicle_type;
-            $_SESSION['plate_number'] = $plate_number;
+            $qr_scan_result = array(
+                'name' => $name,
+                'address' => $address,
+                'qr_code' => $qr_code,
+                'wheel' => $wheel,
+                'vehicle_type' => $vehicle_type,
+                'plate_number' => $plate_number
+            );
 
+            $_SESSION['vehicle_data_qr_scan'] = $qr_scan_result;
 
             //redirect the user to the details page
-            header("Location: ../public/view/guard/scan_results.php");
+            header("Location: ../public/view/guard/scan_results.php?entry=success");
         }
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());

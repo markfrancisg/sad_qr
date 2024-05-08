@@ -5,7 +5,11 @@ declare(strict_types=1);
 
 function scan_qr(object $pdo, string $qr_text)
 {
-    $query = "SELECT qr_id, wheel, vehicle_type, plate_number, registered, ho_id FROM qr_info WHERE qr_code = :qr_code;";
+    $query = "SELECT qr_info.qr_id, qr_info.wheel, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_code, homeowners.first_name, 
+    homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street 
+              FROM qr_info
+              JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+              WHERE qr_info.qr_code = :qr_code";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":qr_code", $qr_text);
     $stmt->execute();

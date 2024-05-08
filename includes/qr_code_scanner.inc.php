@@ -20,6 +20,14 @@ if (isset($_GET['qr_text'])) {
         //check if qr_text is existing in the database
         $results = scan_qr($pdo, $qr_text);
 
+        if (!$results) {
+            echo "No QR Code Results Found!";
+            exit();
+            // $_SESSION['no_result'] = "No QR Code Results Found!";
+            // exit();
+            // header("Location: ../public/view/guard/scan_results.php");
+        }
+
         if ($results) {
 
             //insert the details in the log 
@@ -27,26 +35,22 @@ if (isset($_GET['qr_text'])) {
             $wheel = $results['wheel'];
             $vehicle_type = $results['vehicle_type'];
             $plate_number = $results['plate_number'];
-            $registered = $results['registered'];
-            $ho_id = $results['ho_id'];
+            $name = $results['first_name'] . " " . $results['last_name'];
+            $address = "Block " . $results['block'] . ", Lot " . $results['lot'] . " ," . $results['street'] . " Street";
+            $qr_code = $results['qr_code'];
 
             record_log($pdo, $qr_id, $station_id);
 
-            $_SESSION['qr_id'] =  $qr_id;
+            $_SESSION['name'] =  $name;
+            $_SESSION['address'] =  $address;
+            $_SESSION['qr_code'] =  $qr_code;
             $_SESSION['wheel'] =   $wheel;
             $_SESSION['vehicle_type'] = $vehicle_type;
             $_SESSION['plate_number'] = $plate_number;
-            $_SESSION['registered'] =  $registered;
-            $_SESSION['ho_id'] =  $ho_id;
 
 
             //redirect the user to the details page
             header("Location: ../public/view/guard/scan_results.php");
-        }
-
-        if (!$results) {
-            $_SESSION['no_result'] = "No QR Code Results Found!";
-            // header("Location: ../public/view/guard/scan_results.php");
         }
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());

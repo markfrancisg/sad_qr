@@ -1,6 +1,10 @@
 <?php
 include_once 'header.php';
 include_once '../../../includes/admin/homeowners_view.inc.php';
+require_once '../../../includes/Homeowner_model.inc.php';
+require_once '../../../includes/dbh.inc.php';
+include_once '../../../includes/HomeownerListController.php';
+
 ?>
 
 <div class="container-fluid">
@@ -79,6 +83,109 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
             </div>
         </div>
     </div>
+
+    <div class="row mt-4" id="homeowner_pagination">
+        <!-- Area Chart -->
+        <div class="col-12">
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Homeowner List</h6>
+                </div>
+                <div class="card-body">
+                    <div class="table-responsive">
+                        <table class="table" id="dataTable" width="100%" cellspacing="0">
+                            <thead>
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Email Address</th>
+                                    <th>Phone Number</th>
+                                    <th>Address</th>
+                                    <th>View</th>
+
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($results as $row) {
+                                    // $qr_id = $row['qr_id'];
+                                    $first_name = $row['first_name'];
+                                    $last_name = $row['last_name'];
+                                    $block = $row['block'];
+                                    $lot = $row['lot'];
+                                    $street = $row['street'];
+                                    $email = $row['email'];
+                                    $number = $row['number'];
+                                ?>
+                                    <tr>
+                                        <td><?php echo $first_name . " " . $last_name; ?></td>
+                                        <td><?php echo $email; ?></td>
+                                        <td><?php echo $number; ?></td>
+                                        <td><?php echo "Block " . $block . ", Lot " . $lot . " , " . $street . " Street"; ?></td>
+                                        <td>
+                                            <a href="" class="view-qr-detail">
+                                                <button class="btn btn-view-pay">View</button>
+                                            </a>
+                                        </td>
+                                    </tr>
+                                <?php
+                                }
+                                ?>
+
+                            </tbody>
+
+                        </table>
+                    </div>
+
+                    <div class="d-flex justify-content-between pagination-qr">
+                        <div class="p-10 d-none d-lg-block">
+                            <strong>Page <?php echo $page_no; ?> of <?php echo $total_no_of_pages ?></strong>
+                        </div>
+
+                        <nav aria-label="Page navigation example">
+                            <ul class="pagination">
+                                <li class="page-item">
+                                    <a class="page-link qr-code-pagination <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '#homeowner_pagination"' : ''; ?>>
+                                        <i class="fas fa-chevron-left"></i>
+                                    </a>
+                                </li>
+
+                                <?php
+                                // Calculate start and end page numbers to display
+                                $start_page = max(1, $page_no - 1);
+                                $end_page = min($total_no_of_pages, $page_no + 1);
+
+                                for ($counter = $start_page; $counter <= $end_page; $counter++) {
+                                ?>
+                                    <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
+                                        <a class="page-link qr-code-pagination <?php echo ($page_no == $counter) ? 'bg-secondary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>#homeowner_pagination">
+                                            <?php echo $counter; ?>
+                                        </a>
+                                    </li>
+                                <?php
+                                }
+                                ?>
+
+                                <li class="page-item">
+                                    <a class="page-link qr-code-pagination <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '#homeowner_pagination"' : ''; ?>>
+                                        <i class="fas fa-chevron-right"></i>
+                                    </a>
+                                </li>
+                            </ul>
+                        </nav>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+
+
 </div>
 
 

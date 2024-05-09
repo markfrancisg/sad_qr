@@ -81,8 +81,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San
             <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-nav <?php echo isActive('records.php'); ?>">
-                <a class="nav-link " href="homeowners.php">
+            <li class="nav-item sidebar-nav <?php echo isActive('record_logs.php'); ?>">
+                <a class="nav-link " href="record_logs.php">
                     <i class="fas fa-fw fa-user"></i>
                     <span>Record Logs</span></a>
             </li>

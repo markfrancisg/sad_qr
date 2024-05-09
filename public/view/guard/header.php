@@ -91,7 +91,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San
             <hr class="sidebar-divider my-0" />
 
             <li class="nav-item sidebar-nav <?php echo isActive('visitor.php'); ?>">
-                <a class="nav-link " href="balance.php">
+                <a class="nav-link " href="visitor.php">
                     <i class="fas fa-fw fa-money-check"></i>
                     <span>Visitor</span></a>
             </li>

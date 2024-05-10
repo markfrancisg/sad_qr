@@ -72,7 +72,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San
             <hr class="sidebar-divider my-0" />
 
             <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-nav <?php echo isActive('guard.dashboard.php'); ?>">
+            <li class="nav-item sidebar-nav <?php echo isActive('guard.dashboard.php')
+                                                || isActive('scan_qr.php') || isActive('scan_results.php') ? 'active' : ''; ?>">
                 <a class="nav-link" href="guard.dashboard.php">
                     <i class="fas fa-fw fa-tachometer-alt"></i>
                     <span>Scan</span></a>

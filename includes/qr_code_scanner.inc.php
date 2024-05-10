@@ -3,6 +3,11 @@
 if (isset($_GET['qr_text'])) {
     $qr_text = $_GET['qr_text'];
 
+    if ($qr_text === "Not Registered") {
+        header("Location: ../public/view/guard/scan_results.php?entry=denied");
+        exit();
+    }
+
     //validation if not registered ang na scan na qr
 
 

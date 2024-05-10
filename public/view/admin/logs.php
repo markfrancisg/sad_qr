@@ -1,122 +1,64 @@
 <?php
-include_once 'header.php';
-?>
-<div class="container-fluid">
-    <!-- Page Heading -->
-    <div class="row">
-        <div class="d-block d-sm-none">
-            <h3 class="h3 fw-b smallscreen-h3">Vehicles</h3>
-        </div>
-    </div>
+require_once 'header.php';
+require_once '../../../includes/dbh.inc.php';
+require_once '../../../includes/RecordLogs_model.inc.php';
 
-    <!-- Content Row -->
-    <div class="row col-12">
+
+$results = get_record_logs($pdo);
+
+?>
+
+<!-- Begin Page Content -->
+<div class="container-fluid">
+
+    <div class="row" id="paid_accounts">
         <!-- Area Chart -->
         <div class="col-12">
-            <div class="card shadow smallscreen-card">
-                <div class="d-none d-sm-flex align-items-center justify-content-between ml-4 mt-4 mb-4">
-                    <h1 class="h3 mb-0 text-gray-800">Vehicles</h1>
+            <div class="card shadow mb-8 smallscreen-card">
+                <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
+                    <h6 class="h3 text-gray-800 smallscreen-h6-text">Vehicles</h6>
                 </div>
-                <div class="card-body">
+                <div class="card-body mt-0">
+                    <?php  ?>
                     <div class="table-responsive">
-                        <table class="table" id="dataTable" width="100%" cellspacing="0">
-                            <thead>
-                                <tr>
-                                    <th>Address</th>
-                                    <th>Vehicle Type</th>
-                                    <th>Plate Number</th>
-                                    <th>QR Code</th>
-                                    <th>Date and Time</th>
-                                    <th>Entry / Exit</th>
+                        <?php if (empty($results)) : ?>
+                            <p class="text-center">No record logs available.</p>
+                        <?php else : ?>
+                            <div class="d-sm-flex justify-content-end mr-5 mb-3">
+                                <div class="filter-border">
+                                    <p>Filter <i class="fas fa-filter"></i></p>
+                                </div>
+                            </div>
+                            <table class="table" id="dataTable" width="100%" cellspacing="0">
+                                <thead>
+                                    <tr>
+                                        <th>Complete Address</th>
+                                        <th>Vehicle Type</th>
+                                        <th>Plate Number</th>
+                                        <th>QR Code</th>
+                                        <th>Station</th>
+                                        <th>Entry / Exit</th>
+                                        <th>Date and Time</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php foreach ($results as $row) : ?>
+                                        <tr>
+                                            <td><?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street"; ?></td>
+                                            <td><?php echo $row['vehicle_type']; ?></td>
+                                            <td><?php echo $row['plate_number']; ?></td>
+                                            <td><?php echo $row['qr_code']; ?></td>
+                                            <td><?php echo $row['station']; ?></td>
+                                            <td><?php echo $row['entry_exit']; ?></td>
+                                            <td><?php echo $row['date_time']; ?></td>
+                                        </tr>
+                                    <?php endforeach; ?>
+                                </tbody>
+                            </table>
+                        <?php endif; ?>
 
-                                </tr>
-                            </thead>
 
-                            <tbody>
 
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                                <tr>
-                                    <td>Peony St</td>
-                                    <td>Sedan</td>
-                                    <td>NED-5724</td>
-                                    <td>XXXXXYYYYY</td>
-                                    <td>April 16, 2024</td>
-                                    <td>Entry</td>
-                                </tr>
-                            </tbody>
-
-                        </table>
                     </div>
                 </div>
 
@@ -128,5 +70,6 @@ include_once 'header.php';
 </div>
 
 <?php
-include_once 'footer.php';
+require_once 'footer.php';
+
 ?>

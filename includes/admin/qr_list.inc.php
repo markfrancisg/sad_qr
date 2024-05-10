@@ -9,6 +9,15 @@ if (isset($_GET["email"])) {
 
         $id = htmlspecialchars($_GET["email"]);
         delete_vehicle($pdo, $id);
+
+        $imageFilePath = "../../public/img/$id.png";
+
+        // Check if the file exists before attempting to delete it
+        if (file_exists($imageFilePath)) {
+            // Attempt to delete the file
+            unlink($imageFilePath);
+        }
+
         header("Location: ../../public/view/admin/qr_code.php?#qr_pagination");
         $pdo = null;
         $stmt = null;

@@ -28,7 +28,7 @@ $results = get_record_logs($pdo);
                                 <div class="mr-2">
                                     <form action="../../../includes/admin/logs_excel.inc.php" method="post">
                                         <button type="submit" name="export_excel">
-                                            <i class="fas fa-download"></i> Export to Excel
+                                            <i class="fas fa-download"></i> Export Excel File
                                         </button>
                                     </form>
                                 </div>

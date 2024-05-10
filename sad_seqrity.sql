@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: May 09, 2024 at 02:16 PM
+-- Generation Time: May 10, 2024 at 05:35 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `account` (
 
 INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`) VALUES
 (35, 'gorreonfrancis@gmail.com', '$2y$12$DKUBvLnuDkE9UkkWMFxpVOEufC7pVkPZ9t/jrusFlDG766SaBYkLy', NULL, '2024-04-11 01:20:11', 7, '042d37dd0f3872be3a953a3c98df6756', '2024-04-20 05:40:17'),
-(56, 'blacqueswan@gmail.com', '$2y$12$wFcqljsNELGXHWuAZMqZQeU8ENof74UFOD.ZnX1nskJC7V3hugDNS', NULL, '2024-05-08 13:57:40', 1, 'b567c15749eae326e3eb4c34e6330b83', '2024-05-08 08:06:18');
+(56, 'blacqueswan@gmail.com', '$2y$12$VMG2GYQI6nseLOctxRK3euP6W3nrgG77aGk5cghVKeecxLZr6Z0E6', NULL, '2024-05-08 13:57:40', 1, '65bd137488900368e7e5858a69feadbd', '2024-05-10 16:41:01');
 
 -- --------------------------------------------------------
 
@@ -68,17 +68,10 @@ CREATE TABLE `homeowners` (
 --
 
 INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, `lot`, `street`, `number`) VALUES
-(1, 'jerome@gmail.com', 'Jerome Ponce', '', '18', '0', '', '09458022222'),
 (2, 'marina@gmail.com', 'Marina Summers', '', '0', '0', '', '09888888888'),
-(3, 'nicole@gmail.com', 'Nicole Pardaux', '', '0', '0', '', '09990000000'),
-(5, 'mj@gmail.com', 'MJ Limo', '', '0', '0', '', '09567889232'),
-(9, 'm@gmail.com', 'Mark gorreon', '', '0', '0', '', '09871222222'),
-(10, 'l@gmail.com', 'Mark Francis', '', '0', '0', '', '09672332333'),
-(11, 't@gmail.com', 'T M', '', '0', '0', '', '09124441232'),
-(12, 'b@gmail.com', 'b l', '', '0', '0', '', '09123432222'),
 (14, 'pig@gmail.com', 'Peppa pig', '', '0', '0', '', '09123433333'),
 (16, 'ssdfsdf@gmail.com', 'sfsdf sdfsdf', '', '0', '0', '', '09232222222'),
-(18, 'blacqueswan@gmail.com', 'Black', 'Swan', '18', '26', 'Lexus', '09232222222');
+(21, 'blacqueswan@gmail.com', 'Black', 'Swan', '18', '26', 'Lexus', '09232222222');
 
 -- --------------------------------------------------------
 
@@ -139,7 +132,13 @@ INSERT INTO `log` (`log_id`, `qr_id`, `station_id`, `date_time`) VALUES
 (45, 130, 1, '2024-05-08 21:18:17'),
 (46, 130, 1, '2024-05-08 21:19:01'),
 (47, 130, 1, '2024-05-08 21:22:33'),
-(48, 130, 3, '2024-05-08 21:23:32');
+(48, 130, 3, '2024-05-08 21:23:32'),
+(49, 133, 4, '2024-05-10 20:22:30'),
+(50, 132, 1, '2024-05-10 20:23:07'),
+(51, 132, 1, '2024-05-10 20:25:00'),
+(52, 135, 3, '2024-05-10 20:56:17'),
+(53, 135, 4, '2024-05-10 22:14:21'),
+(54, 135, 4, '2024-05-10 23:31:17');
 
 -- --------------------------------------------------------
 
@@ -163,68 +162,8 @@ CREATE TABLE `qr_info` (
 --
 
 INSERT INTO `qr_info` (`qr_id`, `qr_code`, `wheel`, `vehicle_type`, `plate_number`, `expiration_date`, `registered`, `ho_id`) VALUES
-(69, 'l2IRuCYMTx', 4, '4', 'TRE-1234', '2024-05-09', 1, 12),
-(70, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
-(71, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
-(72, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
-(73, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
-(74, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
-(75, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
-(76, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
-(77, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
-(78, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
-(79, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
-(80, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
-(81, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
-(82, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
-(83, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
-(84, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
-(85, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
-(86, 'Not Registered', 4, '4', 'TRE-1234', NULL, 0, 12),
-(87, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
-(88, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
-(89, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
-(90, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(91, 'Not Registered', 4, '4', 'TRE-1', NULL, 0, 12),
-(92, 'Not Registered', 4, '4', 'TRE-2', NULL, 0, 12),
-(93, 'Not Registered', 4, '4', 'TRE-3', NULL, 0, 12),
-(94, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(95, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(96, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(97, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(98, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(99, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(100, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(101, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(102, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(103, 'Not Registered', 4, '4', 'TRE-B', NULL, 0, 12),
-(104, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(105, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(106, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(107, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(108, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(109, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(110, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(111, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(112, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(113, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(114, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(115, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(116, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(117, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(118, 'Not Registered', 4, '4', 'TRE-C', NULL, 0, 12),
-(119, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(120, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(121, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(122, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(123, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(124, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(125, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(126, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(127, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(128, 'Not Registered', 4, '4', 'TRE-D', NULL, 0, 12),
-(130, 'o0vdmBAli8', 4, 'Sedan', 'NED-5724', '2024-05-09', 1, 18),
-(131, '6CFOkxrUDc', 4, 'Sedan', 'NED-5724', '2024-05-09', 1, 18);
+(135, '0EhmTtKgG3', 4, 'Sedan', 'NED-5724', '2024-05-11', 1, 21),
+(137, 'Not Registered', 2, 'Motor', 'QWER-0000', NULL, 0, 16);
 
 -- --------------------------------------------------------
 
@@ -297,12 +236,18 @@ INSERT INTO `user_info` (`info_id`, `account_first_name`, `account_last_name`, `
 
 CREATE TABLE `visitor_log` (
   `visitor_id` int(10) NOT NULL,
-  `station_id` int(10) NOT NULL,
   `date_time` datetime NOT NULL DEFAULT current_timestamp(),
   `first_name` varchar(50) NOT NULL COMMENT 'Stores the name of the visitor',
   `last_name` varchar(50) NOT NULL,
   `purpose` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+
+--
+-- Dumping data for table `visitor_log`
+--
+
+INSERT INTO `visitor_log` (`visitor_id`, `date_time`, `first_name`, `last_name`, `purpose`) VALUES
+(1, '2024-05-10 20:46:09', 'Drake', 'Bling', 'Visiting cousin');
 
 --
 -- Indexes for dumped tables
@@ -359,8 +304,7 @@ ALTER TABLE `user_info`
 -- Indexes for table `visitor_log`
 --
 ALTER TABLE `visitor_log`
-  ADD PRIMARY KEY (`visitor_id`),
-  ADD KEY `station_id` (`station_id`);
+  ADD PRIMARY KEY (`visitor_id`);
 
 --
 -- AUTO_INCREMENT for dumped tables
@@ -376,19 +320,19 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `homeowners`
 --
 ALTER TABLE `homeowners`
-  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=19;
+  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=22;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=49;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=55;
 
 --
 -- AUTO_INCREMENT for table `qr_info`
 --
 ALTER TABLE `qr_info`
-  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=132;
+  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `role_info`
@@ -412,7 +356,7 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `visitor_log`
 --
 ALTER TABLE `visitor_log`
-  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT;
+  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- Constraints for dumped tables
@@ -428,7 +372,6 @@ ALTER TABLE `account`
 -- Constraints for table `log`
 --
 ALTER TABLE `log`
-  ADD CONSTRAINT `log_ibfk_1` FOREIGN KEY (`qr_id`) REFERENCES `qr_info` (`qr_id`) ON DELETE NO ACTION ON UPDATE NO ACTION,
   ADD CONSTRAINT `log_ibfk_2` FOREIGN KEY (`station_id`) REFERENCES `station_info` (`station_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 
 --
@@ -442,12 +385,6 @@ ALTER TABLE `qr_info`
 --
 ALTER TABLE `user_info`
   ADD CONSTRAINT `user_info_ibfk_1` FOREIGN KEY (`account_id`) REFERENCES `account` (`account_id`) ON DELETE CASCADE ON UPDATE CASCADE;
-
---
--- Constraints for table `visitor_log`
---
-ALTER TABLE `visitor_log`
-  ADD CONSTRAINT `visitor_log_ibfk_1` FOREIGN KEY (`station_id`) REFERENCES `station_info` (`station_id`) ON DELETE NO ACTION ON UPDATE NO ACTION;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;

@@ -25,6 +25,13 @@ $results = get_record_logs($pdo);
                             <p class="text-center">No record logs available.</p>
                         <?php else : ?>
                             <div class="d-sm-flex justify-content-end mr-5 mb-3">
+                                <div class="mr-2">
+                                    <form action="../../../includes/admin/logs_excel.inc.php" method="post">
+                                        <button type="submit" name="export_excel">
+                                            <i class="fas fa-download"></i> Export to Excel
+                                        </button>
+                                    </form>
+                                </div>
                                 <div class="filter-border">
                                     <p>Filter <i class="fas fa-filter"></i></p>
                                 </div>

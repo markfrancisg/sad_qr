@@ -32,3 +32,12 @@ function get_homeowner_list(object $pdo, int $offset, int $total_records_per_pag
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results;
 }
+
+
+function delete_homeowner(object $pdo, string $email)
+{
+    $query = "DELETE FROM homeowners WHERE email = :email";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':email', $email);
+    $stmt->execute();
+}

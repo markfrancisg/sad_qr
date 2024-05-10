@@ -1,3 +1,12 @@
+$(document).ready(function() {
+    $('.delete-btn').click(function() {
+        var email = $(this).data('email');
+        $('#delete-link').attr('href', '../../../includes/admin/qr_list.inc.php?email=' + email);
+    });
+});
+
+
+
 document.getElementById('dropdownMenu').addEventListener('change', function() {
     var email = this.value;
     // Send AJAX request to fetch address from server

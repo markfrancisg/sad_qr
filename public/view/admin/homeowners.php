@@ -101,7 +101,7 @@ include_once '../../../includes/HomeownerListController.php';
                                     <th>Phone Number</th>
                                     <th>Address</th>
                                     <th>View</th>
-
+                                    <th>Delete</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -124,6 +124,11 @@ include_once '../../../includes/HomeownerListController.php';
                                         <td>
                                             <a href="" class="view-qr-detail">
                                                 <button class="btn btn-view-pay">View</button>
+                                            </a>
+                                        </td>
+                                        <td>
+                                            <a href="#" class="btn btn-danger btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" data-email="<?php echo $email; ?>">
+                                                <i class="fas fa-trash"></i>
                                             </a>
                                         </td>
                                     </tr>
@@ -180,12 +185,26 @@ include_once '../../../includes/HomeownerListController.php';
     </div>
 
 
+</div>
 
-
-
-
-
-
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Remove Homeowner?</h5>
+                <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">×</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                Select "Delete" below if you are sure.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn modal-delete-color" id="delete-link" href="#">Delete</a>
+            </div>
+        </div>
+    </div>
 </div>
 
 

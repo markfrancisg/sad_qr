@@ -57,7 +57,11 @@ require_once '../../../includes/guard/scan_results_view.inc.php';
             </div>
         <?php
         } else if (isset($_GET['entry']) && $_GET['entry'] === 'denied') {
-            echo '<div><img src="../../resources/access_denied.png" class="img-fluid"></div>';
+            echo '<div class="row justify-content-center">
+            <div class="col-12 text-center">
+                <div><img src="../../resources/access_denied.png" class="img-fluid access-denied-image"></div>
+            </div>
+        </div>';
         }
         ?>
     </div>

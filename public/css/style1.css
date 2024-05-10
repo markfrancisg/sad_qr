@@ -232,6 +232,12 @@ border-color: #ff3860 !important;
   color:#ffffff !important;
 }
 
+.access-denied-image{
+  width: 450px; /* Set the desired width */
+  height: auto; 
+}
+
+
 
 
 .page-item.active .page-link,

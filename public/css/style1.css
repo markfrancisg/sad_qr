@@ -232,6 +232,12 @@ border-color: #ff3860 !important;
   color:#ffffff !important;
 }
 
+.access-denied-image{
+  width: 450px; /* Set the desired width */
+  height: auto; 
+}
+
+
 
 
 .page-item.active .page-link,
@@ -284,7 +290,7 @@ body {
 
 /* SPINNER */
   .spinner-wrapper{
-    background-color: #2f4a39;
+    background-color: #ffffff;
     position:fixed;
     top: 0;
     left:0;

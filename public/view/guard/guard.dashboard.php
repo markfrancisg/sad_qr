@@ -18,7 +18,7 @@ check_registration_status($pdo); //update all the payment records
         <div class="col-3">
             <a href="scan_qr.php?station=a">
                 <div class="card station-card card-hover">
-                    Station A
+                    <h3 class="h3-bold text-center">Station A</h3>
                 </div>
             </a>
         </div>
@@ -26,7 +26,7 @@ check_registration_status($pdo); //update all the payment records
         <div class="col-3">
             <a href="scan_qr.php?station=b">
                 <div class="card station-card card-hover">
-                    Station B
+                    <h3 class="h3-bold text-center">Station B</h3>
                 </div>
             </a>
         </div>
@@ -34,7 +34,7 @@ check_registration_status($pdo); //update all the payment records
         <div class="col-3">
             <a href="scan_qr.php?station=c">
                 <div class="card station-card card-hover">
-                    Station C
+                    <h3 class="h3-bold text-center">Station C</h3>
                 </div>
             </a>
         </div>
@@ -42,7 +42,7 @@ check_registration_status($pdo); //update all the payment records
         <div class="col-3">
             <a href="scan_qr.php?station=d">
                 <div class="card station-card card-hover">
-                    Station D
+                    <h3 class="h3-bold text-center">Station D</h3>
                 </div>
             </a>
         </div>

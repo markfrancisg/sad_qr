@@ -3,6 +3,11 @@
 if (isset($_GET['qr_text'])) {
     $qr_text = $_GET['qr_text'];
 
+    if ($qr_text === "Not Registered") {
+        header("Location: ../public/view/guard/scan_results.php?entry=denied");
+        exit();
+    }
+
     //validation if not registered ang na scan na qr
 
 
@@ -20,6 +25,11 @@ if (isset($_GET['qr_text'])) {
         //check if qr_text is existing in the database
         $results = scan_qr($pdo, $qr_text);
 
+        if (!$results) {
+            header("Location: ../public/view/guard/scan_results.php?entry=denied");
+            exit();
+        }
+
         if ($results) {
 
             //insert the details in the log 
@@ -27,26 +37,25 @@ if (isset($_GET['qr_text'])) {
             $wheel = $results['wheel'];
             $vehicle_type = $results['vehicle_type'];
             $plate_number = $results['plate_number'];
-            $registered = $results['registered'];
-            $ho_id = $results['ho_id'];
+            $name = $results['first_name'] . " " . $results['last_name'];
+            $address = "Block " . $results['block'] . ", Lot " . $results['lot'] . " ," . $results['street'] . " Street";
+            $qr_code = $results['qr_code'];
 
             record_log($pdo, $qr_id, $station_id);
 
-            $_SESSION['qr_id'] =  $qr_id;
-            $_SESSION['wheel'] =   $wheel;
-            $_SESSION['vehicle_type'] = $vehicle_type;
-            $_SESSION['plate_number'] = $plate_number;
-            $_SESSION['registered'] =  $registered;
-            $_SESSION['ho_id'] =  $ho_id;
+            $qr_scan_result = array(
+                'name' => $name,
+                'address' => $address,
+                'qr_code' => $qr_code,
+                'wheel' => $wheel,
+                'vehicle_type' => $vehicle_type,
+                'plate_number' => $plate_number
+            );
 
+            $_SESSION['vehicle_data_qr_scan'] = $qr_scan_result;
 
             //redirect the user to the details page
-            header("Location: ../public/view/guard/scan_results.php");
-        }
-
-        if (!$results) {
-            $_SESSION['no_result'] = "No QR Code Results Found!";
-            // header("Location: ../public/view/guard/scan_results.php");
+            header("Location: ../public/view/guard/scan_results.php?entry=success");
         }
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());

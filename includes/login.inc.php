@@ -13,14 +13,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //Error handlers
         if (two_input_empty($email, $password)) {
             $_SESSION["empty_input"] = "Fill in all fields!";
-            header("Location: ../index.php");
+            header("Location: ../login.php");
             die();
-            
         }
 
         if (is_email_invalid($email)) {
             $_SESSION["email_invalid"] = "Invalid email!";
-            header("Location: ../index.php");
+            header("Location: ../login.php");
             die();
         }
 
@@ -31,14 +30,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //if assoc is fetch, proceed, if not make error array
         if (is_email_wrong($result)) {
             $_SESSION["login_incorrect"] = "Incorrect login credentials!";
-            header("Location: ../index.php");
+            header("Location: ../login.php");
             die();
         }
 
         //if assoc is fetch but wrong password
         if (!is_email_wrong($result) && is_password_wrong($password, $result["password"])) {
             $_SESSION["login_incorrect"] = "Incorrect login credentials!";
-            header("Location: ../index.php");
+            header("Location: ../login.php");
             die();
         }
 
@@ -68,6 +67,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         die("Query failed:" . $e->getMessage());
     }
 } else {
-    header("Location: ../index.php");
+    header("Location: ../login.php");
     die();
 }

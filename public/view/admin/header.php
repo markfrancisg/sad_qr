@@ -105,20 +105,6 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San
                     <span>Balance</span></a>
             </li>
 
-
-            <!-- Divider -->
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
-
-            <li class="nav-item sidebar-nav <?php echo isActive('accounts.php'); ?>">
-                <a class="nav-link " href="accounts.php">
-                    <i class="fas fa-fw fa-list"></i>
-                    <span>Accounts</span></a>
-            </li>
-
-
             <!-- Divider -->
             <hr class="sidebar-divider my-0" />
 

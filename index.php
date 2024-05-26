@@ -16,14 +16,14 @@ redirectUser();
     <meta name="description" content="" />
     <meta name="author" content="" />
 
-    <title>User Login</title>
+    <title>Select User</title>
     <link rel="icon" type="image/png" href="entrance_pic.jpg">
 
 
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous" />
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css" />
     <!-- Custom styles for this template-->
-    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> -->
     <link href="public/css/style.css" rel="stylesheet" />
 
 </head>
@@ -41,42 +41,21 @@ redirectUser();
         <div class="row h-100 justify-content-center align-items-center">
             <div class="col-md-8 col-lg-6">
 
-                <form class="card p-4" action="includes/login.inc.php" id="loginForm" method="post">
-                    <h3 class="card-title text-center mb-3">LOG IN</h3>
-                    <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
-                        <input type="text" class="form-control gray-background" id="email" name="email" placeholder="Enter Email" required />
-                        <span id="" class="error"></span>
-                    </div>
-                    <div class="form-group input-field pt-1 m-2 input-login-form-group-height">
-                        <div class="password-wrapper">
-                            <input type="password" class="form-control gray-background" id="password" name="password" placeholder="Enter Password" required />
-                            <i class="toggle-password login-password-icon fas fa-eye-slash"></i>
-                            <span id="" class="error"></span>
-                        </div>
-                    </div>
+                <div class="card p-4" id="loginForm">
+                    <h3 class="card-title text-center mb-1">Hi, User!</h3>
+                    <h5 class="card-title text-center mb-5">Please click or tap your destination</h5>
 
-                    <div class="d-flex justify-content-end pt-1 m-2" id="forgotPasswordLink">
-                        <a href="public/view/reset_password.php" class="forgot-password-link">Forgot your password?</a>
-                    </div>
+                    <a href="/includes/select_user.inc.php?type=admin"><button class="p-3">Admin</button></a>
+                    <a href="/includes/select_user.inc.php?type=guard"><button class="p-3">Guard</button></a>
 
-                    <div class="d-flex justify-content-center">
-                        <button id="loginButton" type="submit" class="btn mt-3 custom-button">
-                            Log in
-                        </button>
-                    </div>
-                    <!-- The library should be loaded first before using Sweetalert -->
-                    <?php
-                    check_login_errors();
-                    check_reset_password();
-                    ?>
-                </form>
+                </div>
 
             </div>
         </div>
     </div>
 
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
-    <script src="public/js/login.js"></script>
+    <!-- <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/js/bootstrap.bundle.min.js" integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM" crossorigin="anonymous"></script>
+    <script src="public/js/login.js"></script> -->
 
 </body>
 

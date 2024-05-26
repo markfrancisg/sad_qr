@@ -2,7 +2,7 @@
 
 require_once '../../../includes/config.session.inc.php';
 require_once '../../../includes/authenticate.inc.php';
-grantPermission('admin');
+grantPermission('super_admin');
 
 function isActive($page)
 {
@@ -11,12 +11,7 @@ function isActive($page)
 
 // Define page titles for each page
 $page_titles = array(
-    'admin.dashboard.php' => 'Dashboard',
-    'homeowners.php' => 'Homeowners',
-    'qr_code.php' => 'QR Code',
-    'balance.php' => 'Balance',
     'accounts.php' => 'Accounts',
-    'logs.php' => 'Records Logs'
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -71,51 +66,56 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San
             <!-- Divider -->
             <hr class="sidebar-divider my-0" />
 
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-nav <?php echo isActive('admin.dashboard.php'); ?>">
-                <a class="nav-link" href="admin.dashboard.php">
-                    <i class="fas fa-fw fa-tachometer-alt"></i>
-                    <span>Dashboard</span></a>
-            </li>
-
-            <hr class="sidebar-divider my-0" />
-
-            <!-- Nav Item - Dashboard -->
-            <li class="nav-item sidebar-nav <?php echo isActive('homeowners.php'); ?>">
-                <a class="nav-link " href="homeowners.php">
-                    <i class="fas fa-fw fa-user"></i>
-                    <span>Homeowners</span></a>
-            </li>
-
-            <hr class="sidebar-divider my-0" />
-
-            <li class="nav-item sidebar-nav <?php echo isActive('qr_code.php') || isActive('qr_code_detail.php') ? 'active' : ''; ?>">
-                <a class="nav-link " href="qr_code.php">
-                    <i class="fas fa-fw fa-qrcode"></i>
-                    <span>QR Code</span></a>
-            </li>
-
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
-
-            <li class="nav-item sidebar-nav <?php echo isActive('balance.php'); ?>">
-                <a class="nav-link " href="balance.php">
-                    <i class="fas fa-fw fa-money-check"></i>
-                    <span>Balance</span></a>
-            </li>
-
-            <!-- Divider -->
-            <hr class="sidebar-divider my-0" />
-
-            <li class="nav-item sidebar-nav <?php echo isActive('logs.php'); ?>">
-                <a class="nav-link " href="logs.php">
-                    <i class="fas fa-fw fa-file-alt"></i>
-                    <span>Records Logs</span></a>
-            </li>
+            <!-- <li class="nav-item sidebar-nav <?php echo isActive('accounts.php'); ?>">
+                <a class="nav-link " href="accounts.php">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Accounts</span></a>
+            </li> -->
 
             <!-- Divider -->
             <hr class="sidebar-divider" />
+
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
+                    <span>Accounts</span>
+                </a>
+                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
+                    <div class="">
+                        <a class="nav-link" href="accounts.php?collapse=1">
+                            <i class="fas fa-fw fa-list"></i>
+                            <span>Create Account</span>
+                        </a>
+                        <a class="nav-link" href="account_list.php?collapse=1">
+                            <i class="fas fa-fw fa-list"></i>
+                            <span>Account List</span>
+                        </a>
+                    </div>
+                </div>
+            </li>
+
+            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+            <script>
+                $(document).ready(function() {
+                    // Check the URL for the collapse parameter
+                    var urlParams = new URLSearchParams(window.location.search);
+                    if (urlParams.get('collapse') === '1') {
+                        $('#collapseTwo').collapse('show');
+                    } else {
+                        $('#collapseTwo').collapse('hide');
+                    }
+
+                    // Save the collapse state on click
+                    $('#accountsDropdown a[data-toggle="collapse"]').on('click', function() {
+                        var isCollapsed = $(this).hasClass('collapsed');
+                        var newUrl = new URL(window.location.href);
+                        newUrl.searchParams.set('collapse', isCollapsed ? '0' : '1');
+                        window.history.replaceState(null, null, newUrl);
+                    });
+                });
+            </script>
+
+            <hr class="sidebar-divider" />
+
 
             <div class="text-center d-none d-md-inline">
                 <button class="rounded-circle border-0" id="sidebarToggle"></button>

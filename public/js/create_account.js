@@ -1,11 +1,3 @@
-$(document).ready(function() {
-    $('.delete-btn').click(function() {
-        var email = $(this).data('email');
-        $('#delete-link').attr('href', '../../../includes/admin/account_list.inc.php?email=' + email);
-    });
-});
-
-
 const specialInputs = document.querySelectorAll('#first_name, #last_name');
 specialInputs.forEach(function(input) {
   input.addEventListener('keydown', function(event) {

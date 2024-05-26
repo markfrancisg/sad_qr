@@ -22,7 +22,7 @@ const first_name = document.getElementById('first_name');
 const last_name = document.getElementById('last_name');
 const email = document.getElementById('email');
 const number = document.getElementById('number');
-
+const role_description = document.getElementById('role_description');
 
 form.addEventListener('submit', e => {
     e.preventDefault();
@@ -40,6 +40,12 @@ const setError = (element, message) => {
     errorDisplay.innerText = message;
     inputControl.classList.add('error');
     inputControl.classList.remove('success');
+
+    // Remove error message after 5 seconds
+    setTimeout(() => {
+        errorDisplay.innerText = '';
+        inputControl.classList.remove('error');
+    }, 5000);
 };
 
 const setSuccess = element => {
@@ -57,62 +63,68 @@ const isValidEmail = email => {
 };
 
 const isValidPhone = number => {
-  // Philippine phone number format: +63 XX XXX XXXX (X can be 0-9)
+    // Philippine phone number format: +63 XX XXX XXXX (X can be 0-9)
     const re = /^(09|\+639)\d{9}$/;
     return re.test(number.trim());
 }
 
 const validateInputs = () => {
-  let isValid = true; // Flag to track overall validation status
-  const errors = {}; // Object to store error messages
+    let isValid = true; // Flag to track overall validation status
+    const errors = {}; // Object to store error messages
 
-  const firstNameValue = first_name.value.trim();
-  const lastNameValue = last_name.value.trim();
-  const emailValue = email.value.trim();
-  const numberValue = number.value.trim();
-
-
-  if(firstNameValue === ''){
-      errors.first_name = 'First name is required';
-      isValid = false;
-  }
-
-  if(lastNameValue === ''){
-      errors.last_name = 'Last name is required';
-      isValid = false;
-  }
-
-  if (emailValue === '') {
-      errors.email = 'Email is required';
-      isValid = false;
-  } else if (!isValidEmail(emailValue)) {
-      errors.email = 'Invalid email!';
-      isValid = false;
-  }
-
-  if (numberValue === ''){
-      errors.number = 'Number is required';
-      isValid = false;
-  } else if (!isValidPhone(numberValue)){
-      errors.number = 'Invalid phone number!';
-      isValid = false;
-  }
+    const firstNameValue = first_name.value.trim();
+    const lastNameValue = last_name.value.trim();
+    const emailValue = email.value.trim();
+    const numberValue = number.value.trim();
+    const roleValue = role_description.value.trim();
 
 
-  // Set error messages for each input field
-  for (const field in errors) {
-      if (errors.hasOwnProperty(field)) {
-          setError(document.getElementById(field), errors[field]);
-      }
-  }
+    if (firstNameValue === '') {
+        errors.first_name = 'First name is required';
+        isValid = false;
+    }
 
-  // Set success for fields without errors
-  const fieldsWithoutErrors = ['first_name', 'last_name', 'email', 'number'];
-  fieldsWithoutErrors.forEach(field => {
-      if (!errors[field]) {
-          setSuccess(document.getElementById(field));
-      }
-  });
+    if (lastNameValue === '') {
+        errors.last_name = 'Last name is required';
+        isValid = false;
+    }
 
-  return isValid; // Return overall validation status
+    if (emailValue === '') {
+        errors.email = 'Email is required';
+        isValid = false;
+    } else if (!isValidEmail(emailValue)) {
+        errors.email = 'Invalid email!';
+        isValid = false;
+    }
+
+    if (numberValue === '') {
+        errors.number = 'Number is required';
+        isValid = false;
+    } else if (!isValidPhone(numberValue)) {
+        errors.number = 'Invalid phone number!';
+        isValid = false;
+    }
+
+    if (roleValue === '') {
+        errors.role_description = 'Role is required';
+        isValid = false;
+    }
+
+
+    // Set error messages for each input field
+    for (const field in errors) {
+        if (errors.hasOwnProperty(field)) {
+            setError(document.getElementById(field), errors[field]);
+        }
+    }
+
+    // Set success for fields without errors
+    const fieldsWithoutErrors = ['first_name', 'last_name', 'email', 'number', 'role_description'];
+    fieldsWithoutErrors.forEach(field => {
+        if (!errors[field]) {
+            setSuccess(document.getElementById(field));
+        }
+    });
+
+    return isValid; // Return overall validation status
 };

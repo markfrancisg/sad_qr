@@ -66,53 +66,21 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'San
             <!-- Divider -->
             <hr class="sidebar-divider my-0" />
 
-            <!-- <li class="nav-item sidebar-nav <?php echo isActive('accounts.php'); ?>">
+            <li class="nav-item sidebar-nav <?php echo isActive('accounts.php'); ?>">
                 <a class="nav-link " href="accounts.php">
                     <i class="fas fa-fw fa-list"></i>
                     <span>Accounts</span></a>
-            </li> -->
-
-            <!-- Divider -->
-            <hr class="sidebar-divider" />
-
-            <li class="nav-item">
-                <a class="nav-link collapsed" href="#" data-toggle="collapse" data-target="#collapseTwo" aria-expanded="true" aria-controls="collapseTwo">
-                    <span>Accounts</span>
-                </a>
-                <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
-                    <div class="">
-                        <a class="nav-link" href="accounts.php?collapse=1">
-                            <i class="fas fa-fw fa-list"></i>
-                            <span>Create Account</span>
-                        </a>
-                        <a class="nav-link" href="account_list.php?collapse=1">
-                            <i class="fas fa-fw fa-list"></i>
-                            <span>Account List</span>
-                        </a>
-                    </div>
-                </div>
             </li>
 
-            <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-            <script>
-                $(document).ready(function() {
-                    // Check the URL for the collapse parameter
-                    var urlParams = new URLSearchParams(window.location.search);
-                    if (urlParams.get('collapse') === '1') {
-                        $('#collapseTwo').collapse('show');
-                    } else {
-                        $('#collapseTwo').collapse('hide');
-                    }
+            <hr class="sidebar-divider my-0" />
 
-                    // Save the collapse state on click
-                    $('#accountsDropdown a[data-toggle="collapse"]').on('click', function() {
-                        var isCollapsed = $(this).hasClass('collapsed');
-                        var newUrl = new URL(window.location.href);
-                        newUrl.searchParams.set('collapse', isCollapsed ? '0' : '1');
-                        window.history.replaceState(null, null, newUrl);
-                    });
-                });
-            </script>
+            <li class="nav-item sidebar-nav <?php echo isActive('account_list.php'); ?>">
+                <a class="nav-link " href="account_list.php">
+                    <i class="fas fa-fw fa-list"></i>
+                    <span>Account List</span></a>
+            </li>
+
+
 
             <hr class="sidebar-divider" />
 

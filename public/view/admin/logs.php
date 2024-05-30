@@ -46,6 +46,9 @@ $results = get_record_logs($pdo);
                             <thead class="text-light fs-4 bg-success">
                                 <tr>
                                     <th class="border-bottom-0 text-center">
+                                        <h6 class="fw-bolder text-light mb-0">Name </h6>
+                                    </th>
+                                    <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Complete Address</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
@@ -53,9 +56,6 @@ $results = get_record_logs($pdo);
                                     </th>
                                     <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Plate Number</h6>
-                                    </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">QR Code </h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Station</h6>
@@ -75,6 +75,9 @@ $results = get_record_logs($pdo);
                                 ?>
                                     <tr>
                                         <td class="border-bottom-0 text-center">
+                                            <h6 class="text-dark mb-0"><?php echo $row['first_name'] . " " . $row['last_name']; ?></h6>
+                                        </td>
+                                        <td class="border-bottom-0 text-center">
                                             <h6 class="text-dark mb-0"><?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street"; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
@@ -82,9 +85,6 @@ $results = get_record_logs($pdo);
                                         </td>
                                         <td class="border-bottom-0 text-center">
                                             <h6 class="text-dark mb-0"><?php echo $row['plate_number']; ?></h6>
-                                        </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['qr_code']; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
                                             <h6 class="text-dark mb-0"><?php echo $row['station']; ?></h6>
@@ -122,7 +122,7 @@ $results = get_record_logs($pdo);
 </div>
 
 
-<script src="../../js/homeowner_list.js"></script>
+<script src="../../js/logs_admin.js"></script>
 
 <?php
 include_once 'footer.php';

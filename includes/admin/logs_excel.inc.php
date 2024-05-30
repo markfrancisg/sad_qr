@@ -16,10 +16,10 @@ if (isset($_POST['export_excel'])) {
         // Output HTML table
         echo '<table class="table" bordered="1">  
             <tr>  
+                <th>Name</th>
                 <th>Address</th>
                 <th>Vehicle Type</th>
                 <th>Plate Number</th>
-                <th>QR Code</th>
                 <th>Station</th>
                 <th>Entry / Exit</th>
                 <th>Date and Time</th>
@@ -28,10 +28,10 @@ if (isset($_POST['export_excel'])) {
         // Output data rows
         foreach ($results as $row) {
             echo '<tr>
+                    <td>' . $row['first_name'] . " " . $row['last_name'] . '</td>
                     <td>' . "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street" . '</td>
                     <td>' . $row['vehicle_type'] . '</td>
                     <td>' . $row['plate_number'] . '</td>
-                    <td>' . $row['qr_code'] . '</td>
                     <td>' . $row['station'] . '</td>
                     <td>' . $row['entry_exit'] . '</td>
                     <td>' . $row['date_time'] . '</td>

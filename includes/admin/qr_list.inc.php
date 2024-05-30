@@ -18,7 +18,7 @@ if (isset($_GET["email"])) {
             unlink($imageFilePath);
         }
 
-        header("Location: ../../public/view/admin/qr_code.php?#qr_pagination");
+        header("Location: ../../public/view/admin/vehicle_list.php");
         $pdo = null;
         $stmt = null;
     } catch (PDOException $e) {

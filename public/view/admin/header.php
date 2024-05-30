@@ -112,7 +112,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                            <a class="sidebar-link" href="vehicle_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-id-card"></i>
                                 </span>

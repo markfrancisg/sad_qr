@@ -1,0 +1,27 @@
+body {
+    position: relative;
+    /* Ensure the body is positioned relatively */
+    background-image: url('../images/backgrounds/entrance_pic.jpg');
+    /* Specify the path to your background image */
+    background-size: cover;
+    background-position: center;
+    height: 100vh;
+    /* Ensure the background covers the entire viewport height */
+    margin: 0;
+    /* Remove default margin */
+    padding: 0;
+    /* Remove default padding */
+}
+
+body::before {
+    content: "";
+    /* Required for pseudo-elements */
+    position: absolute;
+    /* Position the pseudo-element */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.7);
+    /* Darker semi-transparent black background */
+}

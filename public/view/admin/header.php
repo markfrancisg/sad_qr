@@ -44,7 +44,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
                     <a href="accounts.php" class="text-nowrap logo-img">
-                        <img src="../../images/logos/san_lorenzo_logo.svg" width="120" alt="" />
+                        <img src="../../images/logos/san_lorenzo_logo.svg" width="90" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -52,7 +52,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                 </div>
 
                 <div class="container-fluid">
-                    <h3 class="text-center fw-bolder">San Lorenzo South Phase 1</h3>
+                    <h5 class="text-center fw-bolder">San Lorenzo South Phase 1</h4>
                 </div>
 
                 <!-- Sidebar navigation-->
@@ -68,22 +68,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Dashboard</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
-                                <span>
-                                    <i class="fa fa-car"></i>
-                                </span>
-                                <span class="hide-menu">Vehicle Registration</span>
-                            </a>
-                        </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
-                                <span>
-                                    <i class="fa fa-money-bill"></i>
-                                </span>
-                                <span class="hide-menu">Balance</span>
-                            </a>
-                        </li>
+
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="accounts.php" aria-expanded="false">
                                 <span>
@@ -98,7 +83,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <span class="hide-menu">Homeowners</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                            <a class="sidebar-link" href="homeowners.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>
@@ -106,11 +91,32 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="account_list.php" aria-expanded="false">
+                            <a class="sidebar-link" href="homeowner_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
                                 <span class="hide-menu">Homeowner List</span>
+                            </a>
+                        </li>
+
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">QR Code</span>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-car"></i>
+                                </span>
+                                <span class="hide-menu">Vehicle Registration</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-money-bill"></i>
+                                </span>
+                                <span class="hide-menu">Payment</span>
                             </a>
                         </li>
 

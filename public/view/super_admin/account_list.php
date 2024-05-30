@@ -21,39 +21,42 @@ $results = get_user_list($pdo);
 
         <div class="card">
             <div class="card-body">
-                <h2 class="fw-semibold mb-4">Account List</h2>
+                <h2 class="fw-semibold mb-4 text-center">Account List</h2>
 
                 <!-- SEARCH BAR -->
-                <div class="row mb-3">
-                    <div class="d-flex justify-content-end">
-                        <div class="col-sm-3 col-md-4">
-                            <input class="form-control me-2" type="text" id="searchInput" placeholder="Search here" aria-label="Search">
+                <div class="container">
+                    <div class="row mb-3">
+                        <div class="d-flex justify-content-end">
+                            <div class="col-sm-3 col-md-4">
+                                <input class="form-control me-2" type="text" id="searchInput" placeholder="Search here" aria-label="Search">
+                            </div>
                         </div>
                     </div>
                 </div>
 
+
                 <div class="container">
                     <div class="table-responsive">
-                        <table class="table text-nowrap mb-0 align-middle" id="dataTable">
-                            <thead class="text-dark fs-4">
+                        <table class="table table-bordered text-nowrap mb-0 align-middle" id="dataTable">
+                            <thead class="text-light fs-4 bg-success">
                                 <tr>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-semibold mb-0">Name</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Name</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-semibold mb-0">Role</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Role</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-semibold mb-0">Email Address</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Email Address</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-semibold mb-0">Phone Number</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Phone Number</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-semibold mb-0">Account Status</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Account Status</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-semibold mb-0">Delete</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Delete</h6>
                                     </th>
                                 </tr>
                             </thead>
@@ -72,16 +75,16 @@ $results = get_user_list($pdo);
                                 ?>
                                     <tr>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="fw-semibold mb-0"><?php echo $first_name . " " . $last_name; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $first_name . " " . $last_name; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="fw-semibold mb-0"><?php echo $email; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $email; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="fw-semibold mb-0"><?php echo $role_description; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $role_description; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="fw-semibold mb-0"><?php echo $number; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $number; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
                                             <div class="d-flex align-items-center gap-2">
@@ -141,9 +144,6 @@ $results = get_user_list($pdo);
             <div class="modal-content">
                 <div class="modal-header">
                     <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete User Account?</h5>
-                    <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">×</span>
-                    </button>
                 </div>
                 <div class="modal-body">
                     Select "Delete" below if you are sure.

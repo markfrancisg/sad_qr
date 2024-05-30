@@ -45,7 +45,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
-        if (input_has_letter($block) || input_has_letter($lot) || input_has_number($street)) {
+        if (input_has_letter($block) || input_has_letter($lot)) {
             $_SESSION["invalid_address"] = "Invalid address format!";
             header("Location: ../../public/view/admin/homeowners.php");
             die();

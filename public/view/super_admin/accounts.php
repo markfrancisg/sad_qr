@@ -18,7 +18,7 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
         <div class="card">
             <div class="card-body">
 
-                <h2 class="fw-semibold mb-4">Create Account</h2>
+                <h2 class="fw-semibold mb-4 text-center">Create Account</h2>
 
                 <div class="container">
                     <form method="post" action="../../../includes/super_admin/create_account.inc.php" id="createAccountForm" class="needs-validation" novalidate>
@@ -48,13 +48,14 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
-                                <select class="form-select form-select-md mb-1 rounded-1 p-3" name="role_description" id="role_description" aria-label="Role" required>
+                                <select class="form-select form-select-md  rounded-1 p-3" name="role_description" id="role_description" aria-label="Role" required>
                                     <option value="" disabled selected>Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="guard">Guard</option>
                                 </select>
                                 <div class="invalid-feedback">Role is required</div>
-
+                                <div class="mb-3"></div> 
+                                <!-- just an additional space so the fields would be aligned -->
                             </div>
                         </div>
                         <div class="row">

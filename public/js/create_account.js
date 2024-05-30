@@ -24,7 +24,6 @@ setTimeout(() => {
 }, 3000);
 
 
-
 (function () {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');
@@ -38,6 +37,32 @@ setTimeout(() => {
                 form.classList.add('was-validated');
             }, false);
         });
+
+    var inputs = document.querySelectorAll('.needs-validation .form-control');
+    inputs.forEach(function (input) {
+        input.addEventListener('input', function () {
+            if (!input.checkValidity()) {
+                input.classList.add('is-invalid');
+            } else {
+                input.classList.remove('is-invalid');
+                input.classList.add('is-valid');
+            }
+            input.closest('.form-floating').classList.add('was-validated');
+        });
+    });
+
+    // Dropdown validation
+    var roleDescription = document.getElementById('role_description');
+    roleDescription.addEventListener('change', function () {
+        if (roleDescription.value === '') {
+            roleDescription.classList.add('is-invalid');
+            roleDescription.classList.remove('is-valid');
+        } else {
+            roleDescription.classList.remove('is-invalid');
+            roleDescription.classList.add('is-valid');
+        }
+        roleDescription.closest('.form-floating').classList.add('was-validated');
+    });
 })();
 
 // Phone number validation
@@ -52,9 +77,10 @@ document.getElementById('number').addEventListener('input', function() {
     } else {
         phoneNumberInput.setCustomValidity('');
         phoneNumberInput.classList.remove('is-invalid');
+        phoneNumberInput.classList.add('is-valid');
     }
 
-    phoneNumberInput.form.classList.add('was-validated');
+    phoneNumberInput.closest('.form-floating').classList.add('was-validated');
 });
 
 // Email validation
@@ -64,14 +90,15 @@ document.getElementById('email').addEventListener('input', function() {
     var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
 
     if (!emailPattern.test(email)) {
-        emailInput.setCustomValidity('Invalid email');
+        emailInput.setCustomValidity('Invalid email domain');
         emailInput.classList.add('is-invalid');
     } else {
         emailInput.setCustomValidity('');
         emailInput.classList.remove('is-invalid');
+        emailInput.classList.add('is-valid');
     }
 
-    emailInput.form.classList.add('was-validated');
+    emailInput.closest('.form-floating').classList.add('was-validated');
 });
 
 

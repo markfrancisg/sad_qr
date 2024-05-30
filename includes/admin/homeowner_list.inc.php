@@ -9,13 +9,13 @@ if (isset($_GET["email"])) {
 
         $email = htmlspecialchars($_GET["email"]);
         delete_homeowner($pdo, $email);
-        header("Location: ../../public/view/admin/homeowners.php?#homeowner_pagination");
+        header("Location: ../../public/view/admin/homeowner_list.php");
         $pdo = null;
         $stmt = null;
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());
     }
 } else {
-    header("Location: ../../public/view/admin/homeowners.php");
+    header("Location: ../../public/view/admin/homeowner_list.php");
     die();
 }

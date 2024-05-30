@@ -2,11 +2,15 @@
 
 require_once '../../../includes/config.session.inc.php';
 require_once '../../../includes/authenticate.inc.php';
-grantPermission('super_admin');
+grantPermission('admin');
 
 $page_titles = array(
+    'admin.dashboard.php' => 'Dashboard',
+    'homeowners.php' => 'Homeowners',
+    'qr_code.php' => 'QR Code',
+    'balance.php' => 'Balance',
     'accounts.php' => 'Accounts',
-    'account_list.php' => 'Account List',
+    'logs.php' => 'Records Logs'
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -40,7 +44,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
                     <a href="accounts.php" class="text-nowrap logo-img">
-                        <img src="../../images/logos/san_lorenzo_logo.svg" width="150" alt="" />
+                        <img src="../../images/logos/san_lorenzo_logo.svg" width="120" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -56,17 +60,49 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                     <ul id="sidebarnav">
 
                         <hr class="text text-primary">
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="admin.dashboard.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-house-user"></i>
+                                </span>
+                                <span class="hide-menu">Dashboard</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-car"></i>
+                                </span>
+                                <span class="hide-menu">Vehicle Registration</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-money-bill"></i>
+                                </span>
+                                <span class="hide-menu">Balance</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item">
+                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-file"></i>
+                                </span>
+                                <span class="hide-menu">Records</span>
+                            </a>
+                        </li>
 
                         <li class="nav-small-cap">
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
-                            <span class="hide-menu">Accounts</span>
+                            <span class="hide-menu">Homeowners</span>
                         </li>
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="accounts.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>
-                                <span class="hide-menu">Create Account</span>
+                                <span class="hide-menu">Add Homeowner</span>
                             </a>
                         </li>
                         <li class="sidebar-item">
@@ -74,7 +110,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
-                                <span class="hide-menu">Account List</span>
+                                <span class="hide-menu">Homeowner List</span>
                             </a>
                         </li>
 

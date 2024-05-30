@@ -44,7 +44,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
                     <a href="accounts.php" class="text-nowrap logo-img">
-                        <img src="../../images/logos/san_lorenzo_logo.svg" width="90" alt="" />
+                        <img src="../../images/logos/san_lorenzo_logo.svg" width="100" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -52,7 +52,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                 </div>
 
                 <div class="container-fluid">
-                    <h5 class="text-center fw-bolder">San Lorenzo South Phase 1</h4>
+                    <h5 class="text-center fw-bolder mt-1">San Lorenzo South Phase 1</h4>
                 </div>
 
                 <!-- Sidebar navigation-->
@@ -70,11 +70,11 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                         </li>
 
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                            <a class="sidebar-link" href="logs.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-file"></i>
                                 </span>
-                                <span class="hide-menu">Records</span>
+                                <span class="hide-menu"> Records</span>
                             </a>
                         </li>
 
@@ -104,7 +104,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <span class="hide-menu">QR Code</span>
                         </li>
                         <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                            <a class="sidebar-link" href="qr_code.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-car"></i>
                                 </span>
@@ -114,11 +114,12 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                         <li class="sidebar-item">
                             <a class="sidebar-link" href="accounts.php" aria-expanded="false">
                                 <span>
-                                    <i class="fa fa-money-bill"></i>
+                                    <i class="fa fa-id-card"></i>
                                 </span>
-                                <span class="hide-menu">Payment</span>
+                                <span class="hide-menu">Vehicle List</span>
                             </a>
                         </li>
+
 
                         <hr class="text text-primary">
 

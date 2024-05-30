@@ -25,11 +25,9 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
 
                 <!-- SEARCH BAR -->
                 <div class="container">
-                    <div class="row mb-3">
-                        <div class="d-flex justify-content-end">
-                            <div class="col-sm-3 col-md-4">
-                                <input class="form-control me-2" type="text" id="searchInput" placeholder="Search here" aria-label="Search">
-                            </div>
+                    <div class="row mb-2 justify-content-end">
+                        <div class="col-md-4 order-md-2 order-1 mb-2">
+                            <input class="form-control me-2" type="text" id="searchInput" placeholder="Search here" aria-label="Search">
                         </div>
                     </div>
                 </div>

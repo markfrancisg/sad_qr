@@ -21,7 +21,7 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
                 <h2 class="fw-semibold mb-4">Create Account</h2>
 
                 <div class="container">
-                    <form method="post" action="../../../includes/super_admin/create_account.inc.php">
+                    <form method="post" action="../../../includes/super_admin/create_account.inc.php" id="createAccountForm" class="needs-validation" novalidate>
 
                         <div class="row">
                             <div class="col-12 col-md-12">
@@ -35,35 +35,41 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
                         <div class="row">
                             <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="name@example.com" maxlength="30">
+                                    <input type="text" class="form-control" id="first_name" name="first_name" placeholder="name@example.com" maxlength="30" required>
                                     <label for="floatingInput1">First Name</label>
+                                    <div class="invalid-feedback">First name is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="name@example.com" maxlength="30">
+                                    <input type="text" class="form-control" id="last_name" name="last_name" placeholder="name@example.com" maxlength="30" required>
                                     <label for="floatingInput2">Last Name</label>
+                                    <div class="invalid-feedback">Last name is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
-                                <select class="form-select form-select-md mb-3 rounded-1 p-3" name="role_description" aria-label=".form-select-lg example">
-                                    <option disabled selected>Role</option>
+                                <select class="form-select form-select-md mb-2 rounded-1 p-3" name="role_description" id="role_description" aria-label="Role" required>
+                                    <option value="" disabled selected>Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="guard">Guard</option>
                                 </select>
+                                <div class="invalid-feedback">Role is required</div>
+
                             </div>
                         </div>
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="email" class="form-control" id="email" name="account_email" placeholder="name@example.com" maxlength="50">
+                                    <input type="email" class="form-control" id="email" name="account_email" placeholder="name@example.com" maxlength="50" required>
                                     <label for="floatingInput1">Email Address</label>
+                                    <div class="invalid-feedback">Invalid email</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="number" name="account_number" placeholder="name@example.com" maxlength="11">
-                                    <label for="floatingInput2">Phone Number</label>
+                                    <input type="text" class="form-control" id="number" name="account_number" placeholder="Phone Number" maxlength="11" required>
+                                    <label for="number">Phone Number</label>
+                                    <div class="invalid-feedback">Invalid phone number</div>
                                 </div>
                             </div>
                         </div>

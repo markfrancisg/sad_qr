@@ -48,7 +48,7 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
-                                <select class="form-select form-select-md mb-2 rounded-1 p-3" name="role_description" id="role_description" aria-label="Role" required>
+                                <select class="form-select form-select-md mb-1 rounded-1 p-3" name="role_description" id="role_description" aria-label="Role" required>
                                     <option value="" disabled selected>Role</option>
                                     <option value="admin">Admin</option>
                                     <option value="guard">Guard</option>

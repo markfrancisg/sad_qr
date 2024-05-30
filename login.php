@@ -20,7 +20,15 @@ redirectUser();
                                     <img src="public/images/logos/san_lorenzo_logo.svg" width="100" alt="SeQRity Logo" />
                                 </a>
                                 <!-- <p class="text-center">Your SeQRity Gate Friend</p> -->
-                                <h2 class="text-center mt-1"><?php echo $_SESSION['selected_user']; ?> Login</h2>
+                                <h2 class="text-center mt-1">
+                                    <?php
+                                    if (isset($_SESSION['selected_user'])) {
+                                        echo $_SESSION['selected_user'] . " Login";
+                                    } else {
+                                        echo "Login";
+                                    }
+                                    ?>
+                                </h2>
                                 <form id="loginForm" action="includes/login.inc.php" method="post" novalidate>
                                     <div class="row mb-3">
 

@@ -75,6 +75,8 @@ document.getElementById('email').addEventListener('input', function() {
 });
 
 
+
+
 // const form = document.getElementById('createAccountForm');
 // const first_name = document.getElementById('first_name');
 // const last_name = document.getElementById('last_name');

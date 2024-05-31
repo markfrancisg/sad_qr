@@ -3,6 +3,7 @@ include_once 'header.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/QrCodeListController.php'; // 
+include_once '../../../includes/admin/balance_pay_view.inc.php';
 
 ?>
 
@@ -181,6 +182,10 @@ require_once '../../../includes/QrCodeListController.php'; //
     </div>
 </div>
 
+<!-- Check payment status -->
+<?php
+payment_success();
+?>
 
 <script src="../../js/vehicle_list.js"></script>
 

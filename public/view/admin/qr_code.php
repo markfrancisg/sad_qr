@@ -105,11 +105,11 @@ $homeowner_email = get_homeowner_email($pdo);
             </div>
         </div>
     </div>
+</div>
 
 
+<script src="../../js/qr_code.js"></script>
 
-    <script src="../../js/qr_code.js"></script>
-
-    <?php
-    include_once 'footer.php';
-    ?>
+<?php
+include_once 'footer.php';
+?>

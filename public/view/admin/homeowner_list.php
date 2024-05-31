@@ -137,9 +137,6 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
 
                 </div>
 
-
-
-
             </div>
         </div>
     </div>

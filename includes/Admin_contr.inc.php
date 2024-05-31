@@ -190,6 +190,6 @@ function email_qr_code(string $qr_id, string $name, string $email, string $addre
         . "Address: $address<br>"
         . "Plate Number: $plate_number<br>"
         . "Vehicle Type: $vehicle_type<br><br>"
-        . "Please download your QR code for entering the subdivision.<br>"; // Email body
+        . "Please download and present this QR code when entering the subdivision.<br>"; // Email body
     $mail->send();
 }

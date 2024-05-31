@@ -37,7 +37,7 @@ if (isset($_GET["qr_id"])) {
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());
     }
-    header("Location: ../../public/view/admin/balance.php?payment=success&name=$name#paid_accounts");
+    header("Location: ../../public/view/admin/vehicle_list.php?payment=success&name=$name");
 
     exit(); // Add exit to stop script execution
 } else {

@@ -110,10 +110,10 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
         </div>
     </div>
 
+</div>
 
+<script src="../../js/add_homeowners.js"></script>
 
-    <script src="../../js/add_homeowners.js"></script>
-
-    <?php
-    include_once 'footer.php';
-    ?>
+<?php
+include_once 'footer.php';
+?>

@@ -27,72 +27,48 @@ $result = get_qr_detail($pdo, $qr_id);
             <div class="card-body">
                 <h2 class="fw-semibold mb-4 text-center">Vehicle Details</h2>
 
-                <div class="container">
+                <div class="container mt-2 printable">
                     <div class="row">
-                        <div class="col-md-6">
+                        <div class="col-md-6 mb-3">
                             <div class="container">
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="../../images/details.svg" width="20" alt="Details" class="detail-image">
-                                    <h5 class="text-dark fw-bolder mb-0">Name: <span class="text-muted detail-value"><?php echo $result['first_name'] . " " . $result['last_name']; ?></span></h5>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="../../images/details.svg" width="20" alt="Details" class="detail-image">
-                                    <h5 class="text-dark fw-bolder mb-0">Address: <span class="text-muted detail-value"><?php echo "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street"; ?></span></h5>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="../../images/details.svg" width="20" alt="Details" class="detail-image">
-                                    <h5 class="text-dark fw-bolder mb-0">Plate Number: <span class="text-muted detail-value"><?php echo $result['plate_number']; ?></span></h5>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="../../images/details.svg" width="20" alt="Details" class="detail-image">
-                                    <h5 class="text-dark fw-bolder mb-0">Vehicle Wheels: <span class="text-muted detail-value"><?php echo $result['wheel']; ?></span></h5>
-                                </div>
-                                <div class="d-flex align-items-center mb-3">
-                                    <img src="../../images/details.svg" width="20" alt="Details" class="detail-image">
-                                    <h5 class="text-dark fw-bolder mb-0">Vehicle Type: <span class="text-muted detail-value"><?php echo $result['vehicle_type']; ?></span></h5>
+                                <div class="card-body text-center mt-1">
+                                    <img src="../../images/details.svg" width="120" alt="Details" class="mb-2">
+                                    <h2 class="text-dark fw-bolder mb-0"><?php echo $result['first_name'] . " " . $result['last_name']; ?></h2>
+                                    <hr class="text-dark fw-bolder">
+                                    <p class="text-muted fw-bolder mb-2"><?php echo "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street"; ?></p>
+                                    <p class="text-muted fw-bolder mb-2">With Plate Number <u><?php echo $result['plate_number']; ?></u></p>
+                                    <p class="text-muted fw-bolder mb-0"><?php echo $result['wheel']; ?>-wheel <?php echo $result['vehicle_type']; ?></p>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="col-md-6">
-                            <div class="container">
-                                <?php
-                                if ($result['qr_code'] != 'Not Registered') {
-                                    // If QR code data is available, display the QR code image
-                                    $qrImageData = view_qr($result['qr_code']); // Assuming this function properly returns QR code image data
-                                    echo '<img src="data:image/png;base64,' . base64_encode($qrImageData) . '" >';
-                                    echo '<div class="mt-0 hide-printer-icon"><button onclick="window.print()"><i class="fas fa-print"></i> Print</button></div>';
-                                } else {
-                                    // If QR code data is not available, display a link
-                                ?>
-                                    <div class="receipt">
-                                        <div class="d-sm-flex align-items-center justify-content-between ml-4 mt-4">
-                                            <h3 class="fw-bolder">Generate QR Code</h6>
+                        <div class="col-md-6 mb-3">
+                            <div class="container border border-2 border-primary shadow-sm">
+                                <div class="card-body text-center" style="min-height: 350px;">
+                                    <?php if ($result['qr_code'] != 'Not Registered') :
+                                        $qrImageData = view_qr($result['qr_code']); ?>
+                                        <div class="mb-3">
+                                            <img src="data:image/png;base64,<?php echo base64_encode($qrImageData); ?>" alt="QR Code" class="img-fluid" />
                                         </div>
-                                        <div class="receipt-body">
-                                            <p class="font-weight-bold"><b>Date:</b> <?php echo date('F j, Y'); ?></p>
-                                            <p class="font-weight-bold"><b>Description:</b> Payment</p>
-                                            <p class="font-weight-bold"><b>Amount:</b> ₱200.00</p>
-                                            <a href="" class="view-qr-detail pay-option" data-toggle="modal" data-target="#payModal" data-qr="<?php echo $qr_id; ?>">
-                                                <button class="btn btn-view-pay">Pay</button></a>
-                                            <!-- ../../../includes/admin/balance_pay.inc.php?qr_id=
-                                                                                // echo $qr_id; 
-                                                                                -->
+                                        <button onclick="window.print()" class="btn btn-outline-primary btn-print">
+                                            <i class="fas fa-print"></i> Print
+                                        </button>
+                                    <?php else : ?>
+                                        <div class="mb-3 mt-5">
+                                            <h3 class="text-dark fw-bolder mb-0">Generate QR Code</h3>
                                         </div>
-                                    </div>
-                                <?php
-                                }
-                                ?>
+                                        <p class="text-muted fw-bolder mb-1"><b class="text-dark">Date:</b> <?php echo date('F j, Y'); ?></p>
+                                        <p class="text-muted fw-bolder mb-1"><b class="text-dark">Description:</b> Payment</p>
+                                        <p class="text-muted fw-bolder mb-1"><b class="text-dark">Amount:</b> ₱200.00</p>
+                                        <a href="" class="view-qr-detail pay-option" data-toggle="modal" data-target="#payModal" data-qr="<?php echo $qr_id; ?>">
+                                            <button class="btn btn-outline-primary mt-3">Pay</button>
+                                        </a>
+                                    <?php endif; ?>
+                                </div>
                             </div>
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
 
             </div>
         </div>

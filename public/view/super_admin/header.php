@@ -4,6 +4,12 @@ require_once '../../../includes/config.session.inc.php';
 require_once '../../../includes/authenticate.inc.php';
 grantPermission('super_admin');
 
+
+function isActive($page)
+{
+    return basename($_SERVER['PHP_SELF']) == $page;
+}
+
 $page_titles = array(
     'accounts.php' => 'Accounts',
     'account_list.php' => 'Account List',
@@ -61,16 +67,16 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Accounts</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="accounts.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('accounts.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('accounts.php'); ?>" href="accounts.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>
                                 <span class="hide-menu">Create Account</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="account_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('account_list.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('account_list.php'); ?>" href="account_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
@@ -83,13 +89,12 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                         <!-- <div class="d-flex">
                             <button class="btn btn-primary w-100">Log out</button>
                         </div> -->
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
-                                <span>
-                                    <i class="fa fa-chevron-left"></i> </span>
-                                <span class="hide-menu">Log Out</span>
-                            </a>
-                        </li>
+                        <a class="sidebar-link" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <div class="d-flex">
+                                <button class="btn btn-outline-primary w-100"><i class="fa fa-chevron-left"></i>
+                                    Log out</button>
+                            </div>
+                        </a>
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

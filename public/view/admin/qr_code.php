@@ -66,7 +66,7 @@ $homeowner_email = get_homeowner_email($pdo);
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" maxlength="10" required>
+                                    <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" maxlength="30" required>
                                     <label for="vehicle_type">Vehicle Type</label>
                                     <div class="invalid-feedback">Vehicle type is required</div>
                                 </div>
@@ -89,14 +89,15 @@ $homeowner_email = get_homeowner_email($pdo);
                         </div>
 
                         <div class="row mt-5">
-                            <div class="d-flex justify-content-center">
+                            <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center">
                                 <button class="btn btn-primary p-3 w-50 mb-2">Register Vehicle</button>
                             </div>
-                            <?php
-                            check_create_vehicle_errors();
-                            ?>
+                            <div class="col-12">
+                                <?php
+                                check_create_vehicle_errors();
+                                ?>
+                            </div>
                         </div>
-
                     </form>
                 </div>
 

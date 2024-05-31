@@ -94,12 +94,12 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                         </div>
 
                         <div class="row mt-3">
-                            <div class="d-flex justify-content-center">
+                            <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center">
                                 <button class="btn btn-primary p-3 w-50 mb-2">Create Homeowner</button>
                             </div>
-                            <?php
-                            check_add_homeowner_errors();
-                            ?>
+                            <div class="col-12">
+                                <?php check_add_homeowner_errors(); ?>
+                            </div>
                         </div>
                     </form>
                 </div>

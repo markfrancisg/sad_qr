@@ -22,7 +22,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                 <div class="container">
                     <form method="post" action="../../../includes/admin/homeowner.inc.php" id="addHomeownerForm" class="needs-validation" novalidate>
 
-                        <div class="row">
+                        <div class="row mt-5">
                             <div class="col-12 col-md-12">
 
                             </div>
@@ -95,7 +95,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
 
                         <div class="row mt-3">
                             <div class="d-flex justify-content-center">
-                                <button class="btn btn-primary p-3 w-50 mb-2">Add Homeowner</button>
+                                <button class="btn btn-primary p-3 w-50 mb-2">Create Homeowner</button>
                             </div>
                             <?php
                             check_add_homeowner_errors();

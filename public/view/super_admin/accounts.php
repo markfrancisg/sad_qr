@@ -54,7 +54,7 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
                                     <option value="guard">Guard</option>
                                 </select>
                                 <div class="invalid-feedback">Role is required</div>
-                                <div class="mb-3"></div> 
+                                <div class="mb-3"></div>
                                 <!-- just an additional space so the fields would be aligned -->
                             </div>
                         </div>
@@ -96,11 +96,12 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
             </div>
         </div>
     </div>
+</div>
 
 
 
-    <script src="../../js/create_account.js"></script>
+<script src="../../js/create_account.js"></script>
 
-    <?php
-    include_once 'footer.php';
-    ?>
+<?php
+include_once 'footer.php';
+?>

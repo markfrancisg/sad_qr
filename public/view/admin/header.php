@@ -4,13 +4,23 @@ require_once '../../../includes/config.session.inc.php';
 require_once '../../../includes/authenticate.inc.php';
 grantPermission('admin');
 
+function isActive($page)
+{
+    return basename($_SERVER['PHP_SELF']) == $page;
+}
+
 $page_titles = array(
     'admin.dashboard.php' => 'Dashboard',
     'homeowners.php' => 'Homeowners',
+    'homeowner_list.php' => 'Homeowners',
     'qr_code.php' => 'QR Code',
+    'qr_code_detail.php' => 'QR Code',
     'balance.php' => 'Balance',
-    'accounts.php' => 'Accounts',
-    'logs.php' => 'Records Logs'
+    'vehicle_list_paid.php' => 'QR Code',
+    'vehicle_list_unpaid.php' => 'QR Code',
+    'vehicle_list.php' => 'QR Code',
+    'logs.php' => 'Records'
+
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -43,7 +53,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
-                    <a href="accounts.php" class="text-nowrap logo-img">
+                    <a href="" class="text-nowrap logo-img">
                         <img src="../../images/logos/san_lorenzo_logo.svg" width="100" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
@@ -60,8 +70,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                     <ul id="sidebarnav">
 
                         <hr class="text text-primary">
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="admin.dashboard.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('admin.dashboard.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('admin.dashboard.php'); ?>" href="admin.dashboard.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-house-user"></i>
                                 </span>
@@ -69,8 +79,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
 
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="logs.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('logs.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('logs.php'); ?>" href="logs.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-file"></i>
                                 </span>
@@ -82,16 +92,16 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">Homeowners</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="homeowners.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('homeowners.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('homeowners.php'); ?>" href="homeowners.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>
                                 <span class="hide-menu">Add Homeowner</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="homeowner_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('homeowner_list.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('homeowner_list.php'); ?>" href="homeowner_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
@@ -103,16 +113,18 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
                             <span class="hide-menu">QR Code</span>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="qr_code.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('qr_code.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('qr_code.php'); ?>" href="qr_code.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-car"></i>
                                 </span>
                                 <span class="hide-menu">Vehicle Registration</span>
                             </a>
                         </li>
-                        <li class="sidebar-item">
-                            <a class="sidebar-link" href="vehicle_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo (isActive('vehicle_list.php') || isActive('qr_code_detail.php'))
+                                                    || isActive('vehicle_list_paid.php') || isActive('vehicle_list_unpaid.php')  ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('vehicle_list.php') || isActive('qr_code_detail.php')
+                                                        || isActive('vehicle_list_paid.php') || isActive('vehicle_list_unpaid.php') ? 'active' : ''; ?>" href="vehicle_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-id-card"></i>
                                 </span>
@@ -123,16 +135,19 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
 
                         <hr class="text text-primary">
 
-                        <!-- <div class="d-flex">
-                            <button class="btn btn-primary w-100">Log out</button>
-                        </div> -->
-                        <li class="sidebar-item">
+                        <a class="sidebar-link" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
+                            <div class="d-flex">
+                                <button class="btn btn-outline-primary w-100"><i class="fa fa-chevron-left"></i>
+                                    Log out</button>
+                            </div>
+                        </a>
+                        <!-- <li class="sidebar-item">
                             <a class="sidebar-link" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <span>
                                     <i class="fa fa-chevron-left"></i> </span>
                                 <span class="hide-menu">Log Out</span>
                             </a>
-                        </li>
+                        </li> -->
                     </ul>
                 </nav>
                 <!-- End Sidebar navigation -->

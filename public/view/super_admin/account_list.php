@@ -2,8 +2,7 @@
 include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/SuperAdmin_model.inc.php';
-
-$results = get_user_list($pdo);
+require_once '../../../includes/AccountListController.php';
 
 ?>
 
@@ -21,7 +20,7 @@ $results = get_user_list($pdo);
 
         <div class="card">
             <div class="card-body">
-                <h2 class="fw-semibold mb-4 text-center">Account List</h2>
+                <h2 class="fw-semibold mb-4 text-center" id="account_pagination">Account List</h2>
 
                 <!-- SEARCH BAR -->
                 <div class="container">
@@ -111,20 +110,45 @@ $results = get_user_list($pdo);
                     </div>
 
                     <!-- PAGINATION -->
-                    <div class="mt-5">
-                        <nav aria-label="Page navigation example">
-                            <ul class="pagination justify-content-end">
-                                <li class="page-item disabled">
-                                    <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                                </li>
-                                <li class="page-item"><a class="page-link" href="#">1</a></li>
-                                <li class="page-item"><a class="page-link" href="#">2</a></li>
-                                <li class="page-item"><a class="page-link" href="#">3</a></li>
-                                <li class="page-item">
-                                    <a class="page-link" href="#">Next</a>
-                                </li>
-                            </ul>
-                        </nav>
+                    <div class="row mt-5">
+                        <div class="col">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <strong>Page <?php echo $page_no; ?> of <?php echo $total_no_of_pages; ?></strong>
+
+                                <!-- Pagination on the right -->
+                                <nav aria-label="Page navigation example">
+                                    <ul class="pagination mb-0">
+                                        <li class="page-item">
+                                            <a class="page-link <?php echo ($page_no <= 1) ? 'disabled' : ''; ?>" <?php echo ($page_no > 1) ? 'href="?page_no=' . $previous_page . '#account_pagination"' : ''; ?>>
+                                                <i class="fas fa-chevron-left"></i>
+                                            </a>
+                                        </li>
+
+                                        <?php
+                                        // Calculate start and end page numbers to display
+                                        $start_page = max(1, $page_no - 1);
+                                        $end_page = min($total_no_of_pages, $page_no + 1);
+
+                                        for ($counter = $start_page; $counter <= $end_page; $counter++) {
+                                        ?>
+                                            <li class="page-item <?php echo ($page_no == $counter) ? 'active' : ''; ?>">
+                                                <a class="page-link <?php echo ($page_no == $counter) ? 'bg-primary text-white' : ''; ?>" href="?page_no=<?php echo $counter; ?>#account_pagination">
+                                                    <?php echo $counter; ?>
+                                                </a>
+                                            </li>
+                                        <?php
+                                        }
+                                        ?>
+
+                                        <li class="page-item">
+                                            <a class="page-link <?php echo ($page_no >= $total_no_of_pages) ? 'disabled' : ''; ?>" <?php echo ($page_no < $total_no_of_pages) ? 'href="?page_no=' . $next_page . '#account_pagination"' : ''; ?>>
+                                                <i class="fas fa-chevron-right"></i>
+                                            </a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
                     </div>
 
 
@@ -134,29 +158,30 @@ $results = get_user_list($pdo);
             </div>
         </div>
     </div>
+</div>
 
 
-    <!-- MODALS -->
-    <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete User Account?</h5>
-                </div>
-                <div class="modal-body">
-                    Select "Delete" below if you are sure.
-                </div>
-                <div class="modal-footer">
-                    <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
-                    <a class="btn btn-primary" id="delete-link" href="#">Delete</a>
-                </div>
+<!-- MODALS -->
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete User Account?</h5>
+            </div>
+            <div class="modal-body">
+                Select "Delete" below if you are sure.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" id="delete-link" href="#">Delete</a>
             </div>
         </div>
     </div>
+</div>
 
 
-    <script src="../../js/account_list.js"></script>
+<script src="../../js/account_list.js"></script>
 
-    <?php
-    include_once 'footer.php';
-    ?>
+<?php
+include_once 'footer.php';
+?>

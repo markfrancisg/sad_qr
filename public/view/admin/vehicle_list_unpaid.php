@@ -2,8 +2,7 @@
 include_once 'header.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
-require_once '../../../includes/QrCodeListController.php'; // 
-include_once '../../../includes/admin/balance_pay_view.inc.php';
+require_once '../../../includes/UnpaidQrCodeListController.php';
 
 ?>
 
@@ -16,7 +15,8 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
         <!-- BREADCRUMB -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Vehicle List</li>
+                <li class="breadcrumb-item"><a href="vehicle_list.php">Vehicle List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Unpaid Vehicle List</li>
             </ol>
         </nav>
 
@@ -33,13 +33,13 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
                                 <div class="container-fluid">
                                     <ul class="nav nav-pills d-flex flex-row flex-nowrap">
                                         <li class="nav-item me-2">
-                                            <a class="nav-link active" aria-current="page" href="vehicle_list.php">All</a>
+                                            <a class="nav-link" aria-current="page" href="vehicle_list.php">All</a>
                                         </li>
                                         <li class="nav-item me-2">
-                                            <a class="nav-link" href="vehicle_list_paid.php">Paid</a>
+                                            <a class="nav-link " href="vehicle_list_paid.php">Paid</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="vehicle_list_unpaid.php">Unpaid</a>
+                                            <a class="nav-link active" href="vehicle_list_unpaid.php">Unpaid</a>
                                         </li>
                                     </ul>
                                 </div>
@@ -72,7 +72,7 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
                                         <h6 class="fw-bolder text-light mb-0">Plate Number</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Status</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Pay</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Delete</h6>
@@ -201,11 +201,6 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
         </div>
     </div>
 </div>
-
-<!-- Check payment status -->
-<?php
-payment_success();
-?>
 
 <script src="../../js/vehicle_list.js"></script>
 

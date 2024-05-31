@@ -5,6 +5,50 @@ $(document).ready(function() {
     });
 });
 
+
+// document.addEventListener('DOMContentLoaded', function () {
+//     // Get the edit button element
+//     var editButton = document.getElementById('editButton');
+
+//     // Add a click event listener to the edit button
+//     editButton.addEventListener('click', function () {
+//         // Get the email from the data-email attribute
+//         var email = editButton.getAttribute('data-email');
+
+//         // Construct the URL with the email parameter
+//         var editUrl = '../super_admin/edit_account.php?email=' + encodeURIComponent(email);
+
+//         // Redirect the user to the edit page
+//         window.location.href = editUrl;
+//     });
+// });
+
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all elements with the class 'edit-btn'
+    var editButtons = document.querySelectorAll('.edit-btn');
+
+    // Loop through each edit button
+    editButtons.forEach(function(editButton) {
+        // Add a click event listener to each edit button
+        editButton.addEventListener('click', function () {
+            // Get the email from the data-email attribute of the clicked edit button
+            var email = editButton.getAttribute('data-email');
+
+            // Construct the URL with the email parameter
+            var editUrl = '../super_admin/edit_account.php?email=' + encodeURIComponent(email);
+
+            // Set the href attribute of the "Edit" link inside the modal
+            var editLink = document.getElementById('edit-link');
+            editLink.setAttribute('href', editUrl);
+        });
+    });
+});
+
+
+
+
+// ________________________________Search Function____________________________
+
 function searchTable() {
     // Get input element and value
     var input = document.getElementById("searchInput");
@@ -34,3 +78,13 @@ function searchTable() {
 
 // Attach event listener to the search input
 document.getElementById("searchInput").addEventListener("keyup", searchTable);
+
+// ________________________________Edit Toast Update____________________________
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toastElement = document.getElementById('liveToast');
+    if (toastElement) {
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+});

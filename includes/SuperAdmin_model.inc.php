@@ -41,3 +41,18 @@ function count_account_list(object $pdo)
     // Return the count value
     return $result['account_count'];
 }
+
+function get_specified_account(PDO $pdo, string $email)
+{
+    $query = "SELECT account_email, role_description, account_first_name, account_last_name, account_number 
+              FROM account
+              INNER JOIN role_info ON account.role_id = role_info.role_id
+              INNER JOIN user_info ON account.account_id = user_info.account_id
+              WHERE account.account_email = :email";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}

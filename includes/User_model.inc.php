@@ -47,6 +47,22 @@ function get_email(object $pdo, string $email)
     return $result;
 }
 
+function get_email_except(object $pdo, string $email, string $old_email)
+{
+    // Prepare SQL query to select account emails excluding the old email
+    $query = "SELECT account_email FROM account WHERE account_email = :account_email AND account_email != :old_email;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":account_email", $email);
+    $stmt->bindParam(":old_email", $old_email);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+
 
 // function set_account(object $pdo, string $email, string $password, string $role_id, string $first_name, string $last_name, string $number)
 // {
@@ -150,4 +166,35 @@ function set_password(object $pdo, string $email, string $password)
     $stmt->bindParam(":account_email", $email);
 
     $stmt->execute();
+}
+
+function update_account(object $pdo, int $role_id, string $email, string $first_name, string $last_name, string $number, string $old_email)
+{
+    // Convert role_id to integer
+    // $role_id = (int)$role_id;
+
+    // Update account table
+    $sql1 = "UPDATE account SET account_email = :account_email, role_id = :role_id WHERE account_email = :old_email";
+    $stmt1 = $pdo->prepare($sql1);
+    $stmt1->bindParam(":account_email", $email);
+    $stmt1->bindParam(":role_id", $role_id);
+    $stmt1->bindParam(":old_email", $old_email); // Assuming you have the old email available somewhere
+    $stmt1->execute();
+
+    // Get account_id
+    $sql_get_account_id = "SELECT account_id FROM account WHERE account_email = :account_email";
+    $stmt_get_account_id = $pdo->prepare($sql_get_account_id);
+    $stmt_get_account_id->bindParam(":account_email", $email);
+    $stmt_get_account_id->execute();
+    $account_id_row = $stmt_get_account_id->fetch(PDO::FETCH_ASSOC);
+    $account_id = $account_id_row['account_id'];
+
+    // Update user_info table
+    $sql2 = "UPDATE user_info SET account_first_name = :account_first_name, account_last_name = :account_last_name, account_number = :account_number WHERE account_id = :account_id";
+    $stmt2 = $pdo->prepare($sql2);
+    $stmt2->bindParam(":account_first_name", $first_name);
+    $stmt2->bindParam(":account_last_name", $last_name);
+    $stmt2->bindParam(":account_number", $number);
+    $stmt2->bindParam(":account_id", $account_id);
+    $stmt2->execute();
 }

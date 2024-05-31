@@ -122,6 +122,16 @@ function is_email_registered(object $pdo, string $email)
     }
 }
 
+
+function is_email_registered_except(object $pdo, string $email, string $old_email)
+{
+    if (get_email_except($pdo, $email, $old_email)) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 function is_number_valid(string $number)
 {
     $pattern = '/^(09|\+639)\d{9}$/';

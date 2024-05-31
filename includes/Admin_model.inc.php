@@ -299,3 +299,67 @@ function count_qr_list(object $pdo)
     // Return the count value
     return $result['qr_count'];
 }
+
+function count_homeowners(object $pdo)
+{
+    // Prepare the SQL statement
+    $sql = "SELECT COUNT(*) as count FROM homeowners";
+
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['count'];
+}
+
+function count_vehicles(object $pdo)
+{
+    // Prepare the SQL statement
+    $sql = "SELECT COUNT(*) as count FROM qr_info";
+
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['count'];
+}
+
+function count_paid_vehicles(object $pdo)
+{
+    // Prepare the SQL statement with the WHERE clause
+    $sql = "SELECT COUNT(*) as count FROM qr_info WHERE registered = 1";
+
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['count'];
+}
+
+function count_unpaid_vehicles(object $pdo)
+{
+    // Prepare the SQL statement with the WHERE clause
+    $sql = "SELECT COUNT(*) as count FROM qr_info WHERE registered = 0";
+
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['count'];
+}

@@ -141,6 +141,49 @@ function get_homeowner(object $pdo, string $email)
     return $result;
 }
 
+function get_homeowner_except(object $pdo, string $email, string $old_email)
+{
+    // Prepare SQL query to select account emails excluding the old email
+    $query = "SELECT email FROM homeowners WHERE email = :email AND email != :old_email LIMIT 1;";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":email", $email);
+    $stmt->bindParam(":old_email", $old_email);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    return $result;
+}
+
+function update_homeowner(PDO $pdo, string $first_name, string $last_name, string $email, string $number, string $block, string $lot, string $street, string $old_email)
+{
+    // SQL query to update homeowner details
+    $sql = "UPDATE homeowners 
+            SET first_name = :first_name, 
+                last_name = :last_name, 
+                email = :email, 
+                number = :number, 
+                block = :block, 
+                lot = :lot, 
+                street = :street 
+            WHERE email = :old_email";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":first_name", $first_name, PDO::PARAM_STR);
+    $stmt->bindParam(":last_name", $last_name, PDO::PARAM_STR);
+    $stmt->bindParam(":email", $email, PDO::PARAM_STR);
+    $stmt->bindParam(":number", $number, PDO::PARAM_STR);
+    $stmt->bindParam(":block", $block, PDO::PARAM_STR);
+    $stmt->bindParam(":lot", $lot, PDO::PARAM_STR);
+    $stmt->bindParam(":street", $street, PDO::PARAM_STR);
+    $stmt->bindParam(":old_email", $old_email, PDO::PARAM_STR);
+
+    // Execute the query and return true if successful, false otherwise
+    return $stmt->execute();
+}
+
+
 function get_unpaid_qr(object $pdo, int $offset, int $total_records_per_page)
 {
     $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
@@ -393,4 +436,17 @@ function count_log_weekly(PDO $pdo): int
 
     // Return the count value
     return $result['count'];
+}
+
+function get_specified_homeowner(PDO $pdo, string $email): array
+{
+    $query = "SELECT email, first_name, last_name, number, block, lot, street 
+              FROM homeowners 
+              WHERE email = :email";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
 }

@@ -6,6 +6,28 @@ $(document).ready(function() {
     });
 });
 
+//edit button
+document.addEventListener('DOMContentLoaded', function () {
+    // Get all elements with the class 'edit-btn'
+    var editButtons = document.querySelectorAll('.edit-btn');
+
+    // Loop through each edit button
+    editButtons.forEach(function(editButton) {
+        // Add a click event listener to each edit button
+        editButton.addEventListener('click', function () {
+            // Get the email from the data-email attribute of the clicked edit button
+            var email = editButton.getAttribute('data-email');
+
+            // Construct the URL with the email parameter
+            var editUrl = '../admin/edit_homeowner.php?email=' + encodeURIComponent(email);
+
+            // Set the href attribute of the "Edit" link inside the modal
+            var editLink = document.getElementById('edit-link');
+            editLink.setAttribute('href', editUrl);
+        });
+    });
+});
+
 
 //for the search option
 function searchTable() {
@@ -37,3 +59,14 @@ function searchTable() {
 
 // Attach event listener to the search input
 document.getElementById("searchInput").addEventListener("keyup", searchTable);
+
+// ________________________________Edit Toast Update____________________________
+
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toastElement = document.getElementById('liveToast');
+    if (toastElement) {
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+});

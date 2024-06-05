@@ -60,6 +60,14 @@ function is_email_registered(object $pdo, string $email)
     return false;
 }
 
+function is_email_registered_except(object $pdo, string $email, $old_email)
+{
+    if (get_homeowner_except($pdo, $email, $old_email)) {
+        return true;
+    }
+    return false;
+}
+
 function input_has_letter($input)
 {
     //if it matches, then return true

@@ -2,6 +2,7 @@
 include_once '../../../includes/dbh.inc.php';
 include_once '../../../includes/SuperAdmin_model.inc.php';
 include_once '../../../includes/EditAccountController.php';
+include_once '../../../includes/super_admin/create_account_view.inc.php';
 include_once 'header.php';
 
 
@@ -94,7 +95,7 @@ include_once 'header.php';
                             </div>
                             <div class="col-12">
                                 <?php
-                                // check_create_account_errors();
+                                check_create_account_errors();
                                 ?>
                             </div>
                         </div>

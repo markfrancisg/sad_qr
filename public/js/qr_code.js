@@ -1,5 +1,10 @@
 document.getElementById('email').addEventListener('change', function() {
-    var email = this.value;
+    var email = this.value.trim();
+    if (email === '') {
+        console.error('Email is empty');
+        return;
+    }
+
     // Send AJAX request to fetch address from server
     var xhr = new XMLHttpRequest();
     xhr.onreadystatechange = function() {
@@ -12,9 +17,16 @@ document.getElementById('email').addEventListener('change', function() {
             }
         }
     };
-    xhr.open('GET', '../../../includes/admin/get_address.inc.php?email=' + email, true);
+    xhr.open('GET', '../../../includes/admin/get_address.inc.php?email=' + encodeURIComponent(email), true);
     xhr.send();
 });
+
+// Manually trigger the change event if there's a pre-selected value
+var preselectedEmail = document.getElementById('email').value.trim();
+if (preselectedEmail !== '') {
+    var event = new Event('change');
+    document.getElementById('email').dispatchEvent(event);
+}
 
 //no letters
 const wheelInput = document.getElementById("wheel");

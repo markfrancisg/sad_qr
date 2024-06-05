@@ -4,6 +4,7 @@ require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/QrCodeListController.php'; // 
 include_once '../../../includes/admin/balance_pay_view.inc.php';
+include_once '../../../includes/admin/vehicle_list_view.inc.php';
 
 ?>
 
@@ -75,7 +76,7 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
                                         <h6 class="fw-bolder text-light mb-0">Status</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Delete</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Edit | Delete</h6>
                                     </th>
                                 </tr>
                             </thead>
@@ -117,6 +118,9 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
                                             </a>
                                         </td>
                                         <td class="border-bottom-0 text-center">
+                                            <a href="#" class="btn btn-light btn-circle btn-sm edit-btn" data-toggle="modal" data-target="#editModal" data-email="<?php echo $qr_id; ?>">
+                                                <i class="fas fa-pencil-alt custom-edit-icon"></i>
+                                            </a>
                                             <a href="#" class="btn btn-light btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" data-email="<?php echo $qr_id; ?>">
                                                 <i class="fas fa-trash fa-trash-dark"></i>
                                             </a>
@@ -202,9 +206,27 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
     </div>
 </div>
 
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Edit Vehicle Details?</h5>
+            </div>
+            <div class="modal-body">
+                Select "Edit" below if you are sure.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" id="edit-link" href="#">Edit</a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- Check payment status -->
 <?php
 payment_success();
+vehicle_edit_success();
 ?>
 
 <script src="../../js/vehicle_list.js"></script>

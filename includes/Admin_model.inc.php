@@ -183,6 +183,25 @@ function update_homeowner(PDO $pdo, string $first_name, string $last_name, strin
     return $stmt->execute();
 }
 
+function update_vehicle(PDO $pdo, string $id, string $vehicle_type, string $plate_number, string $wheel)
+{
+    // SQL query to update homeowner details
+    $sql = "UPDATE qr_info 
+            SET vehicle_type = :vehicle_type, 
+                plate_number = :plate_number, 
+                wheel = :wheel
+            WHERE qr_id = :id";
+
+    $stmt = $pdo->prepare($sql);
+    $stmt->bindParam(":vehicle_type", $vehicle_type, PDO::PARAM_STR);
+    $stmt->bindParam(":plate_number", $plate_number, PDO::PARAM_STR);
+    $stmt->bindParam(":wheel", $wheel, PDO::PARAM_STR);
+    $stmt->bindParam(":id", $id, PDO::PARAM_STR);
+
+    // Execute the query and return true if successful, false otherwise
+    return $stmt->execute();
+}
+
 
 function get_unpaid_qr(object $pdo, int $offset, int $total_records_per_page)
 {
@@ -446,6 +465,20 @@ function get_specified_homeowner(PDO $pdo, string $email): array
 
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(':email', $email, PDO::PARAM_STR);
+    $stmt->execute();
+    $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
+    return $results;
+}
+
+function get_specified_vehicle(PDO $pdo, string $id): array
+{
+    $query = "SELECT email, wheel, vehicle_type, plate_number 
+              FROM qr_info
+              INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+              WHERE qr_info.qr_id = :id";
+
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(':id', $id, PDO::PARAM_STR);
     $stmt->execute();
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results;

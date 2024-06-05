@@ -75,7 +75,7 @@ require_once '../../../includes/UnpaidQrCodeListController.php';
                                         <h6 class="fw-bolder text-light mb-0">Pay</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Delete</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Edit | Delete</h6>
                                     </th>
                                 </tr>
                             </thead>
@@ -117,6 +117,9 @@ require_once '../../../includes/UnpaidQrCodeListController.php';
                                             </a>
                                         </td>
                                         <td class="border-bottom-0 text-center">
+                                            <a href="#" class="btn btn-light btn-circle btn-sm edit-btn" data-toggle="modal" data-target="#editModal" data-email="<?php echo $qr_id; ?>">
+                                                <i class="fas fa-pencil-alt custom-edit-icon"></i>
+                                            </a>
                                             <a href="#" class="btn btn-light btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" data-email="<?php echo $qr_id; ?>">
                                                 <i class="fas fa-trash fa-trash-dark"></i>
                                             </a>
@@ -197,6 +200,23 @@ require_once '../../../includes/UnpaidQrCodeListController.php';
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
                 <a class="btn btn-primary" id="delete-link" href="#">Delete</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Edit Vehicle Details?</h5>
+            </div>
+            <div class="modal-body">
+                Select "Edit" below if you are sure.
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
+                <a class="btn btn-primary" id="edit-link" href="#">Edit</a>
             </div>
         </div>
     </div>

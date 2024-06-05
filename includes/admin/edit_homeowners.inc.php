@@ -22,19 +22,19 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (seven_input_empty($first_name, $last_name, $email, $number, $block, $lot, $street)) {
             $_SESSION["empty_input"] = "Fill in all fields!";
-            header("Location: ../../public/view/admin/edit_homeowner.php");
+            header("Location: ../../public/view/admin/edit_homeowner.php?email=$old_email");
             die();
         }
 
         if (input_has_number($first_name) || input_has_number($last_name)) {
             $_SESSION["invalid_name"] = "Name should only contain letters!";
-            header("Location: ../../public/view/admin/edit_homeowner.php");
+            header("Location: ../../public/view/admin/edit_homeowner.php?email=$old_email");
             die();
         }
 
         if (is_email_invalid($email)) {
             $_SESSION["email_invalid"] = "Invalid email!";
-            header("Location: ../../public/view/admin/edit_homeowner.php");
+            header("Location: ../../public/view/admin/edit_homeowner.php?email=$old_email");
             die();
         }
         if (is_email_registered_except($pdo, $email, $old_email)) {
@@ -45,13 +45,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         if (input_has_letter($number) || is_phone_invalid($number)) {
             $_SESSION["invalid_number"] = "Invalid phone number!";
-            header("Location: ../../public/view/admin/edit_homeowner.php");
+            header("Location: ../../public/view/admin/edit_homeowner.php?email=$old_email");
             die();
         }
 
         if (input_has_letter($block) || input_has_letter($lot)) {
             $_SESSION["invalid_address"] = "Invalid address format!";
-            header("Location: ../../public/view/admin/edit_homeowner.php");
+            header("Location: ../../public/view/admin/edit_homeowner.php?email=$old_email");
             die();
         }
 

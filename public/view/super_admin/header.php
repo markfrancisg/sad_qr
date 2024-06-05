@@ -93,6 +93,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <div class="d-flex">
                                 <button class="btn btn-outline-primary w-100"><i class="fa fa-chevron-left"></i>
                                     Log out</button>
+                                    
                             </div>
                         </a>
                     </ul>

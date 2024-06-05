@@ -34,7 +34,7 @@ if (isset($_POST['export_excel'])) {
                     <td>' . $row['plate_number'] . '</td>
                     <td>' . $row['station'] . '</td>
                     <td>' . $row['entry_exit'] . '</td>
-                    <td>' . $row['date_time'] . '</td>
+                    <td>' . $row['date'] . " | " . $row['time'] . '</td>
                 </tr>';
         }
 

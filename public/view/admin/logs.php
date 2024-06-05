@@ -93,7 +93,7 @@ $results = get_record_logs($pdo);
                                             <h6 class="text-dark mb-0"><?php echo $row['entry_exit']; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['date_time']; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $row['date'] . " | " .   $row['time'] ?></h6>
                                         </td>
 
                                     </tr>

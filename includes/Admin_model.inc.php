@@ -363,3 +363,34 @@ function count_unpaid_vehicles(object $pdo)
     // Return the count value
     return $result['count'];
 }
+
+function count_log_daily(object $pdo)
+{
+    $sql = "SELECT COUNT(*) as count FROM log WHERE DATE(date) = CURDATE()";
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['count'];
+}
+
+function count_log_weekly(PDO $pdo): int
+{
+    $sql = "SELECT COUNT(*) AS count 
+        FROM log 
+        WHERE WEEK(date) = WEEK(CURDATE()) AND YEAR(date) = YEAR(CURDATE())";
+
+    // Prepare and execute the SQL statement
+    $stmt = $pdo->prepare($sql);
+    $stmt->execute();
+
+    // Fetch the result
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    // Return the count value
+    return $result['count'];
+}

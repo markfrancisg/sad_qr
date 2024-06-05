@@ -2,6 +2,7 @@
 include_once '../../../includes/dbh.inc.php';
 include_once '../../../includes/Admin_model.inc.php';
 include_once '../../../includes/EditHomeownerController.php';
+include_once '../../../includes/admin/homeowners_view.inc.php';
 include_once 'header.php';
 
 ?>
@@ -105,7 +106,7 @@ include_once 'header.php';
                             </div>
                             <div class="col-12">
                                 <?php
-                                // check_add_homeowner_errors();
+                                check_add_homeowner_errors();
                                 ?>
                             </div>
                         </div>

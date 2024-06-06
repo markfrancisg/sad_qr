@@ -10,5 +10,9 @@ if (isset($_SESSION['vehicle_data_qr_scan'])) {
     $vehicle_type = $_SESSION['vehicle_data_qr_scan']['vehicle_type'];
     $plate_number = $_SESSION['vehicle_data_qr_scan']['plate_number'];
 
-    unset($_SESSION['vehicle_data_qr_scan']);
+    // unset($_SESSION['vehicle_data_qr_scan']);
 }
+//  else {
+//     header("location: scan_qr.php");
+//     exit();
+// }

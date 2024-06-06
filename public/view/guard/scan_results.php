@@ -46,7 +46,7 @@ require_once 'header.php';
                             </div>
                             <div class="col-md-6 mb-3">
                                 <div class="container border border-2 border-primary shadow-sm">
-                                    <div class="card-body text-center" style="min-height: 350px;">
+                                    <div class="card-body text-center" style="min-height: 300px;">
                                         <?php
                                         $qrImageData = view_qr($qr_code);
                                         if ($qrImageData) : ?>

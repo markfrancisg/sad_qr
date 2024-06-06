@@ -41,7 +41,11 @@ if (isset($_GET['qr_text'])) {
             $address = "Block " . $results['block'] . ", Lot " . $results['lot'] . " ," . $results['street'] . " Street";
             $qr_code = $results['qr_code'];
 
-            record_log($pdo, $qr_id, $station_id);
+            //standard time
+            date_default_timezone_set('Asia/Manila');
+            $time = date('H:i:s');
+
+            record_log($pdo, $qr_id, $station_id, $time);
 
             $qr_scan_result = array(
                 'name' => $name,

@@ -20,6 +20,8 @@ $page_titles = array(
 
 $current_page = basename($_SERVER['PHP_SELF']);
 $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQRity Gate';
+
+
 ?>
 
 <!doctype html>
@@ -74,16 +76,16 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Scan</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('account_list.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('account_list.php'); ?>" href="account_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('record_logs.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('record_logs.php'); ?>" href="record_logs.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
                                 <span class="hide-menu">Record Logs</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('accounts.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('accounts.php'); ?>" href="accounts.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('visitor.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('visitor.php'); ?>" href="visitor.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>

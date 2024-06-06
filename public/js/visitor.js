@@ -57,3 +57,9 @@ specialInputs.forEach(function(input) {
 })();
 
 
+setTimeout(() => {
+    const alertContainer = document.getElementById('alertContainer');
+    if (alertContainer) {
+        alertContainer.remove();
+    }
+}, 3000);

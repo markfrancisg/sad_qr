@@ -13,9 +13,15 @@ function isActive($page)
 $page_titles = array(
     'guard.dashboard.php' => 'Dashboard',
     'record_logs.php' => 'Records',
+    'record_logs_daily.php' => 'Records',
+    'record_logs_weekly.php' => 'Records',
     'scan_qr.php' => 'Scan',
     'scan_results.php' => 'Scan',
     'visitor.php' => 'Visitor',
+    'visitor_list.php' => 'Visitor Logs',
+    'visitor_list_daily.php' => 'Visitor Logs',
+    'visitor_list_weekly.php' => 'Visitor Logs',
+
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);
@@ -50,7 +56,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <!-- Sidebar scroll-->
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
-                    <a href="accounts.php" class="text-nowrap logo-img">
+                    <a href="#" class="text-nowrap logo-img">
                         <img src="../../images/logos/san_lorenzo_logo.svg" width="150" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
@@ -68,21 +74,29 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
 
                         <hr class="text text-primary">
 
-                        <li class="sidebar-item <?php echo isActive('guard.dashboard.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('guard.dashboard.php'); ?>" href="guard.dashboard.php" aria-expanded="false">
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">QR Scan</span>
+                        </li>
+                        <li class="sidebar-item <?php echo isActive('guard.dashboard.php') || isActive('scan_qr.php') || isActive('scan_results.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('guard.dashboard.php') || isActive('scan_qr.php') || isActive('scan_results.php'); ?>" href="guard.dashboard.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>
                                 <span class="hide-menu">Scan</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('record_logs.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('record_logs.php'); ?>" href="record_logs.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('record_logs.php') || isActive('record_logs_daily.php') || isActive('record_logs_weekly.php')  ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('record_logs.php') || isActive('record_logs_daily.php') || isActive('record_logs_weekly.php'); ?>" href="record_logs.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
                                 <span class="hide-menu">Record Logs</span>
                             </a>
+                        </li>
+                        <li class="nav-small-cap">
+                            <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                            <span class="hide-menu">Visitor Logs</span>
                         </li>
                         <li class="sidebar-item <?php echo isActive('visitor.php') ? 'selected' : ''; ?>">
                             <a class="sidebar-link <?php echo isActive('visitor.php'); ?>" href="visitor.php" aria-expanded="false">
@@ -92,8 +106,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Visitor</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('visitor_list.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('visitor_list.php'); ?>" href="visitor_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('visitor_list.php') || isActive('visitor_list_daily.php') || isActive('visitor_list_weekly.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('visitor_list.php') || isActive('visitor_list_daily.php') || isActive('visitor_list_weekly.php'); ?>" href="visitor_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-user-plus"></i>
                                 </span>

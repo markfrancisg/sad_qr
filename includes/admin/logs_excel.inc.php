@@ -13,6 +13,8 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
         } else if ($type === "weekly") {
             $results = get_record_logs($pdo);
         } else {
+            header("Location: ../../public/view/admin/logs.php");
+            die();
         }
 
         // Set headers to indicate that the response is an Excel file
@@ -60,4 +62,7 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());
     }
+} else {
+    header("Location: ../../public/view/admin/logs.php");
+    die();
 }

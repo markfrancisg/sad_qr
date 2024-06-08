@@ -2,7 +2,7 @@
 include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/Logs_model.inc.php';
-include_once '../../../includes/LogsListController.php';
+include_once '../../../includes/LogsListWeeklyController.php';
 
 ?>
 
@@ -15,13 +15,15 @@ include_once '../../../includes/LogsListController.php';
         <!-- BREADCRUMB -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Record Logs</li>
+                <li class="breadcrumb-item"><a href="record_logs.php">Record Logs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Weekly Record Logs</li>
+
             </ol>
         </nav>
 
         <div class="card">
             <div class="card-body">
-                <h2 class="fw-semibold mb-4 text-center">Entry-Exit Record Logs</h2>
+                <h2 class="fw-semibold mb-4 text-center">Weekly Entry-Exit Record Logs</h2>
 
                 <!-- SEARCH BAR -->
                 <div class="container">
@@ -32,19 +34,18 @@ include_once '../../../includes/LogsListController.php';
                                 <div class="container-fluid">
                                     <ul class="nav nav-pills d-flex flex-row flex-nowrap">
                                         <li class="nav-item me-2">
-                                            <a class="nav-link active" aria-current="page" href="record_logs.php">All</a>
+                                            <a class="nav-link " aria-current="page" href="record_logs.php">All</a>
                                         </li>
                                         <li class="nav-item me-2">
-                                            <a class="nav-link" href="record_logs_daily.php">Daily</a>
+                                            <a class="nav-link " href="record_logs_daily.php">Daily</a>
                                         </li>
                                         <li class="nav-item">
-                                            <a class="nav-link" href="record_logs_weekly.php">Weekly</a>
+                                            <a class="nav-link active" href="record_logs_weekly.php">Weekly</a>
                                         </li>
                                     </ul>
                                 </div>
                             </nav>
                         </div>
-
 
                         <div class="col-md-4 order-md-2 order-1 mb-2">
                             <input class="form-control me-2" type="text" id="searchInput" placeholder="Search here" aria-label="Search">

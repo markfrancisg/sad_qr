@@ -75,8 +75,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Create Account</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('account_list.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('account_list.php'); ?>" href="account_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('account_list.php') || isActive('edit_account.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('account_list.php') || isActive('edit_account.php'); ?>" href="account_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
@@ -93,7 +93,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             <div class="d-flex">
                                 <button class="btn btn-outline-primary w-100"><i class="fa fa-chevron-left"></i>
                                     Log out</button>
-                                    
+
                             </div>
                         </a>
                     </ul>

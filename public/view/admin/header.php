@@ -12,6 +12,7 @@ function isActive($page)
 $page_titles = array(
     'admin.dashboard.php' => 'Dashboard',
     'homeowners.php' => 'Homeowners',
+    'edit_homeowner.php' => 'Edit Homeowner',
     'homeowner_list.php' => 'Homeowners',
     'qr_code.php' => 'QR Code',
     'qr_code_detail.php' => 'QR Code',
@@ -19,7 +20,9 @@ $page_titles = array(
     'vehicle_list_paid.php' => 'QR Code',
     'vehicle_list_unpaid.php' => 'QR Code',
     'vehicle_list.php' => 'QR Code',
-    'logs.php' => 'Records'
+    'logs.php' => 'Records',
+    'logs_daily.php' => 'Records',
+    'logs_weekly.php' => 'Records'
 
 );
 
@@ -79,8 +82,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
 
-                        <li class="sidebar-item <?php echo isActive('logs.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('logs.php'); ?>" href="logs.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('logs.php') || isActive('logs_daily.php') || isActive('logs_weekly.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('logs.php') || isActive('logs_daily.php') || isActive('logs_weekly.php'); ?>" href="logs.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-file"></i>
                                 </span>

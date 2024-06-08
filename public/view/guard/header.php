@@ -92,6 +92,14 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Visitor</span>
                             </a>
                         </li>
+                        <li class="sidebar-item <?php echo isActive('visitor_list.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('visitor_list.php'); ?>" href="visitor_list.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-user-plus"></i>
+                                </span>
+                                <span class="hide-menu">Visitor List</span>
+                            </a>
+                        </li>
 
                         <hr class="text text-primary">
 

@@ -35,7 +35,7 @@ check_registration_status($pdo); //update all the payment records
         <div class="card">
             <div class="card-body">
 
-                <div class="row justify-content-center mb-2">
+                <div class="row justify-content-center mb-3">
                     <div class="col-12 text-center">
                         <h2>Select Assigned Gate</h2>
                     </div>

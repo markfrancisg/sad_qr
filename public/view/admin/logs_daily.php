@@ -2,7 +2,7 @@
 include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/Logs_model.inc.php';
-include_once '../../../includes/LogsListController.php';
+include_once '../../../includes/LogsListDailyController.php';
 
 ?>
 
@@ -15,13 +15,15 @@ include_once '../../../includes/LogsListController.php';
         <!-- BREADCRUMB -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Record Logs</li>
+                <li class="breadcrumb-item"><a href="logs.php">Record Logs</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Daily Record Logs</li>
+
             </ol>
         </nav>
 
         <div class="card">
             <div class="card-body">
-                <h2 class="fw-semibold mb-4 text-center">Entry-Exit Record Logs</h2>
+                <h2 class="fw-semibold mb-4 text-center">Daily Entry-Exit Record Logs</h2>
 
                 <!-- SEARCH BAR -->
                 <div class="container">
@@ -32,10 +34,10 @@ include_once '../../../includes/LogsListController.php';
                                 <div class="container-fluid">
                                     <ul class="nav nav-pills d-flex flex-row flex-nowrap">
                                         <li class="nav-item me-2">
-                                            <a class="nav-link active" aria-current="page" href="logs.php">All</a>
+                                            <a class="nav-link " aria-current="page" href="logs.php">All</a>
                                         </li>
                                         <li class="nav-item me-2">
-                                            <a class="nav-link" href="logs_daily.php">Daily</a>
+                                            <a class="nav-link active" href="logs_daily.php">Daily</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="logs_weekly.php">Weekly</a>
@@ -46,7 +48,7 @@ include_once '../../../includes/LogsListController.php';
                         </div>
 
                         <div class="col-md-4 order-md-2 order-2 text-center">
-                            <form action="../../../includes/admin/logs_excel.inc.php?type=all" method="post">
+                            <form action="../../../includes/admin/logs_excel.inc.php?type=daily" method="post">
                                 <button type="submit" name="export_excel" class="btn btn-outline-primary w-100">
                                     <i class="fas fa-download"></i>Export Excel File
                                 </button>

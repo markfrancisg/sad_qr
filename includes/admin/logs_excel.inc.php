@@ -1,15 +1,23 @@
 <?php
-if (isset($_POST['export_excel'])) {
+if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type']))) {
     try {
         require_once '../dbh.inc.php';
         require_once '../RecordLogs_model.inc.php';
 
-        $results = get_record_logs($pdo);
+        $type = $_GET['type'];
+
+        if ($type === "all") {
+            $results = get_record_logs($pdo);
+        } else if ($type === "daily") {
+            $results = get_record_logs_daily($pdo);
+        } else if ($type === "weekly") {
+            $results = get_record_logs($pdo);
+        } else {
+        }
 
         // Set headers to indicate that the response is an Excel file
         header('Content-Type: application/vnd.ms-excel');
-        header('Content-Disposition: attachment; filename="logs.xls"');
-
+        header('Content-Disposition: attachment; filename="' . $type . '.logs.xls"');
         // Start output buffering to capture HTML content
         ob_start();
 

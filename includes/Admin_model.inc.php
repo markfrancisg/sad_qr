@@ -428,9 +428,20 @@ function count_unpaid_vehicles(object $pdo)
 
 function count_log_daily(object $pdo)
 {
-    $sql = "SELECT COUNT(*) as count FROM log WHERE DATE(date) = CURDATE()";
-    // Prepare and execute the SQL statement
+    // Set the timezone and get the current date
+    date_default_timezone_set('Asia/Manila');
+    $current_date = date('Y-m-d');
+
+    // Prepare the SQL statement with a WHERE clause to filter by the current date
+    $sql = "SELECT COUNT(*) as count FROM log WHERE DATE(date) = :current_date";
+
+    // Prepare the SQL statement
     $stmt = $pdo->prepare($sql);
+
+    // Bind the current date parameter
+    $stmt->bindParam(':current_date', $current_date);
+
+    // Execute the SQL statement
     $stmt->execute();
 
     // Fetch the result
@@ -442,12 +453,24 @@ function count_log_daily(object $pdo)
 
 function count_log_weekly(PDO $pdo): int
 {
-    $sql = "SELECT COUNT(*) AS count 
-        FROM log 
-        WHERE WEEK(date) = WEEK(CURDATE()) AND YEAR(date) = YEAR(CURDATE())";
+    // Set the timezone and get the current date
+    date_default_timezone_set('Asia/Manila');
+    $current_date = date('Y-m-d');
 
-    // Prepare and execute the SQL statement
+    // Calculate the start of the week (Monday)
+    $start_of_week = date('Y-m-d', strtotime('monday this week'));
+
+    // Prepare the SQL statement with a WHERE clause to filter by the current week
+    $sql = "SELECT COUNT(*) as count FROM log WHERE DATE(date) BETWEEN :start_of_week AND :current_date";
+
+    // Prepare the SQL statement
     $stmt = $pdo->prepare($sql);
+
+    // Bind the date parameters
+    $stmt->bindParam(':start_of_week', $start_of_week);
+    $stmt->bindParam(':current_date', $current_date);
+
+    // Execute the SQL statement
     $stmt->execute();
 
     // Fetch the result

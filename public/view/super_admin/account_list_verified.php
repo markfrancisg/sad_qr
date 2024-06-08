@@ -2,8 +2,7 @@
 include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/SuperAdmin_model.inc.php';
-require_once '../../../includes/AccountListController.php';
-require_once '../../../includes/super_admin/account_list_view.inc.php'
+require_once '../../../includes/AccountListVerifiedController.php';
 
 ?>
 
@@ -15,13 +14,15 @@ require_once '../../../includes/super_admin/account_list_view.inc.php'
         <!-- BREADCRUMB -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Account List</li>
+                <li class="breadcrumb-item"><a href="account_list.php">Account List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Verified Account List</li>
+
             </ol>
         </nav>
 
         <div class="card">
             <div class="card-body">
-                <h2 class="fw-semibold mb-4 text-center" id="account_pagination">Account List</h2>
+                <h2 class="fw-semibold mb-4 text-center" id="account_pagination">Verified Account List</h2>
 
                 <!-- SEARCH BAR -->
                 <div class="container">
@@ -31,10 +32,10 @@ require_once '../../../includes/super_admin/account_list_view.inc.php'
                                 <div class="container-fluid">
                                     <ul class="nav nav-pills d-flex flex-row flex-nowrap">
                                         <li class="nav-item me-2">
-                                            <a class="nav-link active" aria-current="page" href="account_list.php">All</a>
+                                            <a class="nav-link " aria-current="page" href="account_list.php">All</a>
                                         </li>
                                         <li class="nav-item me-2">
-                                            <a class="nav-link" href="account_list_verified.php">Verified</a>
+                                            <a class="nav-link active" href="account_list_verified.php">Verified</a>
                                         </li>
                                         <li class="nav-item">
                                             <a class="nav-link" href="account_list_unverified.php">Unverified</a>
@@ -181,7 +182,6 @@ require_once '../../../includes/super_admin/account_list_view.inc.php'
     </div>
 </div>
 
-
 <!-- MODALS -->
 <div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
@@ -218,9 +218,9 @@ require_once '../../../includes/super_admin/account_list_view.inc.php'
 </div>
 
 
+
 <script src="../../js/account_list.js"></script>
 
 <?php
-account_edit_success();
 include_once 'footer.php';
 ?>

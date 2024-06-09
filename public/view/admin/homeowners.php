@@ -55,14 +55,14 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" id="email" name="email" placeholder="name@example.com" maxlength="50" required>
                                     <label for="email">Email Address</label>
-                                    <div class="invalid-feedback" id="emailError">Invalid email address</div>
+                                    <div class="invalid-feedback" id="emailFeedback">Email is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="number" name="number" placeholder="09XXXXXXXXX" maxlength="11" required>
                                     <label for="number">Phone Number</label>
-                                    <div class="invalid-feedback" id="phoneError">Invalid phone number</div>
+                                    <div class="invalid-feedback" id="numberFeedback">Phone number is required</div>
                                 </div>
                             </div>
                         </div>

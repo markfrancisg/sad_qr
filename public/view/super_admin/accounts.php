@@ -62,14 +62,14 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
                                 <div class="form-floating mb-3">
                                     <input type="email" class="form-control" id="email" name="account_email" placeholder="name@example.com" maxlength="50" required>
                                     <label for="floatingInput1">Email Address</label>
-                                    <div class="invalid-feedback">Invalid email</div>
+                                    <div class="invalid-feedback" id="emailFeedback">Email is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="number" name="account_number" placeholder="Phone Number" maxlength="11" required>
                                     <label for="number">Phone Number</label>
-                                    <div class="invalid-feedback">Invalid phone number</div>
+                                    <div class="invalid-feedback" id="numberFeedback">Phone number is required</div>
                                 </div>
                             </div>
                         </div>

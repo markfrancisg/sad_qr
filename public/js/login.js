@@ -49,6 +49,7 @@ document.getElementById('loginForm').addEventListener('submit', function(event) 
         event.preventDefault();
         event.stopPropagation();
         passwordInput.classList.add('is-invalid');
+        passwordInput.nextElementSibling.innerText = 'Please enter your password.';
         removeValidationError(passwordInput);
     }
 });

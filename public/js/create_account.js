@@ -70,32 +70,49 @@ document.getElementById('number').addEventListener('input', function() {
     var phoneNumberInput = this;
     var phoneNumber = phoneNumberInput.value;
     var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
+    var feedback = document.getElementById('numberFeedback');
 
-    if (!phoneNumberPattern.test(phoneNumber)) {
-        phoneNumberInput.setCustomValidity('Invalid phone number');
+    if (phoneNumber === '') {
+        phoneNumberInput.setCustomValidity('Phone number is required');
         phoneNumberInput.classList.add('is-invalid');
+        phoneNumberInput.classList.remove('is-valid');
+        feedback.textContent = 'Phone number is required';
+    } else if (!phoneNumberPattern.test(phoneNumber)) {
+        phoneNumberInput.setCustomValidity('Invalid phone number format.');
+        phoneNumberInput.classList.add('is-invalid');
+        phoneNumberInput.classList.remove('is-valid');
+        feedback.textContent = 'Invalid phone number format.';
     } else {
         phoneNumberInput.setCustomValidity('');
         phoneNumberInput.classList.remove('is-invalid');
         phoneNumberInput.classList.add('is-valid');
+        feedback.textContent = 'Phone number is required';
     }
 
     phoneNumberInput.closest('.form-floating').classList.add('was-validated');
 });
 
-// Email validation
 document.getElementById('email').addEventListener('input', function() {
     var emailInput = this;
     var email = emailInput.value;
     var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
+    var feedback = document.getElementById('emailFeedback');
 
-    if (!emailPattern.test(email)) {
-        emailInput.setCustomValidity('Invalid email domain');
+    if (email === '') {
+        emailInput.setCustomValidity('Email is required');
         emailInput.classList.add('is-invalid');
+        emailInput.classList.remove('is-valid');
+        feedback.textContent = 'Email is required';
+    } else if (!emailPattern.test(email)) {
+        emailInput.setCustomValidity('Invalid email format');
+        emailInput.classList.add('is-invalid');
+        emailInput.classList.remove('is-valid');
+        feedback.textContent = 'Invalid email format.';
     } else {
         emailInput.setCustomValidity('');
         emailInput.classList.remove('is-invalid');
         emailInput.classList.add('is-valid');
+        feedback.textContent = 'Email is required';
     }
 
     emailInput.closest('.form-floating').classList.add('was-validated');

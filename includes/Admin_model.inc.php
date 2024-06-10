@@ -506,3 +506,13 @@ function get_specified_vehicle(PDO $pdo, string $id): array
     $results = $stmt->fetchAll(PDO::FETCH_ASSOC);
     return $results;
 }
+
+function check_email_status(PDO $pdo, string $email)
+{
+    $stmt = $pdo->prepare("SELECT ho_id 
+                           FROM homeowners 
+                           WHERE email = ?");
+    $stmt->execute([$email]);
+
+    return $rowCount = $stmt->rowCount();
+}

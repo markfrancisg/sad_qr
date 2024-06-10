@@ -26,12 +26,29 @@ include 'includes/VerifyController.inc.php';
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
-                                    <img src="public/images/logos/san_lorenzo_logo.svg" width="100" alt="SeQRity Logo" />
+                                <a href="#" class="text-nowrap logo-img text-center d-block py-0 w-100">
+                                    <img src="public/images/logos/san_lorenzo_logo.svg" width="70" alt="SeQRity Logo" />
                                 </a>
                                 <!-- <p class="text-center">Your SeQRity Gate Friend</p> -->
                                 <h2 class="text-center mt-1">Set Password</h2>
                                 <form id="resetPasswordForm" action="/includes/verify.inc.php" method="post" novalidate>
+
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
+                                                <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
+                                                <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
+                                            </div>
+                                        </div>
+                                    </div>
 
                                     <input type="hidden" name="email" value="<?php if (isset($_GET['email'])) {
                                                                                     echo $_GET['email'];
@@ -51,30 +68,19 @@ include 'includes/VerifyController.inc.php';
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
                                             <div class="password-container">
                                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" disabled required>
-                                                <i class="fas fa-eye password-toggle" id="togglePassword"></i>
+                                                <div class="invalid-feedback">Passwords do not match</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
+                                    <div class="row mt-3 mb-3">
                                         <div class="col">
                                             <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-danger fw-bold" id="first_requirement">At least 8 characters long</p>
-                                                <p class="text-danger fw-bold" id="second_requirement">At least 1 uppercase letter</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-danger fw-bold" id="third_requirement">At least 1 lowercase letter</p>
-                                                <p class="text-danger fw-bold" id="fourth_requirement">At least 1 number</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row mt-5 mb-3">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-end">
-                                                <a class="text-primary fw-bold" href="login.php">Back to Login</a>
+                                                <div class="form-check">
+                                                    <input class="form-check-input" type="checkbox" id="showPassword">
+                                                    <label class="form-check-label" for="showPassword">Show Password</label>
+                                                </div>
+                                                <div> <a class="text-primary fw-bold" href="login.php">Back to Login</a>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>

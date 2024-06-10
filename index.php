@@ -16,7 +16,7 @@ redirectUser();
                     <div class="col-md-8 col-lg-6 col-xxl-3">
                         <div class="card mb-0">
                             <div class="card-body">
-                                <a href="./index.html" class="text-nowrap logo-img text-center d-block py-3 w-100">
+                                <a href="#" class="text-nowrap logo-img text-center d-block py-3 w-100">
                                     <img src="public/images/logos/san_lorenzo_logo.svg" width="150" alt="SeQRity Logo" />
                                 </a>
                                 <!-- <p class="text-center">Your SeQRity Gate Friend</p> -->

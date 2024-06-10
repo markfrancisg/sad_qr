@@ -49,6 +49,27 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
 </head>
 
 <body>
+
+    <!-- SPINNER -->
+    <div class="spinner-wrapper">
+        <div class="spinner-border" role="status">
+        </div>
+    </div>
+
+    <script>
+        const spinnerWrapperEl = document.querySelector('.spinner-wrapper');
+        if (spinnerWrapperEl) {
+            window.addEventListener('load', () => {
+                spinnerWrapperEl.style.opacity = '0';
+                setTimeout(() => {
+                    spinnerWrapperEl.style.display = 'none';
+                }, 200);
+            });
+        } else {
+            console.warn("Element with class 'spinner-wrapper' not found.");
+        }
+    </script>
+
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->

@@ -38,6 +38,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
 </head>
 
 <body>
+
     <!--  Body Wrapper -->
     <div class="page-wrapper" id="main-wrapper" data-layout="vertical" data-navbarbg="skin6" data-sidebartype="full" data-sidebar-position="fixed" data-header-position="fixed">
         <!-- Sidebar Start -->
@@ -75,8 +76,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Create Account</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('account_list.php') || isActive('edit_account.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('account_list.php') || isActive('edit_account.php'); ?>" href="account_list.php" aria-expanded="false">
+                        <li class="sidebar-item <?php echo isActive('account_list.php') || isActive('account_list_verified.php') || isActive('account_list_unverified.php') || isActive('edit_account.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('account_list.php') || isActive('account_list_verified.php') || isActive('account_list_unverified.php') || isActive('edit_account.php'); ?>" href="account_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>

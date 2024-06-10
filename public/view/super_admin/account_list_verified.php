@@ -60,11 +60,12 @@ require_once '../../../includes/AccountListVerifiedController.php';
                                         <h6 class="fw-bolder text-light mb-0">Name</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Role</h6>
-                                    </th>
-                                    <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Email Address</h6>
                                     </th>
+                                    <th class="border-bottom-0 text-center">
+                                        <h6 class="fw-bolder text-light mb-0">Role</h6>
+                                    </th>
+
                                     <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Phone Number</h6>
                                     </th>

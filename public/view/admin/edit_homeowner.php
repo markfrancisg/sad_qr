@@ -121,7 +121,7 @@ include_once 'header.php';
 
 </div>
 
-<script src="../../js/add_homeowners.js"></script>
+<script src="../../js/edit_homeowners.js"></script>
 
 <?php
 include_once 'footer.php';

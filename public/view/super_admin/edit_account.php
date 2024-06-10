@@ -111,7 +111,7 @@ include_once 'header.php';
 
 
 
-<script src="../../js/create_account.js"></script>
+<script src="../../js/edit_account.js"></script>
 
 <?php
 include_once 'footer.php';

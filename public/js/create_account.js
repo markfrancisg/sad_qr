@@ -98,7 +98,7 @@ document.getElementById('email').addEventListener('input', function() {
     var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
     var feedback = document.getElementById('emailFeedback');
 
-    if (email === '') {
+    if (email === '') { // Check if email is empty or contains only whitespace
         emailInput.setCustomValidity('Email is required');
         emailInput.classList.add('is-invalid');
         emailInput.classList.remove('is-valid');
@@ -109,15 +109,28 @@ document.getElementById('email').addEventListener('input', function() {
         emailInput.classList.remove('is-valid');
         feedback.textContent = 'Invalid email format.';
     } else {
-        emailInput.setCustomValidity('');
-        emailInput.classList.remove('is-invalid');
-        emailInput.classList.add('is-valid');
-        feedback.textContent = 'Email is required';
+        $.ajax({
+            url: '../../../includes/account_check_email.php',
+            method: 'POST',
+            data: { email: email },
+            success: function(response) {
+                if (response == 'taken') {
+                    emailInput.setCustomValidity('Email is already taken');
+                    emailInput.classList.add('is-invalid');
+                    emailInput.classList.remove('is-valid');
+                    feedback.textContent = 'Email is already taken';
+                } else {
+                    emailInput.setCustomValidity('');
+                    emailInput.classList.remove('is-invalid');
+                    emailInput.classList.add('is-valid');
+                    feedback.textContent = ''; // Clear feedback message when email is valid
+                }
+            }
+        });
     }
 
     emailInput.closest('.form-floating').classList.add('was-validated');
 });
-
 
 
 

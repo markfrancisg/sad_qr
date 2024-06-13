@@ -85,7 +85,7 @@ include_once '../../../includes/super_admin/create_account_view.inc.php';
 
                         <div class="row mt-3">
                             <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center">
-                                <button class="btn btn-primary p-3 w-50 mb-2">Create</button>
+                                <button class="btn btn-primary p-3 w-50 mb-2" type="submit" disabled>Create</button>
                             </div>
                             <div class="col-12">
                                 <?php

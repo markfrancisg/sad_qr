@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 function get_user_list(object $pdo, int $offset, int $total_records_per_page)
 {
-    $query = "SELECT account_email, role_description, account_first_name,account_last_name, account_number, verification_status
+    $query = "SELECT account.account_id, account_email, role_description, account_first_name,account_last_name, account_number, verification_status
           FROM account
           INNER JOIN role_info ON account.role_id = role_info.role_id
           INNER JOIN user_info ON account.account_id = user_info.account_id
@@ -54,11 +54,11 @@ function get_user_list_unverified(PDO $pdo, int $offset, int $total_records_per_
     return $results;
 }
 
-function delete_account(object $pdo, string $email)
+function delete_account(object $pdo, string $id)
 {
-    $query = "DELETE FROM account WHERE account_email = :account_email";
+    $query = "DELETE FROM account WHERE account_id = :account_id";
     $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':account_email', $email);
+    $stmt->bindParam(':account_id', $id);
     $stmt->execute();
 }
 
@@ -135,6 +135,4 @@ function check_email_status(PDO $pdo, string $email)
     $stmt->execute([$email]);
 
     return $rowCount = $stmt->rowCount();
-
-   
 }

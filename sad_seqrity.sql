@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 09, 2024 at 07:38 AM
+-- Generation Time: Jun 13, 2024 at 05:06 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,10 +44,21 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`, `verification_status`) VALUES
-(35, 'gorreonfrancis@gmail.com', '$2y$12$wEvdxonAvxcFzb8dYNPl6uHXLBh3FlTD6QqSYnacEOqxRFNiCknwe', NULL, '2024-04-11 01:20:11', 9, 'd1549338dadeee7f29d8d480004cedd5', '2024-06-09 07:35:59', 1),
-(78, 'blacqueswans@gmail.com', '$2y$12$I4h1jaFkNGJRpoJFhv.8suO0fzfOsT84HHucjkGxK0RKg6CLhofPS', NULL, '2024-05-31 20:55:46', 7, '', NULL, 1),
-(79, 'blacqueswan@gmail.com', '$2y$12$afjKDDWVdXlElCbAomZUIueSlpdJe35wvSaRJNy8FM7vIQRLZrYM2', NULL, '2024-05-31 22:18:23', 1, '52e12677e1a213e0083d3374c1cbedbd', '2024-05-31 21:00:35', 1),
-(80, 'creatonin@gmail.com', '', NULL, '2024-06-09 02:23:28', 1, '', NULL, 0);
+(35, 'gorreonfrancis@gmail.com', '$2y$12$wEvdxonAvxcFzb8dYNPl6uHXLBh3FlTD6QqSYnacEOqxRFNiCknwe', NULL, '2024-04-11 01:20:11', 7, 'dbfcb8d1d07b06bda836d70a3221f5a7', '2024-06-10 09:35:53', 1),
+(106, 'ldr@gmail.com', '', NULL, '2024-06-11 19:45:58', 7, '', NULL, 0),
+(107, 'cris@gmail.com', '', NULL, '2024-06-11 20:11:16', 1, '', NULL, 0),
+(110, 'dartvader@gmail.com', '', NULL, '2024-06-11 20:12:19', 7, '', NULL, 0),
+(115, 'laram@gmail.com', '', NULL, '2024-06-11 21:46:10', 1, '', NULL, 0),
+(116, 'asdfasdf@gmail.com', '', NULL, '2024-06-11 21:46:22', 7, '', NULL, 0),
+(117, 'gorreonfransdfsdfcis@gmail.com', '', NULL, '2024-06-11 21:46:37', 7, '', NULL, 0),
+(118, 'talkingtom@gmail.com', '', NULL, '2024-06-11 21:46:49', 7, '', NULL, 0),
+(123, 'ibarra@gmail.com', '', NULL, '2024-06-11 23:29:42', 7, '', NULL, 0),
+(124, 'adsfasdf@gmail.com', '', NULL, '2024-06-11 23:29:53', 7, '', NULL, 0),
+(125, 'asdfaadfds@gmail.com', '', NULL, '2024-06-11 23:30:06', 7, '', NULL, 0),
+(126, 'adsfasdfasdf@gmail.com', '', NULL, '2024-06-11 23:30:17', 7, '', NULL, 0),
+(127, 'ra@gmail.com', '', NULL, '2024-06-11 23:30:29', 7, '', NULL, 0),
+(128, 'asdfasdfzz@gmail.com', '', NULL, '2024-06-12 00:21:13', 7, '', NULL, 0),
+(129, 'qwerqwerqwerqwerqwe@gmail.com', '', NULL, '2024-06-12 00:21:52', 7, '', NULL, 0);
 
 -- --------------------------------------------------------
 
@@ -72,7 +83,7 @@ CREATE TABLE `homeowners` (
 
 INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, `lot`, `street`, `number`) VALUES
 (23, 'shasha@gmail.com', 'Sashas', 'Velour', '12', '12', 'Beverly Hills', '09232222222'),
-(24, 'leabautista1103@gmail.com', 'Lea', 'Amor', '12', '12', 'Lexus', '09232222222'),
+(24, 'leabautista1103@gmail.com', 'Lea', 'Amor', '12', '12', 'Lexus', '09232311111'),
 (29, 'chotel@gmail.com', 'Chelsea', 'Hotel', '23', '23', 'Peony', '09232245555'),
 (30, 'lemery@gmail.com', 'Lemery', 'Batangas Lomi', '23', '23', 'Mango', '09555555555'),
 (31, 'dunkmaster@gmail.com', 'Dunk', 'Master', '23', '23', 'Stargazer', '09322222222'),
@@ -84,7 +95,9 @@ INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, 
 (37, 'swanlake@gmail.com', 'Lake', 'Swan', '23', '23', 'River', '09232222222'),
 (38, 'asdfasdf@gmail.com', 'adsfasdf', 'asdfasdf', '234', '23', 'asdfasdf', '09232222222'),
 (39, 'kimpdeleon@gmail.com', 'Kimpy', 'De Leon', '23', '23', 'Miley', '09232222222'),
-(40, 'gorreonfrancis@gmail.com', 'Mark', 'Francis', '18', '26', 'Lexus', '09232222222');
+(40, 'gorreonfrancis@gmail.com', 'Mark', 'Francis', '18', '26', 'Lexus', '09232222222'),
+(41, 'mjlimosinero@gmail.com', 'MJ', 'Limosinero', '12', '12', 'Lexus', '09111111111'),
+(42, 'qwertyui@gmail.com', 'asdf', 'asdfasdf', '12', '12', 'asdf', '09232222222');
 
 -- --------------------------------------------------------
 
@@ -139,7 +152,10 @@ INSERT INTO `log` (`log_id`, `qr_id`, `station_id`, `date`, `time`) VALUES
 (88, 149, 1, '2024-06-08', '17:19:12'),
 (89, 149, 3, '2024-06-08', '21:03:16'),
 (90, 149, 4, '2024-06-08', '21:03:43'),
-(91, 149, 1, '2024-06-08', '21:13:01');
+(91, 149, 1, '2024-06-08', '21:13:01'),
+(92, 151, 1, '2024-06-11', '15:02:56'),
+(93, 151, 1, '2024-06-11', '15:03:08'),
+(94, 151, 3, '2024-06-11', '15:03:36');
 
 -- --------------------------------------------------------
 
@@ -167,11 +183,15 @@ INSERT INTO `qr_info` (`qr_id`, `qr_code`, `wheel`, `vehicle_type`, `plate_numbe
 (141, 'Not Registered', 4, 'Sedan', 'NED-5725', NULL, 0, 40),
 (143, 'Not Registered', 4, 'Van', 'LDE-2322', NULL, 0, 40),
 (145, 'Not Registered', 4, 'Sedan', 'NED-5723', NULL, 0, 40),
-(146, 'ay81hYG8p5', 4, 'Crossover', 'JCO-2392', '2024-06-10', 1, 40),
+(146, 'Not Registered', 4, 'Crossover', 'JCO-2392', NULL, 0, 40),
 (147, 'Not Registered', 4, 'Ford', 'LOS-0000', NULL, 0, 34),
 (148, 'Not Registered', 4, 'Honda Civic', 'TRE-2342', NULL, 0, 37),
 (149, 'Not Registered', 4, 'Innova', 'TRY-1233', NULL, 0, 40),
-(150, 'Not Registered', 4, 'Honda Civi', 'JKL-2342', NULL, 0, 33);
+(150, 'Not Registered', 4, 'Honda Civi', 'JKL-2342', NULL, 0, 33),
+(151, 'Q0Xex05hq7', 4, 'Sedan', 'NED-5724', '2024-06-12', 1, 41),
+(152, 'Not Registered', 4, 'sdfsdf', 'DFG', NULL, 0, 35),
+(153, 'Not Registered', 3, 'asdfasdf', 'ASDFASDF', NULL, 0, 29),
+(154, 'Not Registered', 4, 'asdf', 'asdf', NULL, 0, 23);
 
 -- --------------------------------------------------------
 
@@ -235,9 +255,20 @@ CREATE TABLE `user_info` (
 
 INSERT INTO `user_info` (`info_id`, `account_first_name`, `account_last_name`, `account_number`, `account_id`) VALUES
 (26, 'Mark', 'Gorreon', '09232222222', 35),
-(69, 'Black', 'Swan', '09235323423', 78),
-(70, 'Jacob', 'Gorreon', '09345323423', 79),
-(71, 'Creat', 'Tonin', '09231111111', 80);
+(97, 'Lana', 'Del Rey', '09366666666', 106),
+(98, 'Crisostomo', 'Ibarra', '09121111111', 107),
+(101, 'Dart', 'Vader', '09215666666', 110),
+(106, 'Lara', 'Marie', '09342322222', 115),
+(107, 'Jason', 'Mendrez', '09123123123', 116),
+(108, 'Leroy', 'Sanchez', '09234235345', 117),
+(109, 'Talking', 'TOm', '09234235434', 118),
+(114, 'Ibarra', 'Sara', '09234232342', 123),
+(115, 'Sara', 'G', '09232222222', 124),
+(116, 'John', 'Lennon', '09454444444', 125),
+(117, 'Shaun ', 'Mendez', '09222222222', 126),
+(118, 'Pretty', 'Devil', '09211111111', 127),
+(119, 'asdasd', 'asdasd', '09999999999', 128),
+(120, 'asdf', 'asdf', '09121111111', 129);
 
 -- --------------------------------------------------------
 
@@ -266,7 +297,9 @@ INSERT INTO `visitor_log` (`visitor_id`, `visitor_date`, `visitor_time`, `visito
 (2, '2024-05-11', '00:00:00', 'Kia', 'Madrid', 'Visiting cousin', '', '', 0),
 (3, '2024-06-06', '23:45:47', 'Mark', 'Francis', 'Visiting my date', 'NED-5725', 'Sedan', 4),
 (4, '2024-06-08', '17:12:43', 'Jerom', 'Ponce', 'Visiting Nurse', 'LOP-1212', 'Sedan', 4),
-(5, '2024-06-08', '17:20:11', 'Bernadette', 'Gorreon', 'Visiting', 'NED-5724', 'Sedan', 4);
+(5, '2024-06-08', '17:20:11', 'Bernadette', 'Gorreon', 'Visiting', 'NED-5724', 'Sedan', 4),
+(6, '2024-06-10', '18:11:24', 'Juan Ponce', 'Enrile', 'PDAF', 'MIJ-90121', 'Lexus', 4),
+(7, '2024-06-12', '00:38:33', 'adsasd', 'sdfsdf', 'sdf', 'DFG', 'tyu', 6);
 
 --
 -- Indexes for dumped tables
@@ -333,25 +366,25 @@ ALTER TABLE `visitor_log`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=81;
+  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=130;
 
 --
 -- AUTO_INCREMENT for table `homeowners`
 --
 ALTER TABLE `homeowners`
-  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=41;
+  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=43;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=92;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=95;
 
 --
 -- AUTO_INCREMENT for table `qr_info`
 --
 ALTER TABLE `qr_info`
-  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=151;
+  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=155;
 
 --
 -- AUTO_INCREMENT for table `role_info`
@@ -369,13 +402,13 @@ ALTER TABLE `station_info`
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=72;
+  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=121;
 
 --
 -- AUTO_INCREMENT for table `visitor_log`
 --
 ALTER TABLE `visitor_log`
-  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- Constraints for dumped tables

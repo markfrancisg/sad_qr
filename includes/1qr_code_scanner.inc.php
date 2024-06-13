@@ -18,26 +18,21 @@ if (isset($_GET['qr_text'])) {
         require_once 'Logs_model.inc.php';
         require_once 'SetStation_model.inc.php';
 
+        $station = $_SESSION['station'];
         //get the station id
-        // $station_id = get_station_id($pdo, $station);
+        $station_id = get_station_id($pdo, $station);
 
         //check if qr_text is existing in the database
         $results = scan_qr($pdo, $qr_text);
-
-
 
         if (!$results) {
             header("Location: ../public/view/guard/scan_results.php?entry=denied");
             exit();
         }
 
-
-        //Determine if Entry or Exit
-        $station = $_SESSION['station'];
-
         if ($results) {
 
-            //get the details of the vehicle
+            //insert the details in the log 
             $qr_id = $results['qr_id'];
             $wheel = $results['wheel'];
             $vehicle_type = $results['vehicle_type'];

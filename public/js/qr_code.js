@@ -50,6 +50,16 @@ plateNumberInput.addEventListener('input', function() {
 (function () {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');
+    var submitButton = document.querySelector('button[type="submit"]');
+
+    function toggleSubmitButton(form) {
+        if (form.checkValidity()) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
@@ -59,6 +69,10 @@ plateNumberInput.addEventListener('input', function() {
                 }
                 form.classList.add('was-validated');
             }, false);
+
+            form.addEventListener('input', function () {
+                toggleSubmitButton(form);
+            });
         });
 
     var inputs = document.querySelectorAll('.needs-validation .form-control');
@@ -75,18 +89,21 @@ plateNumberInput.addEventListener('input', function() {
     });
 
     // Dropdown validation
-    var roleDescription = document.getElementById('email');
-    roleDescription.addEventListener('change', function () {
-        if (roleDescription.value === '') {
-            roleDescription.classList.add('is-invalid');
-            roleDescription.classList.remove('is-valid');
+    var email = document.getElementById('email');
+    email.addEventListener('change', function () {
+        if (email.value === '') {
+            email.classList.add('is-invalid');
+            email.classList.remove('is-valid');
         } else {
-            roleDescription.classList.remove('is-invalid');
-            roleDescription.classList.add('is-valid');
+            email.classList.remove('is-invalid');
+            email.classList.add('is-valid');
         }
-        roleDescription.closest('.form-floating').classList.add('was-validated');
+        email.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(email.closest('form'));
     });
+
 })();
+
 
 setTimeout(() => {
     const alertContainer = document.getElementById('alertContainer');

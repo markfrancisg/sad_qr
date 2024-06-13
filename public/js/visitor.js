@@ -30,6 +30,16 @@ specialInputs.forEach(function(input) {
 (function () {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');
+    var submitButton = document.querySelector('button[type="submit"]');
+
+    function toggleSubmitButton(form) {
+        if (form.checkValidity()) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
@@ -39,6 +49,10 @@ specialInputs.forEach(function(input) {
                 }
                 form.classList.add('was-validated');
             }, false);
+
+            form.addEventListener('input', function () {
+                toggleSubmitButton(form);
+            });
         });
 
     var inputs = document.querySelectorAll('.needs-validation .form-control');
@@ -55,7 +69,6 @@ specialInputs.forEach(function(input) {
     });
 
 })();
-
 
 setTimeout(() => {
     const alertContainer = document.getElementById('alertContainer');

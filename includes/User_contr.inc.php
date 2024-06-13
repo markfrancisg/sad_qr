@@ -170,7 +170,7 @@ function create_user(object $pdo, string $role_id, string $email, string $first_
 
     set_account($pdo, $email, $role_id, $first_name, $last_name, $number);
 
-    send_verify_account_email($name, $email);
+    // send_verify_account_email($name, $email); add this when multiple checkboxes are finished
 }
 
 function get_role_id(object $pdo, string $role_description)

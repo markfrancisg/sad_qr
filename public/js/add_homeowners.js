@@ -34,9 +34,20 @@ setTimeout(() => {
 }, 3000);
 
 
+
 (function () {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');
+    var submitButton = document.querySelector('button[type="submit"]');
+
+    function toggleSubmitButton(form) {
+        if (form.checkValidity()) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
@@ -46,6 +57,10 @@ setTimeout(() => {
                 }
                 form.classList.add('was-validated');
             }, false);
+
+            form.addEventListener('input', function () {
+                toggleSubmitButton(form);
+            });
         });
 
     var inputs = document.querySelectorAll('.needs-validation .form-control');
@@ -60,77 +75,77 @@ setTimeout(() => {
             input.closest('.form-floating').classList.add('was-validated');
         });
     });
-})();
 
-// Phone number validation
-document.getElementById('number').addEventListener('input', function() {
-    var phoneNumberInput = this;
-    var phoneNumber = phoneNumberInput.value;
-    var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
-    var feedback = document.getElementById('numberFeedback');
+    // Phone number validation
+    document.getElementById('number').addEventListener('input', function () {
+        var phoneNumberInput = this;
+        var phoneNumber = phoneNumberInput.value;
+        var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
+        var feedback = document.getElementById('numberFeedback');
 
-    if (phoneNumber === '') {
-        phoneNumberInput.setCustomValidity('Phone number is required');
-        phoneNumberInput.classList.add('is-invalid');
-        phoneNumberInput.classList.remove('is-valid');
-        feedback.textContent = 'Phone number is required';
-    } else if (!phoneNumberPattern.test(phoneNumber)) {
-        phoneNumberInput.setCustomValidity('Invalid phone number format.');
-        phoneNumberInput.classList.add('is-invalid');
-        phoneNumberInput.classList.remove('is-valid');
-        feedback.textContent = 'Invalid phone number format.';
-    } else {
-        phoneNumberInput.setCustomValidity('');
-        phoneNumberInput.classList.remove('is-invalid');
-        phoneNumberInput.classList.add('is-valid');
-        feedback.textContent = 'Phone number is required';
-    }
+        if (phoneNumber === '') {
+            phoneNumberInput.setCustomValidity('Phone number is required');
+            phoneNumberInput.classList.add('is-invalid');
+            phoneNumberInput.classList.remove('is-valid');
+            feedback.textContent = 'Phone number is required';
+        } else if (!phoneNumberPattern.test(phoneNumber)) {
+            phoneNumberInput.setCustomValidity('Invalid phone number format.');
+            phoneNumberInput.classList.add('is-invalid');
+            phoneNumberInput.classList.remove('is-valid');
+            feedback.textContent = 'Invalid phone number format.';
+        } else {
+            phoneNumberInput.setCustomValidity('');
+            phoneNumberInput.classList.remove('is-invalid');
+            phoneNumberInput.classList.add('is-valid');
+            feedback.textContent = 'Phone number is required';
+        }
 
-    phoneNumberInput.closest('.form-floating').classList.add('was-validated');
-});
+        phoneNumberInput.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(phoneNumberInput.closest('form'));
+    });
 
-document.getElementById('email').addEventListener('input', function() {
-    var emailInput = this;
-    var email = emailInput.value;
-    var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
-    var feedback = document.getElementById('emailFeedback');
+    // Email validation
+    document.getElementById('email').addEventListener('input', function () {
+        var emailInput = this;
+        var email = emailInput.value;
+        var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
+        var feedback = document.getElementById('emailFeedback');
 
-    if (email === '') { // Check if email is empty or contains only whitespace
-        emailInput.setCustomValidity('Email is required');
-        emailInput.classList.add('is-invalid');
-        emailInput.classList.remove('is-valid');
-        feedback.textContent = 'Email is required';
-    } else if (!emailPattern.test(email)) {
-        emailInput.setCustomValidity('Invalid email format');
-        emailInput.classList.add('is-invalid');
-        emailInput.classList.remove('is-valid');
-        feedback.textContent = 'Invalid email format.';
-    } else {
-        $.ajax({
-            url: '../../../includes/homeowner_check_email.php',
-            method: 'POST',
-            data: { email: email },
-            success: function(response) {
-                if (response == 'taken') {
-                    emailInput.setCustomValidity('Email is already taken');
-                    emailInput.classList.add('is-invalid');
-                    emailInput.classList.remove('is-valid');
-                    feedback.textContent = 'Email is already taken';
-                } else {
-                    emailInput.setCustomValidity('');
-                    emailInput.classList.remove('is-invalid');
-                    emailInput.classList.add('is-valid');
-                    feedback.textContent = ''; // Clear feedback message when email is valid
+        if (email === '') {
+            emailInput.setCustomValidity('Email is required');
+            emailInput.classList.add('is-invalid');
+            emailInput.classList.remove('is-valid');
+            feedback.textContent = 'Email is required';
+        } else if (!emailPattern.test(email)) {
+            emailInput.setCustomValidity('Invalid email format');
+            emailInput.classList.add('is-invalid');
+            emailInput.classList.remove('is-valid');
+            feedback.textContent = 'Invalid email format.';
+        } else {
+            $.ajax({
+                url: '../../../includes/homeowner_check_email.php',
+                method: 'POST',
+                data: { email: email },
+                success: function (response) {
+                    if (response == 'taken') {
+                        emailInput.setCustomValidity('Email is already taken');
+                        emailInput.classList.add('is-invalid');
+                        emailInput.classList.remove('is-valid');
+                        feedback.textContent = 'Email is already taken';
+                    } else {
+                        emailInput.setCustomValidity('');
+                        emailInput.classList.remove('is-invalid');
+                        emailInput.classList.add('is-valid');
+                        feedback.textContent = ''; // Clear feedback message when email is valid
+                    }
+                    toggleSubmitButton(emailInput.closest('form'));
                 }
-            }
-        });
-    }
+            });
+        }
 
-    emailInput.closest('.form-floating').classList.add('was-validated');
-});
-
-
-
+        emailInput.closest('.form-floating').classList.add('was-validated');
+    });
+})();
 
 
 

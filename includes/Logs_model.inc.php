@@ -2,17 +2,17 @@
 //require certain data type
 declare(strict_types=1);
 
-function record_log(object $pdo, string $qr_id, string $station_id, string $time)
-{
-    $query = "INSERT INTO log (qr_id, station_id, `time`) VALUES (:qr_id, :station_id, :time)";
-    $stmt2 = $pdo->prepare($query);
-    // Bind parameters
-    $stmt2->execute([
-        ':qr_id' => $qr_id,
-        ':station_id' => $station_id,
-        ':time' => $time
-    ]);
-}
+// function record_log(object $pdo, string $qr_id, string $station_id, string $time)
+// {
+//     $query = "INSERT INTO log (qr_id, station_id, `time`) VALUES (:qr_id, :station_id, :time)";
+//     $stmt2 = $pdo->prepare($query);
+//     // Bind parameters
+//     $stmt2->execute([
+//         ':qr_id' => $qr_id,
+//         ':station_id' => $station_id,
+//         ':time' => $time
+//     ]);
+// }
 
 function count_logs_list(object $pdo)
 {
@@ -33,11 +33,10 @@ function count_logs_list(object $pdo)
 function get_logs_list(object $pdo,  int $offset, int $total_records_per_page)
 {
     $query = "SELECT first_name, last_name, qr_info.vehicle_type, qr_info.plate_number, homeowners.block, homeowners.lot, homeowners.street,
-            station_info.station, station_info.entry_exit, log.date, log.time
+            log.entry_log, log.exit_log
               FROM log
               JOIN qr_info ON log.qr_id = qr_info.qr_id
               JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
-              JOIN station_info ON log.station_id = station_info.station_id
               ORDER BY log.log_id DESC
               LIMIT $offset, $total_records_per_page";
 
@@ -160,4 +159,34 @@ function count_logs_list_weekly(object $pdo)
 
     // Return the count value
     return $result['count'];
+}
+
+function handleLog($pdo, $qr_id, $date, $date_time, $column)
+{
+    //Check Pseudocode na ginawa sa excel when logic problem occurs
+    // Prepare the query to check for existing log entry
+    $query = "SELECT log_id FROM log WHERE qr_id = :qr_id AND date = :date AND $column IS NULL";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":qr_id", $qr_id);
+    $stmt->bindParam(":date", $date);
+    $stmt->execute();
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+    if (!$result) {
+        // If no existing log, insert a new log entry
+        $sql1 = "INSERT INTO log (qr_id, date, $column) VALUES (:qr_id, :date, :date_time)";
+        $stmt1 = $pdo->prepare($sql1);
+        $stmt1->bindParam(":qr_id", $qr_id);
+        $stmt1->bindParam(":date", $date);
+        $stmt1->bindParam(":date_time", $date_time);
+        $stmt1->execute();
+    } else {
+        // If existing log found, update the log entry
+        $log_id = $result['log_id'];
+        $sql = "UPDATE log SET $column = :date_time WHERE log_id = :log_id";
+        $stmt = $pdo->prepare($sql);
+        $stmt->bindParam(':date_time', $date_time);
+        $stmt->bindParam(':log_id', $log_id, PDO::PARAM_INT);
+        $stmt->execute();
+    }
 }

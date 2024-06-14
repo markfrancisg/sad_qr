@@ -70,13 +70,10 @@ include_once '../../../includes/LogsListController.php';
                                         <h6 class="fw-bolder text-light mb-0">Plate Number</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Station</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Entry</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Entry / Exit</h6>
-                                    </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Date and Time</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Exit</h6>
                                     </th>
                                 </tr>
                             </thead>
@@ -99,15 +96,11 @@ include_once '../../../includes/LogsListController.php';
                                             <h6 class="text-dark mb-0"><?php echo $row['plate_number']; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['station']; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $row['entry_log']; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['entry_exit']; ?></h6>
+                                            <h6 class="text-dark mb-0"><?php echo $row['exit_log']; ?></h6>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['date'] . " | " .   $row['time'] ?></h6>
-                                        </td>
-
                                     </tr>
 
                                 <?php

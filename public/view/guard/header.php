@@ -81,7 +81,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
                     <a href="#" class="text-nowrap logo-img">
-                        <img src="../../images/logos/san_lorenzo_logo.svg" width="150" alt="" />
+                        <img src="../../images/logos/san_lorenzo_logo.svg" width="100" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -108,6 +108,14 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                     <i class="fa fa-user-plus"></i>
                                 </span>
                                 <span class="hide-menu">Scan</span>
+                            </a>
+                        </li>
+                        <li class="sidebar-item <?php echo isActive('manual_search.php')  ? 'selected' : '';  ?>">
+                            <a class="sidebar-link <?php echo  isActive('manual_search.php');  ?>" href="manual_search.php" aria-expanded="false">
+                                <span>
+                                    <i class="fa fa-search"></i>
+                                </span>
+                                <span class="hide-menu">Plate Number Search</span>
                             </a>
                         </li>
                         <li class="sidebar-item <?php echo isActive('record_logs.php') || isActive('record_logs_daily.php') || isActive('record_logs_weekly.php')  ? 'selected' : ''; ?>">

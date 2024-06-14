@@ -30,7 +30,7 @@ require_once 'header.php';
             <div class="card-body">
                 <div class="container-fluid">
                     <?php if (isset($_GET['entry']) && $_GET['entry'] === 'success') : ?>
-                        <h1 class="text-bolder text-primary text-center mb-3">ACCESS GRANTED!</h1>
+                        <h1 class="text-bolder text-primary text-center mb-3">PASS GRANTED!</h1>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="container">
@@ -59,7 +59,7 @@ require_once 'header.php';
                             </div>
                         </div>
                     <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'denied') : ?>
-                        <h1 class="text-bolder danger-text text-center mb-3">ACCESS DENIED!</h1>
+                        <h1 class="text-bolder danger-text text-center mb-3">PASS DENIED!</h1>
                         <div class="row justify-content-center">
                             <div class="col-12 text-center">
                                 <div><img src="../../images/stop.svg" class="img-fluid access-denied-image" height="450" width="450"></div>

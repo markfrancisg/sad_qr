@@ -32,79 +32,77 @@ check_registration_status($pdo); //update all the payment records
             </ol>
         </nav>
 
-        <div class="card">
-            <div class="card-body">
 
-                <div class="row justify-content-center mb-3">
-                    <div class="col-12 text-center">
-                        <h2>Select Assigned Gate</h2>
-                    </div>
+
+        <div class="row justify-content-center mb-3">
+            <div class="col-12 text-center">
+                <h2>Select Assigned Gate</h2>
+            </div>
+        </div>
+
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <a href="scan_qr.php?station=a">
+                        <div class="card border border-success border-1 hover-grow">
+                            <div class="card-body">
+                                <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
+                                <h1 class="text-primary text-center"> Gate 1</h1>
+                                <h5 class="text-primary text-center">Entry Point</h5>
+                                <h1 class="text-primary text-center"></h1>
+                            </div>
+                        </div>
+                    </a>
                 </div>
-
-                <div class="container-fluid">
-                    <div class="row">
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                            <a href="scan_qr.php?station=a">
-                                <div class="card border border-success border-1 hover-grow">
-                                    <div class="card-body">
-                                        <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
-                                        <h1 class="text-primary text-center"> Gate 1</h1>
-                                        <h5 class="text-primary text-center">Entry Point</h5>
-                                        <h1 class="text-primary text-center"></h1>
-                                    </div>
-                                </div>
-                            </a>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <a href="scan_qr.php?station=b">
+                        <div class="card border border-success border-1 hover-grow">
+                            <div class="card-body">
+                                <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
+                                <h1 class="text-primary text-center"> Gate 2</h1>
+                                <h5 class="text-primary text-center">Entry Point</h5>
+                                <h1 class="text-primary text-center"></h1>
+                            </div>
                         </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                            <a href="scan_qr.php?station=b">
-                                <div class="card border border-success border-1 hover-grow">
-                                    <div class="card-body">
-                                        <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
-                                        <h1 class="text-primary text-center"> Gate 2</h1>
-                                        <h5 class="text-primary text-center">Entry Point</h5>
-                                        <h1 class="text-primary text-center"></h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                            <a href="scan_qr.php?station=c">
-                                <div class="card border border-success border-1 hover-grow">
-                                    <div class="card-body">
-                                        <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
-                                        <h1 class="text-primary text-center"> Gate 3</h1>
-                                        <h5 class="text-primary text-center">Exit Point</h5>
-                                        <h1 class="text-primary text-center"></h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                        <div class="col-sm-12 col-md-6 col-lg-3">
-                            <a href="scan_qr.php?station=d">
-                                <div class="card border border-success border-1 hover-grow">
-                                    <div class="card-body">
-                                        <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
-                                        <h1 class="text-primary text-center"> Gate 4</h1>
-                                        <h5 class="text-primary text-center">Exit Point</h5>
-                                        <h1 class="text-primary text-center"></h1>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    </div>
+                    </a>
                 </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <a href="scan_qr.php?station=c">
+                        <div class="card border border-success border-1 hover-grow">
+                            <div class="card-body">
+                                <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
+                                <h1 class="text-primary text-center"> Gate 3</h1>
+                                <h5 class="text-primary text-center">Exit Point</h5>
+                                <h1 class="text-primary text-center"></h1>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+                <div class="col-sm-12 col-md-6 col-lg-3">
+                    <a href="scan_qr.php?station=d">
+                        <div class="card border border-success border-1 hover-grow">
+                            <div class="card-body">
+                                <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
+                                <h1 class="text-primary text-center"> Gate 4</h1>
+                                <h5 class="text-primary text-center">Exit Point</h5>
+                                <h1 class="text-primary text-center"></h1>
+                            </div>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
 
 
 
-                <!-- <div class="row">Mission</div>
+        <!-- <div class="row">Mission</div>
                 <div class="row">Vision</div> -->
 
 
 
 
 
-            </div>
-        </div>
+
 
         <!-- <div class="card">
             <div class="card-body">

@@ -28,9 +28,9 @@ if (isset($_GET["qr_id"])) {
         $plate_number = $result['plate_number'];
         $vehicle_type = $result['vehicle_type'];
 
-        save_qr_code($qr_id, $qr_code);
+        // save_qr_code($qr_id, $qr_code);
 
-        email_qr_code($qr_id, $name, $email, $address, $plate_number, $vehicle_type);
+        // email_qr_code($qr_id, $name, $email, $address, $plate_number, $vehicle_type);
 
         $pdo = null;
         $stmt = null;

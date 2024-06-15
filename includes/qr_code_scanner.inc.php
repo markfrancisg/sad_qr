@@ -46,12 +46,10 @@ if (isset($_GET['qr_text'])) {
 
         //standard time
         date_default_timezone_set('Asia/Manila');
-        $time = date('H:i:s'); // current time
         $date = date('Y-m-d'); // Current date in year month day
-        $date_time = date('Y-m-d H:i');
+        $date_time = date('Y-m-d H:i:00'); // Without seconds (00 for seconds)
 
-        // Function to handle log operations
-
+        
         // Determine the column to update based on the station
         if ($station == "Gate 1" || $station == "Gate 2") {
             handleLog($pdo, $qr_id, $date, $date_time, 'entry_log');

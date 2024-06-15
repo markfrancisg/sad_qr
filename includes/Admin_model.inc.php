@@ -516,3 +516,14 @@ function check_email_status(PDO $pdo, string $email)
 
     return $rowCount = $stmt->rowCount();
 }
+
+
+function check_plate_number_status(PDO $pdo, string $plate_number)
+{
+    $stmt = $pdo->prepare("SELECT qr_id 
+                           FROM qr_info 
+                           WHERE plate_number = ?");
+    $stmt->execute([$plate_number]);
+
+    return $rowCount = $stmt->rowCount();
+}

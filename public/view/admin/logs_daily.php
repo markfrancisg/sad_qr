@@ -27,8 +27,7 @@ include_once '../../../includes/LogsListDailyController.php';
 
                 <!-- SEARCH BAR -->
                 <div class="container">
-                    <div class="row mb-2 justify-content-between">
-
+                    <div class="row mb-2 justify-content-between align-items-center">
                         <div class="col-md-4 order-md-1 order-3">
                             <nav class="navbar navbar-expand-lg">
                                 <div class="container-fluid">
@@ -55,68 +54,64 @@ include_once '../../../includes/LogsListDailyController.php';
                             </form>
                         </div>
 
-                        <div class="col-md-4 order-md-3 order-1 mb-2">
-                            <input class="form-control me-2" type="text" id="searchInput" placeholder="Search here" aria-label="Search">
+                        <div class="col-md-4 order-md-2 order-1 mb-2">
+                            <div class="input-group">
+                                <input class="form-control me-2" type="text" id="searchInput" placeholder="Enter Plate Number" aria-label="Search">
+                                <button class="btn btn-primary" id="searchButton">Search</button>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <div class="container">
+                <div class="container" id="originalContainer">
                     <div class="table-responsive">
                         <table class="table table-bordered text-nowrap mb-0 align-middle" id="dataTable">
                             <thead class="text-light fs-4 bg-success">
                                 <tr>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Name </h6>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Name
                                     </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Complete Address</h6>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Complete Address
                                     </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Vehicle Type</h6>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Vehicle Type
                                     </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Plate Number</h6>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Plate Number
                                     </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Station</h6>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Entry
                                     </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Entry / Exit</h6>
-                                    </th>
-                                    <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Date and Time</h6>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Exit
                                     </th>
                                 </tr>
                             </thead>
-                            <tbody>
+                            <tbody id="tableBody">
                                 <?php
                                 foreach ($results as $row) {
 
                                 ?>
                                     <tr>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['first_name'] . " " . $row['last_name']; ?></h6>
+                                        <td class="border-bottom-0 text-center text-muted mb-0">
+                                            <?php echo $row['first_name'] . " " . $row['last_name']; ?>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street"; ?></h6>
+                                        <td class="border-bottom-0 text-center text-muted mb-0">
+                                            <?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street"; ?>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['vehicle_type']; ?></h6>
+                                        <td class="border-bottom-0 text-center text-muted mb-0">
+                                            <?php echo $row['vehicle_type']; ?>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['plate_number']; ?></h6>
+                                        <td class="border-bottom-0 text-center text-muted mb-0">
+                                            <?php echo $row['plate_number']; ?>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['station']; ?></h6>
+                                        <td class="border-bottom-0 text-center text-muted mb-0">
+                                            <?php echo $row['entry_log']; ?>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['entry_exit']; ?></h6>
+                                        <td class="border-bottom-0 text-center text-muted mb-0">
+                                            <?php echo $row['exit_log']; ?>
                                         </td>
-                                        <td class="border-bottom-0 text-center">
-                                            <h6 class="text-dark mb-0"><?php echo $row['date'] . " | " .   $row['time'] ?></h6>
-                                        </td>
-
                                     </tr>
 
                                 <?php
@@ -168,7 +163,6 @@ include_once '../../../includes/LogsListDailyController.php';
                             </div>
                         </div>
                     </div>
-
                 </div>
 
 
@@ -179,8 +173,11 @@ include_once '../../../includes/LogsListDailyController.php';
     </div>
 </div>
 
+<script>
 
-<script src="../../js/logs_admin.js"></script>
+</script>
+
+<script src="../../js/logs_daily.js"></script>
 
 <?php
 include_once 'footer.php';

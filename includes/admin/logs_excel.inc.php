@@ -11,7 +11,7 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
         } else if ($type === "daily") {
             $results = get_record_logs_daily($pdo);
         } else if ($type === "weekly") {
-            $results = get_record_logs($pdo);
+            $results = get_record_logs_weekly($pdo);
         } else {
             header("Location: ../../public/view/admin/logs.php");
             die();
@@ -30,9 +30,8 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
                 <th>Address</th>
                 <th>Vehicle Type</th>
                 <th>Plate Number</th>
-                <th>Station</th>
-                <th>Entry / Exit</th>
-                <th>Date and Time</th>
+                <th>Entry</th>
+                <th>Exit</th>
             </tr>';
 
         // Output data rows
@@ -42,9 +41,8 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
                     <td>' . "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street" . '</td>
                     <td>' . $row['vehicle_type'] . '</td>
                     <td>' . $row['plate_number'] . '</td>
-                    <td>' . $row['station'] . '</td>
-                    <td>' . $row['entry_exit'] . '</td>
-                    <td>' . $row['date'] . " | " . $row['time'] . '</td>
+                    <td>' . $row['entry_log'] . '</td>
+                    <td>' . $row['exit_log'] . '</td>
                 </tr>';
         }
 

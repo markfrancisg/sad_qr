@@ -21,10 +21,8 @@ $(document).ready(function() {
                 checkbox_value: checkbox_value
             },
             success: function(response) {
-                $(checkbox).each(function() {
-                    $('#row_' + $(this).val()).remove();
-                });
                 $('#confirmModal').modal('hide');
+                window.location.href = window.location.pathname + "?delete=success"; // Refresh the page with the parameter
             }
         });
     });
@@ -38,7 +36,7 @@ $(document).ready(function() {
     });
 });
 
-
+// EDIT button
 $(document).on('change', '.input_checkbox', function() {
     var checkedRows = $('.input_checkbox:checked');
     var editButton = $('#edit');
@@ -56,6 +54,15 @@ $(document).on('change', '.input_checkbox', function() {
     }
 });
 
+
+// If search is empty, prevent submit
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    var searchInput = document.getElementById('searchInput').value.trim();
+    if (searchInput === '') {
+        event.preventDefault(); // Prevent form submission
+    }
+});
+
 // ________________________________Edit Toast Update____________________________
 
 
@@ -67,6 +74,13 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var toastElement = document.getElementById('deleteToast');
+    if (toastElement) {
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+});
 
 
 // ________________________________Search Option____________________________

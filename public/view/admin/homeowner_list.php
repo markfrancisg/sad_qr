@@ -5,7 +5,6 @@ require_once '../../../includes/Homeowner_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
 include_once '../../../includes/HomeownerListController.php'; //for the pagination
 
-$searchPerformed = isset($_GET['searchButton']);
 ?>
 
 
@@ -27,7 +26,7 @@ $searchPerformed = isset($_GET['searchButton']);
 
                 <!-- SEARCH BAR -->
                 <?php if (!$searchPerformed) : ?>
-                    <form method="GET" action="">
+                    <form id="searchForm" method="GET" action="">
                         <div class="container">
                             <div class="row mb-2 justify-content-end align-items-center">
                                 <div class="col-md-4 order-md-2 order-1 mb-2">
@@ -219,5 +218,6 @@ $searchPerformed = isset($_GET['searchButton']);
 
 <?php
 homeowner_edit_success();
+homeowner_delete_success();
 include_once 'footer.php';
 ?>

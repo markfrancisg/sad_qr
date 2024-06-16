@@ -527,3 +527,10 @@ function check_plate_number_status(PDO $pdo, string $plate_number)
 
     return $rowCount = $stmt->rowCount();
 }
+
+function delete_homeowner($pdo, $ho_id)
+{
+    $query = "DELETE FROM homeowners WHERE ho_id = :ho_id";
+    $statement = $pdo->prepare($query);
+    $statement->execute([':ho_id' => $ho_id]);
+}

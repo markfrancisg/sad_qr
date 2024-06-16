@@ -141,38 +141,7 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
 </div>
 
 <script>
-    $(document).ready(function() {
-        $('#delete_all').click(function() {
-            var checkbox = $('.delete_checkbox:checked');
-            if (checkbox.length > 0) {
-                $('#confirmModal').modal('show');
-            } else {
-                alert("Select at least one record");
-            }
-        });
-
-        $('#confirmDelete').click(function() {
-            var checkbox = $('.delete_checkbox:checked');
-            var checkbox_value = [];
-            $(checkbox).each(function() {
-                checkbox_value.push($(this).val());
-            });
-
-            $.ajax({
-                url: "delete.php",
-                method: "POST",
-                data: {
-                    checkbox_value: checkbox_value
-                },
-                success: function(response) {
-                    $(checkbox).each(function() {
-                        $('#row_' + $(this).val()).remove();
-                    });
-                    $('#confirmModal').modal('hide');
-                }
-            });
-        });
-    });
+   
 </script>
 
 <!-- MODALS -->

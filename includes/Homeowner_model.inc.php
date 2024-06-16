@@ -22,7 +22,7 @@ function count_homeowner_list(object $pdo)
 function get_homeowner_list(object $pdo, int $offset, int $total_records_per_page)
 {
 
-    $query = "SELECT first_name, last_name, block, lot, street, email, number
+    $query = "SELECT ho_id, first_name, last_name, block, lot, street, email, number
           FROM homeowners
           LIMIT $offset, $total_records_per_page";
     //newest to oldest
@@ -34,10 +34,17 @@ function get_homeowner_list(object $pdo, int $offset, int $total_records_per_pag
 }
 
 
-function delete_homeowner(object $pdo, string $email)
-{
-    $query = "DELETE FROM homeowners WHERE email = :email";
-    $stmt = $pdo->prepare($query);
-    $stmt->bindParam(':email', $email);
-    $stmt->execute();
-}
+// function delete_homeowner(object $pdo, string $email)
+// {
+//     $query = "DELETE FROM homeowners WHERE email = :email";
+//     $stmt = $pdo->prepare($query);
+//     $stmt->bindParam(':email', $email);
+//     $stmt->execute();
+// }
+
+// function delete_homeowner($pdo, )
+// {
+//     $query = "DELETE FROM tbl_employee WHERE id = '" . $_POST['checkbox_value'][$count] . "'";
+//     $statement = $connect->prepare($query);
+//     $statement->execute();
+// }

@@ -49,15 +49,15 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
                                     <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Address</h6>
                                     </th>
-                                    <th class="border-bottom-0 text-center bg-light">
-                                        <h6 class="fw-bolder text-light mb-0"><button type="button" name="delete_all" id="delete_all" class="btn btn-outline-danger btn-xs">Delete</button> <button type="button" name="edit_button" id="edit_button" class="btn btn-outline-warning btn-xs">Edit</button></h6>
+                                    <th class="border-bottom-0 text-center">
+                                        <h6 class="fw-bolder text-light mb-0">Edit | Delete</h6>
                                     </th>
                                 </tr>
                             </thead>
                             <tbody>
                                 <?php
                                 foreach ($results as $row) {
-                                    $ho_id = $row['ho_id'];
+                                    // $qr_id = $row['qr_id'];
                                     $first_name = $row['first_name'];
                                     $last_name = $row['last_name'];
                                     $block = $row['block'];
@@ -66,7 +66,7 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
                                     $email = $row['email'];
                                     $number = $row['number'];
                                 ?>
-                                    <tr id="row_<?php echo $ho_id; ?>">
+                                    <tr>
                                         <td class="border-bottom-0 text-center">
                                             <h6 class="text-dark mb-0"><?php echo $first_name . " " . $last_name; ?></h6>
                                         </td>
@@ -80,7 +80,12 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
                                             <h6 class="text-dark mb-0"><?php echo "Block " . $block . ", Lot " . $lot . " , " . $street . " Street"; ?></h6>
                                         </td>
                                         <td class="border-bottom-0 text-center">
-                                            <input type="checkbox" class="delete_checkbox" value="<?php echo $ho_id; ?>" />
+                                            <a href="#" class="btn btn-light btn-circle btn-sm edit-btn" data-toggle="modal" data-target="#editModal" data-email="<?php echo $email; ?>">
+                                                <i class="fas fa-pencil-alt custom-edit-icon"></i>
+                                            </a>
+                                            <a href="#" class="btn btn-light btn-circle btn-sm delete-btn" data-toggle="modal" data-target="#deleteModal" data-email="<?php echo $email; ?>">
+                                                <i class="fas fa-trash fa-trash-dark"></i>
+                                            </a>
                                         </td>
 
                                     </tr>
@@ -140,62 +145,9 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
     </div>
 </div>
 
-<script>
-    $(document).ready(function() {
-        $('#delete_all').click(function() {
-            var checkbox = $('.delete_checkbox:checked');
-            if (checkbox.length > 0) {
-                $('#confirmModal').modal('show');
-            } else {
-                alert("Select at least one record");
-            }
-        });
-
-        $('#confirmDelete').click(function() {
-            var checkbox = $('.delete_checkbox:checked');
-            var checkbox_value = [];
-            $(checkbox).each(function() {
-                checkbox_value.push($(this).val());
-            });
-
-            $.ajax({
-                url: "delete.php",
-                method: "POST",
-                data: {
-                    checkbox_value: checkbox_value
-                },
-                success: function(response) {
-                    $(checkbox).each(function() {
-                        $('#row_' + $(this).val()).remove();
-                    });
-                    $('#confirmModal').modal('hide');
-                }
-            });
-        });
-    });
-</script>
 
 <!-- MODALS -->
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="confirmModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="confirmModalLabel">Confirm Deletion</h5>
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                Are you sure you want to delete the selected records?
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
-                <button type="button" class="btn btn-danger" id="confirmDelete">Delete</button>
-            </div>
-        </div>
-    </div>
-</div>
-<!-- <div class="modal fade" id="confirmModal" tabindex="-1" role="dialog" aria-labelledby="confirmModalLabel" aria-hidden="true">
+<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -206,11 +158,11 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
             </div>
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" type="button" id="confirmDelete">Delete</button>
+                <a class="btn btn-primary" id="delete-link" href="#">Delete</a>
             </div>
         </div>
     </div>
-</div> -->
+</div>
 
 <div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
     <div class="modal-dialog" role="document">

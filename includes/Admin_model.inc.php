@@ -534,3 +534,24 @@ function delete_homeowner($pdo, $ho_id)
     $statement = $pdo->prepare($query);
     $statement->execute([':ho_id' => $ho_id]);
 }
+
+
+function search_homeowner($pdo, $searchQuery)
+{
+    $sql = "SELECT ho_id, email, first_name, last_name, block, lot, street, number
+        FROM homeowners
+        WHERE CONCAT(first_name, ' ', last_name) LIKE ?";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}

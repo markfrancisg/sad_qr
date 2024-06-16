@@ -1,24 +1,14 @@
-//for delete button
-// $(document).ready(function() {
-//     $('.delete-btn').click(function() {
-//         var email = $(this).data('email');
-//         $('#delete-link').attr('href', '../../../includes/admin/homeowner_list.inc.php?email=' + email);
-//     });
-// });
-
 //for Multiple Delete
 $(document).ready(function() {
     $('#delete_all').click(function() {
-        var checkbox = $('.delete_checkbox:checked');
+        var checkbox = $('.input_checkbox:checked');
         if (checkbox.length > 0) {
             $('#confirmModal').modal('show');
-        } else {
-            alert("Select at least one record");
         }
     });
 
     $('#confirmDelete').click(function() {
-        var checkbox = $('.delete_checkbox:checked');
+        var checkbox = $('.input_checkbox:checked');
         var checkbox_value = [];
         $(checkbox).each(function() {
             checkbox_value.push($(this).val());
@@ -38,61 +28,33 @@ $(document).ready(function() {
             }
         });
     });
+
 });
 
-//edit button
-document.addEventListener('DOMContentLoaded', function () {
-    // Get all elements with the class 'edit-btn'
-    var editButtons = document.querySelectorAll('.edit-btn');
-
-    // Loop through each edit button
-    editButtons.forEach(function(editButton) {
-        // Add a click event listener to each edit button
-        editButton.addEventListener('click', function () {
-            // Get the email from the data-email attribute of the clicked edit button
-            var email = editButton.getAttribute('data-email');
-
-            // Construct the URL with the email parameter
-            var editUrl = '../admin/edit_homeowner.php?email=' + encodeURIComponent(email);
-
-            // Set the href attribute of the "Edit" link inside the modal
-            var editLink = document.getElementById('edit-link');
-            editLink.setAttribute('href', editUrl);
-        });
+$(document).ready(function() {
+    $('#edit').click(function() {
+        var selectedEmail = $('.input_checkbox:checked').closest('tr').find('td:eq(2)').text().trim();
+        window.location.href = '../admin/edit_homeowner.php?email=' + encodeURIComponent(selectedEmail);
     });
 });
 
 
-//for the search option
-function searchTable() {
-    // Get input element and value
-    var input = document.getElementById("searchInput");
-    var filter = input.value.toUpperCase();
-    // Get table body and rows
-    var table = document.getElementById("dataTable");
-    var tbody = table.getElementsByTagName("tbody")[0];
-    var rows = tbody.getElementsByTagName("tr");
-    // Loop through all table rows, hide those that don't match the search query
-    for (var i = 0; i < rows.length; i++) {
-        var cells = rows[i].getElementsByTagName("td");
-        var found = false;
-        for (var j = 0; j < cells.length; j++) {
-            var cell = cells[j];
-            if (cell) {
-                var txtValue = cell.textContent || cell.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    found = true;
-                    break;
-                }
-            }
-        }
-        // Toggle row visibility based on search result
-        rows[i].style.display = found ? "" : "none";
-    }
-}
+$(document).on('change', '.input_checkbox', function() {
+    var checkedRows = $('.input_checkbox:checked');
+    var editButton = $('#edit');
+    var deleteButton = $('#delete_all');
 
-// Attach event listener to the search input
-document.getElementById("searchInput").addEventListener("keyup", searchTable);
+    if (checkedRows.length === 0) {
+        editButton.prop('disabled', true);
+        deleteButton.prop('disabled', true);
+    } else if (checkedRows.length === 1) {
+        editButton.prop('disabled', false);
+        deleteButton.prop('disabled', false);
+    } else {
+        editButton.prop('disabled', true);
+        deleteButton.prop('disabled', false);
+    }
+});
 
 // ________________________________Edit Toast Update____________________________
 
@@ -104,3 +66,71 @@ document.addEventListener("DOMContentLoaded", function() {
         toast.show();
     }
 });
+
+
+
+// ________________________________Search Option____________________________
+
+
+// let originalData = [];
+
+// // for the Search button
+// document.addEventListener('DOMContentLoaded', function() {
+//     const tableBody = document.getElementById('tableBody');
+//     originalData = [...tableBody.rows].map(row => row.innerHTML); // Store initial table rows
+
+//     document.getElementById('searchButton').addEventListener('click', function() {
+//         const input = document.getElementById('searchInput').value;
+//         if (input === '') {
+//             // Restore original data if input is empty
+//             tableBody.innerHTML = originalData.map(rowHTML => `<tr>${rowHTML}</tr>`).join('');
+//         } else {
+//             fetch(`../../../includes/admin/homeowner_search.inc.php?name=${encodeURIComponent(input)}`)
+//                 .then(response => {
+//                     if (!response.ok) {
+//                         throw new Error('Network response was not ok ' + response.statusText);
+//                     }
+//                     return response.json();
+//                 })
+//                 .then(data => {
+//                     if (data.error) {
+//                         console.error('Error:', data.error);
+//                         return;
+//                     }
+//                     tableBody.innerHTML = ''; // Clear existing rows
+//                     data.forEach(homeowner => {
+//                         const tr = document.createElement('tr');
+//                         tr.id = `row_${homeowner.ho_id}`; // Set the id attribute
+//                         tr.innerHTML = `
+//                             <td class="border-bottom-0 text-center">
+//                                 <input type="checkbox" class="input_checkbox" value="${homeowner.ho_id}" />
+//                             </td>
+//                             <td class="border-bottom-0 text-center">
+//                                 <h6 class="text-dark mb-0">${homeowner.first_name} ${homeowner.last_name}</h6>
+//                             </td>
+//                             <td class="border-bottom-0 text-center">
+//                                 <h6 class="text-dark mb-0">${homeowner.email}</h6>
+//                             </td>
+//                             <td class="border-bottom-0 text-center">
+//                                 <h6 class="text-dark mb-0">${homeowner.number}</h6>
+//                             </td>
+//                             <td class="border-bottom-0 text-center">
+//                                 <h6 class="text-dark mb-0">Block ${homeowner.block}, Lot ${homeowner.lot}, ${homeowner.street} Street</h6>
+//                             </td>
+//                         `;
+//                         tableBody.appendChild(tr);
+//                     });
+//                 })
+//                 .catch(error => {
+//                     console.error('There was a problem with the fetch operation:', error);
+//                 });
+//         }
+//     });
+
+//     // Optionally, you can listen for 'input' event to restore table on clearing search input
+//     document.getElementById('searchInput').addEventListener('input', function() {
+//         if (this.value === '') {
+//             tableBody.innerHTML = originalData.map(rowHTML => `<tr>${rowHTML}</tr>`).join('');
+//         }
+//     });
+// });

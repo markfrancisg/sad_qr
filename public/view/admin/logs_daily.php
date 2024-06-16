@@ -110,7 +110,7 @@ include_once '../../../includes/LogsListDailyController.php';
                             <tbody id="tableBody">
                                 <?php if (empty($results)) : ?>
                                     <tr>
-                                        <td colspan="5" class="text-center">No Data Available</td>
+                                        <td colspan="6" class="text-center">No Data Available</td>
                                     </tr>
                                 <?php else : ?>
 

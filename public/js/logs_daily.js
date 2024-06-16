@@ -28,7 +28,6 @@
 // // Attach event listener to the search input
 // document.getElementById("searchInput").addEventListener("keyup", searchTable);
 
-
 let originalData = [];
 
 document.addEventListener('DOMContentLoaded', function() {
@@ -57,10 +56,10 @@ document.addEventListener('DOMContentLoaded', function() {
                     data.forEach(row => {
                         const tr = document.createElement('tr');
                         tr.innerHTML = `
-                                <td class="border-bottom-0 text-center">${row.first_name} ${row.last_name}</td>
-                                <td class="border-bottom-0 text-center">Block ${row.block}, Lot ${row.lot}, ${row.street} Street</td>
-                                <td class="border-bottom-0 text-center">${row.vehicle_type}</td>
-                                <td class="border-bottom-0 text-center">${row.plate_number}</td>
+                                <td class="border-bottom-0 text-center">${row.log_name}</td>
+                                <td class="border-bottom-0 text-center">${row.log_address}</td>
+                                <td class="border-bottom-0 text-center">${row.log_plate_number}</td>
+                                <td class="border-bottom-0 text-center">${row.log_vehicle}</td>
                                 <td class="border-bottom-0 text-center">${row.entry_log}</td>
                                 <td class="border-bottom-0 text-center">${row.exit_log}</td>
                             `;

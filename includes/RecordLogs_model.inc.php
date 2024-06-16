@@ -5,12 +5,9 @@ declare(strict_types=1);
 
 function get_record_logs(PDO $pdo)
 {
-  $query = "SELECT first_name, last_name, qr_info.vehicle_type, qr_info.plate_number, homeowners.block, homeowners.lot, homeowners.street,
-            log.date, log.entry_log, log.exit_log
+  $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log
               FROM log
-              JOIN qr_info ON log.qr_id = qr_info.qr_id
-              JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
-              ORDER BY log.log_id DESC";
+              ORDER BY log_id DESC";
   $stmt = $pdo->prepare($query);
   $stmt->execute();
 
@@ -23,13 +20,10 @@ function get_record_logs_daily(PDO $pdo)
   date_default_timezone_set('Asia/Manila');
   $current_date = date('Y-m-d');
 
-  $query = "SELECT first_name, last_name, qr_info.vehicle_type, qr_info.plate_number, homeowners.block, homeowners.lot, homeowners.street,
-                     log.date, log.entry_log, log.exit_log
+  $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log
               FROM log
-              JOIN qr_info ON log.qr_id = qr_info.qr_id
-              JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE DATE(log.date) = :current_date
-              ORDER BY log.log_id DESC";
+              ORDER BY log_id DESC";
 
   $stmt = $pdo->prepare($query);
 
@@ -50,13 +44,10 @@ function get_record_logs_weekly(PDO $pdo)
   // Calculate the start of the week (Monday)
   $start_of_week = date('Y-m-d', strtotime('monday this week'));
 
-  $query = "SELECT first_name, last_name, qr_info.vehicle_type, qr_info.plate_number, homeowners.block, homeowners.lot, homeowners.street,
-                    log.date, log.entry_log, log.exit_log
+  $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log
               FROM log
-              JOIN qr_info ON log.qr_id = qr_info.qr_id
-              JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE DATE(log.date) BETWEEN :start_of_week AND :current_date
-              ORDER BY log.log_id DESC";
+              ORDER BY log_id DESC";
 
   $stmt = $pdo->prepare($query);
 

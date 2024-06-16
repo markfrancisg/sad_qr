@@ -66,10 +66,10 @@ include_once '../../../includes/LogsListDailyController.php';
                                         Complete Address
                                     </th>
                                     <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
-                                        Vehicle Type
+                                        Plate Number
                                     </th>
                                     <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
-                                        Plate Number
+                                        Vehicle Information
                                     </th>
                                     <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
                                         Entry
@@ -82,20 +82,19 @@ include_once '../../../includes/LogsListDailyController.php';
                             <tbody id="tableBody">
                                 <?php
                                 foreach ($results as $row) {
-
                                 ?>
                                     <tr>
                                         <td class="border-bottom-0 text-center text-muted mb-0">
-                                            <?php echo $row['first_name'] . " " . $row['last_name']; ?>
+                                            <?php echo $row['log_name']; ?>
                                         </td>
                                         <td class="border-bottom-0 text-center text-muted mb-0">
-                                            <?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street"; ?>
+                                            <?php echo $row['log_address']; ?>
                                         </td>
                                         <td class="border-bottom-0 text-center text-muted mb-0">
-                                            <?php echo $row['vehicle_type']; ?>
+                                            <?php echo $row['log_plate_number']; ?>
                                         </td>
                                         <td class="border-bottom-0 text-center text-muted mb-0">
-                                            <?php echo $row['plate_number']; ?>
+                                            <?php echo $row['log_vehicle']; ?>
                                         </td>
                                         <td class="border-bottom-0 text-center text-muted mb-0">
                                             <?php echo $row['entry_log']; ?>
@@ -112,8 +111,7 @@ include_once '../../../includes/LogsListDailyController.php';
                         </table>
                     </div>
 
-
-
+                    <!-- PAGINATION START -->
                     <div class="row mt-5">
                         <div class="col">
                             <div class="d-flex align-items-center justify-content-between">

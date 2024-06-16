@@ -28,8 +28,8 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
             <tr>  
                 <th>Name</th>
                 <th>Address</th>
-                <th>Vehicle Type</th>
                 <th>Plate Number</th>
+                <th>Vehicle Information</th>
                 <th>Entry</th>
                 <th>Exit</th>
             </tr>';
@@ -37,10 +37,10 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
         // Output data rows
         foreach ($results as $row) {
             echo '<tr>
-                    <td>' . $row['first_name'] . " " . $row['last_name'] . '</td>
-                    <td>' . "Block " . $row['block'] . ", Lot " . $row['lot'] . ", " . $row['street'] . " Street" . '</td>
-                    <td>' . $row['vehicle_type'] . '</td>
-                    <td>' . $row['plate_number'] . '</td>
+                    <td>' . $row['log_name'] . '</td>
+                    <td>' . $row['log_address'] . '</td>
+                    <td>' . $row['log_plate_number'] . '</td>
+                    <td>' . $row['log_vehicle'] . '</td>
                     <td>' . $row['entry_log'] . '</td>
                     <td>' . $row['exit_log'] . '</td>
                 </tr>';

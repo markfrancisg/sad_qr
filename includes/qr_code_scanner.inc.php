@@ -48,13 +48,14 @@ if (isset($_GET['qr_text'])) {
         date_default_timezone_set('Asia/Manila');
         $date = date('Y-m-d'); // Current date in year month day
         $date_time = date('Y-m-d H:i:00'); // Without seconds (00 for seconds)
+        $vehicle_info = $vehicle_type . ", " . $wheel . "-wheeler";
 
-        
+
         // Determine the column to update based on the station
         if ($station == "Gate 1" || $station == "Gate 2") {
-            handleLog($pdo, $qr_id, $date, $date_time, 'entry_log');
+            handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'entry_log');
         } elseif ($station == "Gate 3" || $station == "Gate 4") {
-            handleLog($pdo, $qr_id, $date, $date_time, 'exit_log');
+            handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'exit_log');
         }
 
         $qr_scan_result = array(

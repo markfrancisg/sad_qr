@@ -20,7 +20,7 @@ function get_user_list(object $pdo, int $offset, int $total_records_per_page)
 
 function get_user_list_verified(PDO $pdo, int $offset, int $total_records_per_page)
 {
-    $query = "SELECT account_email, role_description, account_first_name, account_last_name, account_number, verification_status
+    $query = "SELECT account.account_id, account_email, role_description, account_first_name, account_last_name, account_number, verification_status
           FROM account
           INNER JOIN role_info ON account.role_id = role_info.role_id
           INNER JOIN user_info ON account.account_id = user_info.account_id
@@ -38,7 +38,7 @@ function get_user_list_verified(PDO $pdo, int $offset, int $total_records_per_pa
 
 function get_user_list_unverified(PDO $pdo, int $offset, int $total_records_per_page)
 {
-    $query = "SELECT account_email, role_description, account_first_name, account_last_name, account_number, verification_status
+    $query = "SELECT account.account_id, account_email, role_description, account_first_name, account_last_name, account_number, verification_status
           FROM account
           INNER JOIN role_info ON account.role_id = role_info.role_id
           INNER JOIN user_info ON account.account_id = user_info.account_id
@@ -135,4 +135,71 @@ function check_email_status(PDO $pdo, string $email)
     $stmt->execute([$email]);
 
     return $rowCount = $stmt->rowCount();
+}
+
+
+function search_all_accounts($pdo, $searchQuery)
+{
+    $sql = "SELECT account.account_id, account_email, role_description, account_first_name,account_last_name, account_number, verification_status
+          FROM account
+          INNER JOIN role_info ON account.role_id = role_info.role_id
+          INNER JOIN user_info ON account.account_id = user_info.account_id
+    WHERE CONCAT(account_first_name, ' ', account_last_name) LIKE ?";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_verified_accounts($pdo, $searchQuery)
+{
+    $sql = "SELECT account.account_id, account_email, role_description, account_first_name,account_last_name, account_number, verification_status
+          FROM account
+          INNER JOIN role_info ON account.role_id = role_info.role_id
+          INNER JOIN user_info ON account.account_id = user_info.account_id
+    WHERE CONCAT(account_first_name, ' ', account_last_name) LIKE ? AND role_info.role_description IN ('guard', 'admin') AND verification_status = 1";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_unverified_accounts($pdo, $searchQuery)
+{
+    $sql = "SELECT account.account_id, account_email, role_description, account_first_name,account_last_name, account_number, verification_status
+          FROM account
+          INNER JOIN role_info ON account.role_id = role_info.role_id
+          INNER JOIN user_info ON account.account_id = user_info.account_id
+    WHERE CONCAT(account_first_name, ' ', account_last_name) LIKE ? AND role_info.role_description IN ('guard', 'admin') AND verification_status = 0";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
 }

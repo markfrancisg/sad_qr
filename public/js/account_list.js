@@ -1,90 +1,84 @@
-$(document).ready(function() {
-    $('.delete-btn').click(function() {
-        var email = $(this).data('email');
-        $('#delete-link').attr('href', '../../../includes/super_admin/account_list.inc.php?email=' + email);
-    });
-});
 
-
-// document.addEventListener('DOMContentLoaded', function () {
-//     // Get the edit button element
-//     var editButton = document.getElementById('editButton');
-
-//     // Add a click event listener to the edit button
-//     editButton.addEventListener('click', function () {
-//         // Get the email from the data-email attribute
-//         var email = editButton.getAttribute('data-email');
-
-//         // Construct the URL with the email parameter
-//         var editUrl = '../super_admin/edit_account.php?email=' + encodeURIComponent(email);
-
-//         // Redirect the user to the edit page
-//         window.location.href = editUrl;
-//     });
-// });
-
-document.addEventListener('DOMContentLoaded', function () {
-    // Get all elements with the class 'edit-btn'
-    var editButtons = document.querySelectorAll('.edit-btn');
-
-    // Loop through each edit button
-    editButtons.forEach(function(editButton) {
-        // Add a click event listener to each edit button
-        editButton.addEventListener('click', function () {
-            // Get the email from the data-email attribute of the clicked edit button
-            var email = editButton.getAttribute('data-email');
-
-            // Construct the URL with the email parameter
-            var editUrl = '../super_admin/edit_account.php?email=' + encodeURIComponent(email);
-
-            // Set the href attribute of the "Edit" link inside the modal
-            var editLink = document.getElementById('edit-link');
-            editLink.setAttribute('href', editUrl);
-        });
-    });
-});
-
-
-
-
-// ________________________________Search Function____________________________
-
-function searchTable() {
-    // Get input element and value
-    var input = document.getElementById("searchInput");
-    var filter = input.value.toUpperCase();
-    // Get table body and rows
-    var table = document.getElementById("dataTable");
-    var tbody = table.getElementsByTagName("tbody")[0];
-    var rows = tbody.getElementsByTagName("tr");
-    // Loop through all table rows, hide those that don't match the search query
-    for (var i = 0; i < rows.length; i++) {
-        var cells = rows[i].getElementsByTagName("td");
-        var found = false;
-        for (var j = 0; j < cells.length; j++) {
-            var cell = cells[j];
-            if (cell) {
-                var txtValue = cell.textContent || cell.innerText;
-                if (txtValue.toUpperCase().indexOf(filter) > -1) {
-                    found = true;
-                    break;
-                }
-            }
-        }
-        // Toggle row visibility based on search result
-        rows[i].style.display = found ? "" : "none";
-    }
-}
-
-// Attach event listener to the search input
-document.getElementById("searchInput").addEventListener("keyup", searchTable);
-
-// ________________________________Edit Toast Update____________________________
+// ________________________________Toast Update____________________________
 
 document.addEventListener("DOMContentLoaded", function() {
     var toastElement = document.getElementById('liveToast');
     if (toastElement) {
         var toast = new bootstrap.Toast(toastElement);
         toast.show();
+    }
+});
+
+document.addEventListener("DOMContentLoaded", function() {
+    var toastElement = document.getElementById('deleteToast');
+    if (toastElement) {
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+});
+
+
+// ________________________________Delete and Edit____________________________
+//for Multiple Delete
+$(document).ready(function() {
+    $('#delete_all').click(function() {
+        var checkbox = $('.input_checkbox:checked');
+        if (checkbox.length > 0) {
+            $('#confirmModal').modal('show');
+        }
+    });
+
+    $('#confirmDelete').click(function() {
+        var checkbox = $('.input_checkbox:checked');
+        var checkbox_value = [];
+        $(checkbox).each(function() {
+            checkbox_value.push($(this).val());
+        });
+
+        $.ajax({
+            url: "../../../includes/super_admin/delete_account.inc.php",
+            method: "POST",
+            data: {
+                checkbox_value: checkbox_value
+            },
+            success: function(response) {
+                $('#confirmModal').modal('hide');
+                window.location.href = window.location.pathname + "?delete=success"; // Refresh the page with the parameter
+            }
+        });
+    });
+
+});
+
+$(document).ready(function() {
+    $('#edit').click(function() {
+        var selectedEmail = $('.input_checkbox:checked').closest('tr').find('td:eq(2)').text().trim();
+        window.location.href = '../super_admin/edit_account.php?email=' + encodeURIComponent(selectedEmail);
+    });
+});
+
+// EDIT button
+$(document).on('change', '.input_checkbox', function() {
+    var checkedRows = $('.input_checkbox:checked');
+    var editButton = $('#edit');
+    var deleteButton = $('#delete_all');
+
+    if (checkedRows.length === 0) {
+        editButton.prop('disabled', true);
+        deleteButton.prop('disabled', true);
+    } else if (checkedRows.length === 1) {
+        editButton.prop('disabled', false);
+        deleteButton.prop('disabled', false);
+    } else {
+        editButton.prop('disabled', true);
+        deleteButton.prop('disabled', false);
+    }
+});
+
+// If search is empty, prevent submit
+document.getElementById('searchForm').addEventListener('submit', function(event) {
+    var searchInput = document.getElementById('searchInput').value.trim();
+    if (searchInput === '') {
+        event.preventDefault(); // Prevent form submission
     }
 });

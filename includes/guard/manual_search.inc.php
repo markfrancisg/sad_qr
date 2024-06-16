@@ -37,7 +37,7 @@ try {
 		$output .= '</table></div>';
 		echo $output;
 	} else {
-		echo '<h4 class="text-dark text-center mt-3">Plate Number Not Found</h4>';
+		echo '<h4 class="text-dark text-center mt-3">No Data Available</h4>';
 	}
 } catch (PDOException $e) {
 	die("Query failed " . $e->getMessage());

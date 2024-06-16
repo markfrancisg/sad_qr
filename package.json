@@ -10,13 +10,13 @@
   "author": "",
   "license": "ISC",
   "release": {
-    "branches": ["developer_3.0"],
+    "branches": [
+      "developer_3.0"
+    ],
     "plugins": [
       "@semantic-release/commit-analyzer",
       "@semantic-release/release-notes-generator",
       "@semantic-release/github"
     ]
   }
-  
-
 }

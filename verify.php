@@ -33,23 +33,6 @@ include 'includes/VerifyController.inc.php';
                                 <h2 class="text-center mt-1">Set Password</h2>
                                 <form id="resetPasswordForm" action="/includes/verify.inc.php" method="post" novalidate>
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
-                                                <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
-                                                <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
-                                            </div>
-                                        </div>
-                                    </div>
-
                                     <input type="hidden" name="email" value="<?php if (isset($_GET['email'])) {
                                                                                     echo $_GET['email'];
                                                                                 } ?>">
@@ -69,6 +52,22 @@ include 'includes/VerifyController.inc.php';
                                             <div class="password-container">
                                                 <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" disabled required>
                                                 <div class="invalid-feedback">Passwords do not match</div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
+                                                <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col">
+                                            <div class="d-flex align-items-center justify-content-between">
+                                                <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
+                                                <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
                                             </div>
                                         </div>
                                     </div>

@@ -62,3 +62,13 @@ function check_reset_password()
         echo '</div>';
     }
 }
+
+function check_set_password()
+{
+    if (isset($_GET['set_password']) && !empty($_GET['set_password']) && $_GET['set_password'] === 'success') {
+        echo '<div id="alertContainer" class="alert alert-success text-center mt-2" role="alert">';
+        echo '<i class="fas fa-check-circle"></i> '; // Check icon added here
+        echo 'Account verification successful'; // Space added after 'to' for readability
+        echo '</div>';
+    }
+}

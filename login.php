@@ -61,6 +61,7 @@ redirectUser();
                                             <?php
                                             check_reset_password();
                                             check_login_errors();
+                                            check_set_password();
                                             ?>
                                         </div>
                                     </div>

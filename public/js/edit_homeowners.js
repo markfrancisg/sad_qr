@@ -34,18 +34,38 @@ setTimeout(() => {
 }, 3000);
 
 
+
+
 (function () {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');
+    var submitButton = document.querySelector('button[type="submit"]');
+    var formSubmitted = false;
+
+    function toggleSubmitButton(form) {
+        if (form.checkValidity()) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
+                }else {
+                    formSubmitted = true;
+                    submitButton.disabled = true; // Disable button on form submission
                 }
                 form.classList.add('was-validated');
             }, false);
+
+            form.addEventListener('input', function () {
+                toggleSubmitButton(form);
+            });
         });
 
     var inputs = document.querySelectorAll('.needs-validation .form-control');
@@ -60,7 +80,7 @@ setTimeout(() => {
             input.closest('.form-floating').classList.add('was-validated');
         });
     });
-})();
+
 
 // Phone number validation
 document.getElementById('number').addEventListener('input', function() {
@@ -87,6 +107,7 @@ document.getElementById('number').addEventListener('input', function() {
     }
 
     phoneNumberInput.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(phoneNumberInput.closest('form'));
 });
 
 document.getElementById('email').addEventListener('input', function() {
@@ -131,201 +152,11 @@ document.getElementById('email').addEventListener('input', function() {
                     emailInput.classList.add('is-valid');
                     feedback.textContent = ''; // Clear feedback message when email is valid
                 }
+                toggleSubmitButton(emailInput.closest('form'));
             }
         });
     }
 
     emailInput.closest('.form-floating').classList.add('was-validated');
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-// (function () {
-//     'use strict';
-//     var forms = document.querySelectorAll('.needs-validation');
-//     Array.prototype.slice.call(forms)
-//         .forEach(function (form) {
-//             form.addEventListener('input', function (event) {
-//                 if (!form.checkValidity()) {
-//                     event.preventDefault();
-//                     event.stopPropagation();
-//                 }
-//                 form.classList.add('was-validated');
-//             }, false);
-//         });
-// })();
-
-// // Phone number validation
-// document.getElementById('number').addEventListener('input', function() {
-//     var phoneNumberInput = this;
-//     var phoneNumber = phoneNumberInput.value;
-//     var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
-
-//     if (!phoneNumberPattern.test(phoneNumber)) {
-//         phoneNumberInput.setCustomValidity('Invalid phone number');
-//         phoneNumberInput.classList.add('is-invalid');
-//     } else {
-//         phoneNumberInput.setCustomValidity('');
-//         phoneNumberInput.classList.remove('is-invalid');
-//     }
-
-//     phoneNumberInput.closest('.form-floating').classList.add('was-validated');
-// });
-
-// // Email validation
-// document.getElementById('email').addEventListener('input', function() {
-//     var emailInput = this;
-//     var email = emailInput.value;
-//     var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
-
-//     if (!emailPattern.test(email)) {
-//         emailInput.setCustomValidity('Invalid email domain');
-//         emailInput.classList.add('is-invalid');
-//     } else {
-//         emailInput.setCustomValidity('');
-//         emailInput.classList.remove('is-invalid');
-//     }
-
-//     emailInput.closest('.form-floating').classList.add('was-validated');
-// });
-
-
-
-// (function () {
-//     'use strict';
-//     var forms = document.querySelectorAll('.needs-validation');
-//     Array.prototype.slice.call(forms)
-//         .forEach(function (form) {
-//             // Add submit event listener to the form
-//             form.addEventListener('submit', function (event) {
-//                 if (!form.checkValidity()) {
-//                     event.preventDefault();
-//                     event.stopPropagation();
-//                 }
-
-//                 // Validate email domain
-//                 var emailInput = form.querySelector('#email');
-//                 var email = emailInput.value;
-//                 var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
-
-//                 if (!emailPattern.test(email)) {
-//                     emailInput.setCustomValidity('Invalid email domain');
-//                     emailInput.classList.add('is-invalid');
-//                 } else {
-//                     emailInput.setCustomValidity('');
-//                     emailInput.classList.remove('is-invalid');
-//                 }
-
-//                 // Validate Philippine phone number format
-//                 var phoneNumberInput = form.querySelector('#number');
-//                 var phoneNumber = phoneNumberInput.value;
-//                 var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
-
-//                 if (!phoneNumberPattern.test(phoneNumber)) {
-//                     phoneNumberInput.setCustomValidity('Invalid Philippine phone number format');
-//                     phoneNumberInput.classList.add('is-invalid');
-//                 } else {
-//                     phoneNumberInput.setCustomValidity('');
-//                     phoneNumberInput.classList.remove('is-invalid');
-//                 }
-
-//                 // Add 'was-validated' class to the form
-//                 form.classList.add('was-validated');
-//             });
-
-//             // Add input event listeners to email and number fields for dynamic validation
-//             var emailInput = form.querySelector('#email');
-//             emailInput.addEventListener('input', function () {
-//                 // Clear previous error state
-//                 this.setCustomValidity('');
-//                 this.classList.remove('is-invalid');
-
-//                 // Validate email domain
-//                 var email = this.value;
-//                 var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
-//                 if (!emailPattern.test(email)) {
-//                     this.setCustomValidity('Invalid email domain');
-//                     this.classList.add('is-invalid');
-//                 }
-//             });
-
-//             var phoneNumberInput = form.querySelector('#number');
-//             phoneNumberInput.addEventListener('input', function () {
-//                 // Clear previous error state
-//                 this.setCustomValidity('');
-//                 this.classList.remove('is-invalid');
-
-//                 // Validate Philippine phone number format
-//                 var phoneNumber = this.value;
-//                 var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
-//                 if (!phoneNumberPattern.test(phoneNumber)) {
-//                     this.setCustomValidity('Invalid Philippine phone number format');
-//                     this.classList.add('is-invalid');
-//                 }
-//             });
-//         });
-// })();
-
-
-
-
-// (function () {
-//     'use strict';
-//     var forms = document.querySelectorAll('.needs-validation');
-//     Array.prototype.slice.call(forms)
-//         .forEach(function (form) {
-//             form.addEventListener('submit', function (event) {
-//                 if (!form.checkValidity()) {
-//                     event.preventDefault();
-//                     event.stopPropagation();
-//                 }
-//                 form.classList.add('was-validated');
-//             }, false);
-//         });
-// })();
-
-// // Phone number validation
-// document.getElementById('number').addEventListener('submit', function() {
-//     var phoneNumberInput = this;
-//     var phoneNumber = phoneNumberInput.value;
-//     var phoneNumberPattern = /^09\d{9}$/;  // Philippine phone number pattern
-
-//     if (!phoneNumberPattern.test(phoneNumber)) {
-//         phoneNumberInput.setCustomValidity('Invalid phone number');
-//         phoneNumberInput.classList.add('is-invalid');
-//     } else {
-//         phoneNumberInput.setCustomValidity('');
-//         phoneNumberInput.classList.remove('is-invalid');
-//     }
-
-//     phoneNumberInput.form.classList.add('was-validated');
-// });
-
-// // Email validation
-// document.getElementById('email').addEventListener('submit', function() {
-//     var emailInput = this;
-//     var email = emailInput.value;
-//     var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;  // Email pattern
-
-//     if (!emailPattern.test(email)) {
-//         emailInput.setCustomValidity('Invalid email');
-//         emailInput.classList.add('is-invalid');
-//     } else {
-//         emailInput.setCustomValidity('');
-//         emailInput.classList.remove('is-invalid');
-//     }
-
-//     emailInput.form.classList.add('was-validated');
-// });
+})();

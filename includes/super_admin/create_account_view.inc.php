@@ -55,7 +55,7 @@ function account_creation_success()
     if (isset($_GET['account_creation']) && $_GET['account_creation'] === "success") {
         echo '<div id="alertContainer" class="alert alert-success text-center mt-2" role="alert">';
         echo '<i class="fas fa-check-circle"></i> '; // Check icon added here
-        echo 'A new account is added'; // Space added after 'to' for readability
+        echo 'A new account is added, and an email has been sent'; // Space added after 'to' for readability
         echo '</div>';
     }
 }

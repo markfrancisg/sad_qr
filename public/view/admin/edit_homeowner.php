@@ -102,7 +102,7 @@ include_once 'header.php';
 
                         <div class="row mt-3">
                             <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center">
-                                <button class="btn btn-primary p-3 w-50 mb-2">Edit Homeowner</button>
+                                <button class="btn btn-primary p-3 w-50 mb-2" type="submit" disabled>Edit Homeowner</button>
                             </div>
                             <div class="col-12">
                                 <?php

@@ -132,14 +132,15 @@ setTimeout(() => {
 //     emailInput.closest('.form-floating').classList.add('was-validated');
 // });
 
-
 (function () {
     'use strict';
+
     var forms = document.querySelectorAll('.needs-validation');
     var submitButton = document.querySelector('button[type="submit"]');
+    var formSubmitted = false;
 
     function toggleSubmitButton(form) {
-        if (form.checkValidity()) {
+        if (form.checkValidity() && !formSubmitted) {
             submitButton.disabled = false;
         } else {
             submitButton.disabled = true;
@@ -152,6 +153,9 @@ setTimeout(() => {
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
+                } else {
+                    formSubmitted = true;
+                    submitButton.disabled = true; // Disable button on form submission
                 }
                 form.classList.add('was-validated');
             }, false);

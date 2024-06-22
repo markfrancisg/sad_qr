@@ -25,17 +25,36 @@ setTimeout(() => {
 
 
 (function () {
-    'use strict';
+   'use strict';
+
     var forms = document.querySelectorAll('.needs-validation');
+    var submitButton = document.querySelector('button[type="submit"]');
+    var formSubmitted = false;
+
+    function toggleSubmitButton(form) {
+        if (form.checkValidity() && !formSubmitted) {
+            submitButton.disabled = false;
+        } else {
+            submitButton.disabled = true;
+        }
+    }
+
     Array.prototype.slice.call(forms)
         .forEach(function (form) {
             form.addEventListener('submit', function (event) {
                 if (!form.checkValidity()) {
                     event.preventDefault();
                     event.stopPropagation();
+                } else {
+                    formSubmitted = true;
+                    submitButton.disabled = true; // Disable button on form submission
                 }
                 form.classList.add('was-validated');
             }, false);
+
+            form.addEventListener('input', function () {
+                toggleSubmitButton(form);
+            });
         });
 
     var inputs = document.querySelectorAll('.needs-validation .form-control');
@@ -62,8 +81,9 @@ setTimeout(() => {
             roleDescription.classList.add('is-valid');
         }
         roleDescription.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(roleDescription.closest('form'));
     });
-})();
+
 
 // Phone number validation
 document.getElementById('number').addEventListener('input', function() {
@@ -90,6 +110,7 @@ document.getElementById('number').addEventListener('input', function() {
     }
 
     phoneNumberInput.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(phoneNumberInput.closest('form'));
 });
 
 document.getElementById('email').addEventListener('input', function() {
@@ -119,7 +140,7 @@ document.getElementById('email').addEventListener('input', function() {
         feedback.textContent = ''; // Clear feedback message when email is valid
     } else {
         $.ajax({
-            url: '../../../includes/homeowner_check_email.php',
+            url: '../../../includes/account_check_email.php',
             method: 'POST',
             data: { email: enteredEmail }, // Use enteredEmail for the AJAX request
             success: function(response) {
@@ -134,9 +155,11 @@ document.getElementById('email').addEventListener('input', function() {
                     emailInput.classList.add('is-valid');
                     feedback.textContent = ''; // Clear feedback message when email is valid
                 }
+                toggleSubmitButton(emailInput.closest('form'));
             }
         });
     }
 
     emailInput.closest('.form-floating').classList.add('was-validated');
 });
+})();

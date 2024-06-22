@@ -22,12 +22,12 @@ include 'public/view/login_components/header.php';
                                 </a>
                                 <!-- <p class="text-center">Your SeQRity Gate Friend</p> -->
                                 <h2 class="text-center mt-1">Forgot Password</h2>
-                                <form id="forgotPasswordForm" action="/includes/reset_password.inc.php" method="post" novalidate>
+                                <form id="forgotPasswordForm" action="/includes/reset_password.inc.php" class="needs-validation" method="post" novalidate>
                                     <div class="row mb-3">
                                         <div class="col">
                                             <label for="email" class="form-label">E-mail</label>
-                                            <input type="email" class="form-control" id="account_email" name="account_email" aria-describedby="emailHelp" maxlength="50">
-                                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                                            <input type="email" class="form-control" id="email" name="account_email" aria-describedby="emailHelp" maxlength="50">
+                                            <div class="invalid-feedback" id="emailFeedback">Please enter a valid email address.</div>
                                         </div>
                                     </div>
                                     <div class="row mb-4">
@@ -39,7 +39,7 @@ include 'public/view/login_components/header.php';
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary mb-2 w-100 fs-4 rounded-2 p-3">Send Email</button>
+                                            <button type="submit" class="btn btn-primary mb-2 w-100 fs-4 rounded-2 p-3" disabled>Send Email</button>
                                             <?php
                                             check_reset_password_errors();
                                             check_sent_email();

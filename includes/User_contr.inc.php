@@ -249,8 +249,8 @@ function send_verify_account_email(string $name, string $email)
         //Content
         $mail->isHTML(true);                                  //Set email format to HTML
         $mail->Subject = 'Registration Verification';
-        $mail->Body = 'Good day!' . $name . '<br>
-        <h2>Please click the link to verify your account creation</h2>
+        $mail->Body = 'Good day!' . " " . $name . '<br>
+        <h2>Please click the link to proceed to your account creation</h2>
         <br>
         <br>
         <a href="http://localhost:3000/verify.php?email=' . $email . '">Set Up Password</a>';
@@ -273,7 +273,7 @@ function generate_token(object $pdo, string $email)
     $token = md5($randomString1);
 
     //set expiration
-    $token_expiration = date('Y-m-d H:i:s', strtotime('+1 minute'));
+    $token_expiration = date('Y-m-d H:i:s', strtotime('+15 minutes')); // Change token expiration to 15 minutes
 
     insert_token($pdo, $email, $token, $token_expiration);
 

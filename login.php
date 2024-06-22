@@ -1,8 +1,9 @@
 <?php
-include 'public/view/login_components/header.php';
+
 require_once 'includes/config.session.inc.php';
 require_once 'includes/login_view.inc.php';
 require_once 'includes/authenticate.inc.php';
+include 'public/view/login_components/header.php';
 
 redirectUser();
 ?>
@@ -29,13 +30,13 @@ redirectUser();
                                     }
                                     ?>
                                 </h2>
-                                <form id="loginForm" action="includes/login.inc.php" method="post" novalidate>
+                                <form id="loginForm" action="includes/login.inc.php" method="post" class="needs-validation" novalidate>
                                     <div class="row mb-3">
 
                                         <div class="col">
                                             <label for="email" class="form-label">E-mail</label>
                                             <input type="email" class="form-control" id="email" name="email" aria-describedby="emailHelp" maxlength="50">
-                                            <div class="invalid-feedback">Please enter a valid email address.</div>
+                                            <div class="invalid-feedback" id="emailFeedback">Email is required</div>
                                         </div>
                                     </div>
                                     <div class="row mb-2">
@@ -43,7 +44,7 @@ redirectUser();
                                             <label for="password" class="form-label">Password</label>
                                             <div class="password-container">
                                                 <input type="password" class="form-control" id="password" name="password" maxlength="50" required>
-                                                <div class="invalid-feedback">Please enter your password.</div>
+                                                <div class="invalid-feedback">Password is required.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -57,7 +58,7 @@ redirectUser();
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary w-100 fs-4 rounded-2 p-3 mb-2">Log In</button>
+                                            <button type="submit" class="btn btn-primary w-100 fs-4 rounded-2 p-3 mb-2" disabled>Log In</button>
                                             <?php
                                             check_reset_password();
                                             check_login_errors();

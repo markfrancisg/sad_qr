@@ -42,7 +42,6 @@ include 'includes/VerifyController.inc.php';
                                             <label for="new_password" class="form-label">Password</label>
                                             <div class="password-container">
                                                 <input type="password" class="form-control" id="password" name="password" maxlength="50" required>
-                                                <div class="invalid-feedback">Please enter your password.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -50,27 +49,31 @@ include 'includes/VerifyController.inc.php';
                                         <div class="col">
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
                                             <div class="password-container">
-                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" disabled required>
+                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" required>
                                                 <div class="invalid-feedback">Passwords do not match</div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
-                                                <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
+
+                                    <div id="password_requirements">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
+                                                    <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
+                                                    <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
-                                                <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
-                                            </div>
-                                        </div>
-                                    </div>
+
                                     <div class="row mt-3 mb-3">
                                         <div class="col">
                                             <div class="d-flex align-items-center justify-content-between">
@@ -85,7 +88,7 @@ include 'includes/VerifyController.inc.php';
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary w-100 fs-4 rounded-2 p-3">Set New Password</button>
+                                            <button type="submit" class="btn btn-primary w-100 fs-4 rounded-2 p-3" disabled>Set New Password</button>
                                         </div>
                                     </div>
                                 </form>

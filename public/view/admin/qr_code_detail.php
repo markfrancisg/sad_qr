@@ -4,9 +4,12 @@ include_once '../../../includes/dbh.inc.php';
 include_once '../../../includes/Admin_contr.inc.php';
 include_once '../../../includes/Admin_model.inc.php';
 include_once '../../../includes/admin/qr_code_detail.inc.php';
+include_once '../../../includes/admin/balance_pay_view.inc.php';
+
 
 $qr_id = check_qr_id();
 $result = get_qr_detail($pdo, $qr_id);
+payment_success();
 ?>
 
 

@@ -105,7 +105,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                         <li class="sidebar-item <?php echo isActive('guard.dashboard.php') || isActive('scan_qr.php') || isActive('scan_results.php') ? 'selected' : ''; ?>">
                             <a class="sidebar-link <?php echo isActive('guard.dashboard.php') || isActive('scan_qr.php') || isActive('scan_results.php'); ?>" href="guard.dashboard.php" aria-expanded="false">
                                 <span>
-                                    <i class="fa fa-user-plus"></i>
+                                    <i class="fas fa-qrcode"></i>
                                 </span>
                                 <span class="hide-menu">Scan</span>
                             </a>
@@ -133,7 +133,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                         <li class="sidebar-item <?php echo isActive('visitor.php') ? 'selected' : ''; ?>">
                             <a class="sidebar-link <?php echo isActive('visitor.php'); ?>" href="visitor.php" aria-expanded="false">
                                 <span>
-                                    <i class="fa fa-user-plus"></i>
+                                    <i class="fas fa-user-friends"></i>
                                 </span>
                                 <span class="hide-menu">Visitor</span>
                             </a>

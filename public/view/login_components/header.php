@@ -11,3 +11,22 @@
     <link rel="stylesheet" href="public/css/bg_land_page.css" />
 
 </head>
+
+<div class="spinner-wrapper">
+    <div class="spinner-border" role="status">
+    </div>
+</div>
+
+<script>
+    const spinnerWrapperEl = document.querySelector('.spinner-wrapper');
+    if (spinnerWrapperEl) {
+        window.addEventListener('load', () => {
+            spinnerWrapperEl.style.opacity = '0';
+            setTimeout(() => {
+                spinnerWrapperEl.style.display = 'none';
+            }, 200);
+        });
+    } else {
+        console.warn("Element with class 'spinner-wrapper' not found.");
+    }
+</script>

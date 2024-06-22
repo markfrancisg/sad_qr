@@ -10,7 +10,7 @@ if (isset($_GET["qr_id"])) {
         $qr_id = htmlspecialchars($_GET["qr_id"]);
 
         //create new expiration date
-        $expiration_date = date('Y-m-d', strtotime('+1 day')); //change to 1 year if final
+        $expiration_date = date('Y-m-d', strtotime('+1 year')); // Change expiration date to 1 year
 
         //generate unique QR Code
         $generated_qr = generate_qr($pdo);
@@ -37,7 +37,8 @@ if (isset($_GET["qr_id"])) {
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());
     }
-    header("Location: ../../public/view/admin/vehicle_list.php?payment=success&name=$name");
+
+    header("Location: ../../public/view/admin/qr_code_detail.php?payment=success&qr_id=$qr_id");
 
     exit(); // Add exit to stop script execution
 } else {

@@ -1,7 +1,8 @@
 <?php
-include 'public/view/login_components/header.php';
+
 require_once 'includes/config.session.inc.php';
 require_once 'includes/authenticate.inc.php';
+include 'public/view/login_components/header.php';
 
 redirectUser();
 ?>

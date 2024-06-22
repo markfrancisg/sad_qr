@@ -57,16 +57,6 @@ function searchTable() {
 document.getElementById("searchInput").addEventListener("keyup", searchTable);
 
 
-
-//for the payment success notification
-document.addEventListener("DOMContentLoaded", function() {
-    var toastElement = document.getElementById('liveToast');
-    if (toastElement) {
-        var toast = new bootstrap.Toast(toastElement);
-        toast.show();
-    }
-});
-
 document.addEventListener("DOMContentLoaded", function() {
     var toastElement = document.getElementById('liveToastEdit');
     if (toastElement) {

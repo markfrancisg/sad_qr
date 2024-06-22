@@ -45,7 +45,6 @@ include 'public/view/login_components/header.php';
                                             <label for="new_password" class="form-label">New Password</label>
                                             <div class="password-container">
                                                 <input type="password" class="form-control" id="password" name="password" maxlength="50" required>
-                                                <div class="invalid-feedback">Please enter your new password.</div>
                                             </div>
                                         </div>
                                     </div>
@@ -54,25 +53,27 @@ include 'public/view/login_components/header.php';
                                         <div class="col">
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
                                             <div class="password-container">
-                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" disabled required>
-                                                <div class="invalid-feedback">Passwords do not match</div>
+                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" required>
+                                                <div class="invalid-feedback" id="">Passwords do not match</div>
                                             </div>
                                         </div>
                                     </div>
 
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
-                                                <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
+                                    <div id="password_requirements">
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <p class="text-warning fw-bold" id="first_requirement">At least 8 characters long</p>
+                                                    <p class="text-warning fw-bold" id="second_requirement">At least 1 uppercase letter</p>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="row">
-                                        <div class="col">
-                                            <div class="d-flex align-items-center justify-content-between">
-                                                <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
-                                                <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
+                                        <div class="row">
+                                            <div class="col">
+                                                <div class="d-flex align-items-center justify-content-between">
+                                                    <p class="text-warning fw-bold" id="third_requirement">At least 1 lowercase letter</p>
+                                                    <p class="text-warning fw-bold" id="fourth_requirement">At least 1 number</p>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
@@ -91,7 +92,7 @@ include 'public/view/login_components/header.php';
                                     </div>
                                     <div class="row">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary w-100 fs-4 rounded-2 p-3">Reset Password</button>
+                                            <button type="submit" class="btn btn-primary w-100 fs-4 rounded-2 p-3" disabled>Reset Password</button>
                                         </div>
                                     </div>
                                 </form>

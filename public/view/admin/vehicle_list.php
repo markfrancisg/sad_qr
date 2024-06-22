@@ -3,7 +3,6 @@ include_once 'header.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/QrCodeListController.php'; // 
-include_once '../../../includes/admin/balance_pay_view.inc.php';
 include_once '../../../includes/admin/vehicle_list_view.inc.php';
 
 ?>
@@ -73,7 +72,7 @@ include_once '../../../includes/admin/vehicle_list_view.inc.php';
                                         <h6 class="fw-bolder text-light mb-0">Plate Number</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
-                                        <h6 class="fw-bolder text-light mb-0">Status</h6>
+                                        <h6 class="fw-bolder text-light mb-0">Action</h6>
                                     </th>
                                     <th class="border-bottom-0 text-center">
                                         <h6 class="fw-bolder text-light mb-0">Edit | Delete</h6>

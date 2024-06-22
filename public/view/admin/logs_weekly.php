@@ -51,7 +51,7 @@ include_once '../../../includes/LogsListWeeklyController.php';
                             <!-- Export Excel button -->
                             <div class="col-md-4 order-md-2 order-2 text-center">
                                 <form action="../../../includes/admin/logs_excel.inc.php?type=weekly" method="post">
-                                    <button type="submit" name="export_excel" class="btn btn-outline-primary w-100 mb-1">
+                                    <button type="submit" name="export_excel" class="btn btn-outline-primary w-100 mb-1" <?php if (empty($results)) echo 'disabled'; ?>>
                                         <i class="fas fa-download"></i> Export Excel File
                                     </button>
                                 </form>
@@ -110,7 +110,12 @@ include_once '../../../includes/LogsListWeeklyController.php';
                             <tbody id="tableBody">
                                 <?php if (empty($results)) : ?>
                                     <tr>
-                                        <td colspan="6" class="text-center">No Data Available</td>
+                                        <td colspan="7" class="text-center">
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <img src="../../images/no_item.svg" class="mt-2">
+                                                <h4 class="text-dark mt-3">No Data Available</h4>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php else : ?>
 
@@ -143,7 +148,7 @@ include_once '../../../includes/LogsListWeeklyController.php';
                     </div>
 
 
-                    <?php if (!$searchPerformed) : ?>
+                    <?php if (!empty($results) && !$searchPerformed) : ?>
                         <div class="row mt-5">
                             <div class="col">
                                 <div class="d-flex align-items-center justify-content-between">

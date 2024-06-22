@@ -7,6 +7,7 @@ require_once '../../../includes/ScanResults_contr.inc.php';
 require_once '../../../includes/guard/scan_results_view.inc.php';
 require_once 'header.php';
 
+
 ?>
 <style>
     .danger-text {
@@ -29,6 +30,24 @@ require_once 'header.php';
             <div class="card-body">
                 <div class="container-fluid">
                     <?php if (isset($_GET['entry']) && $_GET['entry'] === 'success') : ?>
+                        <?php if (isset($_GET['entry']) && $_GET['entry'] === 'success') {
+                            function sendRequest($url)
+                            {
+                                return file_get_contents($url);
+                            }
+
+                            // Send the first command to open the servo motor (0 degrees)
+                            $responseOpen = sendRequest('http://192.168.122.226/0');
+                            echo $responseOpen;
+
+                            // Add a delay to allow the servo motor to complete its action
+                            sleep(2); // Delay for 2 seconds
+
+                            // Send the second command to close the servo motor (175 degrees)
+                            $responseClose = sendRequest('http://192.168.122.226/1');
+                            echo $responseClose;
+                        }
+                        ?>
                         <h1 class="text-bolder text-primary text-center mb-3">PASS GRANTED!</h1>
                         <div class="row">
                             <div class="col-md-6 mb-3">
@@ -57,24 +76,6 @@ require_once 'header.php';
                                 </div>
                             </div>
                         </div>
-                        <script>
-                            // JavaScript to send commands to the ESP8266
-                            function sendRequest(url) {
-                                const xhttp = new XMLHttpRequest();
-                                xhttp.open("GET", url, true);
-                                xhttp.send();
-                            }
-
-                            // Wait for 1 second and then send the open command
-                            setTimeout(function() {
-                                sendRequest('http://192.168.122.226/0');
-                            }, 2000);
-
-                            // Wait for 3 seconds and then send the close command
-                            setTimeout(function() {
-                                sendRequest('http://192.168.122.226/1');
-                            }, 8000);
-                        </script>
                     <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'denied') : ?>
                         <h1 class="text-bolder danger-text text-center mb-3">PASS DENIED!</h1>
                         <div class="row justify-content-center">

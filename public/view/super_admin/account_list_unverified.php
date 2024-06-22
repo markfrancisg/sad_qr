@@ -105,7 +105,12 @@ require_once '../../../includes/AccountListUnverifiedController.php';
                             <tbody id="tableBody">
                                 <?php if (empty($results)) : ?>
                                     <tr>
-                                        <td colspan="6" class="text-center">No Data Available</td>
+                                        <td colspan="6" class="text-center">
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <img src="../../images/no_item.svg" class="mt-2">
+                                                <h4 class="text-dark mt-3">No Data Available</h4>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php else : ?>
 
@@ -124,11 +129,7 @@ require_once '../../../includes/AccountListUnverifiedController.php';
                                         ?>
                                         <tr id="row_<?php echo $account_id; ?>">
                                             <td class="border-bottom-0 text-center">
-                                                <?php if ($status == 1) : ?>
-                                                    <input type="checkbox" class="input_checkbox" value="<?php echo $account_id; ?>" />
-                                                <?php else : ?>
-                                                    <input type="checkbox" class="input_checkbox" value="<?php echo $account_id; ?>" disabled />
-                                                <?php endif; ?>
+                                                <input type="checkbox" class="input_checkbox" value="<?php echo $account_id; ?>" />
                                             </td>
                                             <td class="border-bottom-0 text-center">
                                                 <h6 class="text-dark mb-0"><?php echo $first_name . " " . $last_name; ?></h6>
@@ -163,7 +164,7 @@ require_once '../../../includes/AccountListUnverifiedController.php';
                     </div>
 
                     <!-- PAGINATION -->
-                    <?php if (!$searchPerformed) : ?>
+                    <?php if (!empty($results) && !$searchPerformed) : ?>
                         <div class="row mt-5">
                             <div class="col">
                                 <div class="d-flex align-items-center justify-content-between">
@@ -215,40 +216,22 @@ require_once '../../../includes/AccountListUnverifiedController.php';
 </div>
 
 <!-- MODALS -->
-<div class="modal fade" id="deleteModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete User Account?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Account?</h5>
             </div>
             <div class="modal-body">
                 Select "Delete" below if you are sure.
             </div>
             <div class="modal-footer">
-                <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" id="delete-link" href="#">Delete</a>
+                <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
+                <button class="btn btn-danger" type="button" id="confirmDelete">Delete</button>
             </div>
         </div>
     </div>
 </div>
-
-<div class="modal fade" id="editModal" tabindex="-1" role="dialog" aria-hidden="true">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Edit User Account?</h5>
-            </div>
-            <div class="modal-body">
-                Select "Edit" below if you are sure.
-            </div>
-            <div class="modal-footer">
-                <button class="btn btn-light" type="button" data-dismiss="modal">Cancel</button>
-                <a class="btn btn-primary" id="edit-link" href="#">Edit</a>
-            </div>
-        </div>
-    </div>
-</div>
-
 
 
 <script src="../../js/account_list.js"></script>

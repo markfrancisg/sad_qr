@@ -11,6 +11,13 @@ if (isset($_GET['email']) && !empty($_GET['email'])) {
         $email = $_GET['email'];
         $result = get_user($pdo, $email);
 
+        //If email is not found
+        if (!$result) {
+            header("Location: ../login.php");
+            die();
+        }
+
+        //if email is already verified
         if ($result['verification_status'] === 1) {
             $_SESSION["unverified_account"] = "Account is already verified!";
             header("Location: ../login.php");

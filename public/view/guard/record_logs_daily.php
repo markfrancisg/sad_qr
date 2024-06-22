@@ -101,7 +101,12 @@ include_once '../../../includes/LogsListDailyController.php';
                             <tbody id="tableBody">
                                 <?php if (empty($results)) : ?>
                                     <tr>
-                                        <td colspan="6" class="text-center">No Data Available</td>
+                                        <td colspan="7" class="text-center">
+                                            <div class="d-flex flex-column align-items-center justify-content-center">
+                                                <img src="../../images/no_item.svg" class="mt-2">
+                                                <h4 class="text-dark mt-3">No Data Available</h4>
+                                            </div>
+                                        </td>
                                     </tr>
                                 <?php else : ?>
 
@@ -134,7 +139,7 @@ include_once '../../../includes/LogsListDailyController.php';
                     </div>
 
 
-                    <?php if (!$searchPerformed) : ?>
+                    <?php if (!empty($results) && !$searchPerformed) : ?>
                         <div class="row mt-5">
                             <div class="col">
                                 <div class="d-flex align-items-center justify-content-between">

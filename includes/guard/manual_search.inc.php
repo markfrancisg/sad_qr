@@ -37,7 +37,9 @@ try {
 		$output .= '</table></div>';
 		echo $output;
 	} else {
-		echo '<h4 class="text-dark text-center mt-3">No Data Available</h4>';
+		echo '<div class="d-flex flex-column align-items-center justify-content-center">';
+		echo '<img src="../../../public/images/no_item.svg" class="text-center mt-1"></img>';
+		echo '<h4 class="text-dark text-center mt-3">No Data Available</h4></div>';
 	}
 } catch (PDOException $e) {
 	die("Query failed " . $e->getMessage());

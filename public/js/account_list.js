@@ -48,31 +48,35 @@ $(document).ready(function() {
         });
     });
 
-});
-
-$(document).ready(function() {
     $('#edit').click(function() {
         var selectedEmail = $('.input_checkbox:checked').closest('tr').find('td:eq(2)').text().trim();
         window.location.href = '../super_admin/edit_account.php?email=' + encodeURIComponent(selectedEmail);
     });
-});
 
-// EDIT button
-$(document).on('change', '.input_checkbox', function() {
-    var checkedRows = $('.input_checkbox:checked');
-    var editButton = $('#edit');
-    var deleteButton = $('#delete_all');
+    $(document).on('change', '.input_checkbox', function() {
+        var checkedRows = $('.input_checkbox:checked');
+        var editButton = $('#edit');
+        var deleteButton = $('#delete_all');
 
-    if (checkedRows.length === 0) {
-        editButton.prop('disabled', true);
-        deleteButton.prop('disabled', true);
-    } else if (checkedRows.length === 1) {
-        editButton.prop('disabled', false);
-        deleteButton.prop('disabled', false);
-    } else {
-        editButton.prop('disabled', true);
-        deleteButton.prop('disabled', false);
-    }
+        if (checkedRows.length === 0) {
+            editButton.prop('disabled', true);
+            deleteButton.prop('disabled', true);
+        } else if (checkedRows.length === 1) {
+            var status = checkedRows.closest('tr').find('.badge').text().trim();
+            if (status === 'Unverified') {
+                editButton.prop('disabled', true);
+            } else {
+                editButton.prop('disabled', false);
+            }
+            deleteButton.prop('disabled', false);
+        } else {
+            editButton.prop('disabled', true);
+            deleteButton.prop('disabled', false);
+        }
+    });
+
+    // Initial state check
+    $('.input_checkbox').trigger('change');
 });
 
 // If search is empty, prevent submit

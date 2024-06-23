@@ -4,9 +4,10 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $email = htmlspecialchars($_POST["email"]);
     $address = htmlspecialchars($_POST["address"]);
-    $vehicle_type = htmlspecialchars($_POST["vehicle_type"]);
     $wheel = htmlspecialchars($_POST["wheel"]);
+    $vehicle_color = htmlspecialchars($_POST["vehicle_color"]);
     $plate_number = htmlspecialchars($_POST["plate_number"]);
+    $vehicle_type = htmlspecialchars($_POST["vehicle_type"]);
 
 
     try {
@@ -15,14 +16,14 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once '../Admin_contr.inc.php';
         require_once '../config.session.inc.php';
 
-        if (five_input_empty($email, $address, $wheel, $plate_number, $vehicle_type)) {
-            $_SESSION["empty_input"] = "Fill in all fields!";
+        if (six_input_empty($email, $address, $wheel, $vehicle_color, $plate_number, $vehicle_type)) {
+            $_SESSION["empty_input"] = "All fields are required";
             header("Location: ../../public/view/admin/qr_code.php");
             die();
         }
 
-        if (input_has_number($vehicle_type) || input_has_letter($wheel)) {
-            $_SESSION["invalid_format"] = "Invalid vehicle information format!";
+        if (input_has_letter($wheel) || input_has_number($vehicle_color) || input_has_number($vehicle_type)) {
+            $_SESSION["invalid_format"] = "Invalid input format";
             header("Location: ../../public/view/admin/qr_code.php");
             die();
         }
@@ -36,13 +37,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             die();
         }
 
-
-
         $ho_id = $result["ho_id"];
 
         // var_dump($generated_qr);
 
-        insert_qr($pdo, $wheel, $vehicle_type, $plate_number, $ho_id);
+        insert_qr($pdo, $wheel, $vehicle_color, $vehicle_type, $plate_number, $ho_id);
 
         $_SESSION["qr_email"] = $email;
         header("Location: ../../public/view/admin/qr_code.php?vehicle_creation=success");

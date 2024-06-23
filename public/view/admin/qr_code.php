@@ -9,6 +9,12 @@ $homeowner_email = get_homeowner_email($pdo);
 ?>
 
 
+<style>
+    .btn-remove {
+        display: none;
+    }
+</style>
+
 <!--  Header End -->
 <div class="container-fluid">
     <div class="container-fluid">
@@ -25,7 +31,7 @@ $homeowner_email = get_homeowner_email($pdo);
                 <h2 class="fw-semibold mb-2 text-center mb-2">Register Vehicle</h2>
 
                 <div class="container">
-                    <form method="post" action="../../../includes/admin/create_qr.inc.php" id="addHomeownerForm" class="needs-validation" novalidate>
+                    <form method="post" action="../../../includes/admin/create_qr.inc.php" id="qrForm" class="needs-validation" novalidate>
 
                         <div class="row">
                             <div class="col-12 col-md-12">
@@ -36,61 +42,77 @@ $homeowner_email = get_homeowner_email($pdo);
                         </div>
 
                         <div class="row mt-3">
-                            <div class="col-12 col-md-6">
-                                <select class="form-select form-select-md  rounded-1 p-3" name="email" id="email" aria-label="Email" required>
-                                    <option value="" disabled selected>Email Address</option>
-                                    <?php foreach ($homeowner_email as $email) : ?>
-                                        <option value="<?= $email['email'] ?>"><?= $email['email'] ?></option>
-                                    <?php endforeach; ?>
-                                </select>
-                                <div class="invalid-feedback">Email is required</div>
-                                <div class="mb-3"></div>
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" name="email" id="email" list="emailOptions" placeholder="Email Address" required>
+                                    <label for="email">Email Address</label>
+                                    <datalist id="emailOptions">
+                                        <?php foreach ($homeowner_email as $email) : ?>
+                                            <option value="<?= $email['email'] ?>"></option>
+                                        <?php endforeach; ?>
+                                    </datalist>
+                                    <div class="invalid-feedback" id="emailFeedback">Email is required.</div>
+                                </div>
                             </div>
 
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Juan Dela Cruz" maxlength="50" value="" readonly required>
+                                    <label for="name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="address" name="address" placeholder="Block 1, Lot 2, Margarita Street" maxlength="30" value="" readonly required>
-                                    <label for="last_name">Address</label>
-                                    <div class="invalid-feedback">Address is required</div>
+                                    <label for="address">Address</label>
                                 </div>
                             </div>
                         </div>
 
-                        <div class="row">
-                            <div class="col-12 col-md-4">
+                        <div class="row vehicle">
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" maxlength="10" required>
+                                    <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" maxlength="10" required oninput="this.value = this.value.toUpperCase();">
                                     <label for="plate_number">Plate Number</label>
                                     <div class="invalid-feedback" id="plateFeedback">Plate number is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" maxlength="30" required>
+                                    <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Car" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
                                     <label for="vehicle_type">Vehicle Type</label>
                                     <div class="invalid-feedback">Vehicle type is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="wheel" name="wheel" placeholder="1" maxlength="1" required>
-                                    <label for="wheel">Vehicle Wheels</label>
+                                    <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="Red" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                    <label for="vehicle_color">Vehicle Color</label>
+                                    <div class="invalid-feedback">Vehicle color is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="wheel" name="wheel" placeholder="4" maxlength="1" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
+                                    <label for="wheel">Wheels</label>
                                     <div class="invalid-feedback">Number of wheels is required</div>
                                 </div>
                             </div>
                         </div>
 
+
                         <div class="row mt-1 mb-3">
                             <div class="d-flex justify-content-start">
                                 <small><i>
-                                        <b>Note:</b> The address will be automatically filled in once the email address is selected.
+                                        <b>Note:</b> The name and address will be automatically filled in once the email address is selected.
                                     </i></small>
                             </div>
                         </div>
 
                         <div class="row mt-5">
                             <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center">
-                                <button class="btn btn-primary p-3 w-50 mb-2" type="submit" disabled>Register Vehicle</button>
+                                <button class="btn btn-primary p-3 w-50 mb-2" type="submit" id="submitButton" disabled>Register Vehicle</button>
                             </div>
                             <div class="col-12">
                                 <?php

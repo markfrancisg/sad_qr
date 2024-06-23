@@ -41,17 +41,22 @@ function delete_account(object $pdo, string $email)
 }
 
 // $pdo, $email, $address, $wheel, $vehicle_type, , string $generated_qr
-function insert_qr(object $pdo, string $wheel, string $vehicle_type, string $plate_number, int $ho_id)
+function insert_qr(object $pdo, string $wheel, string $vehicle_color, string $vehicle_type, string $plate_number, int $ho_id)
 {
-    $query = "INSERT INTO qr_info ( wheel, vehicle_type, plate_number, ho_id) VALUES ( :wheel, :vehicle_type, :plate_number, :ho_id)";
+    $query = "INSERT INTO qr_info (wheel, vehicle_type, vehicle_color, plate_number, ho_id) VALUES (:wheel, :vehicle_type, :vehicle_color, :plate_number, :ho_id)";
     $stmt2 = $pdo->prepare($query);
-    // $stmt2->bindParam(":generated_qr", $generated_qr);
+
+
     $stmt2->bindParam(":wheel", $wheel);
     $stmt2->bindParam(":vehicle_type", $vehicle_type);
+    $stmt2->bindParam(":vehicle_color", $vehicle_color);
     $stmt2->bindParam(":plate_number", $plate_number);
     $stmt2->bindParam(":ho_id", $ho_id);
     $stmt2->execute();
 }
+
+
+
 
 function get_user(object $pdo, string $email)
 {
@@ -128,6 +133,17 @@ function get_homeowner_address(object $pdo, string $email)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
     return $result;
 }
+
+function get_homeowner_name(object $pdo, string $email)
+{
+    $query = "SELECT first_name, last_name FROM homeowners WHERE email = :email;";
+    $stmt = $pdo->prepare($query);
+    $stmt->execute(['email' => $email]);
+
+    $result = $stmt->fetch(PDO::FETCH_ASSOC);
+    return $result;
+}
+
 
 
 function get_homeowner(object $pdo, string $email)

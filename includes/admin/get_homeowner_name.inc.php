@@ -6,10 +6,10 @@ if (isset($_GET['email']) && !empty($_GET['email'])) {
     try {
         require_once '../dbh.inc.php';
         require_once '../Admin_model.inc.php';
-        $address = get_homeowner_address($pdo, $email);
+        $name = get_homeowner_name($pdo, $email);
 
-        if ($address) {
-            echo "Block " . $address['block'] . ", Lot " . $address['lot'] . ", " . $address['street'] . " Street";
+        if ($name) {
+            echo $name['first_name'] . " " . $name['last_name'];
         } else {
             echo 'NOT_FOUND'; // Return a specific string if no address is found
         }

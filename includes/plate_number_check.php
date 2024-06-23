@@ -9,9 +9,9 @@ if (isset($_POST['plate_number'])) {
         $rowCount = check_plate_number_status($pdo, $plate_number);
 
         if ($rowCount > 0) {
-            echo 'taken';
+            echo "taken";
         } else {
-            echo 'available';
+            echo "available";
         }
     } catch (PDOException $e) {
         die("Query failed:" . $e->getMessage());

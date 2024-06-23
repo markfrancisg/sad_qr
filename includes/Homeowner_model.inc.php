@@ -23,8 +23,9 @@ function get_homeowner_list(object $pdo, int $offset, int $total_records_per_pag
 {
 
     $query = "SELECT ho_id, first_name, last_name, block, lot, street, email, number
-          FROM homeowners
-          LIMIT $offset, $total_records_per_page";
+    FROM homeowners
+    ORDER BY ho_id DESC
+    LIMIT $offset, $total_records_per_page";
     //newest to oldest
 
     $stmt = $pdo->prepare($query);

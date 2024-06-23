@@ -90,7 +90,6 @@ setTimeout(() => {
         if (!emails.includes(inputVal)) {
             $(this).val('');
             $(this).removeClass('is-valid').addClass('is-invalid');
-            document.getElementById('vehicles').style.display = 'none';
         }
         toggleSubmitButton(this.closest('form'));
     });
@@ -101,7 +100,6 @@ setTimeout(() => {
 
         if (email === '') {
             document.getElementById('name').value = '';
-            console.error('Email is empty');
             return;
         }
 
@@ -117,7 +115,6 @@ setTimeout(() => {
                     var response = xhr.responseText;
                     if (response === 'NOT_FOUND') {
                         document.getElementById('name').value = '';
-                        console.error('Email not found in the database');
                     } else {
                         document.getElementById('name').value = response;
                     }
@@ -142,7 +139,6 @@ setTimeout(() => {
 
         if (email === '') {
             document.getElementById('address').value = '';
-            console.error('Email is empty');
             return;
         }
 
@@ -157,7 +153,6 @@ setTimeout(() => {
                     var response = xhr.responseText;
                     if (response === 'NOT_FOUND') {
                         document.getElementById('address').value = '';
-                        console.error('Email not found in the database');
                     } else {
                         document.getElementById('address').value = response;
                     }

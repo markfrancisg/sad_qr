@@ -39,14 +39,14 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Juanito" maxlength="30" required>
                                     <label for="first_name">First Name</label>
-                                    <div class="invalid-feedback">First name is required</div>
+                                    <div class="invalid-feedback" id="firstNameFeedback">First name is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Dela Cruz" maxlength="30" required>
                                     <label for="last_name">Last Name</label>
-                                    <div class="invalid-feedback">Last name is required</div>
+                                    <div class="invalid-feedback" id="lastNameFeedback">Last name is required</div>
                                 </div>
                             </div>
                         </div>
@@ -58,6 +58,15 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                     <div class="invalid-feedback" id="emailFeedback">Email is required</div>
                                 </div>
                             </div>
+
+                            <script>
+                                document.getElementById('email').addEventListener('keydown', function(event) {
+                                    if (event.target.selectionStart === 0 && event.key === ' ') {
+                                        event.preventDefault();
+                                    }
+                                });
+                            </script>
+
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="number" name="number" placeholder="09XXXXXXXXX" maxlength="11" required>
@@ -88,7 +97,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="street" name="street" placeholder="Peony" maxlength="50" required>
                                     <label for="street">Street</label>
-                                    <div class="invalid-feedback">Street is required</div>
+                                    <div class="invalid-feedback" id="streetFeedback">Street is required</div>
                                 </div>
                             </div>
                         </div>

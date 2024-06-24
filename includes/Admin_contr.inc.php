@@ -40,6 +40,15 @@ function seven_input_empty(string $first, string $second, string $third, string 
     return false;
 }
 
+function eight_input_empty(string $first, string $second, string $third, string $fourth, string $fifth, string $sixth, string $seventh, string $eight)
+{
+    if (empty($first) || empty($second) || empty($third) || empty($fourth)  || empty($fifth) || empty($sixth) || empty($seventh) || empty($eight)) {
+        return true;
+    }
+    return false;
+}
+
+
 function input_has_number($input)
 {
     $pattern = '/^[a-zA-Z ]+$/';

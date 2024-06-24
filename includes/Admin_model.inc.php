@@ -199,29 +199,30 @@ function update_homeowner(PDO $pdo, string $first_name, string $last_name, strin
     return $stmt->execute();
 }
 
-function update_vehicle(PDO $pdo, string $id, string $vehicle_type, string $plate_number, string $wheel)
+function update_vehicle(PDO $pdo, string $id, string $vehicle_type, string $plate_number, string $wheel, string $color)
 {
     // SQL query to update homeowner details
     $sql = "UPDATE qr_info 
-            SET vehicle_type = :vehicle_type, 
-                plate_number = :plate_number, 
-                wheel = :wheel
-            WHERE qr_id = :id";
+    SET vehicle_type = :vehicle_type, 
+        plate_number = :plate_number, 
+        wheel = :wheel,
+        vehicle_color = :vehicle_color
+    WHERE qr_id = :id";
 
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":vehicle_type", $vehicle_type, PDO::PARAM_STR);
     $stmt->bindParam(":plate_number", $plate_number, PDO::PARAM_STR);
     $stmt->bindParam(":wheel", $wheel, PDO::PARAM_STR);
+    $stmt->bindParam(":vehicle_color", $color, PDO::PARAM_STR);
     $stmt->bindParam(":id", $id, PDO::PARAM_STR);
 
     // Execute the query and return true if successful, false otherwise
     return $stmt->execute();
 }
 
-
 function get_unpaid_qr(object $pdo, int $offset, int $total_records_per_page)
 {
-    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 0
@@ -237,7 +238,7 @@ function get_unpaid_qr(object $pdo, int $offset, int $total_records_per_page)
 
 function get_paid_qr(object $pdo, int $offset, int $total_records_per_page)
 {
-    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.registered = 1
@@ -561,6 +562,71 @@ function search_homeowner($pdo, $searchQuery)
 
     $likeSearchQuery = "%" . $searchQuery . "%";
     $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_all_vehicle($pdo, $searchQuery)
+{
+    $sql = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered
+          FROM qr_info
+          INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+    WHERE qr_info.plate_number LIKE ?";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_paid_vehicle($pdo, $searchQuery)
+{
+    $sql = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered
+            FROM qr_info
+            INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+            WHERE qr_info.plate_number LIKE ? AND qr_info.registered = 1";
+
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery, PDO::PARAM_STR); // Bind search query parameter
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_unpaid_vehicle($pdo, $searchQuery)
+{
+    $sql = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered
+            FROM qr_info
+            INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
+            WHERE qr_info.plate_number LIKE ? AND qr_info.registered = 0";
+
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery, PDO::PARAM_STR); // Bind search query parameter
 
     // Execute the statement
     $stmt->execute();

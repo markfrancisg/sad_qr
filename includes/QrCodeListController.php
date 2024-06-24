@@ -26,7 +26,7 @@ try {
         // Get the search input value
         $searchInput = isset($_GET['searchInput']) ? $_GET['searchInput'] : '';
 
-        $results = search_all($pdo, $searchInput);
+        $results = search_all_vehicle($pdo, $searchInput);
     }
 
     $searchPerformed = isset($_GET['searchButton']);

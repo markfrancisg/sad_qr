@@ -55,21 +55,29 @@ include_once 'header.php';
                         </div>
 
                         <div class="row">
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" value="<?php echo $plate_number; ?>" maxlength="10" required>
+                                    <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" value="<?php echo $plate_number; ?>" maxlength="10" required oninput="validateAndTransformInput(this)">
                                     <label for="plate_number">Plate Number</label>
-                                    <div class="invalid-feedback" id="plateNumberFeedback">Plate number is required</div>
+                                    <div class="invalid-feedback" id="plateFeedback">Plate number is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4">
+
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" value="<?php echo $vehicle_type; ?>" maxlength="30" required>
                                     <label for="vehicle_type">Vehicle Type</label>
                                     <div class="invalid-feedback" id="typeFeedback">Vehicle type is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="1" value="<?php echo $vehicle_color; ?>" maxlength="30" required>
+                                    <label for="vehicle_color">Vehicle Color</label>
+                                    <div class="invalid-feedback" id="colorFeedback">Vehicle color is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="wheel" name="wheel" placeholder="1" value="<?php echo $wheel; ?>" maxlength="1" required>
                                     <label for="wheel">Vehicle Wheels</label>
@@ -79,6 +87,8 @@ include_once 'header.php';
                         </div>
 
                         <input type="hidden" id="id" name="id" value="<?php echo $id ?>">
+                        <input type="hidden" id="original_plate_number" name="original_plate_number" value="<?php echo $plate_number ?>">
+
 
                         <div class="row mt-1 mb-3">
                             <div class="d-flex justify-content-start">
@@ -90,7 +100,7 @@ include_once 'header.php';
 
                         <div class="row mt-5">
                             <div class="col-12 col-md-6 offset-md-3 d-flex justify-content-center">
-                                <button class="btn btn-primary p-3 w-50 mb-2">Edit Vehicle</button>
+                                <button type="submit" class="btn btn-primary p-3 w-50 mb-2" disabled>Edit Vehicle</button>
                             </div>
                             <div class="col-12">
                                 <?php
@@ -101,15 +111,13 @@ include_once 'header.php';
                     </form>
                 </div>
 
-
-
             </div>
         </div>
     </div>
 </div>
 
 
-<!-- <script src="../../js/qr_code.js"></script> -->
+<script src="../../js/edit_qr_code.js"></script>
 
 <?php
 include_once 'footer.php';

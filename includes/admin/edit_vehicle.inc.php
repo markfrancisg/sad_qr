@@ -5,6 +5,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $id = htmlspecialchars($_POST["id"]);
     $email = htmlspecialchars($_POST["email"]);
     $address = htmlspecialchars($_POST["address"]);
+    $name = htmlspecialchars($_POST["name"]);
+    $color = htmlspecialchars($_POST["vehicle_color"]);
     $vehicle_type = htmlspecialchars($_POST["vehicle_type"]);
     $wheel = htmlspecialchars($_POST["wheel"]);
     $plate_number = htmlspecialchars($_POST["plate_number"]);
@@ -15,7 +17,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once '../Admin_contr.inc.php';
         require_once '../config.session.inc.php';
 
-        if (five_input_empty($email, $address, $wheel, $plate_number, $vehicle_type)) {
+        if (eight_input_empty($email, $address, $wheel, $plate_number, $vehicle_type, $name, $color, $id)) {
             $_SESSION["empty_input"] = "Fill in all fields!";
             header("Location: ../../public/view/admin/vehicle_list.php?email=$id");
             die();
@@ -36,7 +38,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //     die();
         // }
 
-        update_vehicle($pdo, $id, $vehicle_type, $plate_number, $wheel);
+        update_vehicle($pdo, $id, $vehicle_type, $plate_number, $wheel, $color);
 
 
         header("Location: ../../public/view/admin/vehicle_list.php?vehicle_edit=success");

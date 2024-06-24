@@ -38,7 +38,7 @@ include_once '../../../includes/LogsListWeeklyController.php';
                                                 <a class="nav-link" aria-current="page" href="logs.php">All</a>
                                             </li>
                                             <li class="nav-item me-2">
-                                                <a class="nav-link " href="logs_daily.php">Daily</a>
+                                                <a class="nav-link" href="logs_daily.php">Daily</a>
                                             </li>
                                             <li class="nav-item">
                                                 <a class="nav-link active" href="logs_weekly.php">Weekly</a>
@@ -63,7 +63,7 @@ include_once '../../../includes/LogsListWeeklyController.php';
                                     <div class="input-group">
                                         <input class="form-control mb-1 me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Plate Number" aria-label="Search" maxlength="10">
                                         <div class="input-group-append">
-                                            <button class="btn btn-primary mb-1" id="searchButton" name="searchButton" type="submit">Search</button>
+                                            <button class="btn btn-primary mb-1" id="searchButton" name="searchButton" type="submit" <?php if (empty($results)) echo 'disabled'; ?>>Search</button>
                                         </div>
                                     </div>
                                 </form>
@@ -81,6 +81,7 @@ include_once '../../../includes/LogsListWeeklyController.php';
                         </div>
                     </div>
                 <?php endif; ?>
+
 
                 <div class="container">
                     <div class="table-responsive">
@@ -200,11 +201,8 @@ include_once '../../../includes/LogsListWeeklyController.php';
     </div>
 </div>
 
-<script>
 
-</script>
-
-<script src="../../js/logs_weekly.js"></script>
+<script src="../../js/logs.js"></script>
 
 <?php
 include_once 'footer.php';

@@ -1,9 +1,29 @@
-setTimeout(() => {
-    const alertContainer = document.getElementById('alertContainer');
-    if (alertContainer) {
-        alertContainer.remove();
+function validateAndTransformInput(input) {
+    // Replace non-allowed characters and transform to uppercase
+    input.value = input.value.replace(/[^a-zA-Z0-9 -]/g, '').toUpperCase();
+}
+
+//Prevent spaces to be inputted to the email field
+document.getElementById('email').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
     }
-}, 3000);
+});
+
+const elements = document.querySelectorAll('#email, #plate_number, #vehicle_type, #vehicle_color, #wheel');
+elements.forEach(function(element) {
+    element.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && element.value === '') {
+            event.preventDefault();
+        }
+    });
+});
+
+
+
+
+
 
 // This is for fetching the email and the address -----------------------------------------
 
@@ -176,9 +196,14 @@ setTimeout(() => {
         var plateNumberInput = this;
         var plateNumber = plateNumberInput.value.toUpperCase();
         var feedback = document.getElementById('plateFeedback');
-        var platePattern = /^[A-Z]{3}-\d{4}$/; // Assuming the plate number pattern is AAA-1111
-
-        if (!platePattern.test(plateNumber)) {
+        var platePattern = /^(?:[A-Z]{3}-\d{3}|[A-Z]{3}-\d{2}|[A-Z]{3}-(?!0000)\d{4}|[A-Z]{2}-\d{4})$/;
+        
+        if (plateNumber === '') {
+            this.setCustomValidity('Plate number is required');
+            this.classList.add('is-invalid');
+            this.classList.remove('is-valid');
+            feedback.textContent = 'Plate number is required';
+        } else if (!platePattern.test(plateNumber)) {
             plateNumberInput.setCustomValidity('Invalid plate number format');
             plateNumberInput.classList.add('is-invalid');
             plateNumberInput.classList.remove('is-valid');

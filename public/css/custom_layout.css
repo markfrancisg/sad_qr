@@ -75,3 +75,12 @@
   th, td {
     font-size: 12px;
 }
+
+#alertContainer {
+    transition: opacity 1s ease-out, height 0.2s ease-out; /* Adjust the duration as needed */
+    opacity: 1;
+}
+#alertContainer.fade-out {
+    opacity: 0;
+    height: 0; /* Set height to 0 when fading out */
+}

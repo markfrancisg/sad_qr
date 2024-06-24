@@ -68,6 +68,14 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
         } else {
             console.warn("Element with class 'spinner-wrapper' not found.");
         }
+
+        setTimeout(function() {
+            var alertContainer = document.getElementById("alertContainer");
+            alertContainer.classList.add("fade-out");
+            setTimeout(function() {
+                alertContainer.style.display = "none"; // Hide the alert container after it fades out
+            }, 1000); // Adjust this delay to match the opacity transition duration
+        }, 3000); // 5000 milliseconds = 5 seconds
     </script>
 
     <!--  Body Wrapper -->
@@ -124,7 +132,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <span class="hide-menu">Add Homeowner</span>
                             </a>
                         </li>
-                        <li class="sidebar-item <?php echo isActive('homeowner_list.php') ? 'selected' : ''; ?>">
+                        <li class="sidebar-item <?php echo isActive('homeowner_list.php') || isActive('edit_homeowner.php')  ? 'selected' : ''; ?>">
                             <a class="sidebar-link <?php echo isActive('homeowner_list.php'); ?>" href="homeowner_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>

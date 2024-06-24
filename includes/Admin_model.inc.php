@@ -71,7 +71,7 @@ function get_user(object $pdo, string $email)
 
 function get_qr_list(object $pdo, int $offset, int $total_records_per_page)
 {
-    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.qr_id, qr_info.registered
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered
           FROM qr_info
           INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
           ORDER BY qr_info.qr_id DESC
@@ -511,7 +511,7 @@ function get_specified_homeowner(PDO $pdo, string $email): array
 
 function get_specified_vehicle(PDO $pdo, string $id): array
 {
-    $query = "SELECT email, wheel, vehicle_type, plate_number 
+    $query = "SELECT email, first_name, last_name, block, lot, street, wheel, vehicle_type, plate_number, vehicle_color
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.qr_id = :id";

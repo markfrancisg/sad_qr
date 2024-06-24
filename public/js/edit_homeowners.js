@@ -33,6 +33,23 @@ setTimeout(() => {
     }
 }, 3000);
 
+const elements = document.querySelectorAll('#email, #first_name, #last_name, #street, #number, #block, #lot');
+elements.forEach(function(element) {
+    element.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && element.value === '') {
+            event.preventDefault();
+        }
+    });
+});
+
+
+//Prevent spaces to be inputted to the email field
+document.getElementById('email').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
 
 
 
@@ -95,10 +112,10 @@ document.getElementById('number').addEventListener('input', function() {
         phoneNumberInput.classList.remove('is-valid');
         feedback.textContent = 'Phone number is required';
     } else if (!phoneNumberPattern.test(phoneNumber)) {
-        phoneNumberInput.setCustomValidity('Invalid phone number format.');
+        phoneNumberInput.setCustomValidity('Invalid format. Follow [09XXXXXXXXX]');
         phoneNumberInput.classList.add('is-invalid');
         phoneNumberInput.classList.remove('is-valid');
-        feedback.textContent = 'Invalid phone number format.';
+        feedback.textContent = 'Invalid format. Follow [09XXXXXXXXX]';
     } else {
         phoneNumberInput.setCustomValidity('');
         phoneNumberInput.classList.remove('is-invalid');

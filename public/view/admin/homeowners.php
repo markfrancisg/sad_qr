@@ -50,6 +50,9 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                 </div>
                             </div>
                         </div>
+
+
+
                         <div class="row">
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">
@@ -58,14 +61,11 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                     <div class="invalid-feedback" id="emailFeedback">Email is required</div>
                                 </div>
                             </div>
-
                             <script>
-                                document.getElementById('email').addEventListener('keydown', function(event) {
-                                    if (event.target.selectionStart === 0 && event.key === ' ') {
-                                        event.preventDefault();
-                                    }
-                                });
+                              
                             </script>
+
+
 
                             <div class="col-12 col-md-6">
                                 <div class="form-floating mb-3">

@@ -8,9 +8,6 @@ include_once '../../../includes/EditVehicleController.php';
 include_once '../../../includes/admin/create_qr_view.inc.php';
 include_once 'header.php';
 
-
-$homeowner_email = get_homeowner_email($pdo);
-
 ?>
 
 
@@ -34,28 +31,25 @@ $homeowner_email = get_homeowner_email($pdo);
                 <div class="container">
                     <form method="post" action="../../../includes/admin/edit_vehicle.inc.php" id="addHomeownerForm" class="needs-validation" novalidate>
 
-                        <div class="row">
-                            <div class="col-12 col-md-12">
-                                <?php
-
-                                ?>
-                            </div>
-                        </div>
-
                         <div class="row mt-3">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="email" name="email" placeholder="Block 1, Lot 2, Margarita Street" maxlength="50" value="<?php echo $selectedEmail; ?>" readonly required>
-                                    <label for="last_name">Email</label>
-                                    <div class="invalid-feedback">Address is required</div>
+                                    <label for="email">Email</label>
                                 </div>
                             </div>
 
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="address" name="address" placeholder="Block 1, Lot 2, Margarita Street" maxlength="30" value="" readonly required>
+                                    <input type="text" class="form-control" id="name" name="name" placeholder="Juan Dela Cruz" maxlength="50" value="<?php echo $name; ?>" readonly required>
+                                    <label for="last_name">Name</label>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="address" name="address" placeholder="Block 1, Lot 2, Margarita Street" maxlength="30" value="<?php echo $address; ?>" readonly required>
                                     <label for="last_name">Address</label>
-                                    <div class="invalid-feedback">Address is required</div>
                                 </div>
                             </div>
                         </div>
@@ -65,21 +59,21 @@ $homeowner_email = get_homeowner_email($pdo);
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" value="<?php echo $plate_number; ?>" maxlength="10" required>
                                     <label for="plate_number">Plate Number</label>
-                                    <div class="invalid-feedback">Plate number is required</div>
+                                    <div class="invalid-feedback" id="plateNumberFeedback">Plate number is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" value="<?php echo $vehicle_type; ?>" maxlength="30" required>
                                     <label for="vehicle_type">Vehicle Type</label>
-                                    <div class="invalid-feedback">Vehicle type is required</div>
+                                    <div class="invalid-feedback" id="typeFeedback">Vehicle type is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="wheel" name="wheel" placeholder="1" value="<?php echo $wheel; ?>" maxlength="1" required>
                                     <label for="wheel">Vehicle Wheels</label>
-                                    <div class="invalid-feedback">Number of wheels is required</div>
+                                    <div class="invalid-feedback" id="wheelFeedback">Number of wheels is required</div>
                                 </div>
                             </div>
                         </div>
@@ -89,7 +83,7 @@ $homeowner_email = get_homeowner_email($pdo);
                         <div class="row mt-1 mb-3">
                             <div class="d-flex justify-content-start">
                                 <small><i>
-                                        <b>Note:</b> The email and address are automatically filled in.
+                                        <b>Note:</b> The email, name, and address are automatically filled in.
                                     </i></small>
                             </div>
                         </div>
@@ -115,7 +109,7 @@ $homeowner_email = get_homeowner_email($pdo);
 </div>
 
 
-<script src="../../js/qr_code.js"></script>
+<!-- <script src="../../js/qr_code.js"></script> -->
 
 <?php
 include_once 'footer.php';

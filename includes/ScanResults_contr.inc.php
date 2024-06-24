@@ -9,6 +9,8 @@ if (isset($_SESSION['vehicle_data_qr_scan'])) {
     $wheel = $_SESSION['vehicle_data_qr_scan']['wheel'];
     $vehicle_type = $_SESSION['vehicle_data_qr_scan']['vehicle_type'];
     $plate_number = $_SESSION['vehicle_data_qr_scan']['plate_number'];
+    $vehicle_color = $_SESSION['vehicle_data_qr_scan']['vehicle_color'];
+
 
     // unset($_SESSION['vehicle_data_qr_scan']);
 }

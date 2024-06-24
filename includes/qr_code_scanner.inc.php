@@ -40,6 +40,7 @@ if (isset($_GET['qr_text'])) {
         $wheel = $results['wheel'];
         $vehicle_type = $results['vehicle_type'];
         $plate_number = $results['plate_number'];
+        $vehicle_color = $results['vehicle_color'];
         $name = $results['first_name'] . " " . $results['last_name'];
         $address = "Block " . $results['block'] . ", Lot " . $results['lot'] . " ," . $results['street'] . " Street";
         $qr_code = $results['qr_code'];
@@ -64,7 +65,8 @@ if (isset($_GET['qr_text'])) {
             'qr_code' => $qr_code,
             'wheel' => $wheel,
             'vehicle_type' => $vehicle_type,
-            'plate_number' => $plate_number
+            'plate_number' => $plate_number,
+            'vehicle_color' => $vehicle_color
         );
 
         $_SESSION['vehicle_data_qr_scan'] = $qr_scan_result;

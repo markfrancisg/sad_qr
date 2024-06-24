@@ -64,21 +64,28 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                         <h5 class="text-muted mt-2">Vehicle Details</h5>
 
                         <div class="row">
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="visitor_plate_number" name="visitor_plate_number" placeholder="NSA-1111" maxlength="10" required>
+                                    <input type="text" class="form-control" id="visitor_plate_number" name="visitor_plate_number" placeholder="NSA-1111" maxlength="10" required oninput="validateAndTransformInput(this)">
                                     <label for="plate_number">Plate Number</label>
-                                    <div class="invalid-feedback">Plate number is required</div>
+                                    <div class="invalid-feedback" id="plateFeedback">Plate number is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="visitor_vehicle_type" name="visitor_vehicle_type" placeholder="1" maxlength="30" required>
                                     <label for="vehicle_type">Vehicle Type</label>
                                     <div class="invalid-feedback">Vehicle type is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-4">
+                            <div class="col-12 col-md-3">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="visitor_vehicle_color" name="visitor_vehicle_color" placeholder="1" maxlength="30" required>
+                                    <label for="vehicle_type">Vehicle Color</label>
+                                    <div class="invalid-feedback">Vehicle color is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="visitor_wheel" name="visitor_wheel" placeholder="1" maxlength="1" required>
                                     <label for="wheel">Vehicle Wheels</label>
@@ -99,9 +106,6 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                         </div>
                     </form>
                 </div>
-
-
-
             </div>
         </div>
     </div>

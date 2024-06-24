@@ -133,7 +133,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
                         <li class="sidebar-item <?php echo isActive('homeowner_list.php') || isActive('edit_homeowner.php')  ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('homeowner_list.php'); ?>" href="homeowner_list.php" aria-expanded="false">
+                            <a class="sidebar-link <?php echo isActive('homeowner_list.php') || isActive('edit_homeowner.php'); ?>" href="homeowner_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-users"></i>
                                 </span>
@@ -154,9 +154,9 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
                         <li class="sidebar-item <?php echo (isActive('vehicle_list.php') || isActive('qr_code_detail.php'))
-                                                    || isActive('vehicle_list_paid.php') || isActive('vehicle_list_unpaid.php')  ? 'selected' : ''; ?>">
+                                                    || isActive('vehicle_list_paid.php') || isActive('vehicle_list_unpaid.php') || isActive('edit_vehicle.php')  ? 'selected' : ''; ?>">
                             <a class="sidebar-link <?php echo isActive('vehicle_list.php') || isActive('qr_code_detail.php')
-                                                        || isActive('vehicle_list_paid.php') || isActive('vehicle_list_unpaid.php') ? 'active' : ''; ?>" href="vehicle_list.php" aria-expanded="false">
+                                                        || isActive('vehicle_list_paid.php') || isActive('vehicle_list_unpaid.php') || isActive('edit_vehicle.php') ? 'active' : ''; ?>" href="vehicle_list.php" aria-expanded="false">
                                 <span>
                                     <i class="fa fa-id-card"></i>
                                 </span>

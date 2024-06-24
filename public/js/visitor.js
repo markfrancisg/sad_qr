@@ -9,13 +9,10 @@ const wheelInput = document.getElementById("visitor_wheel");
     });
 });
 
-//inputs will be converted into uppercase
-const plateNumberInput = document.getElementById('visitor_plate_number');
-// Add event listener to listen for input events
-plateNumberInput.addEventListener('input', function() {
-    // Convert the input value to uppercase
-    this.value = this.value.toUpperCase();
-});
+function validateAndTransformInput(input) {
+    // Replace non-allowed characters and transform to uppercase
+    input.value = input.value.replace(/[^a-zA-Z0-9 -]/g, '').toUpperCase();
+}
 
 const specialInputs = document.querySelectorAll('#visitor_first_name, #visitor_last_name');
 specialInputs.forEach(function(input) {
@@ -27,10 +24,29 @@ specialInputs.forEach(function(input) {
 });
 
 
+const elements = document.querySelectorAll('#visitor_first_name,#purpose, #visitor_last_name, #visitor_plate_number, #visitor_vehicle_type, #visitor_vehicle_color, #visitor_wheel');
+elements.forEach(function(element) {
+    element.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && element.value === '') {
+            event.preventDefault();
+        }
+    });
+});
+
+setTimeout(() => {
+    const alertContainer = document.getElementById('alertContainer');
+    if (alertContainer) {
+        alertContainer.remove();
+    }
+}, 3000);
+
+
 (function () {
     'use strict';
+
     var forms = document.querySelectorAll('.needs-validation');
     var submitButton = document.querySelector('button[type="submit"]');
+    var formSubmitted = false;
 
     function toggleSubmitButton(form) {
         if (form.checkValidity()) {
@@ -40,20 +56,22 @@ specialInputs.forEach(function(input) {
         }
     }
 
-    Array.prototype.slice.call(forms)
-        .forEach(function (form) {
-            form.addEventListener('submit', function (event) {
-                if (!form.checkValidity()) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                }
-                form.classList.add('was-validated');
-            }, false);
+    Array.prototype.slice.call(forms).forEach(function (form) {
+        form.addEventListener('submit', function (event) {
+            if (!form.checkValidity()) {
+                event.preventDefault();
+                event.stopPropagation();
+            } else {
+                formSubmitted = true;
+                submitButton.disabled = true; // Disable button on form submission
+            }
+            form.classList.add('was-validated');
+        }, false);
 
-            form.addEventListener('input', function () {
-                toggleSubmitButton(form);
-            });
+        form.addEventListener('input', function () {
+            toggleSubmitButton(form);
         });
+    });
 
     var inputs = document.querySelectorAll('.needs-validation .form-control');
     inputs.forEach(function (input) {
@@ -68,11 +86,31 @@ specialInputs.forEach(function(input) {
         });
     });
 
-})();
+    // Plate number validation
+    document.getElementById('visitor_plate_number').addEventListener('input', function () {
+        var plateNumberInput = this;
+        var plateNumber = plateNumberInput.value.toUpperCase().trim(); // Trim whitespace and convert to uppercase
+        var feedback = document.getElementById('plateFeedback');
+        var platePattern = /^(?:[A-Z]{2,3}-\d{2,4})$/; // Adjusted pattern for plate numbers
+    
+        if (plateNumber === '') {
+            plateNumberInput.setCustomValidity('Plate number is required');
+        } else if (!platePattern.test(plateNumber)) {
+            plateNumberInput.setCustomValidity('Invalid plate number format');
+        } else {
+            plateNumberInput.setCustomValidity('');
+        }
+    
+        if (plateNumberInput.checkValidity()) {
+            plateNumberInput.classList.remove('is-invalid');
+            plateNumberInput.classList.add('is-valid');
+            feedback.textContent = ''; // Clear feedback message
+        } else {
+            plateNumberInput.classList.add('is-invalid');
+            feedback.textContent = plateNumberInput.validationMessage;
+        }
+    
+        plateNumberInput.closest('.form-floating').classList.add('was-validated');
+    });
 
-setTimeout(() => {
-    const alertContainer = document.getElementById('alertContainer');
-    if (alertContainer) {
-        alertContainer.remove();
-    }
-}, 3000);
+})();

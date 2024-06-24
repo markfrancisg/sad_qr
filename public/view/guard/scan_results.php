@@ -39,7 +39,7 @@ require_once 'header.php';
                                         <hr class="text-dark fw-bolder">
                                         <p class="text-muted fw-bolder mb-2"><?= htmlspecialchars($address); ?></p>
                                         <p class="text-muted fw-bolder mb-2">With Plate Number <u><?= htmlspecialchars($plate_number); ?></u></p>
-                                        <p class="text-muted fw-bolder mb-0"><?= htmlspecialchars($wheel); ?>-wheel <?= htmlspecialchars($vehicle_type); ?></p>
+                                        <p class="text-muted fw-bolder mb-0"><?= htmlspecialchars($vehicle_color); ?> <?= htmlspecialchars($wheel); ?>-wheel <?= htmlspecialchars($vehicle_type); ?></p>
                                     </div>
                                 </div>
                             </div>

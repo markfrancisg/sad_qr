@@ -6,6 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $purpose = htmlspecialchars($_POST["purpose"]);
     $visitor_plate_number = htmlspecialchars($_POST["visitor_plate_number"]);
     $visitor_vehicle_type = htmlspecialchars($_POST["visitor_vehicle_type"]);
+    $visitor_vehicle_color = htmlspecialchars($_POST["visitor_vehicle_color"]);
     $visitor_wheel = htmlspecialchars($_POST["visitor_wheel"]);
 
 
@@ -15,7 +16,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         require_once '../Visitor_contr.inc.php';
         require_once '../config.session.inc.php';
 
-        if (six_input_empty($visitor_first_name, $visitor_last_name, $purpose, $visitor_plate_number, $visitor_vehicle_type, $visitor_wheel)) {
+        if (seven_input_empty($visitor_first_name, $visitor_last_name, $purpose, $visitor_plate_number, $visitor_vehicle_type, $visitor_wheel, $visitor_vehicle_color)) {
             $_SESSION["empty_input"] = "Fill in all fields!";
             header("Location: ../../public/view/guard/visitor.php");
             die();
@@ -31,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $visitor_time = date('H:i:s');
 
 
-        insert_visitor($pdo, $visitor_first_name, $visitor_last_name, $purpose, $visitor_plate_number, $visitor_vehicle_type, $visitor_wheel, $visitor_time);
+        insert_visitor($pdo, $visitor_first_name, $visitor_last_name, $purpose, $visitor_plate_number, $visitor_vehicle_type, $visitor_wheel, $visitor_time, $visitor_vehicle_color);
         header("Location: ../../public/view/guard/visitor.php?visitor_creation=success");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());

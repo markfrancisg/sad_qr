@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-function insert_visitor(object $pdo, string $visitor_first_name, string $visitor_last_name, string $purpose, string $visitor_plate_number, string $visitor_vehicle_type, string $visitor_wheel, string $visitor_time)
+function insert_visitor(object $pdo, string $visitor_first_name, string $visitor_last_name, string $purpose, string $visitor_plate_number, string $visitor_vehicle_type, string $visitor_wheel, string $visitor_time, string $visitor_vehicle_color)
 {
-    $sql = "INSERT INTO visitor_log (visitor_first_name, visitor_last_name, purpose, visitor_plate_number,visitor_vehicle_type, visitor_wheel, visitor_time) VALUES (:visitor_first_name, :visitor_last_name, :purpose, :visitor_plate_number, :visitor_vehicle_type, :visitor_wheel, :visitor_time )";
+    $sql = "INSERT INTO visitor_log (visitor_first_name, visitor_last_name, purpose, visitor_plate_number,visitor_vehicle_type, visitor_wheel, visitor_time, visitor_vehicle_color) VALUES (:visitor_first_name, :visitor_last_name, :purpose, :visitor_plate_number, :visitor_vehicle_type, :visitor_wheel, :visitor_time, :visitor_vehicle_color )";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":visitor_first_name", $visitor_first_name);
     $stmt->bindParam(":visitor_last_name", $visitor_last_name);
@@ -13,8 +13,7 @@ function insert_visitor(object $pdo, string $visitor_first_name, string $visitor
     $stmt->bindParam(":visitor_vehicle_type", $visitor_vehicle_type);
     $stmt->bindParam(":visitor_wheel", $visitor_wheel);
     $stmt->bindParam(":visitor_time", $visitor_time);
-
-
+    $stmt->bindParam(":visitor_vehicle_color", $visitor_vehicle_color);
     $stmt->execute();
 }
 
@@ -177,4 +176,76 @@ function get_visitor_list_weekly(object $pdo, int $offset, int $total_records_pe
 
     // Return the results
     return $results;
+}
+
+function search_all_visitor($pdo, $searchQuery)
+{
+    $sql = "SELECT *
+          FROM visitor_log
+    WHERE visitor_plate_number LIKE ?";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(1, $likeSearchQuery);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_daily_visitor($pdo, $searchQuery)
+{
+    date_default_timezone_set('Asia/Manila');
+    $current_date = date('Y-m-d');
+
+    $sql = "SELECT *
+            FROM visitor_log
+            WHERE visitor_plate_number LIKE :searchQuery AND DATE(visitor_date) = :current_date";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(':searchQuery', $likeSearchQuery);
+    $stmt->bindParam(':current_date', $current_date);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
+}
+
+function search_weekly_visitor($pdo, $searchQuery)
+{
+    date_default_timezone_set('Asia/Manila');
+    $current_date = date('Y-m-d');
+
+    // Calculate the start of the week (Monday)
+    $start_of_week = date('Y-m-d', strtotime('monday this week'));
+
+    $sql = "SELECT *
+            FROM visitor_log
+            WHERE visitor_plate_number LIKE :searchQuery AND DATE(visitor_date) BETWEEN :start_of_week AND :current_date";
+    $stmt = $pdo->prepare($sql);
+
+    $likeSearchQuery = "%" . $searchQuery . "%";
+    $stmt->bindParam(':searchQuery', $likeSearchQuery);
+    $stmt->bindParam(':start_of_week', $start_of_week);
+    $stmt->bindParam(':current_date', $current_date);
+
+    // Execute the statement
+    $stmt->execute();
+
+    // Fetch all rows
+    $rows = $stmt->fetchAll(PDO::FETCH_ASSOC);
+
+    // Return the fetched rows
+    return $rows;
 }

@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 23, 2024 at 05:02 PM
+-- Generation Time: Jun 24, 2024 at 08:00 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`, `verification_status`) VALUES
-(35, 'gorreonfrancis@gmail.com', '$2y$12$a8e.IbUx4X5.aYRl62aUluB4Zgn7GGyhFTpI4qjmC.ytqxOvHpxCu', NULL, '2024-04-11 01:20:11', 9, 'f8977a04330dd827824961987d838712', '2024-06-22 15:02:56', 1),
+(35, 'gorreonfrancis@gmail.com', '$2y$12$a8e.IbUx4X5.aYRl62aUluB4Zgn7GGyhFTpI4qjmC.ytqxOvHpxCu', NULL, '2024-04-11 01:20:11', 1, 'f8977a04330dd827824961987d838712', '2024-06-22 15:02:56', 1),
 (106, 'ldr@gmail.com', '', NULL, '2024-06-11 19:45:58', 7, '', NULL, 0),
 (107, 'cris@gmail.com', '', NULL, '2024-06-11 20:11:16', 1, '', NULL, 0),
 (116, 'asdfasdf@gmail.com', '', NULL, '2024-06-11 21:46:22', 7, '60a68a473daf11b171cf20c329598116', '2024-06-22 15:02:32', 0),
@@ -79,11 +79,8 @@ CREATE TABLE `homeowners` (
 --
 
 INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, `lot`, `street`, `number`) VALUES
-(97, 'lanita@gmail.com', 'Lana', 'Del Rey', '12', '12', 'Nissan', '09232323232'),
-(98, 'dsfgsdfg@gmail.com', 'Perry', 'fgh', '23', '23', 'sdfsdf', '09232323232'),
-(99, 'hannahs@gmail.com', 'Hannah', 'Santos', '12', '1', 'Lily', '09323232323'),
-(102, 'asdfasdf@gmail.com', ' masdfasdf asdfasdf ', 'asdfa sdfasdf asdf', '23', '23', 'asdfsdf', '09342342342'),
-(103, 'asdasdf@gmail.com', 'asdfasdf asdfasdf', 'asdfasdfsdf', '12', '12', '12', '09111111111');
+(111, 'mark@gmail.com', 'Mark', 'Gorreon', '12', '12', 'Peony', '09123123123'),
+(112, 'marx@gmail.com', 'Marx', 'Jacob', '17', '12', 'Lexus', '09123123123');
 
 -- --------------------------------------------------------
 
@@ -124,7 +121,10 @@ INSERT INTO `log` (`log_id`, `date`, `log_plate_number`, `log_name`, `log_addres
 (115, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:35:00', NULL),
 (116, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:37:00', NULL),
 (117, '2024-06-22', 'NED-5724', 'Lanitas Del Gey', 'Block 12, Lot 12 ,Nissan Street', 'Sedan, 4-wheeler', '2024-06-22 19:35:00', '2024-06-22 19:36:00'),
-(118, '2024-06-22', 'NED-5724', 'Lanitas Del Gey', 'Block 12, Lot 12 ,Nissan Street', 'Sedan, 4-wheeler', '2024-06-22 19:50:00', NULL);
+(118, '2024-06-22', 'NED-5724', 'Lanitas Del Gey', 'Block 12, Lot 12 ,Nissan Street', 'Sedan, 4-wheeler', '2024-06-22 19:50:00', NULL),
+(119, '2024-06-25', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-25 01:48:00', '2024-06-25 01:53:00'),
+(120, '2024-06-25', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-25 01:52:00', '2024-06-25 01:54:00'),
+(121, '2024-06-25', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-25 01:54:00', '2024-06-25 01:55:00');
 
 -- --------------------------------------------------------
 
@@ -149,25 +149,8 @@ CREATE TABLE `qr_info` (
 --
 
 INSERT INTO `qr_info` (`qr_id`, `qr_code`, `wheel`, `vehicle_type`, `vehicle_color`, `plate_number`, `expiration_date`, `registered`, `ho_id`) VALUES
-(161, 'Not Registered', 4, 'Sedan', '', 'NED-5724', NULL, 0, 97),
-(162, 'Not Registered', 4, 'Car', '', 'TIM-1234', NULL, 0, 97),
-(163, 'Not Registered', 4, 'Car', 'Blue', 'SDF-2342', NULL, 0, 99),
-(164, 'Not Registered', 4, 'Car', 'Red', 'PLI-2321', NULL, 0, 99),
-(165, 'Not Registered', 4, 'Sedan', 'Blue', 'QWE-1234', NULL, 0, 98),
-(166, 'Not Registered', 4, 'Honda', 'Blue', 'LOK-1231', NULL, 0, 98),
-(167, 'Not Registered', 4, 'Honda', 'Blue', 'YUI-1233', NULL, 0, 97),
-(168, 'Not Registered', 2, 'Motor', 'Pink', 'UIO-0982', NULL, 0, 97),
-(169, 'Not Registered', 8, 'Limo', 'Black', 'IOL-0000', NULL, 0, 97),
-(170, 'Not Registered', 0, 's', 's', 's', NULL, 0, 97),
-(171, 'Not Registered', 0, 'a', 'a', 'a', NULL, 0, 97),
-(172, 'Not Registered', 0, 'a', 'a', 'a', NULL, 0, 97),
-(173, 'Not Registered', 0, 'sdf', 'sdf', 'sdfsdf-232', NULL, 0, 98),
-(174, 'Not Registered', 0, 'sdf', 'sdfsdf', 'ned-5724', NULL, 0, 98),
-(175, 'Not Registered', 4, 'Sedan', 'Blue', 'TYR-1211', NULL, 0, 98),
-(176, 'Not Registered', 4, 'Sedan', 'Blue', 'YUN-1231', NULL, 0, 97),
-(177, 'Not Registered', 4, 'BLUE', 'BLUE', 'ULI-1231', NULL, 0, 98),
-(178, 'Not Registered', 4, 'Sedan', 'blue', 'MSD-1211', NULL, 0, 98),
-(179, 'Not Registered', 4, 'Sedan', 'Blue', 'QWE-0000', NULL, 0, 97);
+(186, 'Not Registered', 4, 'Crossover', 'Blue', 'NED-5723', NULL, 0, 111),
+(187, 'gMEhoeeDJX', 4, 'SUV', 'White', 'KIL-1231', '2025-06-24', 1, 112);
 
 -- --------------------------------------------------------
 
@@ -258,21 +241,22 @@ CREATE TABLE `visitor_log` (
   `purpose` varchar(255) NOT NULL,
   `visitor_plate_number` varchar(10) NOT NULL,
   `visitor_vehicle_type` varchar(50) NOT NULL,
-  `visitor_wheel` int(10) NOT NULL
+  `visitor_wheel` int(10) NOT NULL,
+  `visitor_vehicle_color` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
 
 --
 -- Dumping data for table `visitor_log`
 --
 
-INSERT INTO `visitor_log` (`visitor_id`, `visitor_date`, `visitor_time`, `visitor_first_name`, `visitor_last_name`, `purpose`, `visitor_plate_number`, `visitor_vehicle_type`, `visitor_wheel`) VALUES
-(1, '2024-05-10', '00:00:00', 'Drake', 'Bling', 'Visiting cousin', '', '', 0),
-(2, '2024-05-11', '00:00:00', 'Kia', 'Madrid', 'Visiting cousin', '', '', 0),
-(3, '2024-06-06', '23:45:47', 'Mark', 'Francis', 'Visiting my date', 'NED-5725', 'Sedan', 4),
-(4, '2024-06-08', '17:12:43', 'Jerom', 'Ponce', 'Visiting Nurse', 'LOP-1212', 'Sedan', 4),
-(5, '2024-06-08', '17:20:11', 'Bernadette', 'Gorreon', 'Visiting', 'NED-5724', 'Sedan', 4),
-(6, '2024-06-10', '18:11:24', 'Juan Ponce', 'Enrile', 'PDAF', 'MIJ-90121', 'Lexus', 4),
-(7, '2024-06-12', '00:38:33', 'adsasd', 'sdfsdf', 'sdf', 'DFG', 'tyu', 6);
+INSERT INTO `visitor_log` (`visitor_id`, `visitor_date`, `visitor_time`, `visitor_first_name`, `visitor_last_name`, `purpose`, `visitor_plate_number`, `visitor_vehicle_type`, `visitor_wheel`, `visitor_vehicle_color`) VALUES
+(1, '2024-05-10', '00:00:00', 'Drake', 'Bling', 'Visiting cousin', '', '', 0, ''),
+(2, '2024-05-11', '00:00:00', 'Kia', 'Madrid', 'Visiting cousin', '', '', 0, ''),
+(3, '2024-06-06', '23:45:47', 'Mark', 'Francis', 'Visiting my date', 'NED-5725', 'Sedan', 4, ''),
+(4, '2024-06-08', '17:12:43', 'Jerom', 'Ponce', 'Visiting Nurse', 'LOP-1212', 'Sedan', 4, ''),
+(5, '2024-06-08', '17:20:11', 'Bernadette', 'Gorreon', 'Visiting', 'NED-5724', 'Sedan', 4, ''),
+(6, '2024-06-10', '18:11:24', 'Juan Ponce', 'Enrile', 'PDAF', 'MIJ-90121', 'Lexus', 4, ''),
+(7, '2024-06-12', '00:38:33', 'adsasd', 'sdfsdf', 'sdf', 'DFG', 'tyu', 6, '');
 
 --
 -- Indexes for dumped tables
@@ -343,19 +327,19 @@ ALTER TABLE `account`
 -- AUTO_INCREMENT for table `homeowners`
 --
 ALTER TABLE `homeowners`
-  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=104;
+  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=113;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=119;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=122;
 
 --
 -- AUTO_INCREMENT for table `qr_info`
 --
 ALTER TABLE `qr_info`
-  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=180;
+  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=188;
 
 --
 -- AUTO_INCREMENT for table `role_info`
@@ -379,7 +363,7 @@ ALTER TABLE `user_info`
 -- AUTO_INCREMENT for table `visitor_log`
 --
 ALTER TABLE `visitor_log`
-  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
 
 --
 -- Constraints for dumped tables

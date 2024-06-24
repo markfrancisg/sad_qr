@@ -9,6 +9,15 @@ setTimeout(() => {
 
 
 
+//Prevent spaces to be inputted to the email field
+document.getElementById('email').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+
 (function () {
     'use strict';
     var forms = document.querySelectorAll('.needs-validation');

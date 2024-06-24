@@ -7,6 +7,37 @@ specialInputs.forEach(function(input) {
   });
 });
 
+//Prevent spaces to be inputted to the email field
+document.getElementById('email').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+const elements = document.querySelectorAll('#email, #number, #first_name, #last_name');
+elements.forEach(function(element) {
+    element.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && element.value === '') {
+            event.preventDefault();
+        }
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const numberInput = document.getElementById("number");
 [numberInput].forEach(input => {
     input.addEventListener('input', function(event) {

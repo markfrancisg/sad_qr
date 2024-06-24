@@ -44,7 +44,7 @@ include 'public/view/login_components/header.php';
                                         <div class="col">
                                             <label for="new_password" class="form-label">New Password</label>
                                             <div class="password-container">
-                                                <input type="password" class="form-control" id="password" name="password" maxlength="50" required>
+                                                <input type="password" class="form-control" id="password" name="password" maxlength="16" required>
                                             </div>
                                         </div>
                                     </div>
@@ -53,7 +53,7 @@ include 'public/view/login_components/header.php';
                                         <div class="col">
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
                                             <div class="password-container">
-                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" required>
+                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="16" required>
                                                 <div class="invalid-feedback" id="">Passwords do not match</div>
                                             </div>
                                         </div>

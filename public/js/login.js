@@ -5,6 +5,27 @@ setTimeout(() => {
     }
 }, 3000);
 
+//Prevent spaces to be inputted to the email field
+document.getElementById('email').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+//Prevent spaces to be inputted to the email field
+document.getElementById('password').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+
+
+
+
+
 
 (function () {
     'use strict';

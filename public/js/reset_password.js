@@ -8,6 +8,24 @@ document.getElementById('showPassword').addEventListener('change', function() {
     confirmPasswordField.type = this.checked ? 'text' : 'password';
 });
 
+
+document.getElementById('password').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+
+document.getElementById('confirm_password').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+
+
 function validatePasswordRequirements() {
     var password = document.getElementById("password").value;
     var requirementsMet = true;

@@ -24,6 +24,8 @@ elements.forEach(function(element) {
 document.addEventListener('DOMContentLoaded', () => {
     const typeField = document.getElementById('vehicle_type');
     const colorField = document.getElementById('vehicle_color');
+    const plateNumberField = document.getElementById('plate_number');
+
     
 
     // Add event listeners and validation logic for each input field
@@ -39,6 +41,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Replace consecutive spaces with a single space
         colorField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    plateNumberField.addEventListener('input', () => {
+        const value = plateNumberField.value;
+
+        // Replace consecutive spaces with a single space
+        plateNumberField.value = value.replace(/\s{2,}/g, ' ');
     });
 });
 

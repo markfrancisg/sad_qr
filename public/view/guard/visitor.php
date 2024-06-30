@@ -66,7 +66,7 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                         <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="visitor_plate_number" name="visitor_plate_number" placeholder="NSA-1111" maxlength="10" required oninput="validateAndTransformInput(this)">
+                                    <input type="text" class="form-control" id="visitor_plate_number" name="visitor_plate_number" placeholder="NSA-1111" maxlength="8" required oninput="validateAndTransformInput(this)">
                                     <label for="plate_number">Plate Number</label>
                                     <div class="invalid-feedback" id="plateFeedback">Plate number is required</div>
                                 </div>
@@ -87,9 +87,11 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="visitor_wheel" name="visitor_wheel" placeholder="1" maxlength="1" required>
-                                    <label for="wheel">Vehicle Wheels</label>
-                                    <div class="invalid-feedback">Number of wheels is required</div>
+                                    <select class="form-select form-select-md  rounded-1 p-3" name="visitor_wheel" id="visitor_wheel" aria-label="Wheels" required>
+                                        <option value="" disabled selected>Number of Wheels</option>
+                                        <option value="2">2-wheel</option>
+                                        <option value="4">4-wheel</option>
+                                    </select>
                                 </div>
                             </div>
                         </div>

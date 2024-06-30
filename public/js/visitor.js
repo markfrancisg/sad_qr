@@ -1,14 +1,3 @@
-
-//no letters
-const wheelInput = document.getElementById("visitor_wheel");
-[wheelInput].forEach(input => {
-    input.addEventListener('input', function(event) {
-        const inputValue = event.target.value;
-        const sanitizedValue = inputValue.replace(/\D/g, ''); // Remove non-digit characters
-        event.target.value = sanitizedValue;
-    });
-});
-
 function validateAndTransformInput(input) {
     // Replace non-allowed characters and transform to uppercase
     input.value = input.value.replace(/[^a-zA-Z0-9 -]/g, '').toUpperCase();
@@ -24,7 +13,7 @@ specialInputs.forEach(function(input) {
 });
 
 
-const elements = document.querySelectorAll('#visitor_first_name,#purpose, #visitor_last_name, #visitor_plate_number, #visitor_vehicle_type, #visitor_vehicle_color, #visitor_wheel');
+const elements = document.querySelectorAll('#visitor_first_name,#purpose, #visitor_last_name, #visitor_plate_number, #visitor_vehicle_type, #visitor_vehicle_color');
 elements.forEach(function(element) {
     element.addEventListener('keydown', function(event) {
         if (event.key === ' ' && element.value === '') {
@@ -32,6 +21,65 @@ elements.forEach(function(element) {
         }
     });
 });
+
+
+// prevent multiple consecutive spaces in fields
+document.addEventListener('DOMContentLoaded', () => {
+    const firstNameField = document.getElementById('visitor_first_name');
+    const lastNameField = document.getElementById('visitor_last_name');
+    const purposeField = document.getElementById('purpose');
+    const plateNumberField = document.getElementById('visitor_plate_number');
+    const typeField = document.getElementById('visitor_vehicle_type');
+    const colorField = document.getElementById('visitor_vehicle_color');
+
+    // Add event listeners and validation logic for each input field
+    
+    firstNameField.addEventListener('input', () => {
+        const value = firstNameField.value;
+
+        // Replace consecutive spaces with a single space
+        firstNameField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    
+    lastNameField.addEventListener('input', () => {
+        const value = lastNameField.value;
+
+        // Replace consecutive spaces with a single space
+        lastNameField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    
+    purposeField.addEventListener('input', () => {
+        const value = purposeField.value;
+
+        // Replace consecutive spaces with a single space
+        purposeField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+
+    typeField.addEventListener('input', () => {
+        const value = typeField.value;
+
+        // Replace consecutive spaces with a single space
+        typeField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    colorField.addEventListener('input', () => {
+        const value = colorField.value;
+
+        // Replace consecutive spaces with a single space
+        colorField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    plateNumberField.addEventListener('input', () => {
+        const value = plateNumberField.value;
+
+        // Replace consecutive spaces with a single space
+        plateNumberField.value = value.replace(/\s{2,}/g, ' ');
+    });
+});
+
 
 setTimeout(() => {
     const alertContainer = document.getElementById('alertContainer');

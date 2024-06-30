@@ -21,7 +21,7 @@ include_once 'header.php';
                     <div class="row justify-content-center">
                         <div class="col-md-6">
                             <br>
-                            <input type="text" name="search_text" id="search_text" placeholder="Search by Vehicle Plate Number" class="form-control p-3 text-center" maxlength="10">
+                            <input type="text" name="search_text" id="search_text" placeholder="Search by Vehicle Plate Number" class="form-control p-3 text-center" maxlength="8">
                         </div>
                     </div>
                     <br>

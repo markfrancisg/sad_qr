@@ -29,8 +29,9 @@ const plateNumberInput = document.getElementById('search_text');
 
 // Add event listener to listen for input events
 plateNumberInput.addEventListener('input', function() {
+    // Convert the input value to uppercase
     this.value = this.value.toUpperCase();
 
-    // Convert the input value to uppercase
-    this.value = this.value.replace(/[^A-Z0-9\- ]/g, '');
+    // Remove spaces and restrict to uppercase letters, numbers, and dashes
+    this.value = this.value.replace(/[^A-Z0-9\-]/g, '');
 });

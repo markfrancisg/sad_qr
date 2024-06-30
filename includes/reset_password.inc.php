@@ -27,7 +27,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         $result = get_user($pdo, $email);
 
         if (is_email_wrong($result)) {
-            $_SESSION["email_not_found"] = "Email not found!";
+            $_SESSION["email_not_found"] = "Invalid email!";
             header("Location: ../forgot_password.php");
             die();
         }

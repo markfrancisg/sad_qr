@@ -60,7 +60,7 @@ if (isset($_GET['qr_text'])) {
         }
 
         if (!$result) {
-            header("Location: ../public/view/guard/scan_results.php?entry=denied");
+            header("Location: ../public/view/guard/scan_results.php?entry=wrong");
             exit();
         }
 

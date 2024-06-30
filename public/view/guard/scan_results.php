@@ -82,6 +82,13 @@ require_once 'header.php';
                                 <div><img src="../../images/stop.svg" class="img-fluid access-denied-image" height="450" width="450"></div>
                             </div>
                         </div>
+                    <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'wrong') : ?>
+                        <h1 class="text-bolder danger-text text-center mb-3">PASS DENIED!</h1>
+                        <div class="row justify-content-center">
+                            <div class="col-12 text-center">
+                                <div><img src="../../images/wrong_gate.svg" class="img-fluid access-denied-image" height="450" width="450"></div>
+                            </div>
+                        </div>
                     <?php endif; ?>
                 </div>
             </div>

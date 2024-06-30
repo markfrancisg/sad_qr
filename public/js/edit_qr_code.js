@@ -12,6 +12,30 @@ elements.forEach(function(element) {
     });
 });
 
+
+// prevent multiple consecutive spaces in fields
+document.addEventListener('DOMContentLoaded', () => {
+    const typeField = document.getElementById('vehicle_type');
+    const colorField = document.getElementById('vehicle_color');
+    
+
+    // Add event listeners and validation logic for each input field
+    typeField.addEventListener('input', () => {
+        const value = typeField.value;
+
+        // Replace consecutive spaces with a single space
+        typeField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    colorField.addEventListener('input', () => {
+        const value = colorField.value;
+
+        // Replace consecutive spaces with a single space
+        colorField.value = value.replace(/\s{2,}/g, ' ');
+    });
+});
+
+
 // /////////////////////////////////////////////////////////////
 
 

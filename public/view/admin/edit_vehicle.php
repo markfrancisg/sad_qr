@@ -57,7 +57,7 @@ include_once 'header.php';
                         <div class="row">
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" value="<?php echo $plate_number; ?>" maxlength="10" required oninput="validateAndTransformInput(this)">
+                                    <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" value="<?php echo $plate_number; ?>" maxlength="8" required oninput="validateAndTransformInput(this)">
                                     <label for="plate_number">Plate Number</label>
                                     <div class="invalid-feedback" id="plateFeedback">Plate number is required</div>
                                 </div>
@@ -65,23 +65,26 @@ include_once 'header.php';
 
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" value="<?php echo $vehicle_type; ?>" maxlength="30" required>
+                                    <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" value="<?php echo $vehicle_type; ?>" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');">
                                     <label for="vehicle_type">Vehicle Type</label>
                                     <div class="invalid-feedback" id="typeFeedback">Vehicle type is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="1" value="<?php echo $vehicle_color; ?>" maxlength="30" required>
+                                    <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="1" value="<?php echo $vehicle_color; ?>" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');">
                                     <label for="vehicle_color">Vehicle Color</label>
                                     <div class="invalid-feedback" id="colorFeedback">Vehicle color is required</div>
                                 </div>
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="wheel" name="wheel" placeholder="1" value="<?php echo $wheel; ?>" maxlength="1" required>
-                                    <label for="wheel">Vehicle Wheels</label>
-                                    <div class="invalid-feedback" id="wheelFeedback">Number of wheels is required</div>
+                                    <select class="form-select form-select-md rounded-1 p-3" name="wheel" id="wheel" aria-label="Wheels" required>
+                                        <option value="" disabled <?= empty($wheel) ? 'selected' : '' ?>>Number of Wheels</option>
+                                        <option value="2" <?= $wheel == "2" ? 'selected' : '' ?>>2-wheel</option>
+                                        <option value="4" <?= $wheel == "4" ? 'selected' : '' ?>>4-wheel</option>
+                                    </select>
+                                    <div class="invalid-feedback">Wheel is required</div>
                                 </div>
                             </div>
                         </div>

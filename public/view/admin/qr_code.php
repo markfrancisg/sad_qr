@@ -99,23 +99,26 @@ $homeowner_email = get_homeowner_email($pdo);
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Car" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="Car" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');">
                                         <label for="vehicle_type">Vehicle Type</label>
                                         <div class="invalid-feedback">Vehicle type is required</div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="Red" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z]/g, '');">
+                                        <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="Red" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');">
                                         <label for="vehicle_color">Vehicle Color</label>
                                         <div class="invalid-feedback">Vehicle color is required</div>
                                     </div>
                                 </div>
                                 <div class="col-12 col-md-3">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="wheel" name="wheel" placeholder="4" maxlength="1" required oninput="this.value = this.value.replace(/[^0-9]/g, '');">
-                                        <label for="wheel">Wheels</label>
-                                        <div class="invalid-feedback">Number of wheels is required</div>
+                                        <select class="form-select form-select-md  rounded-1 p-3" name="wheel" id="wheel" aria-label="Wheels" required>
+                                            <option value="" disabled selected>Number of Wheels</option>
+                                            <option value="2">2-wheel</option>
+                                            <option value="4">4-wheel</option>
+                                        </select>
+                                        <div class="invalid-feedback">Wheel is required</div>
                                     </div>
                                 </div>
                             </div>

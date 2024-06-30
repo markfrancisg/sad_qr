@@ -10,6 +10,9 @@ include_once '../../../includes/admin/balance_pay_view.inc.php';
 $qr_id = check_qr_id();
 $result = get_qr_detail($pdo, $qr_id);
 payment_success();
+
+//to compute the payment according to the wheel number
+$amount = ($result['wheel'] == "2") ? "Php 250.00" : "Php 300.00";
 ?>
 
 
@@ -40,7 +43,7 @@ payment_success();
                                     <hr class="text-dark fw-bolder">
                                     <p class="text-muted fw-bolder mb-2"><?php echo "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street"; ?></p>
                                     <p class="text-muted fw-bolder mb-2">With Plate Number <u><?php echo $result['plate_number']; ?></u></p>
-                                    <p class="text-muted fw-bolder mb-0"><?php echo $result['wheel']; ?>-wheel <?php echo $result['vehicle_type']; ?></p>
+                                    <p class="text-muted fw-bolder mb-0"><?php echo $result['vehicle_color'] . " " . $result['wheel']; ?>-wheel <?php echo $result['vehicle_type']; ?></p>
                                 </div>
                             </div>
                         </div>
@@ -62,7 +65,7 @@ payment_success();
                                         </div>
                                         <p class="text-muted fw-bolder mb-1"><b class="text-dark">Date:</b> <?php echo date('F j, Y'); ?></p>
                                         <p class="text-muted fw-bolder mb-1"><b class="text-dark">Description:</b> Payment</p>
-                                        <p class="text-muted fw-bolder mb-1"><b class="text-dark">Amount:</b> ₱200.00</p>
+                                        <p class="text-muted fw-bolder mb-1"><b class="text-dark">Amount:</b> <?= $amount ?></p>
                                         <a href="" class="view-qr-detail pay-option" data-toggle="modal" data-target="#payModal" data-qr="<?php echo $qr_id; ?>">
                                             <button class="btn btn-outline-primary mt-3">Pay</button>
                                         </a>

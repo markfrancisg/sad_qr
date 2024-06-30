@@ -87,7 +87,7 @@ function get_qr_list(object $pdo, int $offset, int $total_records_per_page)
 
 function get_qr_detail(object $pdo, int $qr_id)
 {
-    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.qr_code, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_type, qr_info.ho_id
+    $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.qr_code, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_type, qr_info.vehicle_color, qr_info.ho_id
               FROM qr_info
               INNER JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
               WHERE qr_info.qr_id = :qr_id";

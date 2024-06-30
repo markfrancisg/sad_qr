@@ -54,10 +54,16 @@ if (isset($_GET['qr_text'])) {
 
         // Determine the column to update based on the station
         if ($station == "Gate 1" || $station == "Gate 2") {
-            handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'entry_log');
+            $result = handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'entry_log');
         } elseif ($station == "Gate 3" || $station == "Gate 4") {
-            handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'exit_log');
+            $result = handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'exit_log');
         }
+
+        if (!$result) {
+            header("Location: ../public/view/guard/scan_results.php?entry=denied");
+            exit();
+        }
+
 
         $qr_scan_result = array(
             'name' => $name,

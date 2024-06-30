@@ -85,7 +85,7 @@ $amount = ($result['wheel'] == "2") ? "Php 250.00" : "Php 300.00";
 </div>
 
 <!-- MODALS -->
-<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-hidden="true">
+<div class="modal fade" id="payModal" tabindex="-1" role="dialog" aria-hidden="true" data-backdrop="static" data-keyboard="false">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">

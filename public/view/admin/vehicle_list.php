@@ -200,11 +200,11 @@ include_once '../../../includes/admin/vehicle_list_view.inc.php';
     </div>
 </div>
 
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Homeowner?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Vehicle?</h5>
             </div>
             <div class="modal-body">
                 Select "Delete" below if you are sure.
@@ -245,5 +245,3 @@ vehicle_edit_success();
 <?php
 include_once 'footer.php';
 ?>
-
-

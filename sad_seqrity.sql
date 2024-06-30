@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 24, 2024 at 08:00 PM
+-- Generation Time: Jun 30, 2024 at 03:56 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -44,7 +44,7 @@ CREATE TABLE `account` (
 --
 
 INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`, `verification_status`) VALUES
-(35, 'gorreonfrancis@gmail.com', '$2y$12$a8e.IbUx4X5.aYRl62aUluB4Zgn7GGyhFTpI4qjmC.ytqxOvHpxCu', NULL, '2024-04-11 01:20:11', 1, 'f8977a04330dd827824961987d838712', '2024-06-22 15:02:56', 1),
+(35, 'gorreonfrancis@gmail.com', '$2y$12$a2bwC40iwQCe4c5eiH6sAuQ/XXvOZsJvPwxI3rO9GQWL4U41l3Bci', NULL, '2024-04-11 01:20:11', 9, 'df5df2620c65083db75b628a72b57d87', '2024-06-25 07:19:46', 1),
 (106, 'ldr@gmail.com', '', NULL, '2024-06-11 19:45:58', 7, '', NULL, 0),
 (107, 'cris@gmail.com', '', NULL, '2024-06-11 20:11:16', 1, '', NULL, 0),
 (116, 'asdfasdf@gmail.com', '', NULL, '2024-06-11 21:46:22', 7, '60a68a473daf11b171cf20c329598116', '2024-06-22 15:02:32', 0),
@@ -55,7 +55,8 @@ INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, 
 (139, 'bili@gmail.com', '', NULL, '2024-06-22 18:20:28', 7, '', NULL, 0),
 (141, 'jerome@gmail.com', '', NULL, '2024-06-22 18:23:29', 1, '', NULL, 0),
 (142, 'kikay@gmail.com', '', NULL, '2024-06-22 18:24:38', 7, '', NULL, 0),
-(143, 'blacqueswan@gmail.com', '$2y$12$PwJiDUqT4Sztr3TJPWmnYuaUJOqunaedVTH8bW/xcsnKNz7PMdVw6', NULL, '2024-06-22 20:28:05', 7, '', NULL, 1);
+(144, 'argojosafor@gmail.com', '$2y$12$GXOX0hXe.oLcK5WHikRfmee52c3CZ3.2mUoSuxsAq1kObjqxeU0O2', NULL, '2024-06-25 08:30:01', 1, '89d61303e5e31fdc3bdacd464ab7eac5', '2024-06-25 07:54:18', 1),
+(146, 'blacqueswan@gmail.com', '$2y$12$hB9jutqOxc/w4F0exJkt9.Dl/HI5C7b7UDo/excNIHNjOgUZXJ0y2', NULL, '2024-06-28 12:12:04', 7, '', NULL, 1);
 
 -- --------------------------------------------------------
 
@@ -80,7 +81,12 @@ CREATE TABLE `homeowners` (
 
 INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, `lot`, `street`, `number`) VALUES
 (111, 'mark@gmail.com', 'Mark', 'Gorreon', '12', '12', 'Peony', '09123123123'),
-(112, 'marx@gmail.com', 'Marx', 'Jacob', '17', '12', 'Lexus', '09123123123');
+(112, 'marx@gmail.com', 'Marx', 'Jacob', '17', '12', 'Lexus', '09123123123'),
+(113, 'angelika@gmail.com', 'Angelika', 'Bariring', '12', '12', 'Gumamela', '09111111111'),
+(114, 'maria@gmail.com', 'Maria', 'Bisnar', '17', '12', 'Star', '09121212121'),
+(115, 'mj@gmail.com', 'Mj', 'Limosinero', '12', '18', 'Nissan', '09123123123'),
+(116, 'kia@gmail.com', 'Kia', 'Madrid', '18', '14', 'Santan', '09345345345'),
+(117, 'kiamadrid@gmail.com', 'Kia', 'Madrid ', '15', '17', 'Kamagung', '09299541804');
 
 -- --------------------------------------------------------
 
@@ -96,35 +102,23 @@ CREATE TABLE `log` (
   `log_address` varchar(50) NOT NULL,
   `log_vehicle` varchar(50) NOT NULL,
   `entry_log` datetime DEFAULT NULL,
-  `exit_log` datetime DEFAULT NULL
+  `exit_log` datetime DEFAULT NULL,
+  `last_action` varchar(10) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `log`
 --
 
-INSERT INTO `log` (`log_id`, `date`, `log_plate_number`, `log_name`, `log_address`, `log_vehicle`, `entry_log`, `exit_log`) VALUES
-(100, '2024-06-08', 'MOL-1234', 'John Mathew Limo', 'Block 12, Lot 12 ,Peony Street', 'Crossover 4-wheeler', '2024-06-16 17:46:00', '2024-06-16 17:46:00'),
-(101, '2024-06-16', 'MOL-1234', 'John Mathew Limo', 'Block 12, Lot 12 ,Peony Street', 'Crossover 4-wheeler', '2024-06-16 17:46:00', NULL),
-(102, '2024-06-16', 'MIL-0000', 'Tere Bisnar', 'Block 18, Lot 21 ,Supernova Street', 'Van 4-wheeler', '2024-06-16 17:47:00', '2024-06-16 17:47:00'),
-(103, '2024-06-16', 'MIL-0000', 'Tere Bisnar', 'Block 18, Lot 21 ,Supernova Street', 'Van 4-wheeler', '2024-06-16 17:47:00', '2024-06-16 17:47:00'),
-(104, '2024-06-16', 'MIL-0000', 'Tere Bisnar', 'Block 18, Lot 21 ,Supernova Street', 'Van 4-wheeler', '2024-06-16 17:47:00', NULL),
-(105, '2024-06-16', 'KIL-1234', 'Angelika Bariring', 'Block 9, Lot 9 ,Mundane Street', 'Car, 4-wheeler', '2024-06-16 17:59:00', '2024-06-16 17:59:00'),
-(106, '2024-06-16', 'KIL-1234', 'Angelika Bariring', 'Block 9, Lot 9 ,Mundane Street', 'Car, 4-wheeler', '2024-06-16 17:59:00', '2024-06-16 18:15:00'),
-(108, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:11:00', '2024-06-17 15:18:00'),
-(109, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:19:00', '2024-06-17 15:24:00'),
-(110, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:21:00', '2024-06-17 15:25:00'),
-(111, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:23:00', '2024-06-17 15:26:00'),
-(112, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:27:00', '2024-06-17 15:26:00'),
-(113, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:33:00', '2024-06-17 15:32:00'),
-(114, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:34:00', NULL),
-(115, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:35:00', NULL),
-(116, '2024-06-17', 'NED-5724', 'Jerald Napoles', 'Block 12, Lot 12 ,Lexus Street', 'Sedan, 4-wheeler', '2024-06-17 15:37:00', NULL),
-(117, '2024-06-22', 'NED-5724', 'Lanitas Del Gey', 'Block 12, Lot 12 ,Nissan Street', 'Sedan, 4-wheeler', '2024-06-22 19:35:00', '2024-06-22 19:36:00'),
-(118, '2024-06-22', 'NED-5724', 'Lanitas Del Gey', 'Block 12, Lot 12 ,Nissan Street', 'Sedan, 4-wheeler', '2024-06-22 19:50:00', NULL),
-(119, '2024-06-25', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-25 01:48:00', '2024-06-25 01:53:00'),
-(120, '2024-06-25', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-25 01:52:00', '2024-06-25 01:54:00'),
-(121, '2024-06-25', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-25 01:54:00', '2024-06-25 01:55:00');
+INSERT INTO `log` (`log_id`, `date`, `log_plate_number`, `log_name`, `log_address`, `log_vehicle`, `entry_log`, `exit_log`, `last_action`) VALUES
+(153, '2024-06-29', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', NULL, '2024-06-30 21:46:00', 'exit_log'),
+(154, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:47:00', '2024-06-30 21:46:00', 'entry_log'),
+(155, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:48:00', '2024-06-30 21:48:00', 'entry_log'),
+(156, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:48:00', '2024-06-30 21:48:00', 'entry_log'),
+(157, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:50:00', '2024-06-30 21:49:00', 'entry_log'),
+(158, '2024-06-30', 'DAF-1850', 'Kia Madrid ', 'Block 15, Lot 17 ,Kamagung Street', 'SUV, 4-wheeler', '2024-06-30 21:50:00', '2024-06-30 21:51:00', 'exit_log'),
+(159, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:51:00', '2024-06-30 21:50:00', 'entry_log'),
+(160, '2024-06-30', 'DAF-1850', 'Kia Madrid ', 'Block 15, Lot 17 ,Kamagung Street', 'SUV, 4-wheeler', '2024-06-30 21:52:00', '2024-06-30 21:53:00', 'exit_log');
 
 -- --------------------------------------------------------
 
@@ -150,7 +144,14 @@ CREATE TABLE `qr_info` (
 
 INSERT INTO `qr_info` (`qr_id`, `qr_code`, `wheel`, `vehicle_type`, `vehicle_color`, `plate_number`, `expiration_date`, `registered`, `ho_id`) VALUES
 (186, 'Not Registered', 4, 'Crossover', 'Blue', 'NED-5723', NULL, 0, 111),
-(187, 'gMEhoeeDJX', 4, 'SUV', 'White', 'KIL-1231', '2025-06-24', 1, 112);
+(187, 'gMEhoeeDJX', 4, 'SUV', 'White', 'KIL-1231', '2025-06-24', 1, 112),
+(188, 'Not Registered', 4, 'Sedan', 'Silver', 'NED-1231', NULL, 0, 112),
+(189, 'Not Registered', 4, 'Crossover', 'White', 'JIK-8888', NULL, 0, 114),
+(190, 'Not Registered', 4, 'Motor', 'Black', 'ULK-1211', NULL, 0, 115),
+(191, 'qhy5fNvAre', 4, 'SUV', 'RED', 'DAF-1850', '2025-06-28', 1, 117),
+(193, 'Not Registered', 4, 'Sedan', 'Black', 'TRY-1111', NULL, 0, 111),
+(194, 'Not Registered', 2, 'Motor', 'Black', 'MMM-9999', NULL, 0, 113),
+(195, 'Not Registered', 4, 'Sedan ', 'Black ', 'UUU-1111', NULL, 0, 113);
 
 -- --------------------------------------------------------
 
@@ -224,7 +225,8 @@ INSERT INTO `user_info` (`info_id`, `account_first_name`, `account_last_name`, `
 (130, 'Bili', 'E', '09232323232', 139),
 (132, 'Jerome', 'P', '09232323232', 141),
 (133, 'Kikay', 'P', '09232323232', 142),
-(134, 'Black', 'Swan', '09232222222', 143);
+(135, 'Argo', 'Josafor', '09111111111', 144),
+(137, ' Black ', ' Swan ', '09123123123', 146);
 
 -- --------------------------------------------------------
 
@@ -256,7 +258,10 @@ INSERT INTO `visitor_log` (`visitor_id`, `visitor_date`, `visitor_time`, `visito
 (4, '2024-06-08', '17:12:43', 'Jerom', 'Ponce', 'Visiting Nurse', 'LOP-1212', 'Sedan', 4, ''),
 (5, '2024-06-08', '17:20:11', 'Bernadette', 'Gorreon', 'Visiting', 'NED-5724', 'Sedan', 4, ''),
 (6, '2024-06-10', '18:11:24', 'Juan Ponce', 'Enrile', 'PDAF', 'MIJ-90121', 'Lexus', 4, ''),
-(7, '2024-06-12', '00:38:33', 'adsasd', 'sdfsdf', 'sdf', 'DFG', 'tyu', 6, '');
+(7, '2024-06-12', '00:38:33', 'adsasd', 'sdfsdf', 'sdf', 'DFG', 'tyu', 6, ''),
+(11, '2024-06-28', '13:40:49', 'KARL', 'ACIO', 'FOOD DELIVERY', 'DAF-1234', 'MOTOR', 2, 'BLACK'),
+(12, '2024-06-30', '20:01:21', 'Jerome', 'Mal', 'Cuddles', 'NEU-1211', 'Sedan', 4, 'Black'),
+(13, '2024-06-30', '20:09:44', 'Malik', 'Zayn', 'Cuddles', 'ULK-1211', 'Sedan', 4, 'White');
 
 --
 -- Indexes for dumped tables
@@ -321,25 +326,25 @@ ALTER TABLE `visitor_log`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=144;
+  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=147;
 
 --
 -- AUTO_INCREMENT for table `homeowners`
 --
 ALTER TABLE `homeowners`
-  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=113;
+  MODIFY `ho_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for homeowners.', AUTO_INCREMENT=118;
 
 --
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=122;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=161;
 
 --
 -- AUTO_INCREMENT for table `qr_info`
 --
 ALTER TABLE `qr_info`
-  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=188;
+  MODIFY `qr_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=196;
 
 --
 -- AUTO_INCREMENT for table `role_info`
@@ -357,13 +362,13 @@ ALTER TABLE `station_info`
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=135;
+  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=138;
 
 --
 -- AUTO_INCREMENT for table `visitor_log`
 --
 ALTER TABLE `visitor_log`
-  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=11;
+  MODIFY `visitor_id` int(10) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- Constraints for dumped tables

@@ -7,6 +7,60 @@ specialInputs.forEach(function(input) {
   });
 });
 
+
+//Prevent spaces to be inputted to the email field
+document.getElementById('email').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+const elements = document.querySelectorAll('#email, #number, #first_name, #last_name');
+elements.forEach(function(element) {
+    element.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && element.value === '') {
+            event.preventDefault();
+        }
+    });
+});
+
+// prevent multiple consecutive spaces in fields
+document.addEventListener('DOMContentLoaded', () => {
+    const firstNameField = document.getElementById('first_name');
+    const lastNameField = document.getElementById('last_name');
+    
+
+    // Add event listeners and validation logic for each input field
+    firstNameField.addEventListener('input', () => {
+        const value = firstNameField.value;
+
+        // Replace consecutive spaces with a single space
+        firstNameField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    lastNameField.addEventListener('input', () => {
+        const value = lastNameField.value;
+
+        // Replace consecutive spaces with a single space
+        lastNameField.value = value.replace(/\s{2,}/g, ' ');
+    });
+});
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 const numberInput = document.getElementById("number");
 [numberInput].forEach(input => {
     input.addEventListener('input', function(event) {

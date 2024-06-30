@@ -67,12 +67,12 @@ require_once 'header.php';
 
                             // Wait for 1 second and then send the open command
                             setTimeout(function() {
-                                sendRequest('http://192.168.122.226/0');
+                                sendRequest('http://192.168.43.21/0');
                             }, 2000);
 
                             // Wait for 3 seconds and then send the close command
                             setTimeout(function() {
-                                sendRequest('http://192.168.122.226/1');
+                                sendRequest('http://192.168.43.21/1');
                             }, 8000);
                         </script>
                     <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'denied') : ?>

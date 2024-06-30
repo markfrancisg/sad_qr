@@ -61,7 +61,7 @@ include_once '../../../includes/LogsListWeeklyController.php';
                             <div class="col-md-4 order-md-3 order-1">
                                 <form id="searchForm" method="GET" action="">
                                     <div class="input-group">
-                                        <input class="form-control mb-1 me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Plate Number" aria-label="Search" maxlength="10">
+                                        <input class="form-control mb-1 me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Plate Number" aria-label="Search" maxlength="8" oninput="restrictInput(event)">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary mb-1" id="searchButton" name="searchButton" type="submit" <?php if (empty($results)) echo 'disabled'; ?>>Search</button>
                                         </div>

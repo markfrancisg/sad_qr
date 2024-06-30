@@ -31,7 +31,7 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
                             <div class="row mb-2 justify-content-end align-items-center">
                                 <div class="col-md-4 order-md-2 order-1 mb-2">
                                     <div class="input-group">
-                                        <input class="form-control me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Name" aria-label="Search" maxlength="15">
+                                        <input class="form-control me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Name" aria-label="Search" maxlength="20">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary" id="searchButton" name="searchButton" type="submit" <?php if (empty($results)) echo 'disabled'; ?>>Search</button>
                                         </div>

@@ -63,6 +63,36 @@ document.getElementById('searchForm').addEventListener('submit', function(event)
     }
 });
 
+
+const elements = document.querySelectorAll('#searchInput');
+elements.forEach(function(element) {
+    element.addEventListener('keydown', function(event) {
+        if (event.key === ' ' && element.value === '') {
+            event.preventDefault();
+        }
+    });
+});
+
+// prevent multiple consecutive spaces in fields
+document.addEventListener('DOMContentLoaded', () => {
+    const searchInputField = document.getElementById('searchInput');
+    
+
+    // Add event listeners and validation logic for each input field
+    searchInputField.addEventListener('input', () => {
+        const value = searchInputField.value;
+
+        // Replace consecutive spaces with a single space
+        searchInputField.value = value.replace(/\s{2,}/g, ' ');
+    });    
+});
+
+
+
+
+
+
+
 // ________________________________Edit Toast Update____________________________
 
 

@@ -49,7 +49,7 @@ require_once '../../../includes/AccountListVerifiedController.php';
                             <div class="col-md-4 order-md-2 order-1">
                                 <form id="searchForm" method="GET" action="">
                                     <div class="input-group">
-                                        <input class="form-control mb-1 me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Name" aria-label="Search" maxlength="10">
+                                        <input class="form-control mb-1 me-2" type="text" id="searchInput" name="searchInput" placeholder="Enter Name" aria-label="Search" maxlength="20">
                                         <div class="input-group-append">
                                             <button class="btn btn-primary mb-1" id="searchButton" name="searchButton" type="submit">Search</button>
                                         </div>

@@ -92,7 +92,7 @@ $homeowner_email = get_homeowner_email($pdo);
                             <div class="row vehicle">
                                 <div class="col-12 col-md-3">
                                     <div class="form-floating mb-3">
-                                        <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" maxlength="10" required oninput="validateAndTransformInput(this)">
+                                        <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" maxlength="8" required oninput="validateAndTransformInput(this)">
                                         <label for="plate_number">Plate Number</label>
                                         <div class="invalid-feedback" id="plateFeedback">Plate number is required</div>
                                     </div>

@@ -18,7 +18,7 @@ check_registration_status($pdo); //update all the payment records
     }
 
     .hover-grow:hover {
-        transform: scale(1.10);
+        transform: scale(1.05);
         /* Adjust the scale value as needed */
     }
 </style>
@@ -42,7 +42,7 @@ check_registration_status($pdo); //update all the payment records
 
         <div class="container-fluid">
             <div class="row">
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     <a href="scan_qr.php?station=a">
                         <div class="card border border-success border-1 hover-grow">
                             <div class="card-body">
@@ -54,7 +54,7 @@ check_registration_status($pdo); //update all the payment records
                         </div>
                     </a>
                 </div>
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                <!-- <div class="col-sm-12 col-md-6 col-lg-3">
                     <a href="scan_qr.php?station=b">
                         <div class="card border border-success border-1 hover-grow">
                             <div class="card-body">
@@ -65,8 +65,8 @@ check_registration_status($pdo); //update all the payment records
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                </div> -->
+                <!-- <div class="col-sm-12 col-md-6 col-lg-3">
                     <a href="scan_qr.php?station=c">
                         <div class="card border border-success border-1 hover-grow">
                             <div class="card-body">
@@ -77,13 +77,13 @@ check_registration_status($pdo); //update all the payment records
                             </div>
                         </div>
                     </a>
-                </div>
-                <div class="col-sm-12 col-md-6 col-lg-3">
+                </div> -->
+                <div class="col-sm-12 col-md-6 col-lg-6">
                     <a href="scan_qr.php?station=d">
                         <div class="card border border-success border-1 hover-grow">
                             <div class="card-body">
                                 <img src="../../images/toll_gate.svg" class="img-fluid d-block mx-auto mt-5" height="200" alt="Toll Gate">
-                                <h1 class="text-primary text-center"> Gate 4</h1>
+                                <h1 class="text-primary text-center"> Gate 2</h1>
                                 <h5 class="text-primary text-center">Exit Point</h5>
                                 <h1 class="text-primary text-center"></h1>
                             </div>

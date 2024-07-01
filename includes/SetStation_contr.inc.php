@@ -17,8 +17,6 @@ function set_station()
     }
 
     if ($_GET['station'] === "d") {
-        $_SESSION['station'] = "Gate 4";
+        $_SESSION['station'] = "Gate 2";
     }
 }
-
-

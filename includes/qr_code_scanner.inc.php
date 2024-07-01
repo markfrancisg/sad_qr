@@ -53,9 +53,15 @@ if (isset($_GET['qr_text'])) {
 
 
         // Determine the column to update based on the station
-        if ($station == "Gate 1" || $station == "Gate 2") {
+        // if ($station == "Gate 1" || $station == "Gate 2") {
+        //     $result = handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'entry_log');
+        // } elseif ($station == "Gate 3" || $station == "Gate 4") {
+        //     $result = handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'exit_log');
+        // }
+
+        if ($station == "Gate 1") {
             $result = handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'entry_log');
-        } elseif ($station == "Gate 3" || $station == "Gate 4") {
+        } elseif ($station == "Gate 2") {
             $result = handleLog($pdo, $date, $plate_number, $name, $address, $vehicle_info, $date_time, 'exit_log');
         }
 

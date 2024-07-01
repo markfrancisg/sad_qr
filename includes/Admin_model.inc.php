@@ -69,6 +69,30 @@ function get_user(object $pdo, string $email)
     return $result;
 }
 
+function get_user_agreement(PDO $pdo, string $account_id)
+{
+    $query = "SELECT agreement FROM account WHERE account_id = :account_id";
+    $stmt = $pdo->prepare($query);
+    $stmt->bindParam(":account_id", $account_id);
+    $stmt->execute();
+
+    $result = $stmt->fetchColumn(); // Fetches the first column from the next row of a result set
+    return $result !== false ? (int) $result : null; // Cast to integer or return null if no result found
+}
+
+function update_admin_agreement(object $pdo, string $account_id)
+{
+    $query = "UPDATE account SET agreement = 1 WHERE account_id = :account_id";
+    $stmt = $pdo->prepare($query);
+
+    // Bind parameters
+    $stmt->bindParam(':account_id', $account_id, PDO::PARAM_INT);
+
+    // Execute the statement
+    $stmt->execute();
+}
+
+
 function get_qr_list(object $pdo, int $offset, int $total_records_per_page)
 {
     $query = "SELECT homeowners.first_name, homeowners.last_name, homeowners.block, homeowners.lot, homeowners.street, qr_info.vehicle_type, qr_info.plate_number, qr_info.wheel, qr_info.vehicle_color, qr_info.qr_id, qr_info.registered

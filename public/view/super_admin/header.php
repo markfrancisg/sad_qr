@@ -26,7 +26,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title><?php echo $title; ?></title>
-    <link rel="shortcut icon" type="image/png" href="../../images/logos/small_san_lorenzo_logo.png" />
+    <link rel="shortcut icon" type="image/png" href="../../images/logos/san_lorenzo_logo.svg" />
     <link rel="stylesheet" href="../../css/styles.min.css" />
     <link rel="stylesheet" href="../../css/custom_layout.css" />
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
@@ -105,7 +105,15 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
 
-                        <hr class="text text-primary">
+                        <hr class="text text-primary mb-0">
+                        <li class="sidebar-item <?php echo isActive('terms.php') ? 'selected' : ''; ?>">
+                            <a class="sidebar-link <?php echo isActive('terms.php'); ?>" href="terms.php" aria-expanded="false">
+                                <span>
+                                    <i class="fas fa-file-alt"></i>
+                                </span>
+                                <span class="hide-menu"> Terms & Conditions</span>
+                            </a>
+                        </li>
 
                         <!-- <div class="d-flex">
                             <button class="btn btn-primary w-100">Log out</button>

@@ -14,19 +14,20 @@ elements.forEach(function(element) {
 // prevent multiple consecutive spaces in fields
 document.addEventListener('DOMContentLoaded', () => {
     const searchInputField = document.getElementById('searchInput');
-    
 
-    // Add event listeners and validation logic for each input field
     searchInputField.addEventListener('input', () => {
-        const value = searchInputField.value;
+        let value = searchInputField.value;
+
+        // Remove any characters that are not alphabetic, space, or hyphen
+        value = value.replace(/[^a-zA-Z\s-]/g, '');
 
         // Replace consecutive spaces with a single space
-        searchInputField.value = value.replace(/\s{2,}/g, ' ');
-    });    
+        value = value.replace(/\s{2,}/g, ' ');
+
+        // Update the input field value with the sanitized value
+        searchInputField.value = value;
+    });
 });
-
-
-
 
 
 

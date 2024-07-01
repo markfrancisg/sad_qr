@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Host: 127.0.0.1
--- Generation Time: Jun 30, 2024 at 03:56 PM
+-- Generation Time: Jul 01, 2024 at 06:51 PM
 -- Server version: 10.4.32-MariaDB
 -- PHP Version: 8.2.12
 
@@ -36,27 +36,28 @@ CREATE TABLE `account` (
   `role_id` int(10) NOT NULL COMMENT 'This will show the type of the account.',
   `token` varchar(255) NOT NULL COMMENT 'This will store reset password token.',
   `token_expiration` datetime DEFAULT NULL,
-  `verification_status` int(1) NOT NULL DEFAULT 0
+  `verification_status` int(1) NOT NULL DEFAULT 0,
+  `agreement` int(1) NOT NULL DEFAULT 0 COMMENT 'Set to 0 as default, change to 1 once the user agrees to the terms and conditions.'
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
 
 --
 -- Dumping data for table `account`
 --
 
-INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`, `verification_status`) VALUES
-(35, 'gorreonfrancis@gmail.com', '$2y$12$a2bwC40iwQCe4c5eiH6sAuQ/XXvOZsJvPwxI3rO9GQWL4U41l3Bci', NULL, '2024-04-11 01:20:11', 9, 'df5df2620c65083db75b628a72b57d87', '2024-06-25 07:19:46', 1),
-(106, 'ldr@gmail.com', '', NULL, '2024-06-11 19:45:58', 7, '', NULL, 0),
-(107, 'cris@gmail.com', '', NULL, '2024-06-11 20:11:16', 1, '', NULL, 0),
-(116, 'asdfasdf@gmail.com', '', NULL, '2024-06-11 21:46:22', 7, '60a68a473daf11b171cf20c329598116', '2024-06-22 15:02:32', 0),
-(125, 'asdfaadfds@gmail.com', '', NULL, '2024-06-11 23:30:06', 7, '', NULL, 0),
-(136, 'sara@gmail.com', '', NULL, '2024-06-22 18:14:04', 7, '', NULL, 0),
-(137, 'taric@gmail.com', '', NULL, '2024-06-22 18:17:10', 1, '', NULL, 0),
-(138, 'leon@gmail.com', '', NULL, '2024-06-22 18:19:07', 7, '', NULL, 0),
-(139, 'bili@gmail.com', '', NULL, '2024-06-22 18:20:28', 7, '', NULL, 0),
-(141, 'jerome@gmail.com', '', NULL, '2024-06-22 18:23:29', 1, '', NULL, 0),
-(142, 'kikay@gmail.com', '', NULL, '2024-06-22 18:24:38', 7, '', NULL, 0),
-(144, 'argojosafor@gmail.com', '$2y$12$GXOX0hXe.oLcK5WHikRfmee52c3CZ3.2mUoSuxsAq1kObjqxeU0O2', NULL, '2024-06-25 08:30:01', 1, '89d61303e5e31fdc3bdacd464ab7eac5', '2024-06-25 07:54:18', 1),
-(146, 'blacqueswan@gmail.com', '$2y$12$hB9jutqOxc/w4F0exJkt9.Dl/HI5C7b7UDo/excNIHNjOgUZXJ0y2', NULL, '2024-06-28 12:12:04', 7, '', NULL, 1);
+INSERT INTO `account` (`account_id`, `account_email`, `password`, `updated_at`, `created_at`, `role_id`, `token`, `token_expiration`, `verification_status`, `agreement`) VALUES
+(35, 'gorreonfrancis@gmail.com', '$2y$12$a2bwC40iwQCe4c5eiH6sAuQ/XXvOZsJvPwxI3rO9GQWL4U41l3Bci', NULL, '2024-04-11 01:20:11', 9, 'df5df2620c65083db75b628a72b57d87', '2024-06-25 07:19:46', 1, 1),
+(106, 'ldr@gmail.com', '', NULL, '2024-06-11 19:45:58', 7, '', NULL, 0, 0),
+(107, 'cris@gmail.com', '', NULL, '2024-06-11 20:11:16', 1, '', NULL, 0, 0),
+(116, 'asdfasdf@gmail.com', '', NULL, '2024-06-11 21:46:22', 7, '60a68a473daf11b171cf20c329598116', '2024-06-22 15:02:32', 0, 0),
+(125, 'asdfaadfds@gmail.com', '', NULL, '2024-06-11 23:30:06', 7, '', NULL, 0, 0),
+(136, 'sara@gmail.com', '', NULL, '2024-06-22 18:14:04', 7, '', NULL, 0, 0),
+(137, 'taric@gmail.com', '', NULL, '2024-06-22 18:17:10', 1, '', NULL, 0, 0),
+(138, 'leon@gmail.com', '', NULL, '2024-06-22 18:19:07', 7, '', NULL, 0, 0),
+(139, 'bili@gmail.com', '', NULL, '2024-06-22 18:20:28', 7, '', NULL, 0, 0),
+(141, 'jerome@gmail.com', '', NULL, '2024-06-22 18:23:29', 1, '', NULL, 0, 0),
+(142, 'kikay@gmail.com', '', NULL, '2024-06-22 18:24:38', 7, '', NULL, 0, 0),
+(144, 'argojosafor@gmail.com', '$2y$12$GXOX0hXe.oLcK5WHikRfmee52c3CZ3.2mUoSuxsAq1kObjqxeU0O2', NULL, '2024-06-25 08:30:01', 1, '89d61303e5e31fdc3bdacd464ab7eac5', '2024-06-25 07:54:18', 1, 1),
+(147, 'blacqueswan@gmail.com', '$2y$12$ZyYAUdX34157AepLfyTpPeZyM3NLsF.VmndVqdHBlXfl9pbSHhJHq', NULL, '2024-07-01 23:42:11', 7, '', NULL, 1, 1);
 
 -- --------------------------------------------------------
 
@@ -86,7 +87,7 @@ INSERT INTO `homeowners` (`ho_id`, `email`, `first_name`, `last_name`, `block`, 
 (114, 'maria@gmail.com', 'Maria', 'Bisnar', '17', '12', 'Star', '09121212121'),
 (115, 'mj@gmail.com', 'Mj', 'Limosinero', '12', '18', 'Nissan', '09123123123'),
 (116, 'kia@gmail.com', 'Kia', 'Madrid', '18', '14', 'Santan', '09345345345'),
-(117, 'kiamadrid@gmail.com', 'Kia', 'Madrid ', '15', '17', 'Kamagung', '09299541804');
+(117, 'kiamadrid@gmail.com', 'Kia', 'Madrid ', '15', '17', 'Kamagong', '09299541804');
 
 -- --------------------------------------------------------
 
@@ -118,7 +119,11 @@ INSERT INTO `log` (`log_id`, `date`, `log_plate_number`, `log_name`, `log_addres
 (157, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:50:00', '2024-06-30 21:49:00', 'entry_log'),
 (158, '2024-06-30', 'DAF-1850', 'Kia Madrid ', 'Block 15, Lot 17 ,Kamagung Street', 'SUV, 4-wheeler', '2024-06-30 21:50:00', '2024-06-30 21:51:00', 'exit_log'),
 (159, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-06-30 21:51:00', '2024-06-30 21:50:00', 'entry_log'),
-(160, '2024-06-30', 'DAF-1850', 'Kia Madrid ', 'Block 15, Lot 17 ,Kamagung Street', 'SUV, 4-wheeler', '2024-06-30 21:52:00', '2024-06-30 21:53:00', 'exit_log');
+(160, '2024-06-30', 'DAF-1850', 'Kia Madrid ', 'Block 15, Lot 17 ,Kamagung Street', 'SUV, 4-wheeler', '2024-06-30 21:52:00', '2024-06-30 21:53:00', 'exit_log'),
+(161, '2024-06-30', 'DAF-1850', 'Kia Madrid ', 'Block 15, Lot 17 ,Kamagung Street', 'SUV, 4-wheeler', '2024-06-30 22:02:00', NULL, 'entry_log'),
+(162, '2024-06-30', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', NULL, '2024-06-30 22:04:00', 'exit_log'),
+(164, '2024-07-01', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-07-01 14:06:00', '2024-07-01 14:07:00', 'exit_log'),
+(165, '2024-07-01', 'KIL-1231', 'Marx Jacob', 'Block 17, Lot 12 ,Lexus Street', 'SUV, 4-wheeler', '2024-07-01 14:07:00', NULL, 'entry_log');
 
 -- --------------------------------------------------------
 
@@ -226,7 +231,7 @@ INSERT INTO `user_info` (`info_id`, `account_first_name`, `account_last_name`, `
 (132, 'Jerome', 'P', '09232323232', 141),
 (133, 'Kikay', 'P', '09232323232', 142),
 (135, 'Argo', 'Josafor', '09111111111', 144),
-(137, ' Black ', ' Swan ', '09123123123', 146);
+(138, 'Black', 'Swan', '09212312312', 147);
 
 -- --------------------------------------------------------
 
@@ -326,7 +331,7 @@ ALTER TABLE `visitor_log`
 -- AUTO_INCREMENT for table `account`
 --
 ALTER TABLE `account`
-  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=147;
+  MODIFY `account_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key for accounts.', AUTO_INCREMENT=148;
 
 --
 -- AUTO_INCREMENT for table `homeowners`
@@ -338,7 +343,7 @@ ALTER TABLE `homeowners`
 -- AUTO_INCREMENT for table `log`
 --
 ALTER TABLE `log`
-  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=161;
+  MODIFY `log_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=166;
 
 --
 -- AUTO_INCREMENT for table `qr_info`
@@ -362,7 +367,7 @@ ALTER TABLE `station_info`
 -- AUTO_INCREMENT for table `user_info`
 --
 ALTER TABLE `user_info`
-  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=138;
+  MODIFY `info_id` int(10) NOT NULL AUTO_INCREMENT COMMENT 'This is the primary key.', AUTO_INCREMENT=139;
 
 --
 -- AUTO_INCREMENT for table `visitor_log`

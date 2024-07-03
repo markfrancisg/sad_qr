@@ -14,3 +14,9 @@ function restrictInput(event) {
         // Convert to uppercase
     inputField.value = inputField.value.toUpperCase();
 }
+
+
+//this enables the user to keep track of newly added logs every 2 minutes, this will reload the page
+setInterval(function() {
+    location.reload();
+}, 2 * 60 * 1000); // Reload every 2 minutes (2 * 60 * 1000 milliseconds)

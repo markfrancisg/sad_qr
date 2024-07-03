@@ -21,7 +21,7 @@ redirectUser();
                                     <img src="public/images/logos/san_lorenzo_logo.svg" width="150" alt="SeQRity Logo" />
                                 </a>
                                 <!-- <p class="text-center">Your SeQRity Gate Friend</p> -->
-                                <h3 class="text-center mt-1">Hello, User!</h3>
+                                <h3 class="text-center mt-1">Hi, User!</h3>
                                 <h5 class="text-center">Please click or tap your destination</h5>
                                 <div class="mt-4 mb-3">
                                     <a href="/includes/select_user.inc.php?type=admin"> <button type="button" class="btn btn-primary btn-lg w-100 p-3">

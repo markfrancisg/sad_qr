@@ -237,6 +237,7 @@ include_once '../../../includes/admin/vehicle_list_view.inc.php';
 
 <?php
 vehicle_edit_success();
+vehicle_delete_success();
 ?>
 
 

@@ -22,8 +22,8 @@ $page_titles = array(
     'vehicle_list.php' => 'QR Code',
     'logs.php' => 'Records',
     'logs_daily.php' => 'Records',
-    'logs_weekly.php' => 'Records'
-
+    'logs_weekly.php' => 'Records',
+    'terms.php' => 'Terms and Conditions'
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);

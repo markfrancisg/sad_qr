@@ -13,6 +13,11 @@ function isActive($page)
 $page_titles = array(
     'accounts.php' => 'Accounts',
     'account_list.php' => 'Account List',
+    'account_list_verified.php' => 'Account List',
+    'account_list_unverified.php' => 'Account List',
+    'edit_account.php' => 'Edit Account',
+    'terms.php' => 'Terms and Conditions'
+
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);

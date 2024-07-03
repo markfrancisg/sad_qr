@@ -13,6 +13,14 @@ document.addEventListener("DOMContentLoaded", function() {
     }
 });
 
+document.addEventListener("DOMContentLoaded", function() {
+    var toastElement = document.getElementById('liveToastDelete');
+    if (toastElement) {
+        var toast = new bootstrap.Toast(toastElement);
+        toast.show();
+    }
+});
+
 $(document).ready(function() {
     $('#delete_all').click(function() {
         var checkbox = $('.input_checkbox:checked');

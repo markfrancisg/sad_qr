@@ -17,11 +17,12 @@ $page_titles = array(
     'record_logs_weekly.php' => 'Records',
     'scan_qr.php' => 'Scan',
     'scan_results.php' => 'Scan',
+    'manual_search.php' => 'Manual Search',
     'visitor.php' => 'Visitor',
     'visitor_list.php' => 'Visitor Logs',
     'visitor_list_daily.php' => 'Visitor Logs',
     'visitor_list_weekly.php' => 'Visitor Logs',
-
+    'terms.php' => 'Terms and Conditions'
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);

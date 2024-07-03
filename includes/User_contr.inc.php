@@ -253,7 +253,7 @@ function send_verify_account_email(string $name, string $email)
         <h2>Please click the link to proceed to your account creation</h2>
         <br>
         <br>
-        <a href="http://localhost:3000/verify.php?email=' . $email . '">Set Up Password</a>';
+        <a href="https://sadseqrity.com/verify.php?email=' . $email . '">Set Up Password</a>';
 
         $mail->send();
     } catch (Exception $e) {
@@ -298,7 +298,7 @@ function generate_token(object $pdo, string $email)
         <h2>You are receiving this email because we received a password reset request from your account</h2>
         <br>
         <br>
-        <a href="http://localhost:3000/reset_password.php?token=' . $token . '&email=' . $email . '">Reset Password</a>';
+        <a href="https://sadseqrity.com/reset_password.php?token=' . $token . '&email=' . $email . '">Reset Password</a>';
         $mail->send();
     } catch (Exception $e) {
         echo "Message could not be sent. Mailer Error: {$mail->ErrorInfo}";

@@ -7,7 +7,7 @@ function fetchLogs(page = 1) {
     var offset = (page - 1) * totalRecordsPerPage;
 
     $.ajax({
-        url: '../../../includes/LogsListController.php',
+        url: '../../../includes/LogsListDailyController.php',
         method: 'GET',
         data: {
             offset: offset,

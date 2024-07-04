@@ -26,61 +26,52 @@ if (isset($_GET['station'])) {
             <div class="col-12 text-center">
                 <h1><?php echo $_SESSION['station']; ?></h1>
                 <video id="preview" style="width: 100%; max-width: 700px; height: auto;"></video>
-                <!-- Camera Selection Buttons -->
-                <div class="btn-group d-sm-block d-md-none d-lg-none" role="group" aria-label="Camera Selection">
-                    <button id="frontCameraBtn" type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
-                    <button id="backCameraBtn" type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
-                </div>
-                <div class="btn-group d-none d-md-block d-lg-none" role="group" aria-label="Camera Selection">
-                    <button id="frontCameraBtnMD" type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
-                    <button id="backCameraBtnMD" type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
-                </div>
                 <h5 class="text-center mt-3"><a href="guard.dashboard.php">Select Gate</a></h5>
             </div>
         </div>
     </div>
-
     <script>
+        let scanner = null; // Declare scanner variable globally
+
         // Function to start the scanner
         function startScanner() {
             Instascan.Camera.getCameras().then((cameras) => {
-                if (cameras.length > 0) {
-                    const constraints = {
-                        video: {
-                            facingMode: 'environment' // Use 'environment' for back camera, 'user' for front camera
-                        }
-                    };
+                // Filter cameras to find the back camera (if available)
+                const backCamera = cameras.find(camera => camera.name.includes('back'));
 
-                    const video = document.getElementById('preview');
-                    video.srcObject = null; // Reset video source object
+                if (backCamera) {
+                    scanner = new Instascan.Scanner({
+                        video: document.getElementById("preview"),
+                    });
 
-                    navigator.mediaDevices.getUserMedia(constraints)
-                        .then(function(stream) {
-                            video.srcObject = stream;
-                            window.stream = stream; // Store the stream globally to stop later
-                            scanner = new Instascan.Scanner({
-                                video: video
-                            });
-                            scanner.addListener('scan', function(content) {
-                                window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
-                            });
-                            scanner.start();
-                        })
-                        .catch(function(error) {
-                            console.error('Error accessing media devices.', error);
-                        });
+                    // Define scan event listener
+                    scanner.addListener("scan", function(content) {
+                        window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
+                    });
+
+                    scanner.start(backCamera); // Start scanning with the back camera
+                } else if (cameras.length > 0) {
+                    // If no back camera found, fallback to the first available camera
+                    scanner = new Instascan.Scanner({
+                        video: document.getElementById("preview"),
+                    });
+
+                    // Define scan event listener
+                    scanner.addListener("scan", function(content) {
+                        window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
+                    });
+
+                    scanner.start(cameras[0]); // Start scanning with the first camera
                 } else {
-                    console.error("No cameras found.");
+                    console.error("No camera detected!");
                 }
-            }).catch(function(error) {
-                console.error('Error fetching cameras.', error);
             });
         }
 
         // Function to stop the scanner
         function stopScanner() {
             if (scanner !== null) {
-                scanner.stop();
+                scanner.stop(); // Stop the scanner if it's active
             }
         }
 
@@ -98,33 +89,6 @@ if (isset($_GET['station'])) {
 
         // Start the scanner when the page loads
         startScanner();
-
-        // Function to switch camera
-        function selectCamera(cameraType) {
-            const constraints = {
-                video: {
-                    facingMode: cameraType === 'front' ? 'user' : 'environment' // Use 'user' for front camera, 'environment' for back camera
-                }
-            };
-
-            // Stop any existing stream
-            if (window.stream) {
-                window.stream.getTracks().forEach(track => {
-                    track.stop();
-                });
-            }
-
-            // Get new camera stream
-            navigator.mediaDevices.getUserMedia(constraints)
-                .then(function(stream) {
-                    const video = document.getElementById('preview');
-                    video.srcObject = stream;
-                    window.stream = stream; // Store the stream globally to stop later
-                })
-                .catch(function(error) {
-                    console.error('Error accessing media devices.', error);
-                });
-        }
     </script>
 
 </div>

@@ -49,7 +49,14 @@ if (isset($_GET['station'])) {
                         window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
                     });
 
-                    scanner.start(backCamera); // Start scanning with the back camera
+                    // Start scanning with the back camera
+                    scanner.start(backCamera).then(() => {
+                        // Adjust video element if the stream is mirrored
+                        const video = document.getElementById("preview");
+                        video.style.transform = backCamera.mirror ? "scaleX(-1)" : "scaleX(1)";
+                    }).catch((error) => {
+                        console.error("Error starting scanner:", error);
+                    });
                 } else if (cameras.length > 0) {
                     // If no back camera found, fallback to the first available camera
                     scanner = new Instascan.Scanner({
@@ -61,7 +68,14 @@ if (isset($_GET['station'])) {
                         window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
                     });
 
-                    scanner.start(cameras[0]); // Start scanning with the first camera
+                    // Start scanning with the first camera
+                    scanner.start(cameras[0]).then(() => {
+                        // Adjust video element if the stream is mirrored
+                        const video = document.getElementById("preview");
+                        video.style.transform = cameras[0].mirror ? "scaleX(-1)" : "scaleX(1)";
+                    }).catch((error) => {
+                        console.error("Error starting scanner:", error);
+                    });
                 } else {
                     console.error("No camera detected!");
                 }

@@ -28,12 +28,12 @@ if (isset($_GET['station'])) {
                 <video id="preview" style="width: 100%; max-width: 700px; height: auto;"></video>
                 <!-- Camera Selection Buttons -->
                 <div class="btn-group d-sm-block d-md-none d-lg-none" role="group" aria-label="Camera Selection">
-                    <button type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
-                    <button type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
+                    <button id="frontCameraBtn" type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
+                    <button id="backCameraBtn" type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
                 </div>
                 <div class="btn-group d-none d-md-block d-lg-none" role="group" aria-label="Camera Selection">
-                    <button type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
-                    <button type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
+                    <button id="frontCameraBtnMD" type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
+                    <button id="backCameraBtnMD" type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
                 </div>
                 <h5 class="text-center mt-3"><a href="guard.dashboard.php">Select Gate</a></h5>
             </div>
@@ -84,6 +84,33 @@ if (isset($_GET['station'])) {
 
         // Start the scanner when the page loads
         startScanner();
+
+        // for choosing the cameras in mobile devices
+        function selectCamera(cameraType) {
+            const constraints = {
+                video: {
+                    facingMode: cameraType
+                }
+            };
+
+            // Stop any existing stream
+            if (window.stream) {
+                window.stream.getTracks().forEach(track => {
+                    track.stop();
+                });
+            }
+
+            // Get new camera stream
+            navigator.mediaDevices.getUserMedia(constraints)
+                .then(function(stream) {
+                    const video = document.getElementById('preview');
+                    video.srcObject = stream;
+                    window.stream = stream; // Store the stream globally to stop later
+                })
+                .catch(function(error) {
+                    console.error('Error accessing media devices.', error);
+                });
+        }
     </script>
 
 </div>

@@ -26,10 +26,20 @@ if (isset($_GET['station'])) {
             <div class="col-12 text-center">
                 <h1><?php echo $_SESSION['station']; ?></h1>
                 <video id="preview" style="width: 100%; max-width: 700px; height: auto;"></video>
+                <!-- Camera Selection Buttons -->
+                <div class="btn-group d-sm-block d-md-none d-lg-none" role="group" aria-label="Camera Selection">
+                    <button type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
+                    <button type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
+                </div>
+                <div class="btn-group d-none d-md-block d-lg-none" role="group" aria-label="Camera Selection">
+                    <button type="button" class="btn btn-primary" onclick="selectCamera('front')">Front Camera</button>
+                    <button type="button" class="btn btn-primary" onclick="selectCamera('back')">Back Camera</button>
+                </div>
                 <h5 class="text-center mt-3"><a href="guard.dashboard.php">Select Gate</a></h5>
             </div>
         </div>
     </div>
+
     <script>
         let scanner = null; // Declare scanner variable globally
 

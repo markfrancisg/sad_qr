@@ -41,32 +41,46 @@ if (isset($_GET['station'])) {
     </div>
 
     <script>
-        let scanner = null; // Declare scanner variable globally
-
         // Function to start the scanner
         function startScanner() {
             Instascan.Camera.getCameras().then((cameras) => {
                 if (cameras.length > 0) {
-                    scanner = new Instascan.Scanner({
-                        video: document.getElementById("preview"),
-                    });
+                    const constraints = {
+                        video: {
+                            facingMode: 'environment' // Use 'environment' for back camera, 'user' for front camera
+                        }
+                    };
 
-                    // Define scan event listener
-                    scanner.addListener("scan", function(content) {
-                        window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
-                    });
+                    const video = document.getElementById('preview');
+                    video.srcObject = null; // Reset video source object
 
-                    scanner.start(cameras[0]); // Start scanning with the first camera
+                    navigator.mediaDevices.getUserMedia(constraints)
+                        .then(function(stream) {
+                            video.srcObject = stream;
+                            window.stream = stream; // Store the stream globally to stop later
+                            scanner = new Instascan.Scanner({
+                                video: video
+                            });
+                            scanner.addListener('scan', function(content) {
+                                window.location.href = "../../../includes/qr_code_scanner.inc.php?qr_text=" + encodeURIComponent(content);
+                            });
+                            scanner.start();
+                        })
+                        .catch(function(error) {
+                            console.error('Error accessing media devices.', error);
+                        });
                 } else {
-                    console.error("No camera detected!");
+                    console.error("No cameras found.");
                 }
+            }).catch(function(error) {
+                console.error('Error fetching cameras.', error);
             });
         }
 
         // Function to stop the scanner
         function stopScanner() {
             if (scanner !== null) {
-                scanner.stop(); // Stop the scanner if it's active
+                scanner.stop();
             }
         }
 
@@ -85,11 +99,11 @@ if (isset($_GET['station'])) {
         // Start the scanner when the page loads
         startScanner();
 
-        // for choosing the cameras in mobile devices
+        // Function to switch camera
         function selectCamera(cameraType) {
             const constraints = {
                 video: {
-                    facingMode: cameraType
+                    facingMode: cameraType === 'front' ? 'user' : 'environment' // Use 'user' for front camera, 'environment' for back camera
                 }
             };
 

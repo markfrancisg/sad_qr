@@ -4,7 +4,6 @@ require_once '../../../includes/Visitor_model.inc.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/VisitorListDailyController.php'; // 
 
-
 ?>
 
 
@@ -42,7 +41,7 @@ require_once '../../../includes/VisitorListDailyController.php'; //
                                                 <a class="nav-link active" href="visitor_list_daily.php">Daily</a>
                                             </li>
                                             <li class="nav-item">
-                                                <a class="nav-link" href="visitor_list_weekly.php">Weekly</a>
+                                                <a class="nav-link " href="visitor_list_weekly.php">Weekly</a>
                                             </li>
                                         </ul>
                                     </div>
@@ -195,8 +194,8 @@ require_once '../../../includes/VisitorListDailyController.php'; //
 </div>
 
 
-
 <script src="../../js/visitor_list.js"></script>
+
 
 <?php
 include_once 'footer.php';

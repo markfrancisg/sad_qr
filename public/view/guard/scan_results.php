@@ -112,8 +112,8 @@ function publishMqttMessage($topic, $message)
                         <?php
                         // Send MQTT commands
                         publishMqttMessage('esp8266/command', 'open');
-                        // sleep(2); // Wait for 2 seconds
-                        // publishMqttMessage('esp8266/command', 'close');
+                        sleep(3); // Wait for 2 seconds
+                        publishMqttMessage('esp8266/command', 'close');
                         ?>
                     <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'denied') : ?>
                         <h1 class="text-bolder danger-text text-center mb-3">PASS DENIED!</h1>

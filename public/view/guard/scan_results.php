@@ -35,10 +35,11 @@ function publishMqttMessage($topic, $message)
     $mqtt->publish($topic, $message, 0);
     $mqtt->disconnect();
 
+    $pass_message = "";
     if ($_SESSION['station'] == "Gate 1") {
-        $pass_message = "PASS GRANTED!";
+        $pass_message = "PASS";
     } else if ($_SESSION['station'] = "Gate 2") {
-        $pass_message = "EXIT GRANTED!";
+        $pass_message = "EXIT";
     }
 }
 ?>
@@ -63,7 +64,7 @@ function publishMqttMessage($topic, $message)
             <div class="card-body">
                 <div class="container-fluid">
                     <?php if (isset($_GET['entry']) && $_GET['entry'] === 'success') : ?>
-                        <h1 class="text-bolder text-primary text-center mb-3"><?php echo $pass_message; ?></h1>
+                        <h1 class="text-bolder text-primary text-center mb-3"><?php echo $pass_message . " " . "GRANTED!"; ?></h1>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="container">

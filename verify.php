@@ -41,7 +41,7 @@ include 'includes/VerifyController.inc.php';
                                         <div class="col">
                                             <label for="new_password" class="form-label">Password</label>
                                             <div class="password-container">
-                                                <input type="password" class="form-control" id="password" name="password" maxlength="16" required>
+                                                <input type="password" class="form-control" id="password" name="password" maxlength="50" required>
                                             </div>
                                         </div>
                                     </div>
@@ -49,7 +49,7 @@ include 'includes/VerifyController.inc.php';
                                         <div class="col">
                                             <label for="confirm_password" class="form-label">Confirm Password</label>
                                             <div class="password-container">
-                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="16" required>
+                                                <input type="password" class="form-control" id="confirm_password" name="confirm_password" maxlength="50" required>
                                                 <div class="invalid-feedback">Passwords do not match</div>
                                             </div>
                                         </div>

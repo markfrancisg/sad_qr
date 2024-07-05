@@ -34,6 +34,12 @@ function publishMqttMessage($topic, $message)
     $mqtt->connect($connectionSettings, true);
     $mqtt->publish($topic, $message, 0);
     $mqtt->disconnect();
+
+    if ($_SESSION['station'] == "Gate 1") {
+        $pass_message = "PASS GRANTED!";
+    } else if ($_SESSION['station'] = "Gate 2") {
+        $pass_message = "EXIT GRANTED!";
+    }
 }
 ?>
 <style>
@@ -57,7 +63,7 @@ function publishMqttMessage($topic, $message)
             <div class="card-body">
                 <div class="container-fluid">
                     <?php if (isset($_GET['entry']) && $_GET['entry'] === 'success') : ?>
-                        <h1 class="text-bolder text-primary text-center mb-3">PASS GRANTED!</h1>
+                        <h1 class="text-bolder text-primary text-center mb-3"><?php echo $pass_message; ?></h1>
                         <div class="row">
                             <div class="col-md-6 mb-3">
                                 <div class="container">
@@ -106,8 +112,8 @@ function publishMqttMessage($topic, $message)
                         <?php
                         // Send MQTT commands
                         publishMqttMessage('esp8266/command', 'open');
-                        sleep(2); // Wait for 2 seconds
-                        publishMqttMessage('esp8266/command', 'close');
+                        // sleep(2); // Wait for 2 seconds
+                        // publishMqttMessage('esp8266/command', 'close');
                         ?>
                     <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'denied') : ?>
                         <h1 class="text-bolder danger-text text-center mb-3">PASS DENIED!</h1>
@@ -134,8 +140,13 @@ function publishMqttMessage($topic, $message)
 require_once 'footer.php';
 
 // Redirect to another page after 10 seconds
-header("refresh:10;url=scan_qr.php");
-exit; // Ensure subsequent code is not executed
+if (isset($_GET['entry']) && $_GET['entry'] === 'success') {
+    header("refresh:10;url=scan_qr.php");
+} else {
+    header("refresh:3;url=scan_qr.php");
+}
+exit;
 
+// Ensure subsequent code is not executed
 ob_end_flush(); // Flush the output buffer
 ?>

@@ -91,18 +91,19 @@ function get_visitor_list_daily(object $pdo, int $offset, int $total_records_per
     $current_date = date('Y-m-d');
 
     // Prepare the SQL statement with a WHERE clause to filter by the current date
-    $query = "SELECT *
-              FROM visitor_log
-              WHERE DATE(visitor_date) = :current_date
-              ORDER BY visitor_id DESC
-              LIMIT :offset, :total_records_per_page";
+    $query = "SELECT * FROM visitor_log WHERE DATE(visitor_date) = :current_date ORDER BY visitor_id DESC LIMIT :offset, :total_records_per_page";
 
     $stmt = $pdo->prepare($query);
 
     // Bind the parameters
     $stmt->bindParam(':current_date', $current_date);
-    $stmt->bindValue(':offset', $offset, PDO::PARAM_INT);
-    $stmt->bindValue(':total_records_per_page', $total_records_per_page, PDO::PARAM_INT);
+
+    // We can't bind limit values as parameters, so we need to concatenate them in the query string.
+    $query = "SELECT * FROM visitor_log WHERE DATE(visitor_date) = :current_date ORDER BY visitor_id DESC LIMIT $offset, $total_records_per_page";
+    $stmt = $pdo->prepare($query);
+
+    // Bind the date parameter
+    $stmt->bindParam(':current_date', $current_date);
 
     $stmt->execute();
 

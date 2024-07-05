@@ -93,15 +93,20 @@ function get_visitor_list_daily(object $pdo, int $offset, int $total_records_per
     // Prepare the SQL statement with a WHERE clause to filter by the current date
     $query = "SELECT *
               FROM visitor_log
-              WHERE DATE(visitor_date) = :current_date
+              WHERE visitor_date >= :current_date_start AND visitor_date < :current_date_end
               ORDER BY visitor_id DESC
               LIMIT :offset, :total_records_per_page";
+
+    // Calculate the start and end of the current date
+    $current_date_start = $current_date . ' 00:00:00';
+    $current_date_end = date('Y-m-d', strtotime($current_date . ' +1 day')) . ' 00:00:00';
 
     // Prepare the SQL statement
     $stmt = $pdo->prepare($query);
 
     // Bind the parameters
-    $stmt->bindParam(':current_date', $current_date);
+    $stmt->bindParam(':current_date_start', $current_date_start);
+    $stmt->bindParam(':current_date_end', $current_date_end);
     $stmt->bindParam(':offset', $offset, PDO::PARAM_INT);
     $stmt->bindParam(':total_records_per_page', $total_records_per_page, PDO::PARAM_INT);
 

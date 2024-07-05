@@ -30,9 +30,11 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
         date_default_timezone_set('Asia/Manila');
         $visitor_time = date('H:i:s');
+        $visitor_date = date('Y-m-d'); // Current date in year month day
 
 
-        insert_visitor($pdo, $visitor_first_name, $visitor_last_name, $purpose, $visitor_plate_number, $visitor_vehicle_type, $visitor_wheel, $visitor_time, $visitor_vehicle_color);
+
+        insert_visitor($pdo, $visitor_first_name, $visitor_last_name, $purpose, $visitor_plate_number, $visitor_vehicle_type, $visitor_wheel, $visitor_time, $visitor_vehicle_color, $visitor_date);
         header("Location: ../../public/view/guard/visitor.php?visitor_creation=success");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());

@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
-function insert_visitor(object $pdo, string $visitor_first_name, string $visitor_last_name, string $purpose, string $visitor_plate_number, string $visitor_vehicle_type, string $visitor_wheel, string $visitor_time, string $visitor_vehicle_color)
+function insert_visitor(object $pdo, string $visitor_first_name, string $visitor_last_name, string $purpose, string $visitor_plate_number, string $visitor_vehicle_type, string $visitor_wheel, string $visitor_time, string $visitor_vehicle_color, string $visitor_date)
 {
-    $sql = "INSERT INTO visitor_log (visitor_first_name, visitor_last_name, purpose, visitor_plate_number,visitor_vehicle_type, visitor_wheel, visitor_time, visitor_vehicle_color) VALUES (:visitor_first_name, :visitor_last_name, :purpose, :visitor_plate_number, :visitor_vehicle_type, :visitor_wheel, :visitor_time, :visitor_vehicle_color )";
+    $sql = "INSERT INTO visitor_log (visitor_first_name, visitor_last_name, purpose, visitor_plate_number,visitor_vehicle_type, visitor_wheel, visitor_time, visitor_vehicle_color, visitor_date) VALUES (:visitor_first_name, :visitor_last_name, :purpose, :visitor_plate_number, :visitor_vehicle_type, :visitor_wheel, :visitor_time, :visitor_vehicle_color, :visitor_date )";
     $stmt = $pdo->prepare($sql);
     $stmt->bindParam(":visitor_first_name", $visitor_first_name);
     $stmt->bindParam(":visitor_last_name", $visitor_last_name);
@@ -14,6 +14,7 @@ function insert_visitor(object $pdo, string $visitor_first_name, string $visitor
     $stmt->bindParam(":visitor_wheel", $visitor_wheel);
     $stmt->bindParam(":visitor_time", $visitor_time);
     $stmt->bindParam(":visitor_vehicle_color", $visitor_vehicle_color);
+    $stmt->bindParam(":visitor_date", $visitor_date);
     $stmt->execute();
 }
 

@@ -17,13 +17,13 @@ try {
 
     $total_records = count_visitor_list_daily($pdo);
 
-    var_dump($total_records);
+    // var_dump($total_records);
 
     $total_no_of_pages = ceil($total_records / $total_records_per_page);
 
     $results = get_visitor_list_daily($pdo, $offset, $total_records_per_page);
 
-    var_dump($results);
+    // var_dump($results);
 
     //Portion for the searchButton, results will be altered once search button is clicked
     if (isset($_GET['searchButton'])) {

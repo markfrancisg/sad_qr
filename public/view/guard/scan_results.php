@@ -94,6 +94,7 @@ require_once 'header.php';
                                     </div>
                                 </div>
                             </div>
+
                         </div>
                         <!-- <script>
                             // JavaScript to send commands to the ESP8266
@@ -140,6 +141,10 @@ require_once 'header.php';
                     <?php endif; ?>
                 </div>
             </div>
+
+
+            <h5 class="text-center mt-3"><a href="scan_qr.php">Scan Next</a></h5>
+
         </div>
     </div>
 </div>

@@ -4,7 +4,10 @@ declare(strict_types=1);
 
 function get_user(object $pdo, string $email)
 {
-    $query = "SELECT * FROM account WHERE account_email = :account_email;";
+    $query = "SELECT account.account_id, account.account_email, account.password, account.role_id, account.token, account.token_expiration, account.verification_status, account.agreement, user_info.account_first_name, user_info.account_last_name 
+    FROM account
+    JOIN user_info ON account.account_id = user_info.account_id
+    WHERE account_email = :account_email;";
     $stmt = $pdo->prepare($query);
     $stmt->bindParam(":account_email", $email);
     $stmt->execute();

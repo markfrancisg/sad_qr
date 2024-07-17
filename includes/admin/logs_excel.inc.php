@@ -30,6 +30,7 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
                 <th>Address</th>
                 <th>Plate Number</th>
                 <th>Vehicle Information</th>
+                <th>Date</th>
                 <th>Entry</th>
                 <th>Exit</th>
             </tr>';
@@ -41,6 +42,7 @@ if (isset($_POST['export_excel']) && isset($_GET['type']) && !empty(($_GET['type
                     <td>' . $row['log_address'] . '</td>
                     <td>' . $row['log_plate_number'] . '</td>
                     <td>' . $row['log_vehicle'] . '</td>
+                    <td>' . $row['date'] . '</td>
                     <td>' . $row['entry_log'] . '</td>
                     <td>' . $row['exit_log'] . '</td>
                 </tr>';

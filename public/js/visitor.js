@@ -12,8 +12,16 @@ specialInputs.forEach(function(input) {
   });
 });
 
+document.getElementById('visitor_plate_number').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
 
-const elements = document.querySelectorAll('#visitor_first_name,#purpose, #visitor_last_name, #visitor_plate_number, #visitor_vehicle_type, #visitor_vehicle_color');
+
+
+const elements = document.querySelectorAll('#visitor_first_name,#purpose, #visitor_last_name, #visitor_plate_number, #visitor_vehicle_color');
 elements.forEach(function(element) {
     element.addEventListener('keydown', function(event) {
         if (event.key === ' ' && element.value === '') {
@@ -29,7 +37,6 @@ document.addEventListener('DOMContentLoaded', () => {
     const lastNameField = document.getElementById('visitor_last_name');
     const purposeField = document.getElementById('purpose');
     const plateNumberField = document.getElementById('visitor_plate_number');
-    const typeField = document.getElementById('visitor_vehicle_type');
     const colorField = document.getElementById('visitor_vehicle_color');
 
     // Add event listeners and validation logic for each input field
@@ -57,14 +64,6 @@ document.addEventListener('DOMContentLoaded', () => {
         purposeField.value = value.replace(/\s{2,}/g, ' ');
     });
 
-
-    typeField.addEventListener('input', () => {
-        const value = typeField.value;
-
-        // Replace consecutive spaces with a single space
-        typeField.value = value.replace(/\s{2,}/g, ' ');
-    });
-
     colorField.addEventListener('input', () => {
         const value = colorField.value;
 
@@ -87,6 +86,37 @@ setTimeout(() => {
         alertContainer.remove();
     }
 }, 3000);
+
+
+
+document.getElementById('visitor_vehicle_type').addEventListener('change', function() {
+    var wheelInput = document.getElementById('visitor_wheel');
+    var vehicleType = this.value;
+
+    var wheelCount;
+    switch (vehicleType) {
+        case 'Motorcycle':
+            wheelCount = 2;
+            break;
+        case 'Pick Up Truck':
+        case 'Van':
+        case 'Hatchback':
+        case 'Sedan':
+        case 'Coupe':
+        case 'Convertible':
+        case 'SUV':
+        case 'MPV':
+        case 'Crossover':
+            wheelCount = 4;
+            break;
+        default:
+            wheelCount = '';
+            break;
+    }
+
+    wheelInput.value = wheelCount;
+});
+
 
 
 (function () {
@@ -134,12 +164,30 @@ setTimeout(() => {
         });
     });
 
+    var vehicleType = document.getElementById('visitor_vehicle_type');
+    var vehicleWheel = document.getElementById('visitor_wheel');
+    vehicleType.addEventListener('change', function () {
+        if (vehicleType.value === '') {
+            vehicleType.classList.add('is-invalid');
+            vehicleType.classList.remove('is-valid');
+            vehicleWheel.classList.add('is-invalid');
+            vehicleWheel.classList.remove('is-valid');
+        } else {
+            vehicleType.classList.remove('is-invalid');
+            vehicleType.classList.add('is-valid');
+            vehicleWheel.classList.remove('is-invalid');
+            vehicleWheel.classList.add('is-valid');
+        }
+        vehicleType.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(vehicleType.closest('form'));
+    });
+
     // Plate number validation
     document.getElementById('visitor_plate_number').addEventListener('input', function () {
         var plateNumberInput = this;
         var plateNumber = plateNumberInput.value.toUpperCase().trim(); // Trim whitespace and convert to uppercase
         var feedback = document.getElementById('plateFeedback');
-        var platePattern = /^(?:[A-Z]{2,3}-\d{2,4})$/; // Adjusted pattern for plate numbers
+        var platePattern = /^(?:[A-Z]{3}-\d{3}|[A-Z]{3}-\d{2}|[A-Z]{3}-(?!0000)\d{4}|[A-Z]{2}-\d{4})$/;
     
         if (plateNumber === '') {
             plateNumberInput.setCustomValidity('Plate number is required');

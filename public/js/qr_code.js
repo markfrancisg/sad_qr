@@ -11,7 +11,15 @@ document.getElementById('email').addEventListener('keydown', function(event)
     }
 });
 
-const elements = document.querySelectorAll('#email, #plate_number, #vehicle_type, #vehicle_color');
+document.getElementById('plate_number').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+
+const elements = document.querySelectorAll('#email, #plate_number, #vehicle_color');
 elements.forEach(function(element) {
     element.addEventListener('keydown', function(event) {
         if (event.key === ' ' && element.value === '') {
@@ -22,20 +30,12 @@ elements.forEach(function(element) {
 
 // prevent multiple consecutive spaces in fields
 document.addEventListener('DOMContentLoaded', () => {
-    const typeField = document.getElementById('vehicle_type');
     const colorField = document.getElementById('vehicle_color');
     const plateNumberField = document.getElementById('plate_number');
 
     
 
-    // Add event listeners and validation logic for each input field
-    typeField.addEventListener('input', () => {
-        const value = typeField.value;
-
-        // Replace consecutive spaces with a single space
-        typeField.value = value.replace(/\s{2,}/g, ' ');
-    });
-
+ 
     colorField.addEventListener('input', () => {
         const value = colorField.value;
 
@@ -52,7 +52,33 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
+document.getElementById('vehicle_type').addEventListener('change', function() {
+    var wheelInput = document.getElementById('wheel');
+    var vehicleType = this.value;
 
+    var wheelCount;
+    switch (vehicleType) {
+        case 'Motorcycle':
+            wheelCount = 2;
+            break;
+        case 'Pick Up Truck':
+        case 'Van':
+        case 'Hatchback':
+        case 'Sedan':
+        case 'Coupe':
+        case 'Convertible':
+        case 'SUV':
+        case 'MPV':
+        case 'Crossover':
+            wheelCount = 4;
+            break;
+        default:
+            wheelCount = '';
+            break;
+    }
+
+    wheelInput.value = wheelCount;
+});
 
 
 
@@ -109,6 +135,24 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    var vehicleType = document.getElementById('vehicle_type');
+    var vehicleWheel = document.getElementById('wheel');
+    vehicleType.addEventListener('change', function () {
+        if (vehicleType.value === '') {
+            vehicleType.classList.add('is-invalid');
+            vehicleType.classList.remove('is-valid');
+            vehicleWheel.classList.add('is-invalid');
+            vehicleWheel.classList.remove('is-valid');
+        } else {
+            vehicleType.classList.remove('is-invalid');
+            vehicleType.classList.add('is-valid');
+            vehicleWheel.classList.remove('is-invalid');
+            vehicleWheel.classList.add('is-valid');
+        }
+        vehicleType.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(vehicleType.closest('form'));
+    });
+
     // Email validation and address fetching
     var emails = [];
     $('#emailOptions option').each(function () {
@@ -117,6 +161,8 @@ document.addEventListener('DOMContentLoaded', () => {
 
     $('#email').on('input', function () {
         var inputVal = $(this).val();
+        var name = document.getElementById('name');
+        var address = document.getElementById('address');
         var emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.(com|org|ph)$/;
         var feedback = document.getElementById('emailFeedback');
 
@@ -124,16 +170,28 @@ document.addEventListener('DOMContentLoaded', () => {
             this.setCustomValidity('Email is required');
             this.classList.add('is-invalid');
             this.classList.remove('is-valid');
+            name.classList.add('is-invalid');
+            name.classList.remove('is-valid');
+            address.classList.add('is-invalid');
+            address.classList.remove('is-valid');
             feedback.textContent = 'Email is required';
         } else if (!emailPattern.test(inputVal) || !emails.includes(inputVal)) {
             this.setCustomValidity('Invalid or unrecognized email');
             this.classList.add('is-invalid');
             this.classList.remove('is-valid');
+            name.classList.add('is-invalid');
+            name.classList.remove('is-valid');
+            address.classList.add('is-invalid');
+            address.classList.remove('is-valid');
             feedback.textContent = 'Invalid or unrecognized email';
         } else {
             this.setCustomValidity('');
             this.classList.remove('is-invalid');
             this.classList.add('is-valid');
+            name.classList.remove('is-invalid');
+            name.classList.add('is-valid');
+            address.classList.remove('is-invalid');
+            address.classList.add('is-valid');
             feedback.textContent = '';
             fetchUserInfo(inputVal); // Fetch user information
         }
@@ -233,7 +291,9 @@ document.addEventListener('DOMContentLoaded', () => {
         var plateNumber = plateNumberInput.value.toUpperCase();
         var feedback = document.getElementById('plateFeedback');
         var platePattern = /^(?:[A-Z]{3}-\d{3}|[A-Z]{3}-\d{2}|[A-Z]{3}-(?!0000)\d{4}|[A-Z]{2}-\d{4})$/;
-        
+        // var platePattern = /^(?:[A-Z]{3}[-\s]\d{3}|[A-Z]{3}[-\s]\d{2}|[A-Z]{3}[-\s](?!0000)\d{4}|[A-Z]{2}[-\s]\d{4})$/;        
+
+
         if (plateNumber === '') {
             this.setCustomValidity('Plate number is required');
             this.classList.add('is-invalid');

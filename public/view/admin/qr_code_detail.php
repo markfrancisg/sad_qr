@@ -13,6 +13,10 @@ payment_success();
 
 //to compute the payment according to the wheel number
 $amount = ($result['wheel'] == "2") ? "Php 250.00" : "Php 300.00";
+
+if(empty($result['middle_name'])){
+    $result['middle_name'] = "";
+}
 ?>
 
 
@@ -39,7 +43,7 @@ $amount = ($result['wheel'] == "2") ? "Php 250.00" : "Php 300.00";
                             <div class="container">
                                 <div class="card-body text-center mt-1">
                                     <img src="../../images/details.svg" width="120" alt="Details" class="mb-2">
-                                    <h2 class="text-dark fw-bolder mb-0"><?php echo $result['first_name'] . " " . $result['last_name']; ?></h2>
+                                    <h2 class="text-dark fw-bolder mb-0"><?php echo $result['first_name'] . " " .$result['middle_name'] . " ". $result['last_name']; ?></h2>
                                     <hr class="text-dark fw-bolder">
                                     <p class="text-muted fw-bolder mb-2"><?php echo "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street"; ?></p>
                                     <p class="text-muted fw-bolder mb-2">With Plate Number <u><?php echo $result['plate_number']; ?></u></p>

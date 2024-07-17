@@ -64,7 +64,7 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                         <h5 class="text-muted mt-2">Vehicle Details</h5>
 
                         <div class="row">
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="visitor_plate_number" name="visitor_plate_number" placeholder="NSA-1111" maxlength="8" required oninput="validateAndTransformInput(this)">
                                     <label for="plate_number">Plate Number</label>
@@ -73,9 +73,26 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                             </div>
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
-                                    <input type="text" class="form-control" id="visitor_vehicle_type" name="visitor_vehicle_type" placeholder="1" maxlength="30" required>
-                                    <label for="vehicle_type">Vehicle Type</label>
-                                    <div class="invalid-feedback">Vehicle type is required</div>
+                                    <select class="form-select form-select-md  rounded-1 p-3" name="visitor_vehicle_type" id="visitor_vehicle_type" aria-label="Vehicle Type" required>
+                                        <option value="" disabled selected>Vehicle Type</option>
+                                        <option value="Hatchback">Hatchback</option>
+                                        <option value="Sedan">Sedan</option>
+                                        <option value="Coupe">Coupe</option>
+                                        <option value="Convertible">Convertible</option>
+                                        <option value="SUV">SUV</option>
+                                        <option value="MPV">MPV</option>
+                                        <option value="Crossover">Crossover</option>
+                                        <option value="Pick Up Truck">Pick Up Truck</option>
+                                        <option value="Van">Van</option>
+                                        <option value="Motorcycle">Motorcycle</option>
+                                    </select>
+                                    <div class="invalid-feedback">Vehicle Type is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-2">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="visitor_wheel" name="visitor_wheel" placeholder="4" maxlength="2" value="" readonly required>
+                                    <label for="visitor_wheel">Wheels</label>
                                 </div>
                             </div>
                             <div class="col-12 col-md-3">
@@ -83,15 +100,6 @@ include_once '../../../includes/guard/visitor_view.inc.php';
                                     <input type="text" class="form-control" id="visitor_vehicle_color" name="visitor_vehicle_color" placeholder="1" maxlength="30" required>
                                     <label for="vehicle_type">Vehicle Color</label>
                                     <div class="invalid-feedback">Vehicle color is required</div>
-                                </div>
-                            </div>
-                            <div class="col-12 col-md-3">
-                                <div class="form-floating mb-3">
-                                    <select class="form-select form-select-md  rounded-1 p-3" name="visitor_wheel" id="visitor_wheel" aria-label="Wheels" required>
-                                        <option value="" disabled selected>Number of Wheels</option>
-                                        <option value="2">2-wheel</option>
-                                        <option value="4">4-wheel</option>
-                                    </select>
                                 </div>
                             </div>
                         </div>

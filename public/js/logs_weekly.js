@@ -41,6 +41,7 @@ function fetchLogs(page = 1) {
                     <td class="border-bottom-0 text-center text-muted mb-0">${log.log_address || ''}</td>
                     <td class="border-bottom-0 text-center text-muted mb-0">${log.log_plate_number || ''}</td>
                     <td class="border-bottom-0 text-center text-muted mb-0">${log.log_vehicle || ''}</td>
+                    <td class="border-bottom-0 text-center text-muted mb-0">${log.date || ''}</td>
                     <td class="border-bottom-0 text-center text-muted mb-0">${log.entry_log || ''}</td>
                     <td class="border-bottom-0 text-center text-muted mb-0">${log.exit_log || ''}</td>
                 </tr>

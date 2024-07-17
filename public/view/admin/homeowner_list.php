@@ -91,12 +91,15 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
                                     </tr>
                                 <?php else : ?>
                                     <?php foreach ($results as $row) : ?>
+                                        <?php if (empty($row['middle_name'])) {
+                                            $row['middle_name'] = "";
+                                        } ?>
                                         <tr id="row_<?php echo $row['ho_id']; ?>">
                                             <td class="border-bottom-0 text-center">
                                                 <input type="checkbox" class="input_checkbox" value="<?php echo $row['ho_id']; ?>" />
                                             </td>
                                             <td class="border-bottom-0 text-center">
-                                                <h6 class="text-dark mb-0"><?php echo $row['first_name'] . " " . $row['last_name']; ?></h6>
+                                                <h6 class="text-dark mb-0"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name']; ?></h6>
                                             </td>
                                             <td class="border-bottom-0 text-center">
                                                 <h6 class="text-dark mb-0"><?php echo htmlspecialchars(trim($row['email'])); ?></h6>

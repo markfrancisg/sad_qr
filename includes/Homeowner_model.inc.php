@@ -22,7 +22,7 @@ function count_homeowner_list(object $pdo)
 function get_homeowner_list(object $pdo, int $offset, int $total_records_per_page)
 {
 
-    $query = "SELECT ho_id, first_name, last_name, block, lot, street, email, number
+    $query = "SELECT ho_id, first_name, middle_name, last_name, block, lot, street, email, number
     FROM homeowners
     ORDER BY ho_id DESC
     LIMIT $offset, $total_records_per_page";
@@ -36,9 +36,9 @@ function get_homeowner_list(object $pdo, int $offset, int $total_records_per_pag
 
 function search_homeowner($pdo, $searchQuery)
 {
-    $sql = "SELECT ho_id, email, first_name, last_name, block, lot, street, number
+    $sql = "SELECT ho_id, email, first_name, middle_name, last_name, block, lot, street, number
         FROM homeowners
-        WHERE CONCAT(first_name, ' ', last_name) LIKE ?";
+        WHERE CONCAT(first_name, ' ',middle_name,' ', last_name) LIKE ?";
     $stmt = $pdo->prepare($sql);
 
     $likeSearchQuery = "%" . $searchQuery . "%";

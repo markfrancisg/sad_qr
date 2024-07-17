@@ -53,6 +53,8 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         //$result[depends sa name ng column]
         $_SESSION["account_id"] =  htmlspecialchars($result["account_id"]);
         $_SESSION["account_email"] = htmlspecialchars($result["account_email"]);
+        $_SESSION["account_full_name"] = htmlspecialchars($result["account_first_name"]) . " " . htmlspecialchars($result["account_last_name"]);
+
         $roleInfo = getRole($pdo, $result["account_id"]);
 
         if ($roleInfo) {

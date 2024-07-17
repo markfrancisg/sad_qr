@@ -1,12 +1,11 @@
+
+/* 
 .app-header {
     background-image: url('../images/headers/seqrity_header.svg');
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center;
-    /* filter: blur(1px); */
-    /* Adjust the blur radius as needed */
-}
-
+} */
 
 .footer {
     background-color: #f1f1f1 !important;

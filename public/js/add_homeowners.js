@@ -1,4 +1,4 @@
-const elements = document.querySelectorAll('#email, #first_name, #last_name, #street, #number, #block, #lot');
+const elements = document.querySelectorAll('#email, #first_name, #middle_name, #last_name, #street, #number, #block, #lot');
 elements.forEach(function(element) {
     element.addEventListener('keydown', function(event) {
         if (event.key === ' ' && element.value === '') {
@@ -20,6 +20,7 @@ document.getElementById('email').addEventListener('keydown', function(event)
 // prevent multiple consecutive spaces in fields
 document.addEventListener('DOMContentLoaded', () => {
     const firstNameField = document.getElementById('first_name');
+    const middleNameField = document.getElementById('middle_name');
     const lastNameField = document.getElementById('last_name');
     const streetField = document.getElementById('street');
 
@@ -30,6 +31,13 @@ document.addEventListener('DOMContentLoaded', () => {
 
         // Replace consecutive spaces with a single space
         firstNameField.value = value.replace(/\s{2,}/g, ' ');
+    });
+
+    middleNameField.addEventListener('input', () => {
+        const value = middleNameField.value;
+
+        // Replace consecutive spaces with a single space
+        middleNameField.value = value.replace(/\s{2,}/g, ' ');
     });
 
     lastNameField.addEventListener('input', () => {
@@ -62,7 +70,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 //Letters only
-const specialInputs = document.querySelectorAll('#first_name, #last_name');
+const specialInputs = document.querySelectorAll('#first_name, #middle_name, #last_name');
 specialInputs.forEach(function(input) {
   input.addEventListener('keydown', function(event) {
     if (!(/[a-zA-Z\s]/).test(event.key)) {

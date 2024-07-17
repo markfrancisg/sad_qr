@@ -21,6 +21,8 @@ try {
 
     $results = get_homeowner_list($pdo, $offset, $total_records_per_page);
 
+    
+
 
     if (isset($_GET['searchButton'])) {
         // Get the search input value

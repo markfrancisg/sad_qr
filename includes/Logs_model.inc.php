@@ -32,7 +32,7 @@ function count_logs_list(object $pdo)
 
 function get_logs_list(object $pdo,  int $offset, int $total_records_per_page)
 {
-    $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log
+    $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log, date
               FROM log
               ORDER BY log.log_id DESC
               LIMIT $offset, $total_records_per_page";
@@ -75,7 +75,7 @@ function get_logs_list_daily(object $pdo, int $offset, int $total_records_per_pa
     $current_date = date('Y-m-d');
 
     // Prepare the SQL query with placeholders for LIMIT
-    $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log
+    $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log, date
               FROM log
     WHERE DATE(log.date) = :current_date
     ORDER BY log_id DESC
@@ -103,7 +103,7 @@ function get_logs_list_weekly(object $pdo, int $offset, int $total_records_per_p
     $start_of_week = date('Y-m-d', strtotime('monday this week'));
 
     // Prepare the SQL query with placeholders for LIMIT
-    $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log
+    $query = "SELECT log_name, log_plate_number, log_address, log_vehicle, entry_log, exit_log, date
               FROM log
     WHERE DATE(log.date) BETWEEN :start_of_week AND :current_date
     ORDER BY log_id DESC
@@ -182,14 +182,92 @@ function count_logs_list_weekly(object $pdo)
 //     }
 // }
 
-function handleLog($pdo, $date, $log_plate_number, $log_name, $log_address, $log_vehicle, $date_time, $column)
+// function handleLog($pdo, $date, $log_plate_number, $log_name, $log_address, $log_vehicle, $date_time, $column)
+// {
+//     try {
+//         // Begin transaction
+//         $pdo->beginTransaction();
+
+//         // Prepare the query to check for existing log entry
+//         $query = "SELECT log_id, last_action, $column FROM log WHERE log_plate_number = :log_plate_number AND date = :date ORDER BY log_id DESC LIMIT 1";
+//         $stmt = $pdo->prepare($query);
+//         $stmt->bindParam(":log_plate_number", $log_plate_number);
+//         $stmt->bindParam(":date", $date);
+//         $stmt->execute();
+//         $result = $stmt->fetch(PDO::FETCH_ASSOC);
+
+//         if (!$result) {
+//             // If no existing log, insert a new log entry
+//             $sql1 = "INSERT INTO log (date, log_plate_number, log_name, log_address, log_vehicle, $column, last_action) VALUES (:date, :log_plate_number, :log_name, :log_address, :log_vehicle, :date_time, :last_action)";
+//             $stmt1 = $pdo->prepare($sql1);
+//             $stmt1->bindParam(":date", $date);
+//             $stmt1->bindParam(":log_plate_number", $log_plate_number);
+//             $stmt1->bindParam(":log_name", $log_name);
+//             $stmt1->bindParam(":log_address", $log_address);
+//             $stmt1->bindParam(":log_vehicle", $log_vehicle);
+//             $stmt1->bindParam(":date_time", $date_time);
+//             $stmt1->bindParam(":last_action", $column);
+//             $stmt1->execute();
+//         } else {
+//             // If existing log is found and column is NULL, update the log entry
+//             if ($result[$column] === NULL) {
+//                 // Check if the last action is the same as the current action
+//                 if ($result['last_action'] == $column) {
+//                     $pdo->rollBack();
+//                     return false; // Prevent consecutive logs of the same type
+//                 }
+
+//                 // Update existing log entry
+//                 $log_id = $result['log_id'];
+//                 $sql = "UPDATE log SET $column = :date_time, last_action = :last_action WHERE log_id = :log_id";
+//                 $stmt = $pdo->prepare($sql);
+//                 $stmt->bindParam(':date_time', $date_time);
+//                 $stmt->bindParam(':last_action', $column);
+//                 $stmt->bindParam(':log_id', $log_id, PDO::PARAM_INT);
+//                 $stmt->execute();
+//             } else {
+//                 // If column is not NULL, check alternation before inserting a new log entry
+//                 if ($result['last_action'] == $column) {
+//                     $pdo->rollBack();
+//                     return false; // Prevent consecutive logs of the same type
+//                 }
+
+//                 // Insert a new log entry
+//                 $sql2 = "INSERT INTO log (date, log_plate_number, log_name, log_address, log_vehicle, $column, last_action) VALUES (:date, :log_plate_number, :log_name, :log_address, :log_vehicle, :date_time, :last_action)";
+//                 $stmt2 = $pdo->prepare($sql2);
+//                 $stmt2->bindParam(":date", $date);
+//                 $stmt2->bindParam(":log_plate_number", $log_plate_number);
+//                 $stmt2->bindParam(":log_name", $log_name);
+//                 $stmt2->bindParam(":log_address", $log_address);
+//                 $stmt2->bindParam(":log_vehicle", $log_vehicle);
+//                 $stmt2->bindParam(":date_time", $date_time);
+//                 $stmt2->bindParam(":last_action", $column);
+//                 $stmt2->execute();
+//             }
+//         }
+
+//         // Commit transaction
+//         $pdo->commit();
+
+//         return true; // Success
+//     } catch (PDOException $e) {
+//         // Rollback transaction on error
+//         $pdo->rollBack();
+//         // Log the error or handle it as needed
+//         error_log("PDOException: " . $e->getMessage());
+//         return false; // Return false to indicate failure
+//     }
+// }
+
+
+function handleLog($pdo, $date, $log_plate_number, $log_name, $log_address, $log_vehicle, $log, $column)
 {
     try {
         // Begin transaction
         $pdo->beginTransaction();
 
         // Prepare the query to check for existing log entry
-        $query = "SELECT log_id, last_action, $column FROM log WHERE log_plate_number = :log_plate_number AND date = :date ORDER BY log_id DESC LIMIT 1";
+        $query = "SELECT log_id FROM log WHERE log_plate_number = :log_plate_number AND date = :date ORDER BY log_id DESC LIMIT 1";
         $stmt = $pdo->prepare($query);
         $stmt->bindParam(":log_plate_number", $log_plate_number);
         $stmt->bindParam(":date", $date);
@@ -198,54 +276,25 @@ function handleLog($pdo, $date, $log_plate_number, $log_name, $log_address, $log
 
         if (!$result) {
             // If no existing log, insert a new log entry
-            $sql1 = "INSERT INTO log (date, log_plate_number, log_name, log_address, log_vehicle, $column, last_action) VALUES (:date, :log_plate_number, :log_name, :log_address, :log_vehicle, :date_time, :last_action)";
+            $sql1 = "INSERT INTO log (date, log_plate_number, log_name, log_address, log_vehicle, $column) VALUES (:date, :log_plate_number, :log_name, :log_address, :log_vehicle, :log)";
             $stmt1 = $pdo->prepare($sql1);
             $stmt1->bindParam(":date", $date);
             $stmt1->bindParam(":log_plate_number", $log_plate_number);
             $stmt1->bindParam(":log_name", $log_name);
             $stmt1->bindParam(":log_address", $log_address);
             $stmt1->bindParam(":log_vehicle", $log_vehicle);
-            $stmt1->bindParam(":date_time", $date_time);
-            $stmt1->bindParam(":last_action", $column);
+            $stmt1->bindParam(":log", $log);
             $stmt1->execute();
         } else {
-            // If existing log is found and column is NULL, update the log entry
-            if ($result[$column] === NULL) {
-                // Check if the last action is the same as the current action
-                if ($result['last_action'] == $column) {
-                    $pdo->rollBack();
-                    return false; // Prevent consecutive logs of the same type
-                }
 
-                // Update existing log entry
-                $log_id = $result['log_id'];
-                $sql = "UPDATE log SET $column = :date_time, last_action = :last_action WHERE log_id = :log_id";
-                $stmt = $pdo->prepare($sql);
-                $stmt->bindParam(':date_time', $date_time);
-                $stmt->bindParam(':last_action', $column);
-                $stmt->bindParam(':log_id', $log_id, PDO::PARAM_INT);
-                $stmt->execute();
-            } else {
-                // If column is not NULL, check alternation before inserting a new log entry
-                if ($result['last_action'] == $column) {
-                    $pdo->rollBack();
-                    return false; // Prevent consecutive logs of the same type
-                }
-
-                // Insert a new log entry
-                $sql2 = "INSERT INTO log (date, log_plate_number, log_name, log_address, log_vehicle, $column, last_action) VALUES (:date, :log_plate_number, :log_name, :log_address, :log_vehicle, :date_time, :last_action)";
-                $stmt2 = $pdo->prepare($sql2);
-                $stmt2->bindParam(":date", $date);
-                $stmt2->bindParam(":log_plate_number", $log_plate_number);
-                $stmt2->bindParam(":log_name", $log_name);
-                $stmt2->bindParam(":log_address", $log_address);
-                $stmt2->bindParam(":log_vehicle", $log_vehicle);
-                $stmt2->bindParam(":date_time", $date_time);
-                $stmt2->bindParam(":last_action", $column);
-                $stmt2->execute();
-            }
+            // Update existing log entry
+            $log_id = $result['log_id'];
+            $sql = "UPDATE log SET $column = :log WHERE log_id = :log_id";
+            $stmt = $pdo->prepare($sql);
+            $stmt->bindParam(':log', $log);
+            $stmt->bindParam(':log_id', $log_id, PDO::PARAM_INT);
+            $stmt->execute();
         }
-
         // Commit transaction
         $pdo->commit();
 

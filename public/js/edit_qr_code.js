@@ -3,7 +3,15 @@ function validateAndTransformInput(input) {
     input.value = input.value.replace(/[^a-zA-Z0-9 -]/g, '').toUpperCase();
 }
 
-const elements = document.querySelectorAll('#plate_number, #vehicle_type, #vehicle_color, #wheel');
+
+document.getElementById('plate_number').addEventListener('keydown', function(event)
+{
+    if (event.key === ' ') {
+        event.preventDefault();
+    }
+});
+
+const elements = document.querySelectorAll('#plate_number, #vehicle_color');
 elements.forEach(function(element) {
     element.addEventListener('keydown', function(event) {
         if (event.key === ' ' && element.value === '') {
@@ -15,17 +23,8 @@ elements.forEach(function(element) {
 
 // prevent multiple consecutive spaces in fields
 document.addEventListener('DOMContentLoaded', () => {
-    const typeField = document.getElementById('vehicle_type');
     const colorField = document.getElementById('vehicle_color');
     
-
-    // Add event listeners and validation logic for each input field
-    typeField.addEventListener('input', () => {
-        const value = typeField.value;
-
-        // Replace consecutive spaces with a single space
-        typeField.value = value.replace(/\s{2,}/g, ' ');
-    });
 
     colorField.addEventListener('input', () => {
         const value = colorField.value;
@@ -35,6 +34,34 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 });
 
+
+document.getElementById('vehicle_type').addEventListener('change', function() {
+    var wheelInput = document.getElementById('wheel');
+    var vehicleType = this.value;
+
+    var wheelCount;
+    switch (vehicleType) {
+        case 'Motorcycle':
+            wheelCount = 2;
+            break;
+        case 'Pick Up Truck':
+        case 'Van':
+        case 'Hatchback':
+        case 'Sedan':
+        case 'Coupe':
+        case 'Convertible':
+        case 'SUV':
+        case 'MPV':
+        case 'Crossover':
+            wheelCount = 4;
+            break;
+        default:
+            wheelCount = '';
+            break;
+    }
+
+    wheelInput.value = wheelCount;
+});
 
 // /////////////////////////////////////////////////////////////
 
@@ -82,6 +109,24 @@ document.addEventListener('DOMContentLoaded', () => {
             }
             input.closest('.form-floating').classList.add('was-validated');
         });
+    });
+
+    var vehicleType = document.getElementById('vehicle_type');
+    var vehicleWheel = document.getElementById('wheel');
+    vehicleType.addEventListener('change', function () {
+        if (vehicleType.value === '') {
+            vehicleType.classList.add('is-invalid');
+            vehicleType.classList.remove('is-valid');
+            vehicleWheel.classList.add('is-invalid');
+            vehicleWheel.classList.remove('is-valid');
+        } else {
+            vehicleType.classList.remove('is-invalid');
+            vehicleType.classList.add('is-valid');
+            vehicleWheel.classList.remove('is-invalid');
+            vehicleWheel.classList.add('is-valid');
+        }
+        vehicleType.closest('.form-floating').classList.add('was-validated');
+        toggleSubmitButton(vehicleType.closest('form'));
     });
 
     document.getElementById('plate_number').addEventListener('input', function () {

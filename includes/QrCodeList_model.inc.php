@@ -12,7 +12,7 @@ function delete_vehicle(object $pdo, string $qr_id)
 function manual_search(object $pdo, string $search)
 {
     $query = "
-                SELECT first_name, last_name, qr_info.vehicle_type, qr_info.plate_number, qr_info.registered, homeowners.block, homeowners.lot, homeowners.street
+                SELECT first_name,middle_name, last_name, qr_info.vehicle_type, qr_info.plate_number, qr_info.registered, homeowners.block, homeowners.lot, homeowners.street
                 FROM qr_info
                 JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
                 WHERE qr_info.plate_number LIKE :search
@@ -26,7 +26,7 @@ function manual_search(object $pdo, string $search)
 function get_manual_search_table(object $pdo)
 {
     $query = "
-    SELECT first_name, last_name, qr_info.vehicle_type, qr_info.plate_number, qr_info.registered, homeowners.block, homeowners.lot, homeowners.street
+    SELECT first_name,middle_name, last_name, qr_info.vehicle_type, qr_info.plate_number, qr_info.registered, homeowners.block, homeowners.lot, homeowners.street
     FROM qr_info
     JOIN homeowners ON qr_info.ho_id = homeowners.ho_id
     ORDER BY qr_id DESC 

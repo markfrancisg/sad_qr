@@ -77,6 +77,9 @@ require_once '../../../includes/Logs_model.inc.php';
                                         Vehicle Information
                                     </th>
                                     <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
+                                        Date
+                                    </th>
+                                    <th class="border-bottom-0 text-center fw-bolder text-light mb-0">
                                         Entry
                                     </th>
                                     <th class="border-bottom-0 text-center fw-bolder text-light mb-0">

@@ -14,11 +14,17 @@ if (isset($_GET['qr_id']) && !empty($_GET['qr_id'])) {
             exit(); // Exit after redirect
         }
 
+
+
         foreach ($results as $result) {
+            if (empty($result['middle_name'])) {
+                $result['middle_name'] = "";
+            }
+
             // Access the data from the current row
             $selectedEmail = $result['email'];
-            $name = $result['first_name'] . " " . $result['last_name'];
-            $address = "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street" ;
+            $name = $result['first_name'] . " " . $result['middle_name'] . " " . $result['last_name'];
+            $address = "Block " . $result['block'] . ", Lot " . $result['lot'] . ", " . $result['street'] . " Street";
             $vehicle_color = $result['vehicle_color'];
             $vehicle_type = $result['vehicle_type'];
             $plate_number = $result['plate_number'];

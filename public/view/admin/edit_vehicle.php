@@ -55,7 +55,7 @@ include_once 'header.php';
                         </div>
 
                         <div class="row">
-                            <div class="col-12 col-md-3">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="plate_number" name="plate_number" placeholder="NSA-1111" value="<?php echo $plate_number; ?>" maxlength="8" required oninput="validateAndTransformInput(this)">
                                     <label for="plate_number">Plate Number</label>
@@ -65,11 +65,38 @@ include_once 'header.php';
 
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
+                                    <select class="form-select form-select-md  rounded-1 p-3" name="vehicle_type" id="vehicle_type" aria-label="Vehicle Type" required>
+                                        <option value="" disabled <?= empty($vehicle_type) ? 'selected' : '' ?>>Vehicle Type</option>
+                                        <option value="Hatchback" <?php echo ($vehicle_type == 'Hatchback') ? 'selected' : ''; ?>>Hatchback</option>
+                                        <option value="Sedan" <?php echo ($vehicle_type == 'Sedan') ? 'selected' : ''; ?>>Sedan</option>
+                                        <option value="Coupe" <?php echo ($vehicle_type == 'Coupe') ? 'selected' : ''; ?>>Coupe</option>
+                                        <option value="Convertible" <?php echo ($vehicle_type == 'Convertible') ? 'selected' : ''; ?>>Convertible</option>
+                                        <option value="SUV" <?php echo ($vehicle_type == 'SUV') ? 'selected' : ''; ?>>SUV</option>
+                                        <option value="MPV" <?php echo ($vehicle_type == 'MPV') ? 'selected' : ''; ?>>MPV</option>
+                                        <option value="Crossover" <?php echo ($vehicle_type == 'Crossover') ? 'selected' : ''; ?>>Crossover</option>
+                                        <option value="Pick Up Truck" <?php echo ($vehicle_type == 'Pick Up Truck') ? 'selected' : ''; ?>>Pick Up Truck</option>
+                                        <option value="Van" <?php echo ($vehicle_type == 'Van') ? 'selected' : ''; ?>>Van</option>
+                                        <option value="Motorcycle" <?php echo ($vehicle_type == 'Motorcycle') ? 'selected' : ''; ?>>Motorcycle</option>
+                                    </select>
+                                    <div class="invalid-feedback">Vehicle Type is required</div>
+                                </div>
+                            </div>
+
+                            <div class="col-12 col-md-2">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="wheel" name="wheel" placeholder="4" maxlength="2" value="<?php echo $wheel; ?>" readonly required>
+                                    <label for="wheel">Wheels</label>
+                                </div>
+                            </div>
+
+                            <!-- <div class="col-12 col-md-3">
+                                <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="vehicle_type" name="vehicle_type" placeholder="1" value="<?php echo $vehicle_type; ?>" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');">
                                     <label for="vehicle_type">Vehicle Type</label>
                                     <div class="invalid-feedback" id="typeFeedback">Vehicle type is required</div>
                                 </div>
-                            </div>
+                            </div> -->
+
                             <div class="col-12 col-md-3">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="vehicle_color" name="vehicle_color" placeholder="1" value="<?php echo $vehicle_color; ?>" maxlength="30" required oninput="this.value = this.value.replace(/[^a-zA-Z\s]/g, '');">
@@ -77,16 +104,7 @@ include_once 'header.php';
                                     <div class="invalid-feedback" id="colorFeedback">Vehicle color is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-3">
-                                <div class="form-floating mb-3">
-                                    <select class="form-select form-select-md rounded-1 p-3" name="wheel" id="wheel" aria-label="Wheels" required>
-                                        <option value="" disabled <?= empty($wheel) ? 'selected' : '' ?>>Number of Wheels</option>
-                                        <option value="2" <?= $wheel == "2" ? 'selected' : '' ?>>2-wheel</option>
-                                        <option value="4" <?= $wheel == "4" ? 'selected' : '' ?>>4-wheel</option>
-                                    </select>
-                                    <div class="invalid-feedback">Wheel is required</div>
-                                </div>
-                            </div>
+
                         </div>
 
                         <input type="hidden" id="id" name="id" value="<?php echo $id ?>">

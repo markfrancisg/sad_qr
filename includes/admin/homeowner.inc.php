@@ -2,6 +2,7 @@
 
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
     $first_name = htmlspecialchars($_POST["first_name"]);
+    $middle_name = htmlspecialchars($_POST["middle_name"]);
     $last_name = htmlspecialchars($_POST["last_name"]);
     $email = htmlspecialchars($_POST["email"]);
     $number = htmlspecialchars($_POST["number"]);
@@ -55,7 +56,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // $complete_address = complete_address($block, $lot, $street);
         // $complete_name =   complete_name($first_name, $last_name);
 
-        insert_homeowner($pdo, $first_name, $last_name, $email, $number, $block, $lot, $street);
+        insert_homeowner($pdo, $first_name, $middle_name, $last_name, $email, $number, $block, $lot, $street);
         header("Location: ../../public/view/admin/homeowners.php?homeowner_creation=success");
     } catch (PDOException $e) {
         die("Query failed " . $e->getMessage());

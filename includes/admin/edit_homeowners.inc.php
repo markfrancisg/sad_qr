@@ -3,6 +3,7 @@
 if ($_SERVER["REQUEST_METHOD"] === "POST") {
 
     $first_name = htmlspecialchars($_POST["first_name"]);
+    $middle_name = htmlspecialchars($_POST["middle_name"]);
     $last_name = htmlspecialchars($_POST["last_name"]);
     $email = htmlspecialchars($_POST["email"]);
     $number = htmlspecialchars($_POST["number"]);
@@ -59,7 +60,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         // var_dump($role_id);
         // echo $role_id;
         // update_account($pdo, $role_id, $email, $first_name, $last_name, $number, $old_email);
-        update_homeowner($pdo, $first_name, $last_name, $email, $number, $block, $lot, $street, $old_email);
+        update_homeowner($pdo, $first_name,$middle_name, $last_name, $email, $number, $block, $lot, $street, $old_email);
 
         header("Location: ../../public/view/admin/homeowner_list.php?homeowner_edit=success");
         $pdo = null;

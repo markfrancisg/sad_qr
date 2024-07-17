@@ -173,8 +173,8 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
 
                         <hr class="text text-primary mb-0">
 
-                        <li class="sidebar-item <?php echo isActive('terms.php') ? 'selected' : ''; ?>">
-                            <a class="sidebar-link <?php echo isActive('terms.php'); ?>" href="terms.php" aria-expanded="false">
+                        <!-- <li class="sidebar-item ">
+                            <a class="sidebar-link" href="terms.php" aria-expanded="false">
                                 <span>
                                     <i class="fas fa-file-alt"></i>
                                 </span>
@@ -187,7 +187,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                                 <button class="btn btn-outline-primary w-100"><i class="fa fa-chevron-left"></i>
                                     Log out</button>
                             </div>
-                        </a>
+                        </a> -->
                         <!-- <li class="sidebar-item">
                             <a class="sidebar-link" aria-expanded="false" data-bs-toggle="modal" data-bs-target="#logoutModal">
                                 <span>
@@ -215,5 +215,31 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
                     </ul>
+
+                    <div class="navbar-text d-flex justify-content-sm-start justify-content-md-center justify-content-lg-center w-100">
+                        <!-- Added greeting message -->
+                        <span class="navbar-text text-primary">
+                            <?php echo strtoupper($_SESSION["role_description"]) . " | " . $_SESSION["account_full_name"]; ?>
+                        </span>
+                    </div>
+
+                    <div class="navbar-collapse justify-content-end px-0" id="navbarNav">
+                        <ul class="navbar-nav flex-row ms-auto align-items-center justify-content-end">
+                            <li class="nav-item dropdown">
+                                <a class="nav-link nav-icon-hover" href="javascript:void(0)" id="drop2" data-bs-toggle="dropdown" aria-expanded="false">
+                                    <i class="ti ti-user rounded-circle"></i>
+                                </a>
+                                <div class="dropdown-menu dropdown-menu-end dropdown-menu-animate-up" aria-labelledby="drop2">
+                                    <div class="message-body">
+                                        <a href="terms.php" class="d-flex align-items-center gap-2 dropdown-item">
+                                            <i class="fas fa-file-alt fs-6"></i>
+                                            <p class="mb-0 fs-3">Terms and Conditions</p>
+                                        </a>
+                                        <a data-bs-toggle="modal" data-bs-target="#logoutModal" class="btn btn-outline-primary mx-3 mt-2 d-block">Logout</a>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
                 </nav>
             </header>

@@ -40,14 +40,21 @@ include_once 'header.php';
                             <h5 class="text-muted">Personal Details</h5>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Juanito" value="<?php echo $first_name ?>" maxlength="30" required>
                                     <label for="first_name">First Name</label>
                                     <div class="invalid-feedback">First name is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Pena" value="<?php echo $middle_name ?>" maxlength="30">
+                                    <label for="first_name">Middle Name</label>
+                                    <!-- <div class="invalid-feedback">First name is required</div> -->
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Dela Cruz" value="<?php echo $last_name ?>" maxlength="30" required>
                                     <label for="last_name">Last Name</label>

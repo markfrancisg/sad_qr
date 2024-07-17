@@ -73,6 +73,17 @@ elements.forEach(function(element) {
     });
 });
 
+const specialInputs = document.querySelectorAll('#searchInput');
+specialInputs.forEach(function(input) {
+  input.addEventListener('keydown', function(event) {
+    if (!(/[a-zA-Z\s]/).test(event.key)) {
+      event.preventDefault();
+    }
+  });
+});
+
+
+
 // prevent multiple consecutive spaces in fields
 document.addEventListener('DOMContentLoaded', () => {
     const searchInputField = document.getElementById('searchInput');

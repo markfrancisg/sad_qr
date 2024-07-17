@@ -27,7 +27,7 @@ try {
 		foreach ($result as $row) {
 			$output .= '
 			<tr>
-				<td class="text-center">' . htmlspecialchars($row["first_name"] . " " . htmlspecialchars($row["last_name"])) . '</td>
+				<td class="text-center">' . htmlspecialchars($row["first_name"] . " " . $row["middle_name"] . " " . $row["last_name"]) . '</td>
 				<td class="text-center">' . htmlspecialchars($row["vehicle_type"]) . '</td>
 				<td class="text-center">' . htmlspecialchars($row["plate_number"]) . '</td>
 				<td class="text-center">' . "Block " . htmlspecialchars($row["block"]) . ", Lot " . htmlspecialchars($row["lot"]) . ", Street " . htmlspecialchars($row["street"]) . '</td>

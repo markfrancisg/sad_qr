@@ -14,7 +14,8 @@ require_once '../../../includes/PaidQrCodeListController.php';
         <!-- BREADCRUMB -->
         <nav aria-label="breadcrumb">
             <ol class="breadcrumb">
-                <li class="breadcrumb-item active" aria-current="page">Vehicle List</li>
+                <li class="breadcrumb-item"><a href="vehicle_list.php">Vehicle List</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Paid Vehicle List</li>
             </ol>
         </nav>
 
@@ -113,12 +114,16 @@ require_once '../../../includes/PaidQrCodeListController.php';
                                 <?php else : ?>
 
                                     <?php foreach ($results as $row) : ?>
+                                        <?php if (empty($row['middle_name'])) {
+                                            $row['middle_name'] = "";
+                                        } ?>
+
                                         <tr id="row_<?php echo $row['qr_id']; ?>">
                                             <td class="border-bottom-0 text-center">
                                                 <input type="checkbox" class="input_checkbox" value="<?php echo $row['qr_id']; ?>" />
                                             </td>
                                             <td class="border-bottom-0 text-center">
-                                                <h6 class="text-dark mb-0"><?php echo $row['first_name'] . " " . $row['last_name']; ?></h6>
+                                                <h6 class="text-dark mb-0"><?php echo $row['first_name'] . " " . $row['middle_name'] . " " . $row['last_name']; ?></h6>
                                             </td>
                                             <td class="border-bottom-0 text-center">
                                                 <h6 class="text-dark mb-0"><?php echo "Block " . $row['block'] . ", Lot " . $row['lot'] . " , " . $row['street'] . " Street"; ?></h6>

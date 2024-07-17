@@ -17,6 +17,7 @@ if (isset($_GET['email']) && !empty($_GET['email'])) {
         foreach ($results as $result) {
             // Access the data from the current row
             $first_name = $result['first_name'];
+            $middle_name = $result['middle_name'];
             $last_name = $result['last_name'];
             $email = $result['email'];
             $number = $result['number'];

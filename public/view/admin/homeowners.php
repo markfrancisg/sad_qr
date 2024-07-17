@@ -35,14 +35,21 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                             <h5 class="text-muted">Personal Details</h5>
                         </div>
                         <div class="row">
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="first_name" name="first_name" placeholder="Juanito" maxlength="30" required>
                                     <label for="first_name">First Name</label>
                                     <div class="invalid-feedback" id="firstNameFeedback">First name is required</div>
                                 </div>
                             </div>
-                            <div class="col-12 col-md-6">
+                            <div class="col-12 col-md-4">
+                                <div class="form-floating mb-3">
+                                    <input type="text" class="form-control" id="middle_name" name="middle_name" placeholder="Pena" maxlength="30">
+                                    <label for="last_name">Middle Name</label>
+                                    <!-- <div class="invalid-feedback" id="lastNameFeedback">Last name is required</div> -->
+                                </div>
+                            </div>
+                            <div class="col-12 col-md-4">
                                 <div class="form-floating mb-3">
                                     <input type="text" class="form-control" id="last_name" name="last_name" placeholder="Dela Cruz" maxlength="30" required>
                                     <label for="last_name">Last Name</label>
@@ -61,9 +68,7 @@ include_once '../../../includes/admin/homeowners_view.inc.php';
                                     <div class="invalid-feedback" id="emailFeedback">Email is required</div>
                                 </div>
                             </div>
-                            <script>
-                              
-                            </script>
+                            
 
 
 

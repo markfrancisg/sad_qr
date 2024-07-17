@@ -3,6 +3,8 @@ include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/SuperAdmin_model.inc.php';
 require_once '../../../includes/AccountListUnverifiedController.php';
+require_once '../../../includes/super_admin/account_list_view.inc.php'
+
 
 ?>
 
@@ -220,14 +222,14 @@ require_once '../../../includes/AccountListUnverifiedController.php';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Account?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Archive Account?</h5>
             </div>
             <div class="modal-body">
-                Select "Delete" below if you are sure.
+                Select "Archive" below if you are sure.
             </div>
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" type="button" id="confirmDelete">Delete</button>
+                <button class="btn btn-danger" type="button" id="confirmDelete">Archive</button>
             </div>
         </div>
     </div>
@@ -237,5 +239,7 @@ require_once '../../../includes/AccountListUnverifiedController.php';
 <script src="../../js/account_list.js"></script>
 
 <?php
+account_edit_success();
+account_delete_success();
 include_once 'footer.php';
 ?>

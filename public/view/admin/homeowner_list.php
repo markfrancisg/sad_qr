@@ -192,14 +192,14 @@ include_once '../../../includes/HomeownerListController.php'; //for the paginati
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Homeowner?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Archive Homeowner?</h5>
             </div>
             <div class="modal-body">
-                Select "Delete" below if you are sure.
+                Select "Archive" below if you are sure.
             </div>
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" type="button" id="confirmDelete">Delete</button>
+                <button class="btn btn-danger" type="button" id="confirmDelete">Archive</button>
             </div>
         </div>
     </div>

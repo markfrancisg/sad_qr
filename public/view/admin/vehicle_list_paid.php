@@ -3,6 +3,8 @@ include_once 'header.php';
 require_once '../../../includes/dbh.inc.php';
 require_once '../../../includes/Admin_model.inc.php';
 require_once '../../../includes/PaidQrCodeListController.php';
+include_once '../../../includes/admin/vehicle_list_view.inc.php';
+
 ?>
 
 
@@ -204,18 +206,18 @@ require_once '../../../includes/PaidQrCodeListController.php';
     </div>
 </div>
 
-<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="confirmModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" data-bs-backdrop="static" data-bs-keyboard="false">
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Homeowner?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Archive Vehicle?</h5>
             </div>
             <div class="modal-body">
-                Select "Delete" below if you are sure.
+                Select "Archive" below if you are sure.
             </div>
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" type="button" id="confirmDelete">Delete</button>
+                <button class="btn btn-danger" type="button" id="confirmDelete">Archive</button>
             </div>
         </div>
     </div>
@@ -237,6 +239,11 @@ require_once '../../../includes/PaidQrCodeListController.php';
         </div>
     </div>
 </div>
+
+<?php
+vehicle_edit_success();
+vehicle_delete_success();
+?>
 
 <script src="../../js/vehicle_list.js"></script>
 

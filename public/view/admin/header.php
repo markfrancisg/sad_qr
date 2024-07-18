@@ -2,7 +2,14 @@
 
 require_once '../../../includes/config.session.inc.php';
 require_once '../../../includes/authenticate.inc.php';
-grantPermission('admin');
+
+if ($_SESSION["role_description"] == "admin") {
+    grantPermission('admin');
+} else if ($_SESSION["role_description"] == "super_admin") {
+    grantPermission('super_admin');
+} else {
+    grantPermission('invalid_user');
+}
 
 function isActive($page)
 {
@@ -50,7 +57,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
 
 <style>
     .nav-small-cap {
-        margin-top: 7px !important;
+        margin-top: 0px !important;
     }
 </style>
 
@@ -92,7 +99,7 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
             <div>
                 <div class="brand-logo d-flex align-items-center justify-content-center">
                     <a href="" class="text-nowrap logo-img">
-                        <img src="../../images/logos/san_lorenzo_logo.svg" width="80" alt="" />
+                        <img src="../../images/logos/san_lorenzo_logo.svg" width="60" alt="" />
                     </a>
                     <div class="close-btn d-xl-none d-block sidebartoggler cursor-pointer ml-3" id="sidebarCollapse">
                         <i class="ti ti-x fs-8"></i>
@@ -170,8 +177,28 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                             </a>
                         </li>
 
-
-                        <hr class="text text-primary mb-0">
+                        <?php if ($_SESSION["role_description"] == "super_admin") : ?>
+                            <li class="nav-small-cap">
+                                <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
+                                <span class="hide-menu">Accounts</span>
+                            </li>
+                            <li class="sidebar-item <?php echo isActive('accounts.php') ? 'selected' : ''; ?>">
+                                <a class="sidebar-link <?php echo isActive('accounts.php'); ?>" href="accounts.php" aria-expanded="false">
+                                    <span>
+                                        <i class="fa fa-user-plus"></i>
+                                    </span>
+                                    <span class="hide-menu">Create Account</span>
+                                </a>
+                            </li>
+                            <li class="sidebar-item <?php echo isActive('account_list.php') || isActive('account_list_verified.php') || isActive('account_list_unverified.php') || isActive('edit_account.php') ? 'selected' : ''; ?>">
+                                <a class="sidebar-link <?php echo isActive('account_list.php') || isActive('account_list_verified.php') || isActive('account_list_unverified.php') || isActive('edit_account.php'); ?>" href="account_list.php" aria-expanded="false">
+                                    <span>
+                                        <i class="fa fa-users"></i>
+                                    </span>
+                                    <span class="hide-menu">Account List</span>
+                                </a>
+                            </li>
+                        <?php endif; ?>
 
                         <!-- <li class="sidebar-item ">
                             <a class="sidebar-link" href="terms.php" aria-expanded="false">
@@ -219,7 +246,11 @@ $title = isset($page_titles[$current_page]) ? $page_titles[$current_page] : 'SeQ
                     <div class="navbar-text d-flex justify-content-sm-start justify-content-md-center justify-content-lg-center w-100">
                         <!-- Added greeting message -->
                         <span class="navbar-text text-primary">
-                            <?php echo strtoupper($_SESSION["role_description"]) . " | " . $_SESSION["account_full_name"]; ?>
+                            <?php
+                            $role_description = isset($_SESSION["role_description"]) ? strtoupper(str_replace('_', ' ', $_SESSION["role_description"])) : '';
+                            $account_full_name = isset($_SESSION["account_full_name"]) ? $_SESSION["account_full_name"] : '';
+                            echo $role_description . " | " . $account_full_name;
+                            ?>
                         </span>
                     </div>
 

@@ -13,6 +13,6 @@ if (isset($_POST["checkbox_value"])) {
         die("Query failed " . $e->getMessage());
     }
 } else {
-    header("Location: ../../public/view/super_admin/account_list.php");
+    header("Location: ../../public/view/admin/account_list.php");
     die();
 }

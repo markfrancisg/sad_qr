@@ -86,7 +86,7 @@ $(document).ready(function() {
 
     $('#edit').click(function() {
         var selectedEmail = $('.input_checkbox:checked').closest('tr').find('td:eq(2)').text().trim();
-        window.location.href = '../super_admin/edit_account.php?email=' + encodeURIComponent(selectedEmail);
+        window.location.href = '../admin/edit_account.php?email=' + encodeURIComponent(selectedEmail);
     });
 
     $(document).on('change', '.input_checkbox', function() {

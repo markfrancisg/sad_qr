@@ -16,7 +16,7 @@ function redirectUser()
 {
     if (isset($_SESSION["role_description"]) && isset($_SESSION['account_id']) && isset($_SESSION['account_email'])) {
         if ($_SESSION["role_description"] === 'super_admin') {
-            header("Location: ../public/view/super_admin/accounts.php");
+            header("Location: ../public/view/admin/admin.dashboard.php");
             exit();
         } else if ($_SESSION["role_description"] === 'admin') {
             header("Location: ../public/view/admin/admin.dashboard.php");
@@ -52,4 +52,3 @@ function grantPermission(string $role)
         exit();
     }
 }
-

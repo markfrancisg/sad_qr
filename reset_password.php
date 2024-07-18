@@ -1,5 +1,9 @@
 <?php
 include 'public/view/login_components/header.php';
+
+if (!isset($_GET['email'])) {
+    header("Location: index.php");
+}
 ?>
 <style>
     .password-container {

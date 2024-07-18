@@ -30,7 +30,12 @@ $page_titles = array(
     'logs.php' => 'Records',
     'logs_daily.php' => 'Records',
     'logs_weekly.php' => 'Records',
-    'terms.php' => 'Terms and Conditions'
+    'terms.php' => 'Terms and Conditions',
+    'accounts.php' => 'Accounts',
+    'account_list.php' => 'Account List',
+    'account_list_verified.php' => 'Account List',
+    'account_list_unverified.php' => 'Account List',
+    'edit_account.php' => 'Edit Account'
 );
 
 $current_page = basename($_SERVER['PHP_SELF']);

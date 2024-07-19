@@ -208,14 +208,14 @@ include_once '../../../includes/admin/vehicle_list_view.inc.php';
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h5 class="modal-title" id="exampleModalLabel">Proceed to Archive Vehicle?</h5>
+                <h5 class="modal-title" id="exampleModalLabel">Proceed to Delete Vehicle?</h5>
             </div>
             <div class="modal-body">
-                Select "Archive" below if you are sure.
+                Select "Delete" below if you are sure.
             </div>
             <div class="modal-footer">
                 <button class="btn btn-light" type="button" data-bs-dismiss="modal">Cancel</button>
-                <button class="btn btn-danger" type="button" id="confirmDelete">Archive</button>
+                <button class="btn btn-danger" type="button" id="confirmDelete">Delete</button>
             </div>
         </div>
     </div>

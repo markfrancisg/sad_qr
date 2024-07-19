@@ -9,34 +9,34 @@ require_once 'header.php';
 
 
 //_________________________________INCLUDE THIS WHEN USING THE PROTOTYPE, IF NOT, COMMENT OUT__________________//
-// require '../../../vendor/autoload.php'; // Include the Composer autoload file
+require '../../../vendor/autoload.php'; // Include the Composer autoload file
 
-// use PhpMqtt\Client\MqttClient;
-// use PhpMqtt\Client\ConnectionSettings;
-// // Function to publish MQTT messages
-// function publishMqttMessage($topic, $message)
-// {
-//     $server = '190f414dd91543ec9d9e93bd363c9d98.s1.eu.hivemq.cloud'; // HiveMQ Cloud instance URL
-//     $port = 8883; // Secure MQTT port
-//     $clientId = 'php-mqtt-client-' . uniqid();
-//     $username = 'sadseqrity'; // Replace with your HiveMQ Cloud username
-//     $password = 'Aldetek15'; // Replace with your HiveMQ Cloud password
+use PhpMqtt\Client\MqttClient;
+use PhpMqtt\Client\ConnectionSettings;
+// Function to publish MQTT messages
+function publishMqttMessage($topic, $message)
+{
+    $server = '190f414dd91543ec9d9e93bd363c9d98.s1.eu.hivemq.cloud'; // HiveMQ Cloud instance URL
+    $port = 8883; // Secure MQTT port
+    $clientId = 'php-mqtt-client-' . uniqid();
+    $username = 'sadseqrity'; // Replace with your HiveMQ Cloud username
+    $password = 'Aldetek15'; // Replace with your HiveMQ Cloud password
 
-//     $mqtt = new MqttClient($server, $port, $clientId);
+    $mqtt = new MqttClient($server, $port, $clientId);
 
-//     $connectionSettings = (new ConnectionSettings)
-//         ->setUsername($username)
-//         ->setPassword($password)
-//         ->setUseTls(true) // Use TLS for secure connection
-//         ->setKeepAliveInterval(60)
-//         ->setLastWillTopic('test/lastwill')
-//         ->setLastWillMessage('client disconnect')
-//         ->setLastWillQualityOfService(1);
+    $connectionSettings = (new ConnectionSettings)
+        ->setUsername($username)
+        ->setPassword($password)
+        ->setUseTls(true) // Use TLS for secure connection
+        ->setKeepAliveInterval(60)
+        ->setLastWillTopic('test/lastwill')
+        ->setLastWillMessage('client disconnect')
+        ->setLastWillQualityOfService(1);
 
-//     $mqtt->connect($connectionSettings, true);
-//     $mqtt->publish($topic, $message, 0);
-//     $mqtt->disconnect();
-// }
+    $mqtt->connect($connectionSettings, true);
+    $mqtt->publish($topic, $message, 0);
+    $mqtt->disconnect();
+}
 //_________________________________INCLUDE THIS WHEN USING THE PROTOTYPE, IF NOT, COMMENT OUT__________________//
 
 ?>
@@ -118,11 +118,12 @@ require_once 'header.php';
                         // Send MQTT commands
                         //_________________________________INCLUDE THIS WHEN USING THE PROTOTYPE, IF NOT, COMMENT OUT__________________//
 
-                        // publishMqttMessage('esp8266/command', 'open');
-                        // sleep(3); // Wait for 2 seconds
-                        // publishMqttMessage('esp8266/command', 'close');
+                        publishMqttMessage('esp8266/command', 'open');
+
                         //_________________________________INCLUDE THIS WHEN USING THE PROTOTYPE, IF NOT, COMMENT OUT__________________//
 
+                        // sleep(3); // Wait for 2 seconds
+                        // publishMqttMessage('esp8266/command', 'close');
                         ?>
                     <?php elseif (isset($_GET['entry']) && $_GET['entry'] === 'denied') : ?>
                         <h1 class="text-bolder danger-text text-center mb-3">PASS DENIED!</h1>

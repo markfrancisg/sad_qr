@@ -62,6 +62,8 @@ function delete_account(object $pdo, string $id)
     $stmt->execute();
 }
 
+
+//there is a minus 1 because one acccount is the super admin, which is not displayed in the account list
 function count_account_list(object $pdo)
 {
     // Prepare the SQL statement
@@ -74,10 +76,11 @@ function count_account_list(object $pdo)
     // Fetch the result
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
-    // Return the count value
-    return $result['account_count'];
+    // Return the count value minus 1
+    return $result['account_count'] - 1;
 }
 
+//there is a minus 1 because one acccount is the super admin, which is not displayed in the account list
 function count_account_list_verified(PDO $pdo)
 {
     // Prepare the SQL statement
@@ -91,8 +94,10 @@ function count_account_list_verified(PDO $pdo)
     $result = $stmt->fetch(PDO::FETCH_ASSOC);
 
     // Return the count value
-    return $result['account_count'];
+    return $result['account_count'] - 1;
 }
+
+
 
 function count_account_list_unverified(PDO $pdo)
 {
